@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import groupLogo from "../../../public/logo/Group-Logo.png";
 import { CONTAINER } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
@@ -150,13 +152,12 @@ export function Footer() {
 
             <div>
               <h2 className={heading}>A venture by</h2>
-              {/* Placeholder wordmark until the Synergy Group logo file is added */}
-              <p className="mt-4 inline-flex flex-col items-center leading-none text-[#1e1e1e] lg:mt-[1.9cqw]">
-                <span className="text-[max(17px,1.75cqw)] font-medium tracking-[0.02em]">SYNERGY</span>
-                <span className="mt-[0.3em] font-ui text-[max(8px,0.6cqw)] tracking-[0.5em] text-brand-gray">
-                  GROUP
-                </span>
-              </p>
+              <Image
+                src={groupLogo}
+                alt="Synergy Group"
+                sizes="(min-width: 1024px) 14vw, 160px"
+                className="mt-4 h-auto w-[max(140px,13.5cqw)] lg:mt-[1.9cqw]"
+              />
             </div>
           </div>
 
