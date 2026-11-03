@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import constructionImage from "../../../public/Home/one stops solution.png";
+import constructionImage from "../../../public/Home/33c4a67f-4ff8-4df2-92b8-4830eda7bd7f.jpg";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function ProductionToInstallation() {
@@ -27,7 +27,7 @@ export function ProductionToInstallation() {
         <Reveal delay={150} className={BLOCK_GAP}>
           <Image
             src={constructionImage}
-            alt="Tower cranes and high-rise buildings under construction"
+            alt="Synergy PUF insulated panel manufacturing and installation"
             placeholder="blur"
             sizes="(min-width: 1920px) 1594px, 100vw"
             className="h-auto w-full rounded-[max(10px,1.3cqw)]"

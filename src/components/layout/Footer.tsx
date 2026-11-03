@@ -19,13 +19,12 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
     ],
   },
   {
-    // Sister companies have no URLs yet, so they render as plain text.
     title: "Group Companies",
     links: [
-      { label: "Synergy Thrislington" },
-      { label: "Synergy LGSF" },
-      { label: "Synergy PEB" },
-      { label: "Synergy Construction" },
+      { label: "Synergy Thrislington", href: "https://www.synergythrislington.in/" },
+      { label: "Synergy LGSF", href: "https://synergylgsf.com/" },
+      { label: "Synergy PEB", href: "https://www.synergypeb.com/" },
+      { label: "Synergy Construction", href: "https://www.synergyconstruction.in/" },
     ],
   },
   {
@@ -64,11 +63,10 @@ const PinIcon = () => (
   </svg>
 );
 
-// TODO: replace "#" with the real profile URLs.
 const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/synergypuf",
     icon: (
       <svg
         aria-hidden
@@ -86,7 +84,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com/@Synergypuf",
     icon: (
       <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className="size-[60%]">
         <path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z" />
@@ -95,7 +93,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/synergy-puf/",
     icon: (
       <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className="size-[50%]">
         <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4z" />
@@ -104,7 +102,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/people/Synergy-PUF/61593245264043/",
     icon: (
       <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className="size-[55%]">
         <path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.2A21 21 0 0 0 14.6 2C12.2 2 10.6 3.5 10.6 6.2v2.3H8V12h2.6v10H14V12h2.7l.4-3.5z" />
@@ -137,7 +135,17 @@ export function Footer() {
                 <ul className="mt-4 space-y-2.5 lg:mt-[1.9cqw] lg:space-y-[1.15cqw]">
                   {column.links.map((link) => (
                     <li key={link.label} className={body}>
-                      {link.href ? (
+                      {link.href?.startsWith("http") ? (
+                        // Sister-company sites open in a new tab
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transition-colors duration-200 hover:text-brand"
+                        >
+                          {link.label}
+                        </a>
+                      ) : link.href ? (
                         <Link href={link.href} className="transition-colors duration-200 hover:text-brand">
                           {link.label}
                         </Link>
@@ -152,12 +160,20 @@ export function Footer() {
 
             <div>
               <h2 className={heading}>A venture by</h2>
-              <Image
-                src={groupLogo}
-                alt="Synergy Group"
-                sizes="(min-width: 1024px) 14vw, 160px"
-                className="mt-4 h-auto w-[max(140px,13.5cqw)] lg:mt-[1.9cqw]"
-              />
+              <a
+                href="https://www.thesynergygroup.co.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Synergy Group website (opens in a new tab)"
+                className="mt-4 inline-block transition-opacity duration-200 hover:opacity-75 lg:mt-[1.9cqw]"
+              >
+                <Image
+                  src={groupLogo}
+                  alt="Synergy Group"
+                  sizes="(min-width: 1024px) 14vw, 160px"
+                  className="h-auto w-[max(140px,13.5cqw)]"
+                />
+              </a>
             </div>
           </div>
 
@@ -212,7 +228,9 @@ export function Footer() {
               <li key={social.label}>
                 <a
                   href={social.href}
-                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Synergy PUF on ${social.label} (opens in a new tab)`}
                   className="grid size-[max(24px,1.75cqw)] place-items-center rounded-full bg-brand text-white transition-colors duration-200 hover:bg-black"
                 >
                   {social.icon}

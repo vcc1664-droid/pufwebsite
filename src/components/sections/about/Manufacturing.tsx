@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import lineImage from "../../../../public/about/df70c243-af54-4fd2-9c7a-5d2027d0518d.png";
+import lineImage from "../../../../public/Home/about/Industrial Conveyor Line in Action.png";
 
 // Values marked "To confirm" are placeholders from the design.
 const SPECS = [

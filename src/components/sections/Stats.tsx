@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { CountUp } from "@/components/motion/CountUp";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -21,11 +22,11 @@ function InverseCorner({ className, at }: { className: string; at: string }) {
   );
 }
 
-function Stat({ value, mark, children }: { value: string; mark: string; children: ReactNode }) {
+function Stat({ value, mark, children }: { value: number; mark: string; children: ReactNode }) {
   return (
     <>
       <p className="flex items-start text-[max(52px,5.9cqw)] leading-none font-bold tracking-[-0.04em] text-black">
-        {value}
+        <CountUp value={value} />
         <span className="ml-[0.06em] text-[0.36em] leading-none font-semibold">{mark}</span>
       </p>
       <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">
@@ -63,13 +64,13 @@ export function Stats() {
             <h2 className={cn(label, "lg:col-span-2")}>Launched Projects</h2>
 
             <div className="border-t border-[#7c797c] pt-8 max-lg:mt-6 lg:mt-[1.85cqw] lg:grid lg:grid-cols-[47%_1fr] lg:pt-[2.6cqw] max-lg:flex max-lg:flex-col max-lg:gap-4">
-              <Stat value="150" mark="+">
+              <Stat value={150} mark="+">
                 Projects launched successfully since 2012.
               </Stat>
             </div>
 
             <div className="border-t border-[#7c797c] pt-8 max-lg:mt-6 lg:mt-[1.85cqw] lg:flex lg:justify-between lg:pt-[2.6cqw] max-lg:flex max-lg:flex-col max-lg:gap-4">
-              <Stat value="98" mark="%">
+              <Stat value={98} mark="%">
                 Percentage of our fully satisfied clients.
               </Stat>
             </div>
@@ -81,7 +82,7 @@ export function Stats() {
               The year the founders launched the first project.
             </p>
             <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">
-              2007
+              <CountUp from={2001} value={2007} />
             </p>
           </div>
 

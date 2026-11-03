@@ -1,17 +1,17 @@
-import Image, { type StaticImageData } from "next/image";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import wallsImage from "../../../public/Home/3.2.png";
-import coldStoreImage from "../../../public/Home/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
 
 type Project = {
   title: string;
   scope: string;
   location: string;
   client: string;
-  image: { src: StaticImageData | string; alt: string };
+  video: string;
 };
 
 const PROJECTS: Project[] = [
@@ -20,25 +20,21 @@ const PROJECTS: Project[] = [
     scope: "PUF wall and ceiling panels, deep blast freezer enclosure",
     location: "Noida, Uttar Pradesh",
     client: "Apex Cold Chain Logistics",
-    image: { src: coldStoreImage, alt: "Aerial view of a large cold storage hub surrounded by fields" },
+    video: "/Home/homePageVideo/green Cold store.mp4",
   },
   {
     title: "Multi-Temperature Cold Store",
     scope: "Insulated wall and ceiling panels, airtight industrial cold doors",
     location: "Bengaluru, Karnataka",
     client: "Fresh Fields Food Logistics",
-    image: { src: wallsImage, alt: "White insulated wall panels on a steel-framed cold store" },
+    video: "/Home/homePageVideo/white cold store.mp4",
   },
   {
     title: "Temperature-Controlled",
     scope: "PUF cold-room enclosure, sterile modular panels & insulated roofing",
     location: "Hyderabad, Telangana",
     client: "BioMed Pharma Logistics",
-    // Uppercase .JPG has no static-import typings, so this photo is referenced by path.
-    image: {
-      src: "/Home/DJI_20260908123834_0320_D.JPG",
-      alt: "Aerial view of a temperature-controlled facility with insulated panels",
-    },
+    video: "/Home/homePageVideo/Blue colour video.mp4",
   },
 ];
 
@@ -81,13 +77,13 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
         featured ? "aspect-[4/3] sm:aspect-[641/277]" : "aspect-[4/3] lg:aspect-[313/278]",
       )}
     >
-      <Image
-        src={project.image.src}
-        alt={project.image.alt}
-        fill
-        placeholder={typeof project.image.src === "string" ? "empty" : "blur"}
-        sizes={featured ? "(min-width: 1920px) 1594px, 100vw" : "(min-width: 1024px) 42vw, 100vw"}
-        className="object-cover"
+      <video
+        src={project.video}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Darkens the bottom so the white copy stays legible on bright photos */}
       <div
@@ -120,6 +116,7 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function SelectedProjects() {
   const [featured, ...rest] = PROJECTS;
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
@@ -164,7 +161,18 @@ export function SelectedProjects() {
           </Reveal>
           {rest.map((project, i) => (
             <Reveal key={project.title} delay={(i + 1) * 100}>
-              <ProjectCard project={project} />
+              <div
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={cn(
+                  "h-full transition-all duration-500",
+                  hoveredIndex === null
+                    ? i === 0 ? "" : "blur-[3px] brightness-75"
+                    : hoveredIndex === i ? "blur-0 brightness-100" : "blur-[3px] brightness-75",
+                )}
+              >
+                <ProjectCard project={project} />
+              </div>
             </Reveal>
           ))}
         </div>

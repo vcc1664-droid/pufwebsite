@@ -10,7 +10,7 @@ export function RightRequirement() {
       <div className="@container flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
         <Reveal className="relative aspect-[820/293] overflow-hidden rounded-[max(12px,1.1cqw)] max-lg:aspect-video lg:w-[50.5%]">
           <Image
-            src="/Home/C0049T01.JPG"
+            src="/Home/C0102T01.webp"
             alt="PUF panels on the production line in the Synergy PUF manufacturing facility"
             fill
             sizes="(min-width: 1024px) 51vw, 100vw"

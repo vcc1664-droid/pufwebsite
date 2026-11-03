@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
+import { ScrollGrow } from "@/components/motion/ScrollGrow";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import panelImage from "../../../public/Home/puf-3d-panel-exploded.png";
@@ -65,12 +66,15 @@ export function PanelLayers() {
             delay={100}
             className="mx-auto mt-4 max-w-xl lg:absolute lg:top-[1.35cqw] lg:left-[19.46%] lg:mt-0 lg:w-[58.1%] lg:max-w-none"
           >
-            <Image
-              src={panelImage}
-              alt="Exploded view of a PUF panel: two steel faces with an insulating PUF core between them"
-              sizes="(min-width: 1024px) 58vw, (min-width: 640px) 576px, 100vw"
-              className="h-auto w-full"
-            />
+            {/* Starts small and grows to its normal size as it scrolls into view */}
+            <ScrollGrow>
+              <Image
+                src={panelImage}
+                alt="Exploded view of a PUF panel: two steel faces with an insulating PUF core between them"
+                sizes="(min-width: 1024px) 58vw, (min-width: 640px) 576px, 100vw"
+                className="h-auto w-full"
+              />
+            </ScrollGrow>
           </Reveal>
 
           <ul className="mt-10 grid gap-8 sm:grid-cols-3 lg:contents">

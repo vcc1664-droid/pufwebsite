@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-// Uppercase .JPG has no static-import typings, so the wall photo is referenced by path.
-import roofImage from "../../../public/Home/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
+import roofImage from "../../../public/Home/Panelsystems/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
+import wallImage from "../../../public/Home/Panelsystems/IndustrialGableBuildingwithBlueBands1.webp";
 
 type PanelSystem = {
   title: string;
@@ -30,10 +30,7 @@ const SYSTEMS: PanelSystem[] = [
     profile: "Single skin · Micro-rib · Concealed fix",
     cores: ["PUF", "PIR", "Rockwool"],
     link: { label: "Explore wall panels", href: "/products" },
-    image: {
-      src: "/Home/DJI_20260908123834_0320_D.JPG",
-      alt: "Cold storage building with insulated wall panels, seen from above",
-    },
+    image: { src: wallImage, alt: "Industrial gable building clad in white and blue insulated wall panels" },
   },
 ];
 

@@ -1,9 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
+import testimonialImage from "../../../public/Home/homePageVideo/a41800a3-269d-4e7c-9f4b-52d7a429688c.jpg";
+
+const TESTIMONIAL_VIDEO = "https://www.instagram.com/reel/De4I8FFtbS6/";
 
 type Testimonial = {
   name: string;
@@ -56,9 +60,32 @@ export function Testimonials() {
             SECTION_Y,
           )}
         >
-          {/* Empty slot for the testimonial photo or video */}
-          <Reveal className="aspect-[325/287] rounded-[max(10px,1cqw)] bg-[#e6e6e6] lg:w-[43.6%]">
-            <span className="sr-only">Testimonial media coming soon</span>
+          {/* Testimonial photo; opens the video testimonial on Instagram */}
+          <Reveal className="aspect-[325/287] overflow-hidden rounded-[max(10px,1cqw)] lg:w-[43.6%]">
+            <a
+              href={TESTIMONIAL_VIDEO}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch the video testimonial on Instagram (opens in a new tab)"
+              className="group relative block h-full w-full"
+            >
+              <Image
+                src={testimonialImage}
+                alt=""
+                fill
+                placeholder="blur"
+                sizes="(min-width: 1024px) 44vw, 100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <span
+                aria-hidden
+                className="absolute top-1/2 left-1/2 grid size-[max(56px,5.6cqw)] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black transition-transform duration-200 group-hover:scale-110"
+              >
+                <svg viewBox="0 0 24 24" className="ml-[8%] size-[38%]" fill="currentColor">
+                  <path d="M7 4.5v15l13-7.5z" />
+                </svg>
+              </span>
+            </a>
           </Reveal>
 
           <Reveal delay={100} className="lg:w-[48.5%]">

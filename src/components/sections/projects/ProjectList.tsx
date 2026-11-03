@@ -8,7 +8,7 @@ import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import wallsImage from "../../../../public/Home/3.2.png";
-import dayalImage from "../../../../public/Home/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
+import dayalImage from "../../../../public/Home/Panelsystems/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
 
 type ProjectImage = { src: StaticImageData | string; alt: string };
 

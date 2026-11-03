@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { ScrollRevealText } from "@/components/motion/ScrollRevealText";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
@@ -11,11 +12,11 @@ export function InsulationCores() {
           <h2 className="text-[max(18px,1.95cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
             Insulation selected around performance.
           </h2>
-          <p className="mt-4 font-ui text-[max(22px,2.95cqw)] leading-[1.6] font-medium tracking-[-0.01em] text-[#9a9a9a] lg:mt-[1.5cqw]">
-            <span className="text-black">Synergy manufactures insulated panels with</span> PUF, PIR and
-            Rockwool, allowing each system to be selected around thermal performance, fire requirements,
-            acoustics and application needs.
-          </p>
+          {/* Starts faded and darkens word by word as it scrolls into place */}
+          <ScrollRevealText
+            className="mt-4 font-ui text-[max(22px,2.95cqw)] leading-[1.6] font-medium tracking-[-0.01em] text-[#9a9a9a] lg:mt-[1.5cqw]"
+            text="Synergy manufactures insulated panels with PUF, PIR and Rockwool, allowing each system to be selected around thermal performance, fire requirements, acoustics and application needs."
+          />
         </Reveal>
       </div>
     </section>
