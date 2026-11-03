@@ -2,13 +2,13 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelsImage from "../../../../public/about/4.png";
-import roofingImage from "../../../../public/about/industrial_roofing_hero.jpg";
-import factoryImage from "../../../../public/about/puf_factory_1786340180982.png";
+import panelsImage from "../../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
+import roofingImage from "../../../../public/Home/about/WhatsApp Image 2026-11-03 at 16.23.29.jpeg";
+import factoryImage from "../../../../public/about/84159407-59ae-42ad-a4c5-755c6713a666.jpg";
 
 const IMAGES = [
-  { src: roofingImage, alt: "Industrial building with insulated roofing panels" },
-  { src: factoryImage, alt: "Synergy PUF panel manufacturing facility" },
+  { src: roofingImage, alt: "Synergy PUF insulated panel building" },
+  { src: factoryImage, alt: "Synergy PUF insulated panel project" },
   { src: panelsImage, alt: "Installers fixing insulated wall panels on site" },
 ];
 

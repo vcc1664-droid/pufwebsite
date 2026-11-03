@@ -7,15 +7,15 @@ import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
-import wallsImage from "../../../../public/Home/3.2.png";
 import dayalImage from "../../../../public/Home/Panelsystems/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
 
 type ProjectImage = { src: StaticImageData | string; alt: string };
 
 type Project = {
   name: string;
-  date: string;
-  location: string;
+  /** Shown on the photo when known. */
+  date?: string;
+  location?: string;
   body: string;
   /** Add more photos to show the gallery dots. */
   images: ProjectImage[];
@@ -53,14 +53,25 @@ const PROJECTS: Project[] = [
     ],
     specs: specs("25,000 sq ft"),
   },
-  {
-    name: "Jasswal Cold Store",
-    date: "May 2024",
-    location: "[Village], Punjab",
-    body: "Synergy PUF supplied and installed insulated wall and ceiling panels for Jasswal Cold Store. The tall storage building is joined to a large open-sided shed for loading. Its height allows produce to be stacked high inside the insulated chambers.",
-    images: [{ src: wallsImage, alt: "Insulated panel walls of Jasswal Cold Store" }],
-    specs: specs("35,000 sq ft"),
-  },
+  // Drone photos from public/Project. Dates and locations still to be supplied, so no photo label yet.
+  ...(
+    [
+      ["RS Cold Store", "DJI_20260729132616_0304_D.JPG", "60,000 sq ft"],
+      ["RS Cold Store", "DJI_20260729142339_0321_D.JPG", "60,000 sq ft"],
+      ["BK Cold Store", "DJI_20260908111217_0302_D.JPG", "40,000 sq ft"],
+      ["California Cold Store", "DJI_20260908124115_0332_D.JPG", "50,000 sq ft"],
+      ["Modern Cold Store", "DJI_20260908134921_0335_D.JPG", "22,000 sq ft"],
+      // Temporary names until the real project names are confirmed
+      ["Cold Storage Facility", "DJI_20260908144133_0344_D.JPG", "To confirm"],
+      ["Industrial Cold Store", "DJI_20260908165907_0373_D.JPG", "To confirm"],
+    ] as const
+  ).map(([name, file, area]): Project => ({
+    name,
+    body: `Synergy PUF supplied and installed insulated wall and ceiling panels for ${name}.`,
+    // Uppercase .JPG has no static-import typings, so these photos are referenced by path.
+    images: [{ src: `/Project/${file}`, alt: `Aerial view of ${name}` }],
+    specs: specs(area),
+  })),
 ];
 
 // Projects shown before "View All Projects"; the button appears once the list is longer.
@@ -82,9 +93,11 @@ function ProjectGallery({ project }: { project: Project }) {
         className="animate-rise object-cover"
       />
 
-      <p className="absolute bottom-[max(12px,2.2cqw)] left-[max(12px,2.2cqw)] rounded-[3px] border border-white/40 bg-black/35 px-[0.8em] py-[0.45em] font-ui text-[max(11px,1.05cqw)] leading-none text-white backdrop-blur-sm">
-        {project.date} • {project.location}
-      </p>
+      {project.date && project.location && (
+        <p className="absolute bottom-[max(12px,2.2cqw)] left-[max(12px,2.2cqw)] rounded-[3px] border border-white/40 bg-black/35 px-[0.8em] py-[0.45em] font-ui text-[max(11px,1.05cqw)] leading-none text-white backdrop-blur-sm">
+          {project.date} • {project.location}
+        </p>
+      )}
 
       {project.images.length > 1 && (
         <div className="absolute inset-x-0 bottom-[max(10px,1.3cqw)] flex justify-center gap-[max(5px,0.4cqw)]">
@@ -120,7 +133,7 @@ export function ProjectList() {
           <div className={cn("@container", SECTION_Y)}>
             {visible.map((project, i) => (
               <article
-                key={project.name}
+                key={`${i}-${project.name}`}
                 className={cn(i > 0 && BLOCK_GAP, i > 0 && "border-t border-[#8c8c8c] pt-12 lg:pt-[6cqw]")}
               >
                 <Reveal>

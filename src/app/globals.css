@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Set by HeaderTone on the logo and quote link while the page behind them is dark. */
+@custom-variant on-dark (&:where([data-on-dark], [data-on-dark] *));
+
 /* Pages with a dark opening section put data-header="dark" on their <main> so the header follows suit.
    Next keeps previously visited pages in the DOM, hiding their <main> with display:none, so those are ignored. */
 @custom-variant header-dark {

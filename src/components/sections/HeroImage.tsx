@@ -1,17 +1,31 @@
-import Image from "next/image";
-import shoppingCenters from "../../../public/Home/Shopping Centers.jpg";
+"use client";
 
-/** Edge-to-edge, full-viewport image directly below the hero. */
+import { useEffect, useRef } from "react";
+
+/** Edge-to-edge, full-viewport video directly below the hero. */
 export function HeroImage() {
+  const video = useRef<HTMLVideoElement>(null);
+
+  // React leaves `muted` out of the server HTML, so the browser blocks autoplay; start it once mounted.
+  useEffect(() => {
+    const el = video.current;
+    if (!el) return;
+    el.muted = true;
+    el.play().catch(() => {});
+  }, []);
+
   return (
     <section className="relative h-svh w-full overflow-hidden">
-      <Image
-        src={shoppingCenters}
-        alt="Multi-storey shopping centre atrium with a glazed roof"
-        fill
-        sizes="100vw"
-        placeholder="blur"
-        className="object-cover"
+      <video
+        ref={video}
+        src="/Home/homePageVideo/Final%20Puf%20Website%20video%20(1).mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label="Synergy PUF showcase video"
+        className="absolute inset-0 size-full object-cover"
       />
     </section>
   );
