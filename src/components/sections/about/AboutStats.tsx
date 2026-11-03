@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
+import { cn } from "@/lib/utils";
 
 const iconProps = {
   "aria-hidden": true,
@@ -54,7 +55,12 @@ export function AboutStats() {
     <section className="bg-[#f8f8f8]">
       {/* Grey band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <ul className="@container grid gap-x-6 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-[3.55cqw] lg:py-[7.5cqw]">
+        <ul
+          className={cn(
+            "@container grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-[3.55cqw]",
+            SECTION_Y,
+          )}
+        >
           {STATS.map((stat, i) => (
             <li key={stat.label}>
               <Reveal delay={i * 100} className="relative h-full">

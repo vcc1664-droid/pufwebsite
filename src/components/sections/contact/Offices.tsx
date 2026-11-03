@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 // Addresses as given in the design; they differ from the footer and need confirming.
@@ -22,7 +22,7 @@ export function Offices() {
     <section className="bg-[#0b0b0b] text-white">
       {/* Dark band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container flex flex-col gap-10 py-14 lg:flex-row lg:gap-0 lg:pt-[5.4cqw] lg:pb-[6.2cqw]">
+        <div className={cn("@container flex flex-col gap-10 lg:flex-row lg:gap-0", SECTION_Y)}>
           {OFFICES.map((office, i) => (
             <Reveal
               key={office.kind}

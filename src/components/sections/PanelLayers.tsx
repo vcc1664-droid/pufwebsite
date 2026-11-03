@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import panelImage from "../../../public/Home/puf-3d-panel-exploded.png";
 
@@ -42,15 +42,15 @@ const LAYERS: { title: string; body: string; icon: ReactNode; position: string }
 
 export function PanelLayers() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="text-center">
           <h2 className="text-[max(26px,4cqw)] leading-none tracking-[-0.02em] text-ink uppercase">
             What&apos;s Inside Matters
           </h2>
           <p className="mx-auto mt-[max(14px,1.73cqw)] max-w-[66cqw] font-ui text-[max(14px,1.3cqw)] leading-[1.5] text-muted max-lg:max-w-xl">
-            A PUF panel is more than two metal faces. At its core is a high-performance insulation
-            layer, engineered between them to deliver exceptional thermal performance.
+            A PUF panel is more than two metal faces. At its core is a high-performance insulation layer,
+            engineered between them to deliver exceptional thermal performance.
           </p>
         </Reveal>
 

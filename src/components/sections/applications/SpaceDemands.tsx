@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import coldImage from "../../../../public/Applications/Chilled Freezer Warehouse Aisle.png";
 import fireImage from "../../../../public/Applications/Industrial Warehouse Partition Wall.png";
@@ -88,7 +88,7 @@ const DEMANDS: { label: string; image: StaticImageData; alt: string; icon: React
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function SpaceDemands() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="lg:ml-[60.6%]">
           <h2 className="max-w-[11em] text-[max(28px,3.8cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
@@ -96,15 +96,15 @@ export function SpaceDemands() {
           </h2>
         </Reveal>
 
-        <hr className="mt-6 border-[#d9d9d9] lg:mt-[2.6cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#d9d9d9]")} />
 
-        <Reveal delay={100} className="mt-6 lg:mt-[3cqw]">
+        <Reveal delay={100} className={RULE_GAP}>
           <p className="max-w-[26em] font-ui text-[max(14px,1.75cqw)] leading-normal text-[#7a7a7a]">
             Every application starts with the conditions the panel has to handle.
           </p>
         </Reveal>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 lg:mt-[4cqw] lg:grid-cols-3 lg:gap-[2.9cqw]">
+        <ul className={cn(BLOCK_GAP, "grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-[2.9cqw]")}>
           {DEMANDS.map((demand, i) => (
             <li key={demand.label}>
               <Reveal delay={(i % 3) * 100}>

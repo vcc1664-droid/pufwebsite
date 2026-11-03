@@ -12,8 +12,8 @@ const desktopList = "flex items-center gap-8 xl:gap-[66px]";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white header-dark:bg-black">
-      {/* Equal side gutters with the nav pill centred between logo and CTA */}
-      <div className={cn(CONTAINER, "flex items-center justify-between py-4 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:py-6")}>
+      {/* Logo, nav pill and CTA spread with equal gaps between them */}
+      <div className={cn(CONTAINER, "flex items-center justify-between py-4 lg:py-6")}>
         <div className="justify-self-start">
           <Logo />
         </div>

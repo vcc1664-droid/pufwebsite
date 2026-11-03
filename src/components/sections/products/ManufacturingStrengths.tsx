@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
+import { cn } from "@/lib/utils";
 
 const iconProps = {
   "aria-hidden": true,
@@ -76,7 +77,7 @@ export function ManufacturingStrengths() {
     <section className="bg-[#f6f6f6]">
       {/* Grey band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container py-16 lg:py-[6cqw]">
+        <div className={cn("@container", SECTION_Y)}>
           <Reveal className="text-center">
             <h2 className="text-[max(28px,3.8cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
               Manufacturing that delivers
@@ -87,7 +88,7 @@ export function ManufacturingStrengths() {
             </p>
           </Reveal>
 
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:mt-[3.6cqw] lg:grid-cols-3 lg:gap-[0.9cqw]">
+          <ul className={cn(BLOCK_GAP, "grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[0.9cqw]")}>
             {STRENGTHS.map((item, i) => (
               <li key={item.title}>
                 <Reveal

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 const iconProps = {
@@ -60,7 +60,7 @@ const JOINTS: { name: string; icon: ReactNode }[] = [
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function PanelJoints() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
           <h2 className="text-[max(28px,3.3cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
@@ -68,15 +68,17 @@ export function PanelJoints() {
           </h2>
         </Reveal>
 
-        <hr className="mt-6 border-[#bdbdbd] lg:mt-[4cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#bdbdbd]")} />
 
-        <Reveal delay={100} className="mt-6 lg:mt-[3.4cqw] lg:ml-[54.6%]">
+        <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[54.6%]")}>
           <p className="font-ui text-[max(15px,1.65cqw)] leading-[1.6] text-[#8a8a8a]">
             Innovative joinery for seamless connections, structural integrity and ease of installation.
           </p>
         </Reveal>
 
-        <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:mt-[4.6cqw] lg:grid-cols-5 lg:gap-[1.65cqw]">
+        <ul
+          className={cn(BLOCK_GAP, "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-[1.65cqw]")}
+        >
           {JOINTS.map((joint, i) => (
             <li key={joint.name}>
               <Reveal

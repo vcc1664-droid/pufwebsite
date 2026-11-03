@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import worldDots from "../../../../public/about/world-dots.svg";
 
@@ -33,7 +33,7 @@ export function Milestones() {
   const [active, setActive] = useState(4);
 
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="text-center">
           <h2 className="text-[max(26px,2.95cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
@@ -44,7 +44,7 @@ export function Milestones() {
           </p>
         </Reveal>
 
-        <Reveal delay={100} className="relative mx-auto mt-14 w-full lg:mt-[6cqw] lg:w-[72.5%]">
+        <Reveal delay={100} className={cn(BLOCK_GAP, "relative mx-auto w-full lg:w-[72.5%]")}>
           <Image src={worldDots} alt="" className="h-auto w-full" />
 
           <ul>

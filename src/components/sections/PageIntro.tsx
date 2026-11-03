@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, RULE_GAP, SECTION_BOTTOM } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ export function PageIntro({
   const dark = tone === "dark";
 
   return (
-    <section className={cn(CONTAINER, "pt-12 pb-16 lg:pt-16 lg:pb-24")}>
+    <section className={cn(CONTAINER, "pt-12 lg:pt-16", SECTION_BOTTOM)}>
       <div className="@container">
         <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <h1
@@ -67,10 +67,10 @@ export function PageIntro({
           </Link>
         </Reveal>
 
-        <hr className={cn("mt-6 lg:mt-[2.6cqw]", dark ? "border-[#5c5c5c]" : "border-[#bdbdbd]")} />
+        <hr className={cn(RULE_GAP, dark ? "border-[#5c5c5c]" : "border-[#bdbdbd]")} />
 
         {body && (
-          <Reveal delay={100} className="mt-8 flex flex-col gap-6 lg:mt-[3.4cqw] lg:flex-row lg:gap-0">
+          <Reveal delay={100} className={cn(RULE_GAP, "flex flex-col gap-6 lg:flex-row lg:gap-0")}>
             {aside && (
               <p
                 className={cn(

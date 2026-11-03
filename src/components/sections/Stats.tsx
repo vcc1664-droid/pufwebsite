@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
@@ -14,7 +14,9 @@ function InverseCorner({ className, at }: { className: string; at: string }) {
     <span
       aria-hidden
       className={cn("absolute size-(--cut-r)", className)}
-      style={{ background: `radial-gradient(circle at ${at}, transparent var(--cut-r), #fff calc(var(--cut-r) + 0.5px))` }}
+      style={{
+        background: `radial-gradient(circle at ${at}, transparent var(--cut-r), #fff calc(var(--cut-r) + 0.5px))`,
+      }}
     />
   );
 }
@@ -26,7 +28,9 @@ function Stat({ value, mark, children }: { value: string; mark: string; children
         {value}
         <span className="ml-[0.06em] text-[0.36em] leading-none font-semibold">{mark}</span>
       </p>
-      <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">{children}</p>
+      <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">
+        {children}
+      </p>
     </>
   );
 }
@@ -35,7 +39,7 @@ const label = "text-[max(14px,1.35cqw)] leading-none font-semibold tracking-[-0.
 
 export function Stats() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <Reveal className="@container">
         <div
           className="relative overflow-hidden rounded-[max(14px,1.8cqw)] px-6 pt-20 pb-24 sm:px-10 lg:pt-[3.1cqw] lg:pr-0 lg:pb-[8.4cqw] lg:pl-[8.9cqw]"
@@ -76,7 +80,9 @@ export function Stats() {
             <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">
               The year the founders launched the first project.
             </p>
-            <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">2007</p>
+            <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">
+              2007
+            </p>
           </div>
 
           {/* Bottom-right cut-out with the projects link */}

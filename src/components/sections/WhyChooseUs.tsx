@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import truckImage from "../../../public/Home/WHYCHOOSE/9.png";
 
@@ -22,7 +22,7 @@ const REASONS = [
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function WhyChooseUs() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-0">
         <div className="lg:w-[39.2%] lg:pt-[4.9cqw]">
           <Reveal>
@@ -50,7 +50,10 @@ export function WhyChooseUs() {
           </ul>
         </div>
 
-        <Reveal delay={150} className="relative aspect-4/3 overflow-hidden rounded-[max(16px,1.8cqw)] lg:aspect-auto lg:min-h-[59.4cqw] lg:w-[54%]">
+        <Reveal
+          delay={150}
+          className="relative aspect-4/3 overflow-hidden rounded-[max(16px,1.8cqw)] lg:aspect-auto lg:min-h-[59.4cqw] lg:w-[54%]"
+        >
           <Image
             src={truckImage}
             alt="Synergy PUF delivery truck on a highway"

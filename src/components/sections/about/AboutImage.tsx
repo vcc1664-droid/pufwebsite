@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_BOTTOM } from "@/constants/layout";
+import { cn } from "@/lib/utils";
 import enclosureImage from "../../../../public/about/applications_hero_enclosure.jpg";
 
 export function AboutImage() {
   return (
-    <section className={CONTAINER}>
+    <section className={cn(CONTAINER, SECTION_BOTTOM)}>
       <Reveal>
         <Image
           src={enclosureImage}

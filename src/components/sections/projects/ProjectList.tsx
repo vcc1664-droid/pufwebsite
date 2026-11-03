@@ -4,7 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import wallsImage from "../../../../public/Home/3.2.png";
@@ -117,11 +117,11 @@ export function ProjectList() {
     <section className="bg-black">
       <div className="rounded-t-[max(28px,5.5vw)] bg-white">
         <div className={CONTAINER}>
-          <div className="@container pt-14 pb-20 lg:pt-[4cqw] lg:pb-[6cqw]">
+          <div className={cn("@container", SECTION_Y)}>
             {visible.map((project, i) => (
               <article
                 key={project.name}
-                className={cn(i > 0 && "mt-14 border-t border-[#8c8c8c] pt-14 lg:mt-[4cqw] lg:pt-[4cqw]")}
+                className={cn(i > 0 && BLOCK_GAP, i > 0 && "border-t border-[#8c8c8c] pt-12 lg:pt-[6cqw]")}
               >
                 <Reveal>
                   <h2 className="text-center text-[max(34px,6.7cqw)] leading-[1.1] font-medium tracking-[-0.02em] text-[#1e1e1e]">
@@ -129,20 +129,22 @@ export function ProjectList() {
                   </h2>
                 </Reveal>
 
-                <Reveal delay={100} className="mt-6 lg:mt-[1.4cqw]">
+                <Reveal delay={100} className={STACK_GAP}>
                   <ProjectGallery project={project} />
                 </Reveal>
 
                 <Reveal delay={150}>
-                  <p className="mt-6 font-ui text-[max(14px,1.2cqw)] leading-[1.6] text-[#7a7a7a] lg:mt-[2cqw]">
+                  <p
+                    className={cn(STACK_GAP, "font-ui text-[max(14px,1.2cqw)] leading-[1.6] text-[#7a7a7a]")}
+                  >
                     {project.body}
                   </p>
 
-                  <dl className="mt-6 grid grid-cols-2 gap-3 lg:mt-[2.2cqw] lg:grid-cols-4 lg:gap-[2cqw]">
+                  <dl className={cn(STACK_GAP, "grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-[2.2cqw]")}>
                     {project.specs.map((spec) => (
                       <div
                         key={spec.label}
-                        className="rounded-[max(6px,0.8cqw)] bg-[#f5f5f5] px-4 py-3 lg:px-[2.3cqw] lg:py-[2cqw]"
+                        className="rounded-[max(6px,0.8cqw)] bg-[#f5f5f5] p-4 lg:p-[2.2cqw]"
                       >
                         <dt className="font-ui text-[max(12px,1.1cqw)] text-[#7a7a7a]">{spec.label}</dt>
                         <dd className="mt-1 font-ui text-[max(13px,1.2cqw)] font-medium text-black lg:mt-[0.5cqw]">
@@ -152,7 +154,7 @@ export function ProjectList() {
                     ))}
                   </dl>
 
-                  <div className="mt-6 flex justify-center lg:mt-[2.4cqw]">
+                  <div className={cn(STACK_GAP, "flex justify-center")}>
                     <Link
                       href={QUOTE_CTA.href}
                       className="group inline-flex items-center gap-[0.5em] rounded-[max(5px,0.6cqw)] bg-brand px-[max(20px,4cqw)] py-[max(10px,0.9cqw)] font-ui text-[max(13px,1.35cqw)] leading-none text-white transition-colors duration-200 hover:bg-black"
@@ -177,7 +179,7 @@ export function ProjectList() {
             ))}
 
             {!showAll && PROJECTS.length > INITIAL_COUNT && (
-              <div className="mt-10 flex justify-center lg:mt-[3cqw]">
+              <div className={cn(BLOCK_GAP, "flex justify-center")}>
                 <button
                   type="button"
                   onClick={() => setShowAll(true)}

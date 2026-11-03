@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 type Factor = {
@@ -84,7 +84,7 @@ export function RequirementFactors() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <ul className="@container grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[1.13cqw]">
         {FACTORS.map((factor, i) => {
           const isActive = active === i;

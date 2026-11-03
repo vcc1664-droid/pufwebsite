@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import constructionImage from "../../../public/Home/one stops solution.png";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function ProductionToInstallation() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
           <h2 className="max-w-[11em] text-[max(28px,3.8cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
@@ -15,16 +15,16 @@ export function ProductionToInstallation() {
           </h2>
         </Reveal>
 
-        <hr className="mt-8 border-[#d9d9d9] lg:mt-[4.2cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#d9d9d9]")} />
 
-        <Reveal delay={100} className="mt-8 lg:mt-[4cqw] lg:ml-[39.5%]">
+        <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[39.5%]")}>
           <p className="font-ui text-[max(15px,1.75cqw)] leading-[1.6] text-black">
             We manufacture and install insulated panel systems for industrial, refrigeration and specialised
             buildings, with expert technical support and project coordination.
           </p>
         </Reveal>
 
-        <Reveal delay={150} className="mt-10 lg:mt-[5.4cqw]">
+        <Reveal delay={150} className={BLOCK_GAP}>
           <Image
             src={constructionImage}
             alt="Tower cranes and high-rise buildings under construction"

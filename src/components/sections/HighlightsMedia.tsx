@@ -1,6 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_BOTTOM } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 type HighlightsMediaProps = {
@@ -28,7 +28,7 @@ export function HighlightsMedia({
   const dark = tone === "dark";
 
   return (
-    <section className={cn(CONTAINER, "pb-16 lg:pb-24")}>
+    <section className={cn(CONTAINER, SECTION_BOTTOM)}>
       <div className="@container flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
         <Reveal className={cn("lg:pt-[0.4cqw]", listClassName)}>
           <ul className={cn("font-ui text-[max(15px,1.4cqw)]", dark ? "text-white" : "text-black")}>

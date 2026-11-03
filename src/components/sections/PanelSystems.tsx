@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 // Uppercase .JPG has no static-import typings, so the wall photo is referenced by path.
 import roofImage from "../../../public/Home/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
@@ -60,7 +60,7 @@ export function PanelSystems() {
     <section className="bg-[#f8f8f9]">
       {/* Grey band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container py-16 lg:py-[9.5cqw]">
+        <div className={cn("@container", SECTION_Y)}>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <Reveal className="lg:w-[47.3%]">
               <h2 className="max-w-[12em] text-[max(28px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
@@ -70,8 +70,8 @@ export function PanelSystems() {
 
             <Reveal delay={100} className="lg:w-[48.6%] lg:pb-[0.4cqw]">
               <p className="max-w-[36em] font-ui text-[max(14px,1.15cqw)] leading-[1.6] text-[#909090]">
-                Roof, wall and cold-room panel systems manufactured for industrial, commercial and
-                specialised environments.
+                Roof, wall and cold-room panel systems manufactured for industrial, commercial and specialised
+                environments.
               </p>
               <Link
                 href="/products"
@@ -94,7 +94,7 @@ export function PanelSystems() {
             </Reveal>
           </div>
 
-          <div className="mt-14 flex flex-col gap-16 lg:mt-[8.5cqw] lg:gap-[4.5cqw]">
+          <div className={cn(BLOCK_GAP, "flex flex-col gap-16 lg:gap-[6cqw]")}>
             {SYSTEMS.map((system, i) => {
               // Rows alternate: text left / image right, then image left / text right.
               const imageFirst = i % 2 === 1;
@@ -115,7 +115,7 @@ export function PanelSystems() {
                       {system.body}
                     </p>
 
-                    <dl className="mt-5 font-ui text-[max(13px,1.05cqw)] lg:mt-[1.8cqw]">
+                    <dl className={cn(STACK_GAP, "font-ui text-[max(13px,1.05cqw)]")}>
                       <div className="flex items-center justify-between gap-4 border-y border-[#dcdcdc] py-4 lg:py-[2.3cqw]">
                         <dt className="text-[#909090]">Profile</dt>
                         <dd className="text-right text-[#1e1e1e]">{system.profile}</dd>
@@ -139,7 +139,10 @@ export function PanelSystems() {
 
                     <Link
                       href={system.link.href}
-                      className="group mt-5 inline-flex items-center gap-[0.5em] font-ui text-[max(13px,1cqw)] text-brand transition-opacity duration-200 hover:opacity-70 lg:mt-[2.6cqw]"
+                      className={cn(
+                        STACK_GAP,
+                        "group inline-flex items-center gap-[0.5em] font-ui text-[max(13px,1cqw)] text-brand transition-opacity duration-200 hover:opacity-70",
+                      )}
                     >
                       {system.link.label}
                       <Arrow className="group-hover:translate-x-0.5" />

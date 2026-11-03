@@ -4,7 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import jointImage from "../../../public/Home/Interlocking Sandwich Panel Joint.png";
 
@@ -85,7 +85,7 @@ export function CoreSlider() {
     <section
       aria-roledescription="carousel"
       aria-label="Insulation cores"
-      className={cn(CONTAINER, "py-16 lg:py-24")}
+      className={cn(CONTAINER, SECTION_Y)}
     >
       <div className="@container">
         <Reveal>
@@ -94,7 +94,12 @@ export function CoreSlider() {
             <ArrowButton direction="next" onClick={() => step(1)} />
           </div>
 
-          <div className="mt-6 flex flex-col gap-10 lg:mt-[2cqw] lg:flex-row lg:items-start lg:justify-between lg:gap-0">
+          <div
+            className={cn(
+              STACK_GAP,
+              "flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0",
+            )}
+          >
             <div className="lg:mt-[2cqw] lg:w-[34%]">
               {/* Re-keyed so the copy rises in again on every change */}
               <div key={core.name} aria-live="polite" className="animate-rise">
@@ -109,7 +114,7 @@ export function CoreSlider() {
               <div
                 role="tablist"
                 aria-label="Insulation core"
-                className="mt-5 flex flex-wrap gap-2 lg:mt-[1.2cqw] lg:gap-[1cqw]"
+                className={cn(STACK_GAP, "flex flex-wrap gap-2 lg:gap-[1cqw]")}
               >
                 {CORES.map((c, i) => (
                   <button
@@ -130,7 +135,10 @@ export function CoreSlider() {
 
               <Link
                 href={core.href}
-                className="group mt-6 inline-flex items-center gap-[0.4em] rounded-[max(6px,0.6cqw)] bg-brand px-[1.1em] py-[0.8em] font-ui text-[max(13px,1.05cqw)] leading-none text-white transition-colors duration-200 hover:bg-black lg:mt-[2.3cqw]"
+                className={cn(
+                  STACK_GAP,
+                  "group inline-flex items-center gap-[0.4em] rounded-[max(6px,0.6cqw)] bg-brand px-[1.1em] py-[0.8em] font-ui text-[max(13px,1.05cqw)] leading-none text-white transition-colors duration-200 hover:bg-black",
+                )}
               >
                 Learn more
                 <svg
@@ -161,7 +169,12 @@ export function CoreSlider() {
             </div>
           </div>
 
-          <p className="mt-6 text-center font-ui text-[max(14px,1.6cqw)] leading-snug text-[#1e1e1e] lg:mt-[2cqw] lg:ml-auto lg:w-[56.8%]">
+          <p
+            className={cn(
+              STACK_GAP,
+              "text-center font-ui text-[max(14px,1.6cqw)] leading-snug text-[#1e1e1e] lg:ml-auto lg:w-[56.8%]",
+            )}
+          >
             <span className="inline-block max-w-[16em]">Insulation selected around performance.</span>
           </p>
         </Reveal>

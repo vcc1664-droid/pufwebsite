@@ -4,7 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import agricultureImage from "../../../../public/Applications/Servicestailored/Agriculture.jpg";
 import coldChainImage from "../../../../public/Applications/Servicestailored/cold-chain-food-processing.jpg";
@@ -85,7 +85,7 @@ export function SectorServices() {
     <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
       {/* Black band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container pt-16 pb-12 lg:pt-[6.2cqw] lg:pb-[5.2cqw]">
+        <div className={cn("@container", SECTION_Y)}>
           <Reveal>
             <h2 className="max-w-[11em] text-[max(28px,3.4cqw)] leading-[1.33] font-medium tracking-[-0.01em]">
               Services tailored to <br />
@@ -93,16 +93,16 @@ export function SectorServices() {
             </h2>
           </Reveal>
 
-          <hr className="mt-6 border-[#3a3a3a] lg:mt-[3.5cqw]" />
+          <hr className={cn(RULE_GAP, "border-[#3a3a3a]")} />
 
-          <Reveal delay={100} className="mt-6 lg:mt-[3.4cqw] lg:ml-[49.5%]">
+          <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[49.5%]")}>
             <p className="max-w-[31em] font-ui text-[max(15px,1.63cqw)] leading-[1.6] text-white">
               Select an industry below to discover how our PUF panels are engineered to meet its specific
               requirements.
             </p>
           </Reveal>
 
-          <Reveal delay={150} className="mt-10 lg:mt-[8.6cqw]">
+          <Reveal delay={150} className={BLOCK_GAP}>
             <div
               aria-roledescription="carousel"
               aria-label="Application sectors"
@@ -120,9 +120,9 @@ export function SectorServices() {
               {/* Darkens the photo so the overlaid copy stays legible */}
               <div aria-hidden className="absolute inset-0 bg-black/45" />
 
-              <div className="absolute inset-0 flex flex-col justify-between p-5 sm:px-[3.6cqw] sm:pt-[3cqw] sm:pb-[2.1cqw]">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:pr-[0.6cqw]">
-                  <p className="flex items-center gap-[0.4em] font-ui text-[max(12px,1.38cqw)] sm:mt-[0.5cqw]">
+              <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-[3.6cqw]">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <p className="flex items-center gap-[0.4em] font-ui text-[max(12px,1.38cqw)]">
                     <span aria-hidden className="size-[0.35em] rounded-[1px] bg-current" />
                     Application Sector
                   </p>
@@ -137,10 +137,10 @@ export function SectorServices() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:pr-[0.6cqw]">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <p
                     key={index}
-                    className="max-w-[27em] animate-rise font-ui text-[max(14px,1.75cqw)] leading-[1.5] sm:mb-[2.5cqw]"
+                    className="max-w-[27em] animate-rise font-ui text-[max(14px,1.75cqw)] leading-[1.5]"
                   >
                     {sector.body}
                   </p>

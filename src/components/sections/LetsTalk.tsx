@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ export function LetsTalk({
     <section className="bg-brand text-white">
       {/* Purple band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container py-14 lg:pt-[5.3cqw] lg:pb-[4.7cqw]">
+        <div className={cn("@container", SECTION_Y)}>
           <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <h2 className={cn("text-[max(44px,5cqw)] leading-none tracking-[-0.02em]", titleClassName)}>
               {title}
@@ -49,9 +49,9 @@ export function LetsTalk({
             </div>
           </Reveal>
 
-          <hr className="mt-8 border-white/70 lg:mt-[3.4cqw]" />
+          <hr className={cn(RULE_GAP, "border-white/70")} />
 
-          <Reveal delay={100} className="mt-8 lg:mt-[3.4cqw]">
+          <Reveal delay={100} className={RULE_GAP}>
             <p className={cn("font-ui text-[max(17px,1.4cqw)] leading-normal", bodyClassName)}>{body}</p>
           </Reveal>
         </div>

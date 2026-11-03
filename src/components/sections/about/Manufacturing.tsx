@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import lineImage from "../../../../public/about/df70c243-af54-4fd2-9c7a-5d2027d0518d.png";
 
@@ -16,7 +16,7 @@ const STEPS = ["Raw material check", "Core density control", "Bonding", "Dispatc
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Manufacturing() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
         <Reveal className="lg:w-[47.2%] lg:pt-[1.6cqw]">
           <h2 className="text-[max(24px,2.3cqw)] leading-tight font-medium tracking-[-0.01em] text-black">

@@ -2,7 +2,7 @@
 
 import type { FormEvent } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, RULE_GAP, SECTION_BOTTOM, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 // Contact details as given in the design; they differ from the footer and need confirming.
@@ -67,7 +67,7 @@ export function ContactForm() {
   };
 
   return (
-    <section className={cn(CONTAINER, "pt-12 pb-16 lg:pt-16 lg:pb-24")}>
+    <section className={cn(CONTAINER, "pt-12 lg:pt-16", SECTION_BOTTOM)}>
       <div className="@container">
         <Reveal>
           <h1 className="text-[max(30px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
@@ -75,9 +75,9 @@ export function ContactForm() {
           </h1>
         </Reveal>
 
-        <hr className="mt-6 border-[#8c8c8c] lg:mt-[4.4cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#8c8c8c]")} />
 
-        <div className="mt-8 flex flex-col gap-12 lg:mt-[4cqw] lg:flex-row lg:justify-between lg:gap-0">
+        <div className={cn(RULE_GAP, "flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-0")}>
           <Reveal className="lg:w-[32.2%]">
             <p className="flex items-center gap-[0.4em] font-ui text-[max(14px,1.35cqw)] text-black">
               <span aria-hidden className="size-[0.35em] rounded-[1px] bg-current" />
@@ -103,7 +103,7 @@ export function ContactForm() {
               Provide your project details below and we’ll be in touch.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-6 lg:mt-[2.6cqw]">
+            <form onSubmit={handleSubmit} className={STACK_GAP}>
               <div className="grid gap-x-[3.5%] gap-y-5 sm:grid-cols-2 lg:gap-y-[2.8cqw]">
                 {FIELDS.map((field) => (
                   <div key={field.name} className={cn(field.wide && "sm:col-span-2")}>
@@ -137,7 +137,10 @@ export function ContactForm() {
 
               <button
                 type="submit"
-                className="mt-6 h-[max(44px,4.5cqw)] w-full rounded-[max(4px,0.5cqw)] bg-brand font-ui text-[max(14px,1.35cqw)] text-white transition-colors duration-200 hover:bg-black lg:mt-[2.6cqw]"
+                className={cn(
+                  STACK_GAP,
+                  "h-[max(44px,4.5cqw)] w-full rounded-[max(4px,0.5cqw)] bg-brand font-ui text-[max(14px,1.35cqw)] text-white transition-colors duration-200 hover:bg-black",
+                )}
               >
                 Submit
               </button>

@@ -9,7 +9,7 @@ export function Logo() {
         src={logo}
         alt="Synergy PUF"
         priority
-        className="h-[22px] w-[122px] max-w-none header-dark:brightness-0 header-dark:invert"
+        className="h-[26px] w-auto max-w-none lg:h-[32px] header-dark:brightness-0 header-dark:invert"
       />
     </Link>
   );

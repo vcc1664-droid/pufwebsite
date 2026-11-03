@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import wallsImage from "../../../public/Home/3.2.png";
 import coldStoreImage from "../../../public/Home/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
@@ -122,7 +122,7 @@ export function SelectedProjects() {
   const [featured, ...rest] = PROJECTS;
 
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="lg:ml-[50%]">
           <h2 className="text-[max(28px,3.4cqw)] leading-[1.25] font-medium tracking-[-0.02em] text-black">
@@ -131,9 +131,9 @@ export function SelectedProjects() {
           </h2>
         </Reveal>
 
-        <hr className="mt-8 border-[#d9d9d9] lg:mt-[3.7cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#d9d9d9]")} />
 
-        <Reveal delay={100} className="mt-8 lg:mt-[4.2cqw] lg:w-[55%]">
+        <Reveal delay={100} className={cn(RULE_GAP, "lg:w-[55%]")}>
           <p className="font-ui text-[max(15px,1.7cqw)] leading-[1.6] text-black">
             A look at insulated panel systems delivered across cold storage and temperature-controlled
             facilities.
@@ -158,7 +158,7 @@ export function SelectedProjects() {
           </Link>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 lg:mt-[6cqw] lg:grid-cols-2 lg:gap-[2.3cqw]">
+        <div className={cn(BLOCK_GAP, "grid gap-4 lg:grid-cols-2 lg:gap-[2.3cqw]")}>
           <Reveal className="lg:col-span-2">
             <ProjectCard project={featured} featured />
           </Reveal>

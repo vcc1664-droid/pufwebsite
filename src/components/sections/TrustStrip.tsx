@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 export type TrustItem = { title: string; body: string; icon: ReactNode };
@@ -98,7 +98,7 @@ export function TrustStrip({ title, items = SERVICE_ITEMS, iconTone = "brand" }:
     <section className="bg-[#0b0b0b] text-white">
       {/* Dark band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className={cn("@container py-12", title ? "lg:pt-[2.3cqw] lg:pb-[6cqw]" : "lg:py-[6.5cqw]")}>
+        <div className={cn("@container", SECTION_Y)}>
           {title && (
             <Reveal>
               <h2 className="text-center text-[max(28px,3.75cqw)] leading-tight font-medium tracking-[-0.01em]">
@@ -110,7 +110,8 @@ export function TrustStrip({ title, items = SERVICE_ITEMS, iconTone = "brand" }:
           <ul
             className={cn(
               "flex flex-col gap-8 sm:flex-row sm:flex-wrap sm:justify-between",
-              title && "mt-10 lg:mt-[4.8cqw] lg:grid lg:grid-cols-[39%_38.2%_1fr] lg:gap-0",
+              title && BLOCK_GAP,
+              title && "lg:grid lg:grid-cols-[39%_38.2%_1fr] lg:gap-0",
             )}
           >
             {items.map((item, i) => (

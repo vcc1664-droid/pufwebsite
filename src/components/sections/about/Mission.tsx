@@ -4,7 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import teamImage from "../../../../public/about/team_building_story.jpg";
@@ -56,7 +56,7 @@ export function Mission() {
     <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
       {/* Black band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container pt-16 pb-20 lg:pt-[8.5cqw] lg:pb-[11cqw]">
+        <div className={cn("@container", SECTION_Y)}>
           <div className="flex flex-col-reverse gap-8 lg:flex-row lg:items-end lg:justify-between">
             <Reveal className="flex flex-wrap gap-3 lg:gap-[1.4cqw]">
               <Link href={QUOTE_CTA.href} className={cn(button, "bg-white text-black hover:bg-[#e6e6e6]")}>
@@ -77,16 +77,16 @@ export function Mission() {
             </Reveal>
           </div>
 
-          <hr className="mt-10 border-[#5c5c5c] lg:mt-[3.8cqw]" />
+          <hr className={cn(RULE_GAP, "border-[#5c5c5c]")} />
 
-          <Reveal delay={100} className="mt-8 lg:mt-[3.3cqw]">
+          <Reveal delay={100} className={RULE_GAP}>
             <p className="max-w-[32em] font-ui text-[max(17px,1.72cqw)] leading-[1.55]">
               Our mission is to manufacture and install insulated panel systems suited to the spaces they
               serve - from panel selection to the finished enclosure.
             </p>
           </Reveal>
 
-          <Reveal delay={150} className="mt-12 lg:mt-[6.3cqw]">
+          <Reveal delay={150} className={BLOCK_GAP}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/765]">
               <Image
                 key={index}
@@ -120,7 +120,7 @@ export function Mission() {
           <div
             key={index}
             aria-live="polite"
-            className="mt-10 flex animate-rise flex-col gap-6 lg:mt-[5.4cqw] lg:flex-row lg:items-center lg:gap-0"
+            className={cn(BLOCK_GAP, "flex animate-rise flex-col gap-6 lg:flex-row lg:items-center lg:gap-0")}
           >
             <div className="flex items-center gap-[max(14px,2cqw)] lg:w-[44.9%] lg:border-r lg:border-white/60 lg:py-[0.6cqw]">
               <p className="text-[max(64px,8.4cqw)] leading-[0.8] font-light tracking-[-0.04em]">

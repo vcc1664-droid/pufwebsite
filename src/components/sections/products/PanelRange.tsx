@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 export type PanelType = { tab: string; label: string; name: string; video: string };
@@ -43,12 +43,7 @@ export function PanelRange({
     >
       {/* Band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div
-          className={cn(
-            "@container pt-16 pb-16 lg:pb-[7.5cqw]",
-            roundedTop ? "lg:pt-[9cqw]" : dark ? "lg:pt-[7cqw]" : "lg:pt-[4cqw]",
-          )}
-        >
+        <div className={cn("@container", SECTION_Y)}>
           <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-0">
             <h2 className="text-[max(32px,3.55cqw)] leading-tight font-normal tracking-[-0.02em] lg:w-[59.2%]">
               {title}
@@ -85,9 +80,9 @@ export function PanelRange({
             </div>
           </Reveal>
 
-          <hr className={cn("mt-8 lg:mt-[4cqw]", dark ? "border-[#4a4a4a]" : "border-[#8c8c8c]")} />
+          <hr className={cn(RULE_GAP, dark ? "border-[#4a4a4a]" : "border-[#8c8c8c]")} />
 
-          <Reveal delay={100} className="mt-8 lg:mt-[3.4cqw] lg:ml-[59.2%]">
+          <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[59.2%]")}>
             <p className={cn("font-ui text-[max(16px,1.75cqw)] leading-[1.5]", !dark && "text-[#1e1e1e]")}>
               {body}
             </p>
@@ -97,7 +92,10 @@ export function PanelRange({
             id={`${id}-panel`}
             role="tabpanel"
             aria-labelledby={`${id}-tab-${active}`}
-            className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[max(16px,2.8cqw)] bg-[#d9d9d9] sm:aspect-[1594/560] lg:mt-[3.4cqw]"
+            className={cn(
+              BLOCK_GAP,
+              "relative aspect-[4/3] overflow-hidden rounded-[max(16px,2.8cqw)] bg-[#d9d9d9] sm:aspect-[1594/560]",
+            )}
           >
             <video
               key={type.video}
@@ -109,17 +107,18 @@ export function PanelRange({
               aria-label={`${type.name} animation`}
               className="absolute inset-0 size-full animate-rise object-cover"
             />
-            <p className="absolute top-[max(14px,3cqw)] left-[max(14px,3.1cqw)] bg-[#6b6b6b] px-[1.4em] py-[0.6em] font-ui text-[max(12px,1cqw)] leading-none text-white">
+            <p className="absolute top-[max(14px,3cqw)] left-[max(14px,3cqw)] bg-[#6b6b6b] px-[1.4em] py-[0.6em] font-ui text-[max(12px,1cqw)] leading-none text-white">
               {type.label}
             </p>
-            <p className="absolute bottom-[max(14px,2.2cqw)] left-[max(14px,2.2cqw)] font-ui text-[max(17px,1.75cqw)] text-black">
+            <p className="absolute bottom-[max(14px,3cqw)] left-[max(14px,3cqw)] font-ui text-[max(17px,1.75cqw)] text-black">
               {type.name}
             </p>
           </div>
 
           <Reveal
             className={cn(
-              "mt-4 rounded-[max(10px,1cqw)] px-5 py-6 lg:mt-[1.5cqw] lg:px-[1.5cqw] lg:pt-[2.2cqw] lg:pb-[2.6cqw]",
+              STACK_GAP,
+              "rounded-[max(10px,1cqw)] p-6 lg:p-[2.2cqw]",
               dark ? "bg-[#0b0b0b]" : "bg-[#f7f7f7]",
             )}
           >

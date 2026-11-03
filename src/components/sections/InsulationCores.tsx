@@ -1,11 +1,11 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function InsulationCores() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
           <h2 className="text-[max(18px,1.95cqw)] leading-tight font-medium tracking-[-0.02em] text-black">

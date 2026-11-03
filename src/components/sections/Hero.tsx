@@ -13,8 +13,8 @@ export function Hero() {
       <div className="@container">
         <div className="animate-rise md:ml-[65.83%]">
           <p className="max-w-md font-ui text-[max(13px,1.2cqw)] leading-[1.5] text-muted md:max-w-none">
-            Roofing, wall and cold storage panels engineered for India&apos;s industrial and
-            commercial infrastructure.
+            Roofing, wall and cold storage panels engineered for India&apos;s industrial and commercial
+            infrastructure.
           </p>
           <Link
             href="/products"

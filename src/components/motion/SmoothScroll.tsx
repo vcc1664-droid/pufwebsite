@@ -34,15 +34,19 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     () => true,
   );
 
-  if (reducedMotion) return children;
-
+  // Lenis sits beside the page rather than wrapping it, so switching it on after hydration
+  // never remounts the page (which would restart videos and replay reveal animations).
   return (
-    <ReactLenis root options={{ lerp: 0.1, anchors: true, allowNestedScroll: true }}>
-      {/* usePathname may suspend under cacheComponents */}
-      <Suspense fallback={null}>
-        <ResetOnNavigate />
-      </Suspense>
+    <>
       {children}
-    </ReactLenis>
+      {!reducedMotion && (
+        <ReactLenis root options={{ lerp: 0.1, anchors: true, allowNestedScroll: true }}>
+          {/* usePathname may suspend under cacheComponents */}
+          <Suspense fallback={null}>
+            <ResetOnNavigate />
+          </Suspense>
+        </ReactLenis>
+      )}
+    </>
   );
 }

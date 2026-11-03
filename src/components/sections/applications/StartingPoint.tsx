@@ -4,7 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../../public/Applications/modular_coldroom_enclosure.jpg";
@@ -63,7 +63,7 @@ export function StartingPoint() {
   const panel = CATEGORIES[active].panel;
 
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <h2 className="text-[max(28px,3.3cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
@@ -94,13 +94,13 @@ export function StartingPoint() {
           </div>
         </Reveal>
 
-        <hr className="mt-8 border-[#bdbdbd] lg:mt-[3.4cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#bdbdbd]")} />
 
         <div
           id="starting-point-panel"
           role="tabpanel"
           aria-labelledby={`starting-point-tab-${active}`}
-          className="mt-10 lg:mt-[4.5cqw]"
+          className={RULE_GAP}
         >
           {panel && (
             // Re-keyed so the panel rises in again on every tab change
@@ -127,7 +127,7 @@ export function StartingPoint() {
                   {panel.body}
                 </p>
 
-                <dl className="mt-6 grid gap-4 sm:flex sm:gap-0 lg:mt-[2.3cqw]">
+                <dl className={cn(STACK_GAP, "grid gap-4 sm:flex sm:gap-0")}>
                   {panel.specs.map((spec, i) => (
                     <div
                       key={spec.label}
@@ -142,7 +142,7 @@ export function StartingPoint() {
                   ))}
                 </dl>
 
-                <div className="mt-6 flex flex-wrap gap-x-[max(32px,5.6cqw)] gap-y-3 lg:mt-[3cqw]">
+                <div className={cn(STACK_GAP, "flex flex-wrap gap-x-[max(32px,5.6cqw)] gap-y-3")}>
                   <Link href={panel.explore.href} className={link}>
                     {panel.explore.label}
                     <Arrow />

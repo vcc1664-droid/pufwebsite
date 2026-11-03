@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import panelsImage from "../../../../public/about/4.png";
 import roofingImage from "../../../../public/about/industrial_roofing_hero.jpg";
@@ -15,7 +15,7 @@ const IMAGES = [
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function BuildingStory() {
   return (
-    <section className={cn(CONTAINER, "py-16 lg:py-24")}>
+    <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
           <h2 className="text-[max(28px,3.3cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
@@ -23,11 +23,14 @@ export function BuildingStory() {
           </h2>
         </Reveal>
 
-        <hr className="mt-6 border-[#bdbdbd] lg:mt-[2.6cqw]" />
+        <hr className={cn(RULE_GAP, "border-[#bdbdbd]")} />
 
         <Reveal
           delay={100}
-          className="mt-6 space-y-4 font-ui text-[max(15px,1.6cqw)] leading-[1.6] text-[#7a7a7a] lg:mt-[2.6cqw] lg:space-y-[2cqw]"
+          className={cn(
+            RULE_GAP,
+            "space-y-4 font-ui text-[max(15px,1.6cqw)] leading-[1.6] text-[#7a7a7a] lg:space-y-[2cqw]",
+          )}
         >
           <p>
             Founded in 2012, Synergy PUF is part of Synergy Group, with a focus on insulated panel
@@ -44,7 +47,7 @@ export function BuildingStory() {
           </p>
         </Reveal>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-3 lg:mt-[5cqw] lg:gap-[2.85cqw]">
+        <ul className={cn(BLOCK_GAP, "grid gap-4 sm:grid-cols-3 lg:gap-[2.85cqw]")}>
           {IMAGES.map((image, i) => (
             <li key={image.alt}>
               <Reveal delay={i * 100}>

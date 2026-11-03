@@ -40,6 +40,17 @@
   }
 }
 
+/* Anchor jumps (Lenis or native) stop below the sticky header: 72px tall on mobile, 114px from lg. */
+html {
+  scroll-padding-top: 72px;
+}
+
+@media (min-width: 64rem) {
+  html {
+    scroll-padding-top: 114px;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

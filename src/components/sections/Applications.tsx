@@ -1,16 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER } from "@/constants/layout";
+import { CONTAINER, SECTION_Y } from "@/constants/layout";
+import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../public/Home/Chilled Freezer Warehouse Aisle.png";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Applications() {
   return (
-    <section className="my-16 rounded-t-[max(28px,5.5vw)] bg-black text-white lg:my-24">
+    <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
       {/* Black band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
       <div className={CONTAINER}>
-        <div className="@container pt-14 pb-16 lg:pt-[6.6cqw] lg:pb-[7cqw]">
+        <div className={cn("@container", SECTION_Y)}>
           <Reveal>
             <h2 className="max-w-[10em] text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em]">
               Different spaces. Different insulation demands.
