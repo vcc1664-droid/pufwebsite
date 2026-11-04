@@ -132,7 +132,7 @@ export function Footer() {
             {COLUMNS.map((column) => (
               <nav key={column.title} aria-label={column.title}>
                 <h2 className={heading}>{column.title}</h2>
-                <ul className="mt-4 space-y-2.5 lg:mt-[1.7cqw] lg:space-y-[1cqw]">
+                <ul className="mt-4 space-y-1.5 lg:mt-[1.7cqw] lg:space-y-[0.5cqw]">
                   {column.links.map((link) => (
                     <li key={link.label} className="text-[max(13px,1.2cqw)] text-[#1e1e1e]">
                       {link.href?.startsWith("http") ? (

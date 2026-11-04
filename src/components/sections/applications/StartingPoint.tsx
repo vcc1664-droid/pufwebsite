@@ -8,6 +8,8 @@ import { CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../../public/Applications/modular_coldroom_enclosure.jpg";
+import roofingImage from "../../../../public/Home/FACILITYTYPES/industrial_roofing_hero.webp";
+import modularImage from "../../../../public/Home/FACILITYTYPES/modular_environment_hero.webp";
 
 type Panel = {
   title: string;
@@ -33,8 +35,34 @@ const CATEGORIES: { name: string; panel?: Panel }[] = [
       explore: { label: "Explore Cold Room Panels", href: "/products" },
     },
   },
-  { name: "Industrial Roofing & Cladding" },
-  { name: "Controlled & Modular Environments" },
+  {
+    name: "Industrial Roofing & Cladding",
+    panel: {
+      title: "Industrial roofing & wall cladding",
+      body: "Heavy-duty insulated panel systems engineered for large-span warehouses, manufacturing units, and commercial facilities with all-weather thermal sealing.",
+      image: { src: roofingImage, alt: "Industrial building roofed and clad with insulated panels" },
+      specs: [
+        { label: "Span capability", value: "Up to 6m unsupported" },
+        { label: "Thermal efficiency", value: "U-values down to 0.18 W/m²K" },
+        { label: "Weather resistance", value: "Class 1 corrosion & UV rated" },
+      ],
+      explore: { label: "Explore roofing panels", href: "/products" },
+    },
+  },
+  {
+    name: "Controlled & Modular Environments",
+    panel: {
+      title: "Cleanrooms & modular environments",
+      body: "Flush-surface modular insulated enclosures built for pharmaceutical manufacturing, precision laboratories, and sterile contamination-controlled spaces.",
+      image: { src: modularImage, alt: "Modular enclosure built from insulated panel systems" },
+      specs: [
+        { label: "Cleanroom standard", value: "ISO Class 3 to Class 8" },
+        { label: "Flush surface", value: "Seamless coving & silicone joints" },
+        { label: "Surface finish", value: "Antimicrobial & chemical resistant" },
+      ],
+      explore: { label: "Explore cleanroom panels", href: "/products" },
+    },
+  },
 ];
 
 const link =
