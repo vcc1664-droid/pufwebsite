@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_BOTTOM } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import enclosureImage from "../../../../public/Home/about/ec74b593-7353-45e9-ad33-aebdd100dd31.png";
+import enclosureImage from "../../../../public/about/d4a839fa-81ad-439e-9c54-8a2208c85cc8-150kb.jpeg";
 
 export function AboutImage() {
   return (

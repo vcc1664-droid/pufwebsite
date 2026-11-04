@@ -90,7 +90,7 @@ export function WhyChooseUs() {
                   <li
                     key={reason.title}
                     className={cn(
-                      "border-b border-[#616161] py-6 transition-opacity duration-500 first:pt-0 lg:pt-[3.3cqw] lg:pb-[2.2cqw] lg:first:pt-0",
+                      "border-b border-[#616161] py-6 last:border-b-0 transition-opacity duration-500 first:pt-0 lg:pt-[3.3cqw] lg:pb-[2.2cqw] lg:first:pt-0",
                       // The reason whose photo is showing stays full strength; the others fade back
                       active !== i && "lg:opacity-35",
                     )}

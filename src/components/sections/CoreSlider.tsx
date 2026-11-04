@@ -8,7 +8,7 @@ import { CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import rockwoolImage from "../../../public/Home/PIR/45adfe6c-aa00-48be-9cd7-9f48b74b0e10.jpg";
 import pirImage from "../../../public/Home/PIR/54ab58aa-4217-405d-b85b-c7a7b9bdd6f0.jpg";
-import jointImage from "../../../public/Home/PIR/Interlocking Sandwich Panel Joint.png";
+import jointImage from "../../../public/Home/PIR/WhatsApp Image 2026-11-04 at 13.29.39.jpeg";
 
 type Core = {
   name: string;
@@ -225,9 +225,13 @@ export function CoreSlider() {
                         placeholder={typeof c.image.src === "string" ? "empty" : "blur"}
                         sizes="(min-width: 1024px) 50vw, 100vw"
                         aria-hidden={i !== index}
+                        // The incoming photo fades in on top of the outgoing one, which stays fully
+                        // visible underneath until the fade is done, so the background never shows
+                        // through; a slight zoom settling to 1 makes the change feel fluid.
                         className={cn(
-                          "object-cover transition-opacity duration-500",
-                          i === index ? "opacity-100" : "opacity-0",
+                          // Tailwind v4 `scale-*` sets the CSS `scale` property (not `transform`), so it's listed here.
+                          "object-cover transition-[opacity,scale] duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                          i === index ? "z-10 scale-100 opacity-100" : "z-0 scale-[1.06] opacity-0 delay-1200",
                         )}
                       />
                     ))}

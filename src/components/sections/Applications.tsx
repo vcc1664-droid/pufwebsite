@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../public/Home/FACILITYTYPES/Chilled Freezer Warehouse Aisle.png";
-import roofingImage from "../../../public/Home/FACILITYTYPES/industrial_roofing_hero.webp";
+import roofingImage from "../../../public/Home/Aerial View of Industrial Warehouse and Fields-150kb.jpeg";
 import modularImage from "../../../public/Home/4a461736-dfc3-4f5c-bcf0-5d99df0a9128.jpg";
 
 const SPACES: { title: string; body: string; image: StaticImageData; alt: string }[] = [
@@ -24,7 +24,8 @@ const SPACES: { title: string; body: string; image: StaticImageData; alt: string
     alt: "Industrial building roofed and clad with insulated panels",
   },
   {
-    title: "Controlled & Modular Environments",
+    // "\n" sets the line break: this title always shows on two lines
+    title: "Controlled & Modular\nEnvironments",
     body: "For specialised enclosed spaces built with insulated panel systems.",
     image: modularImage,
     alt: "Modular enclosure built from insulated panel systems",
@@ -86,8 +87,10 @@ export function Applications() {
           <div className={CONTAINER}>
             <div className={cn("@container", SECTION_Y)}>
               <Reveal>
-                <h2 className="max-w-[10em] text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em]">
-                  Different spaces. Different insulation demands.
+                {/* Two lines on desktop: one sentence per line */}
+                <h2 className="max-w-[10em] text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] lg:max-w-none">
+                  <span className="lg:block lg:whitespace-nowrap">Different spaces.</span>{" "}
+                  <span className="lg:block lg:whitespace-nowrap">Different insulation demands.</span>
                 </h2>
               </Reveal>
 
@@ -132,7 +135,13 @@ export function Applications() {
                       className={cn("col-start-1 row-start-1", active === i ? "animate-rise" : "invisible")}
                     >
                       <h3 className="max-w-[9em] text-[max(24px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em]">
-                        {s.title}
+                        {s.title.includes("\n")
+                          ? s.title.split("\n").map((line) => (
+                              <span key={line} className="block whitespace-nowrap">
+                                {line}
+                              </span>
+                            ))
+                          : s.title}
                       </h3>
                       <p className="mt-3 font-ui text-[max(14px,1.36cqw)] leading-snug text-[#555050] lg:mt-[1.6cqw]">
                         {s.body}

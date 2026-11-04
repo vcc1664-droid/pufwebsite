@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import constructionImage from "../../../public/Home/33c4a67f-4ff8-4df2-92b8-4830eda7bd7f.jpg";
+import constructionImage from "../../../public/Home/WhatsApp Image 2026-11-03 at 17.57.45-150kb.jpeg";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function ProductionToInstallation() {

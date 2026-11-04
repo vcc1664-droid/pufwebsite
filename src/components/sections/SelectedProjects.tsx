@@ -20,14 +20,14 @@ const PROJECTS: Project[] = [
     scope: "PUF wall and ceiling panels, deep blast freezer enclosure",
     location: "Noida, Uttar Pradesh",
     client: "Apex Cold Chain Logistics",
-    video: "/Home/homePageVideo/green Cold store.mp4",
+    video: "/Home/homePageVideo/green_Cold_store_gradeddd.mp4",
   },
   {
     title: "Multi-Temperature Cold Store",
     scope: "Insulated wall and ceiling panels, airtight industrial cold doors",
     location: "Bengaluru, Karnataka",
     client: "Fresh Fields Food Logistics",
-    video: "/Home/homePageVideo/white cold store.mp4",
+    video: "/Home/homePageVideo/white_cold_store_gradedddd.mp4",
   },
   {
     title: "Temperature-Controlled",
@@ -167,8 +167,8 @@ export function SelectedProjects() {
                 className={cn(
                   "h-full transition-all duration-500",
                   hoveredIndex === null
-                    ? i === 0 ? "" : "blur-[3px] brightness-75"
-                    : hoveredIndex === i ? "blur-0 brightness-100" : "blur-[3px] brightness-75",
+                    ? i === 0 ? "" : "brightness-75"
+                    : hoveredIndex === i ? "brightness-100" : "brightness-75",
                 )}
               >
                 <ProjectCard project={project} />

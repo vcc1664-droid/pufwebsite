@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { Reveal } from "@/components/motion/Reveal";
-import { ScrollGrow } from "@/components/motion/ScrollGrow";
+import { Reveal } from "@/components/motion/Reveal";import { ScrollGrow } from "@/components/motion/ScrollGrow";
+import { ScrollRise } from "@/components/motion/ScrollRise";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import panelImage from "../../../public/Home/puf-3d-panel-exploded.png";
@@ -56,15 +56,16 @@ export function PanelLayers() {
         </Reveal>
 
         <div className="mt-10 lg:relative lg:mt-[4.5cqw] lg:h-[43.2cqw]">
-          <Reveal className="relative z-10 text-center lg:absolute lg:inset-x-0 lg:top-0">
+          {/* Starts hidden behind the panel image and slides up into place on scroll */}
+          <ScrollRise from="15cqw" className="relative z-0 text-center lg:absolute lg:inset-x-0 lg:top-0">
             <h3 className="inline-block text-[max(12px,1.45cqw)] leading-none font-semibold tracking-[-0.01em] text-brand uppercase underline decoration-[max(1px,0.15cqw)] underline-offset-[0.35em]">
               Three Layers. One Engineered Panel
             </h3>
-          </Reveal>
+          </ScrollRise>
 
           <Reveal
             delay={100}
-            className="mx-auto mt-4 max-w-xl lg:absolute lg:top-[1.35cqw] lg:left-[19.46%] lg:mt-0 lg:w-[58.1%] lg:max-w-none"
+            className="relative z-10 mx-auto mt-4 max-w-xl lg:absolute lg:top-[1.35cqw] lg:left-[19.46%] lg:mt-0 lg:w-[58.1%] lg:max-w-none"
           >
             {/* Starts small and grows to its normal size as it scrolls into view */}
             <ScrollGrow>

@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import roofImage from "../../../public/Home/Panelsystems/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
-import wallImage from "../../../public/Home/Panelsystems/IndustrialGableBuildingwithBlueBands1.webp";
+import wallImage from "../../../public/Home/Aerial View of Blue-Roofed Warehouse-150kb.jpeg";
 
 type PanelSystem = {
   title: string;
@@ -30,7 +30,7 @@ const SYSTEMS: PanelSystem[] = [
     profile: "Single skin · Micro-rib · Concealed fix",
     cores: ["PUF", "PIR", "Rockwool"],
     link: { label: "Explore wall panels", href: "/products" },
-    image: { src: wallImage, alt: "Industrial gable building clad in white and blue insulated wall panels" },
+    image: { src: wallImage, alt: "Aerial view of a blue-roofed warehouse built with insulated panels" },
   },
 ];
 
