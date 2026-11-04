@@ -51,9 +51,10 @@ export function Testimonials() {
   const testimonial = TESTIMONIALS[index];
 
   return (
-    <section className="bg-[#f8f8f9]">
+    // Fills the full screen height on desktop, with the content centred in it
+    <section className="bg-[#f8f8f9] lg:flex lg:min-h-svh lg:items-center">
       {/* Grey band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
-      <div className={CONTAINER}>
+      <div className={cn(CONTAINER, "w-full")}>
         <div
           className={cn(
             "@container flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0",
