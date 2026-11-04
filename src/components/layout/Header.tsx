@@ -12,7 +12,7 @@ const desktopList = "flex items-center gap-8 xl:gap-[66px]";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 header-dark:bg-black">
+    <header className="sticky top-0 z-50">
       {/* Logo, nav pill and CTA spread with equal gaps between them */}
       <div className={cn(CONTAINER, "flex items-center justify-between py-4 lg:py-6")}>
         <div className="justify-self-start">
@@ -32,7 +32,7 @@ export function Header() {
         <Link
           href={QUOTE_CTA.href}
           data-tone
-          className="hidden justify-self-end text-[14px] text-ink underline underline-offset-4 transition-opacity duration-200 hover:opacity-60 lg:block header-dark:text-white on-dark:text-white"
+          className="hidden justify-self-end text-[14px] text-ink underline underline-offset-4 transition-opacity duration-200 hover:opacity-60 lg:block on-dark:text-white"
         >
           {QUOTE_CTA.label}
         </Link>

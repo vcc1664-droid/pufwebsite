@@ -14,8 +14,9 @@ export default function Projects() {
   return (
     // data-header switches the header to its dark style while this page is shown
     <main data-header="dark" className="flex-1">
-      {/* Dark opening band */}
-      <div className="bg-black">
+      {/* Dark opening band; pulled up under the transparent header (72px tall, 114px from lg) so
+          the header sits on black */}
+      <div className="-mt-[72px] bg-black pt-[72px] lg:-mt-[114px] lg:pt-[114px]">
         <PageIntro
           tone="dark"
           title={
@@ -38,7 +39,7 @@ export default function Projects() {
           ]}
           // Uppercase .JPG has no static-import typings, so the photo is referenced by path.
           image={{
-            src: "/Home/DJI_20260908123834_0320_D.JPG",
+            src: "/Project/WhatsApp Image 2026-11-04 at 17.55.21-100kb.jpeg",
             alt: "Aerial view of a Synergy PUF project among farmland",
           }}
           listClassName="lg:w-[22.8%]"
