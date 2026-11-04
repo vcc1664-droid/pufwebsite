@@ -13,7 +13,12 @@ import dataCentreImage from "../../../public/Home/Different/Data Center-100kb.jp
 import pharmaImage from "../../../public/Home/Different/Pharma-100kb.jpeg";
 import infrastructureImage from "../../../public/Home/Different/Infrastructure-100kb.jpeg";
 
-const SPACES: { title: string; body: string; image: StaticImageData; alt: string }[] = [
+const SPACES: {
+  title: string;
+  body: string;
+  image: StaticImageData;
+  alt: string;
+}[] = [
   {
     title: "Temperature-Controlled Spaces",
     body: "For cold rooms, freezer areas and temperature-sensitive facilities.",
@@ -27,8 +32,7 @@ const SPACES: { title: string; body: string; image: StaticImageData; alt: string
     alt: "Industrial building roofed and clad with insulated panels",
   },
   {
-    // "\n" sets the line break: this title always shows on two lines
-    title: "Controlled & Modular\nEnvironments",
+    title: "Controlled & Modular Environments",
     body: "For specialised enclosed spaces built with insulated panel systems.",
     image: modularImage,
     alt: "Modular enclosure built from insulated panel systems",
@@ -55,6 +59,8 @@ const SPACES: { title: string; body: string; image: StaticImageData; alt: string
 
 /** Space between the header and the photo while the section is pinned. */
 const PHOTO_GAP = 32;
+/** Space kept under the copy and button when the section pins higher to show them. */
+const BOTTOM_GAP = 24;
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Applications() {
@@ -73,15 +79,32 @@ export function Applications() {
 
     const update = () => {
       frame = 0;
-      // Pin so the photo's top edge sits PHOTO_GAP below the header
+      // Pin so the photo's top edge sits PHOTO_GAP below the header...
       const photo = pinEl.querySelector<HTMLElement>("[data-photo]");
-      const photoOffset = photo ? photo.getBoundingClientRect().top - pinEl.getBoundingClientRect().top : 0;
-      const top = (header?.offsetHeight ?? 0) + PHOTO_GAP - photoOffset;
+      const photoOffset = photo
+        ? photo.getBoundingClientRect().top - pinEl.getBoundingClientRect().top
+        : 0;
+      const belowHeader = (header?.offsetHeight ?? 0) + PHOTO_GAP - photoOffset;
+      // ...unless the copy under the photo would then run off the bottom of the screen: pin
+      // higher so the photo and the copy below it are both in view, the button ending
+      // BOTTOM_GAP above the bottom.
+      const copy = pinEl.querySelector<HTMLElement>("[data-copy]");
+      const copyBottom = copy
+        ? copy.getBoundingClientRect().bottom -
+          pinEl.getBoundingClientRect().top
+        : 0;
+      const top = Math.min(
+        belowHeader,
+        window.innerHeight - BOTTOM_GAP - copyBottom,
+      );
       pinEl.style.top = `${top}px`;
       const travel = trackEl.offsetHeight - pinEl.offsetHeight;
       const scrolled = top - trackEl.getBoundingClientRect().top;
-      const progress = travel > 0 ? Math.min(1, Math.max(0, scrolled / travel)) : 0;
-      setActive(Math.min(SPACES.length - 1, Math.floor(progress * SPACES.length)));
+      const progress =
+        travel > 0 ? Math.min(1, Math.max(0, scrolled / travel)) : 0;
+      setActive(
+        Math.min(SPACES.length - 1, Math.floor(progress * SPACES.length)),
+      );
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -110,12 +133,19 @@ export function Applications() {
               <Reveal>
                 {/* Two lines on desktop: one sentence per line */}
                 <h2 className="max-w-[10em] text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] lg:max-w-none">
-                  <span className="lg:block lg:whitespace-nowrap">Different spaces.</span>{" "}
-                  <span className="lg:block lg:whitespace-nowrap">Different insulation demands.</span>
+                  <span className="lg:block lg:whitespace-nowrap">
+                    Different spaces.
+                  </span>{" "}
+                  <span className="lg:block lg:whitespace-nowrap">
+                    Different insulation demands.
+                  </span>
                 </h2>
               </Reveal>
 
-              <Reveal delay={100} className="relative mt-10 lg:mt-[5.9cqw] lg:ml-[15.9cqw] lg:w-[77.3cqw]">
+              <Reveal
+                delay={100}
+                className="relative mt-10 lg:mt-[5.9cqw] lg:ml-[15.9cqw] lg:w-[77.3cqw]"
+              >
                 <div
                   data-photo
                   className="relative aspect-[537/277] overflow-hidden rounded-[max(12px,2cqw)]"
@@ -147,47 +177,56 @@ export function Applications() {
               </Reveal>
 
               <Reveal delay={150} className="mt-12 lg:mt-[3.4cqw]">
-                {/* All three sit in one cell so the block keeps the tallest height and never jumps */}
-                <div aria-live="polite" className="grid">
-                  {SPACES.map((s, i) => (
-                    <div
-                      key={s.title}
-                      aria-hidden={active !== i}
-                      className={cn("col-start-1 row-start-1", active === i ? "animate-rise" : "invisible")}
-                    >
-                      <h3 className="max-w-[9em] text-[max(24px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em]">
-                        {s.title.includes("\n")
-                          ? s.title.split("\n").map((line) => (
-                              <span key={line} className="block whitespace-nowrap">
-                                {line}
-                              </span>
-                            ))
-                          : s.title}
-                      </h3>
-                      <p className="mt-3 font-ui text-[max(14px,1.36cqw)] leading-snug text-[#555050] lg:mt-[1.6cqw]">
-                        {s.body}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  href="/applications"
-                  className="group mt-6 inline-flex items-center gap-[0.5em] rounded-[max(5px,0.45cqw)] bg-white px-[1.2em] py-[0.7em] font-ui text-[max(12px,1.25cqw)] leading-none text-black transition-colors duration-200 hover:bg-[#e6e6e6] lg:mt-[2cqw]"
-                >
-                  Explore application
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 24 24"
-                    className="size-[1em] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <div data-copy>
+                  {/* All three sit in one cell so the block keeps the tallest height and never jumps */}
+                  <div aria-live="polite" className="grid">
+                    {SPACES.map((s, i) => (
+                      <div
+                        key={s.title}
+                        aria-hidden={active !== i}
+                        className={cn(
+                          "col-start-1 row-start-1",
+                          active === i ? "animate-rise" : "invisible",
+                        )}
+                      >
+                        {/* Every title stays on one line on desktop */}
+                        <h3 className="max-w-[9em] text-[max(22px,3.4cqw)] leading-[1.3] font-medium tracking-[-0.01em] lg:max-w-none lg:whitespace-nowrap">
+                          {s.title.includes("\n")
+                            ? s.title.split("\n").map((line) => (
+                                <span
+                                  key={line}
+                                  className="block whitespace-nowrap"
+                                >
+                                  {line}
+                                </span>
+                              ))
+                            : s.title}
+                        </h3>
+                        <p className="mt-3 font-ui text-[max(14px,1.36cqw)] leading-snug text-[#555050] lg:mt-[1.6cqw]">
+                          {s.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href="/applications"
+                    className="group mt-6 inline-flex items-center gap-[0.5em] rounded-[max(5px,0.45cqw)] bg-white px-[1.2em] py-[0.7em] font-ui text-[max(12px,1.25cqw)] leading-none text-black transition-colors duration-200 hover:bg-[#e6e6e6] lg:mt-[2cqw]"
                   >
-                    <path d="M7 17 17 7M8 7h9v9" />
-                  </svg>
-                </Link>
+                    Explore application
+                    <svg
+                      aria-hidden
+                      viewBox="0 0 24 24"
+                      className="size-[1em] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 17 17 7M8 7h9v9" />
+                    </svg>
+                  </Link>
+                </div>
               </Reveal>
             </div>
           </div>
