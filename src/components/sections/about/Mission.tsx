@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
-import teamImage from "../../../../public/about/team_building_story.jpg";
+import teamImage from "../../../../public/about/Insulation/PUF FACTORYY-100kb.jpeg";
 import factoryImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
 import deliveryImage from "../../../../public/about/Insulation/fatoryyyyyyyyy-100kb.jpeg";
 import installImage from "../../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
