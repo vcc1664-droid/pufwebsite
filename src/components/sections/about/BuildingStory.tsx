@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelsImage from "../../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
+import panelsImage from "../../../../public/Home/about/45b35750-03eb-43ee-97f4-a3f6554a6411-100kb.jpeg";
 import roofingImage from "../../../../public/Home/about/WhatsApp Image 2026-11-03 at 16.23.29.jpeg";
 import factoryImage from "../../../../public/about/84159407-59ae-42ad-a4c5-755c6713a666.jpg";
 

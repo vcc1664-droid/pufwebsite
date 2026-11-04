@@ -8,7 +8,7 @@ import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../public/Home/FACILITYTYPES/Chilled Freezer Warehouse Aisle.png";
 import roofingImage from "../../../public/Home/Aerial View of Industrial Warehouse and Fields-150kb.jpeg";
-import modularImage from "../../../public/Home/4a461736-dfc3-4f5c-bcf0-5d99df0a9128.jpg";
+import modularImage from "../../../public/Home/modular_environment_hero.webp";
 
 const SPACES: { title: string; body: string; image: StaticImageData; alt: string }[] = [
   {

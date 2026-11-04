@@ -120,21 +120,21 @@ export function Footer() {
   return (
     <footer className="bg-[#e8e8ea]">
       <div className={CONTAINER}>
-        <div className="@container pt-14 pb-6 lg:pt-[6.4cqw] lg:pb-[2.4cqw]">
+        <div className="@container pt-10 pb-6 lg:pt-[4.5cqw] lg:pb-[2cqw]">
           <p
             aria-hidden
-            className="text-center text-[max(48px,13.9cqw)] leading-none font-medium tracking-[-0.02em] whitespace-nowrap text-brand"
+            className="text-center text-[max(48px,10.5cqw)] leading-none font-medium tracking-[-0.02em] whitespace-nowrap text-brand"
           >
             Synergy PUF
           </p>
 
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:mt-[6.5cqw] lg:grid-cols-[30.2%_30.2%_25.8%_1fr] lg:gap-0">
+          <div className="mt-8 grid gap-10 sm:grid-cols-2 lg:mt-[3.5cqw] lg:grid-cols-[30.2%_30.2%_25.8%_1fr] lg:gap-0">
             {COLUMNS.map((column) => (
               <nav key={column.title} aria-label={column.title}>
                 <h2 className={heading}>{column.title}</h2>
-                <ul className="mt-4 space-y-2.5 lg:mt-[1.9cqw] lg:space-y-[1.15cqw]">
+                <ul className="mt-4 space-y-2.5 lg:mt-[1.7cqw] lg:space-y-[1cqw]">
                   {column.links.map((link) => (
-                    <li key={link.label} className={body}>
+                    <li key={link.label} className="text-[max(13px,1.2cqw)] text-[#1e1e1e]">
                       {link.href?.startsWith("http") ? (
                         // Sister-company sites open in a new tab
                         <a
@@ -177,7 +177,7 @@ export function Footer() {
             </div>
           </div>
 
-          <address className="mt-12 grid gap-8 not-italic sm:grid-cols-2 lg:mt-[6cqw] lg:grid-cols-[30.2%_30.2%_25.8%_1fr] lg:gap-0">
+          <address className="mt-8 grid gap-8 not-italic sm:grid-cols-2 lg:mt-[3.5cqw] lg:grid-cols-[30.2%_30.2%_25.8%_1fr] lg:gap-0">
             <a
               href="tel:+919988118888"
               className={cn(body, "flex items-center gap-2 self-start transition-colors hover:text-brand")}
@@ -223,7 +223,7 @@ export function Footer() {
             </div>
           </address>
 
-          <ul className="mt-10 flex gap-2 lg:mt-[4cqw] lg:gap-[0.8cqw]">
+          <ul className="mt-6 flex gap-2 lg:mt-[2.5cqw] lg:gap-[0.8cqw]">
             {SOCIALS.map((social) => (
               <li key={social.label}>
                 <a
@@ -239,7 +239,7 @@ export function Footer() {
             ))}
           </ul>
 
-          <div className="mt-5 flex flex-col gap-3 border-t border-[#b9b9bc] pt-4 sm:flex-row sm:items-center sm:justify-between lg:mt-[2.4cqw] lg:pt-[2cqw]">
+          <div className="mt-5 flex flex-col gap-3 border-t border-[#b9b9bc] pt-4 sm:flex-row sm:items-center sm:justify-between lg:mt-[1.6cqw] lg:pt-[1.8cqw]">
             <p className={fine}>© 2026 Synergy PUF. All Rights Reserved.</p>
             <p className={cn(fine, "flex items-center gap-2")}>
               <Link href="/terms" className="transition-colors hover:text-brand">

@@ -34,7 +34,7 @@ const PROJECTS: Project[] = [
     scope: "PUF cold-room enclosure, sterile modular panels & insulated roofing",
     location: "Hyderabad, Telangana",
     client: "BioMed Pharma Logistics",
-    video: "/Home/homePageVideo/Blue colour video.mp4",
+    video: "/Home/homePageVideo/Blue_colour_video_gradedddddd.mp4",
   },
 ];
 
