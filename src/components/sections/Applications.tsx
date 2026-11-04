@@ -9,6 +9,9 @@ import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../public/Home/FACILITYTYPES/Chilled Freezer Warehouse Aisle.png";
 import roofingImage from "../../../public/Home/Aerial View of Industrial Warehouse and Fields-150kb.jpeg";
 import modularImage from "../../../public/Home/modular_environment_hero.webp";
+import dataCentreImage from "../../../public/Home/Different/Data Center-100kb.jpeg";
+import pharmaImage from "../../../public/Home/Different/Pharma-100kb.jpeg";
+import infrastructureImage from "../../../public/Home/Different/Infrastructure-100kb.jpeg";
 
 const SPACES: { title: string; body: string; image: StaticImageData; alt: string }[] = [
   {
@@ -29,6 +32,24 @@ const SPACES: { title: string; body: string; image: StaticImageData; alt: string
     body: "For specialised enclosed spaces built with insulated panel systems.",
     image: modularImage,
     alt: "Modular enclosure built from insulated panel systems",
+  },
+  {
+    title: "Data Centres",
+    body: "For data halls and equipment rooms that need a sealed, thermally stable enclosure.",
+    image: dataCentreImage,
+    alt: "Data centre hall with server racks inside an insulated enclosure",
+  },
+  {
+    title: "Healthcare & Pharmaceuticals",
+    body: "For pharma plants, cleanrooms and medical storage that need hygienic, easy-to-clean enclosures.",
+    image: pharmaImage,
+    alt: "Pharmaceutical cleanroom built with hygienic insulated panels",
+  },
+  {
+    title: "Infrastructure & Utilities",
+    body: "For utility, transport and public infrastructure buildings made with insulated panel systems.",
+    image: infrastructureImage,
+    alt: "Infrastructure building made with insulated panel systems",
   },
 ];
 
@@ -172,7 +193,7 @@ export function Applications() {
           </div>
         </div>
         {/* Scroll room while the block is pinned: one stretch per extra space */}
-        <div aria-hidden className="h-[120svh]" />
+        <div aria-hidden className="h-[300svh]" />
       </div>
     </section>
   );

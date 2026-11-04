@@ -1,37 +1,20 @@
-"use client";
-
-import Image from "next/image";
-import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import worldDots from "../../../../public/about/world-dots.svg";
 
-type Milestone = {
-  year: string;
-  title: string;
-  /** Position on the map, in % of its width and height. */
-  x: number;
-  y: number;
-};
+type Milestone = { year: string; title: string };
 
-// Years and events are still to be confirmed; positions come from the map's projection.
+// Years are still to be confirmed.
 const MILESTONES: Milestone[] = [
-  { year: "Year to confirm", title: "Project Milestone", x: 5.14, y: 11.76 },
-  { year: "Year to confirm", title: "Project Milestone", x: 37.14, y: 5.88 },
-  { year: "Year to confirm", title: "Project Milestone", x: 18.57, y: 41.91 },
-  { year: "Year to confirm", title: "Project Milestone", x: 28.29, y: 95.59 },
-  { year: "Year to confirm", title: "Project Milestone", x: 69.43, y: 44.85 },
-  { year: "Year to confirm", title: "Project Milestone", x: 77.14, y: 5.88 },
-  { year: "Year to confirm", title: "Project Milestone", x: 93.71, y: 17.65 },
-  { year: "Year to confirm", title: "Project Milestone", x: 86.86, y: 77.21 },
+  { year: "Year of confirm", title: "Capacity expanded" },
+  { year: "Year of confirm", title: "Project Milestone" },
+  { year: "Year of confirm", title: "Group founded" },
+  { year: "Year of confirm", title: "First certification" },
+  { year: "Year of confirm", title: "PUF plant commissioned" },
 ];
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Milestones() {
-  // India is highlighted by default, as in the design.
-  const [active, setActive] = useState(4);
-
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
@@ -44,52 +27,24 @@ export function Milestones() {
           </p>
         </Reveal>
 
-        <Reveal delay={100} className={cn(BLOCK_GAP, "relative mx-auto w-full lg:w-[72.5%]")}>
-          <Image src={worldDots} alt="" className="h-auto w-full" />
-
-          <ul>
-            {MILESTONES.map((milestone, i) => {
-              const isActive = active === i;
-              // Pins near the map edges open their tooltip inwards so it stays on screen.
-              const align = milestone.x < 15 ? "start" : milestone.x > 85 ? "end" : "center";
-
-              return (
+        {/* Cards scroll endlessly from right to left; hovering pauses them */}
+        <Reveal delay={100} className={cn(BLOCK_GAP, "group overflow-hidden")}>
+          <ul className="flex w-max animate-marquee py-6 group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:overflow-x-auto">
+            {/* Two copies so the loop has no gap; the second is hidden from screen readers */}
+            {[0, 1].map((copy) =>
+              MILESTONES.map((milestone) => (
                 <li
-                  key={i}
-                  className={cn("absolute -translate-x-1/2 -translate-y-1/2", isActive && "z-10")}
-                  style={{ left: `${milestone.x}%`, top: `${milestone.y}%` }}
+                  key={`${copy}-${milestone.title}`}
+                  aria-hidden={copy === 1 || undefined}
+                  className="mr-[max(16px,1.6cqw)] shrink-0 rounded-[max(10px,1cqw)] bg-white px-[max(20px,2.2cqw)] py-[max(14px,1.6cqw)] text-center shadow-[0_6px_24px_rgba(98,28,112,0.12)]"
                 >
-                  <button
-                    type="button"
-                    onMouseEnter={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                    onClick={() => setActive(i)}
-                    aria-label={`${milestone.title}, ${milestone.year}`}
-                    aria-pressed={isActive}
-                    className={cn(
-                      "block size-[max(10px,1.25cqw)] rounded-full bg-brand transition-shadow duration-200",
-                      isActive &&
-                        "ring-[max(2px,0.25cqw)] ring-white ring-offset-0 outline outline-[max(1.5px,0.15cqw)] outline-brand",
-                    )}
-                  />
-
-                  {isActive && (
-                    <div
-                      role="status"
-                      className={cn(
-                        "absolute bottom-[calc(100%+max(10px,1cqw))] w-max animate-rise rounded-[max(8px,0.8cqw)] bg-white px-[max(12px,1.5cqw)] py-[max(8px,0.9cqw)] text-center shadow-[0_6px_24px_rgba(0,0,0,0.12)] after:absolute after:top-full after:-translate-x-1/2 after:border-[max(5px,0.5cqw)] after:border-transparent after:border-t-white",
-                        align === "center" && "left-1/2 -translate-x-1/2 after:left-1/2",
-                        align === "start" && "left-0 after:left-[max(5px,0.625cqw)]",
-                        align === "end" && "right-0 after:left-[calc(100%-max(5px,0.625cqw))]",
-                      )}
-                    >
-                      <p className="font-ui text-[max(11px,1.1cqw)] text-black">{milestone.year}</p>
-                      <p className="mt-0.5 font-ui text-[max(13px,1.45cqw)] text-brand">{milestone.title}</p>
-                    </div>
-                  )}
+                  <p className="font-ui text-[max(11px,0.8cqw)] text-black">{milestone.year}</p>
+                  <p className="mt-1 font-ui text-[max(14px,1.3cqw)] whitespace-nowrap text-brand">
+                    {milestone.title}
+                  </p>
                 </li>
-              );
-            })}
+              )),
+            )}
           </ul>
         </Reveal>
       </div>

@@ -41,6 +41,15 @@
       transform: translateY(16px);
     }
   }
+
+  /* Endless right-to-left scroll: the track holds two copies, so moving by half loops seamlessly */
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 /* Anchor jumps (Lenis or native) stop below the sticky header: 72px tall on mobile, 114px from lg. */
@@ -74,7 +83,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-rise {
+  .animate-rise,
+  .animate-marquee {
     animation: none;
   }
 
