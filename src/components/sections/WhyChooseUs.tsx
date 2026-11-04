@@ -5,28 +5,35 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import truckImage from "../../../public/Home/WHYCHOOSE/9.png";
+import truckImage from "../../../public/Home/ISOcertified/WhatsApp Image 2026-11-04 at 17.20.40 1-100kb.jpeg";
 import factoryImage from "../../../public/Home/WHYCHOOSE/C0049T01.webp";
-import indiaImage from "../../../public/Home/WHYCHOOSE/india.png";
+import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
+import installImage from "../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
 
 const REASONS: { title: string; body: string; image: StaticImageData; alt: string }[] = [
   {
-    title: "40+ year sold credible excellence",
-    body: "From insulated wall and roof panels to specialized cold storage applications, Synergy PUF offers a complete range of high-performance sandwich panels engineered for every industrial, commercial, and infrastructure requirement.",
+    title: "ISO certified",
+    body: "Our management systems are ISO certified, with certificates available on request.",
+    image: isoImage,
+    alt: "Synergy PUF insulated panel manufacturing facility",
+  },
+  {
+    title: "Made at our own facility",
+    body: "Insulated panels are manufactured at our Nalagarh facility, so production stays in our hands.",
     image: factoryImage,
     alt: "PUF panels on the production line at the Synergy PUF facility",
   },
   {
-    title: "Pan India Presence and strong network",
-    body: "Synergy PUF supplies and installs insulated panel systems for projects across India. Every order is coordinated from our manufacturing facility in Nalagarh to site, with dedicated teams managing dispatch, delivery and on-site installation.",
-    image: indiaImage,
-    alt: "Map of India showing the Synergy PUF supply network",
+    title: "One team, factory to site",
+    body: "We manufacture, dispatch and install insulated panel systems, so one team stays accountable.",
+    image: installImage,
+    alt: "Insulated panels being installed on site",
   },
   {
-    title: "Unmatched Speed & Timely Delivery",
-    body: "Orders are dispatched from our Nalagarh facility within 48 hours of confirmation, because a delayed panel means a delayed project. Production and logistics are planned together, so panels reach site on schedule across India.",
+    title: "Delivery you can plan around",
+    body: "Production and dispatch are planned together. Share your site timeline and we’ll confirm dates.",
     image: truckImage,
-    alt: "Synergy PUF delivery truck on a highway",
+    alt: "Synergy PUF delivery truck loaded with panels",
   },
 ];
 
@@ -75,7 +82,7 @@ export function WhyChooseUs() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       {/* Tall track on desktop: the inner block sticks under the header while the page scrolls
           through it, one stretch per reason */}
-      <div ref={track} className="lg:h-[calc(100svh-114px+150svh)]">
+      <div ref={track} className="lg:h-[calc(100svh-114px+200svh)]">
         <div className="lg:sticky lg:top-[114px] lg:flex lg:h-[calc(100svh-114px)] lg:items-center">
           <div className="@container flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
             <div className="lg:w-[39.2%]">
