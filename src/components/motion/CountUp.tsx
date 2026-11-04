@@ -8,7 +8,7 @@ const FINISH_AT = 0.4;
 /**
  * Counts from `from` (0 by default) up to `value` in step with the page scroll: `from` as it enters
  * at the bottom of the screen, the full value once it has risen to FINISH_AT, and back down when
- * scrolling up.
+ * scrolling up. 
  * The final number reserves the space, so surrounding text never shifts; screen readers and the
  * first render get the real value.
  */
