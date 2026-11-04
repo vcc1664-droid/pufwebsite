@@ -19,7 +19,7 @@ type Testimonial = {
 // Add more entries here; the dots appear once there are two or more.
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Vikramaditya Sharma",
+    name: "Sukhdev Singh",
     role: "Head of Infrastructure",
     quote:
       "The smooth implementation exceeded expectations. Multi-stage quality inspection ensured zero panel defect across 12,000 m² dispatch.",

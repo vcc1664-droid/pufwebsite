@@ -6,7 +6,7 @@ import { HighlightsMedia } from "@/components/sections/HighlightsMedia";
 import { LetsTalk } from "@/components/sections/LetsTalk";
 import { PageIntro } from "@/components/sections/PageIntro";
 import { PROJECT_CONDITION_ITEMS, TrustStrip } from "@/components/sections/TrustStrip";
-import loadingDocksImage from "../../../public/Applications/ChatGPT Image Sep 21, 2026, 02_46_29 PM.png";
+import loadingDocksImage from "../../../public/Applications/WhatsApp Image 2026-11-04 at 17.55.56-100kb.jpeg";
 
 export const metadata: Metadata = {
   title: "Applications | Synergy PUF",

@@ -58,9 +58,9 @@ const SPACES: {
 ];
 
 /** Space between the header and the photo while the section is pinned. */
-const PHOTO_GAP = 32;
+const PHOTO_GAP = 12;
 /** Space kept under the copy and button when the section pins higher to show them. */
-const BOTTOM_GAP = 24;
+const BOTTOM_GAP = 44;
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Applications() {
