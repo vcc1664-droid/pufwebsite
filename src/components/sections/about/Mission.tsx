@@ -2,12 +2,15 @@
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import teamImage from "../../../../public/about/team_building_story.jpg";
+import factoryImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
+import deliveryImage from "../../../../public/about/Insulation/fatoryyyyyyyyy-100kb.jpeg";
+import installImage from "../../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
 
 type Step = {
   stage: string;
@@ -16,7 +19,7 @@ type Step = {
   image: { src: StaticImageData; alt: string };
 };
 
-// Only step 01 comes from the design; 02–04 follow the process named on this page and share its photo for now.
+// Only step 01 comes from the design; 02–04 follow the process named on this page.
 const STEPS: Step[] = [
   {
     stage: "Design",
@@ -28,21 +31,24 @@ const STEPS: Step[] = [
     stage: "Manufacture",
     title: "Panel production",
     body: "Panels are produced at our Nalagarh plant with quality checks from raw material to dispatch.",
-    image: { src: teamImage, alt: "Engineers reviewing building plans on a construction site" },
+    image: { src: factoryImage, alt: "PUF panels being produced at the Synergy PUF plant" },
   },
   {
     stage: "Delivery",
     title: "Logistics to site",
     body: "Panels are packed and scheduled to reach the site in the order the installation needs them.",
-    image: { src: teamImage, alt: "Engineers reviewing building plans on a construction site" },
+    image: { src: deliveryImage, alt: "Synergy PUF delivery truck on a highway" },
   },
   {
     stage: "Installation",
     title: "On-site installation",
     body: "Our installation team builds the finished enclosure, sealing joints and interfaces as specified.",
-    image: { src: teamImage, alt: "Engineers reviewing building plans on a construction site" },
+    image: { src: installImage, alt: "Installers fixing insulated wall panels on site" },
   },
 ];
+
+/** Time each photo stays before the next slides up. */
+const AUTOPLAY_MS = 4000;
 
 const button =
   "inline-flex items-center justify-center rounded-[max(6px,0.42cqw)] px-[max(20px,2.1cqw)] py-[max(12px,1cqw)] font-ui text-[max(14px,0.95cqw)] leading-none transition-colors duration-200";
@@ -50,7 +56,24 @@ const button =
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Mission() {
   const [index, setIndex] = useState(0);
+  // The photo that was showing before `index`; it slides out through the top.
+  const [previous, setPrevious] = useState<number | null>(null);
   const step = STEPS[index];
+
+  const goTo = (next: number) => {
+    if (next === index) return;
+    setPrevious(index);
+    setIndex(next);
+  };
+
+  // Steps advance on their own; the timer restarts whenever the step changes (dot clicks too).
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPrevious(index);
+      setIndex((index + 1) % STEPS.length);
+    }, AUTOPLAY_MS);
+    return () => clearTimeout(timer);
+  }, [index]);
 
   return (
     <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
@@ -88,22 +111,37 @@ export function Mission() {
 
           <Reveal delay={150} className={BLOCK_GAP}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/765]">
-              <Image
-                key={index}
-                src={step.image.src}
-                alt={step.image.alt}
-                fill
-                placeholder="blur"
-                sizes="(min-width: 1920px) 1594px, 100vw"
-                className="animate-rise object-cover"
-              />
+              {/* All photos stay stacked; the active one slides in diagonally from the bottom-right while
+                  the previous one slides out towards the top-left */}
+              {STEPS.map((s, i) => (
+                <Image
+                  key={s.title}
+                  src={s.image.src}
+                  alt={s.image.alt}
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1920px) 1594px, 100vw"
+                  aria-hidden={i !== index}
+                  // Always moves diagonally, bottom-right to top-left, whichever photo comes next: the photo
+                  // just left slides out past the top-left corner, every other one waits beyond the
+                  // bottom-right, and only those two animate (the rest jump back unseen).
+                  className={cn(
+                    "object-cover motion-reduce:transition-none",
+                    i === index
+                      ? "translate-0 transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                      : i === previous
+                        ? "-translate-x-full -translate-y-full transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        : "translate-x-full translate-y-full",
+                  )}
+                />
+              ))}
 
               <div className="absolute inset-x-0 bottom-[max(14px,1.8cqw)] flex justify-center gap-[max(6px,0.45cqw)]">
                 {STEPS.map((s, i) => (
                   <button
                     key={s.title}
                     type="button"
-                    onClick={() => setIndex(i)}
+                    onClick={() => goTo(i)}
                     aria-label={`Show step ${i + 1}: ${s.title}`}
                     aria-current={i === index}
                     className={cn(

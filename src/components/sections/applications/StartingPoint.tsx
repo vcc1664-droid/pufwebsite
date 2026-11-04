@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
-import coldRoomImage from "../../../../public/Applications/modular_coldroom_enclosure.jpg";
+import coldRoomImage from "../../../../public/Applications/Findthe/708b0198-7a84-44e9-8780-aa4d6be11c9d-80kb.jpeg";
 import roofingImage from "../../../../public/Home/FACILITYTYPES/industrial_roofing_hero.webp";
 import modularImage from "../../../../public/Home/FACILITYTYPES/modular_environment_hero.webp";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -33,6 +33,22 @@ export function PanelRange({
   const id = useId();
   const type = types[active];
   const dark = tone === "dark";
+  const video = useRef<HTMLVideoElement>(null);
+
+  // React leaves `muted` out of the server HTML, so the browser can block autoplay; and with three
+  // panel videos on the page, loading them all at once can stall one. So each video is muted here
+  // and only loads and plays while its section is on screen.
+  useEffect(() => {
+    const el = video.current;
+    if (!el) return;
+    el.muted = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) el.play().catch(() => {});
+      else el.pause();
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [type.video]);
 
   return (
     <section
@@ -98,10 +114,11 @@ export function PanelRange({
             )}
           >
             <video
+              ref={video}
               key={type.video}
-              src={type.video}
-              autoPlay
+              src={encodeURI(type.video)}
               muted
+              preload="none"
               loop
               playsInline
               aria-label={`${type.name} animation`}

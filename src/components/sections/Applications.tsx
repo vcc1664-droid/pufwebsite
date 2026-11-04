@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../public/Home/FACILITYTYPES/Chilled Freezer Warehouse Aisle.png";
-import roofingImage from "../../../public/Home/Aerial View of Industrial Warehouse and Fields-150kb.jpeg";
+import roofingImage from "../../../public/Home/Different/708b0198-7a84-44e9-8780-aa4d6be11c9d-80kb.jpeg";
 import modularImage from "../../../public/Home/modular_environment_hero.webp";
 import dataCentreImage from "../../../public/Home/Different/Data Center-100kb.jpeg";
 import pharmaImage from "../../../public/Home/Different/Pharma-100kb.jpeg";
@@ -140,7 +140,7 @@ export function Applications() {
                   key={active}
                   aria-hidden
                   data-space-number
-                  className="absolute -right-2 -bottom-[0.18em] animate-rise text-[max(72px,20.5cqw)] leading-none font-medium tracking-[-0.04em] lg:-right-[6.8cqw] lg:-bottom-[0.45em]"
+                  className="absolute -right-2 -bottom-[0.18em] animate-rise text-[max(56px,13cqw)] leading-none font-medium tracking-[-0.04em] lg:-right-[6.8cqw] lg:-bottom-[0.45em]"
                 >
                   {String(active + 1).padStart(2, "0")}
                 </span>

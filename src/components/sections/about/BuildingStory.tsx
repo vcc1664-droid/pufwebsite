@@ -3,8 +3,8 @@ import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import panelsImage from "../../../../public/Home/about/45b35750-03eb-43ee-97f4-a3f6554a6411-100kb.jpeg";
-import roofingImage from "../../../../public/Home/about/WhatsApp Image 2026-11-03 at 16.23.29.jpeg";
-import factoryImage from "../../../../public/about/84159407-59ae-42ad-a4c5-755c6713a666.jpg";
+import roofingImage from "../../../../public/about/6614040e-614d-4601-b963-0018c7a6dd2e-100kb.jpeg";
+import factoryImage from "../../../../public/about/e821f3da-a060-4dc2-97ed-8a754e773c6e-100kb.jpeg";
 
 const IMAGES = [
   { src: roofingImage, alt: "Synergy PUF insulated panel building" },
