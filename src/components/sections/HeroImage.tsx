@@ -18,7 +18,7 @@ export function HeroImage() {
     <section className="relative h-svh w-full overflow-hidden">
       <video
         ref={video}
-        src="/Home/homePageVideo/Synergy_PUF_Website_finnllllll.mp4"
+        src="/Home/homePageVideo/Synergy_PUF_Website_Video_%20finalllllll.mp4"
         autoPlay
         muted
         loop

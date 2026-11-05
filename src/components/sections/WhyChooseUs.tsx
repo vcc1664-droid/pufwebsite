@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import truckImage from "../../../public/Home/ISOcertified/WhatsApp Image 2026-11-04 at 17.20.40 1-100kb.jpeg";
+import truckImage from "../../../public/Home/Truck-100kb.jpeg";
 import factoryImage from "../../../public/Home/WHYCHOOSE/C0049T01.webp";
 import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
-import installImage from "../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
+import installImage from "../../../public/about/Webbb-100kb.jpeg";
 
 const REASONS: { title: string; body: string; image: StaticImageData; alt: string }[] = [
   {
