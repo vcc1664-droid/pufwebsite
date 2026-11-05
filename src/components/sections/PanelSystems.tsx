@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import roofImage from "../../../public/Home/Panelsystems/ChatGPT Image Aug 27, 2026, 04_36_06 PM.png";
-import wallImage from "../../../public/Home/Aerial View of Blue-Roofed Warehouse-150kb.jpeg";
+import wallImage from "../../../public/Home/Aerial View of Blue-Roofed Factory and Green Fields-100kb.jpeg";
 
 type PanelSystem = {
   title: string;

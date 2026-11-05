@@ -20,21 +20,21 @@ const PROJECTS: Project[] = [
     scope: "PUF wall and ceiling panels, deep blast freezer enclosure",
     location: "Noida, Uttar Pradesh",
     client: "Apex Cold Chain Logistics",
-    video: "/Home/homePageVideo/IMG_8931.MP4",
+    video: "/Home/homePageVideo/IMG_8938.MP4",
   },
   {
     title: "Multi-Temperature Cold Store",
     scope: "Insulated wall and ceiling panels, airtight industrial cold doors",
     location: "Bengaluru, Karnataka",
     client: "Fresh Fields Food Logistics",
-    video: "/Home/homePageVideo/IMG_8929.MP4",
+    video: "/Home/homePageVideo/IMG_8936.MP4",
   },
   {
     title: "Temperature-Controlled",
     scope: "PUF cold-room enclosure, sterile modular panels & insulated roofing",
     location: "Hyderabad, Telangana",
     client: "BioMed Pharma Logistics",
-    video: "/Home/homePageVideo/IMG_8934.MP4",
+    video: "/Home/homePageVideo/IMG_8940.MP4",
   },
 ];
 
