@@ -27,7 +27,7 @@ const PROJECTS: Project[] = [
     scope: "Insulated wall and ceiling panels, airtight industrial cold doors",
     location: "Bengaluru, Karnataka",
     client: "Fresh Fields Food Logistics",
-    video: "/Home/homePageVideo/white_cold_store_gradedddd.mp4",
+    video: "/Home/homePageVideo/IMG_8929.MP4",
   },
   {
     title: "Temperature-Controlled",
