@@ -43,7 +43,7 @@ export function Stats() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <Reveal className="@container">
         <div
-          className="relative overflow-hidden rounded-[max(14px,1.8cqw)] px-6 pt-20 pb-24 sm:px-10 lg:pt-[3.1cqw] lg:pr-0 lg:pb-[8.4cqw] lg:pl-[8.9cqw]"
+          className="relative overflow-hidden rounded-[max(14px,1.8cqw)] px-6 pt-20 pb-24 sm:px-10 lg:pt-[3.1cqw] lg:pr-[8.9cqw] lg:pb-[8.4cqw] lg:pl-[8.9cqw]"
           style={{ backgroundColor: CARD_BG, "--cut-r": CUT_R } as CSSProperties}
         >
           {/* Top-left cut-out with the brand bars */}
@@ -85,7 +85,7 @@ export function Stats() {
               The year the founders launched the first project.
             </p>
             <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">
-              <CountUp from={2001} value={2007} />
+              <CountUp from={2001} value={2012} />
             </p>
           </div>
 

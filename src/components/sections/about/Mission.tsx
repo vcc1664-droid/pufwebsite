@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
+import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 import teamImage from "../../../../public/about/Insulation/PUF FACTORYY-100kb.jpeg";
 import factoryImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
@@ -59,6 +60,10 @@ export function Mission() {
   // The photo that was showing before `index`; it slides out through the top.
   const [previous, setPrevious] = useState<number | null>(null);
   const step = STEPS[index];
+  // Autoplay waits until the photo is scrolled into view, so it starts from step 01 there.
+  const { ref: photoRef, inView } = useInView<HTMLDivElement>({ threshold: 0.5 });
+  // Hovering the photo holds the current step.
+  const [hovered, setHovered] = useState(false);
 
   const goTo = (next: number) => {
     if (next === index) return;
@@ -68,12 +73,13 @@ export function Mission() {
 
   // Steps advance on their own; the timer restarts whenever the step changes (dot clicks too).
   useEffect(() => {
+    if (!inView || hovered) return;
     const timer = setTimeout(() => {
       setPrevious(index);
       setIndex((index + 1) % STEPS.length);
     }, AUTOPLAY_MS);
     return () => clearTimeout(timer);
-  }, [index]);
+  }, [index, inView, hovered]);
 
   return (
     <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
@@ -110,7 +116,11 @@ export function Mission() {
           </Reveal>
 
           <Reveal delay={150} className={BLOCK_GAP}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/765]">
+            <div
+              ref={photoRef}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              className="relative aspect-[4/3] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/765]">
               {/* All photos stay stacked; the active one slides in diagonally from the bottom-right while
                   the previous one slides out towards the top-left */}
               {STEPS.map((s, i) => (
