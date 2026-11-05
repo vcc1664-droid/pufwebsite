@@ -76,8 +76,11 @@ export function Stats() {
             </div>
           </div>
 
-          <h2 className={cn(label, "mt-14 lg:mt-[4.1cqw]")}>Year of Establishment</h2>
-          <div className="mt-6 flex flex-col-reverse gap-4 border-t border-[#b0abb0] pt-8 lg:mt-[1.85cqw] lg:flex-row lg:items-start lg:justify-between lg:pt-[2.6cqw]">
+          {/* Rule sits above the label here, with the label and copy below it */}
+          <h2 className={cn(label, "mt-14 border-t border-[#b0abb0] pt-6 lg:mt-[4.1cqw] lg:pt-[1.85cqw]")}>
+            Year of Establishment
+          </h2>
+          <div className="mt-8 flex flex-col-reverse gap-4 lg:mt-[2.6cqw] lg:flex-row lg:items-start lg:justify-between">
             <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">
               The year the founders launched the first project.
             </p>

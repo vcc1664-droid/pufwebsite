@@ -59,8 +59,6 @@ const SPACES: {
 
 /** Space between the header and the photo while the section is pinned. */
 const PHOTO_GAP = 12;
-/** Space kept under the copy and button when the section pins higher to show them. */
-const BOTTOM_GAP = 44;
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Applications() {
@@ -79,24 +77,13 @@ export function Applications() {
 
     const update = () => {
       frame = 0;
-      // Pin so the photo's top edge sits PHOTO_GAP below the header...
+      // Pin so the photo's top edge sits PHOTO_GAP below the header
       const photo = pinEl.querySelector<HTMLElement>("[data-photo]");
       const photoOffset = photo
         ? photo.getBoundingClientRect().top - pinEl.getBoundingClientRect().top
         : 0;
-      const belowHeader = (header?.offsetHeight ?? 0) + PHOTO_GAP - photoOffset;
-      // ...unless the copy under the photo would then run off the bottom of the screen: pin
-      // higher so the photo and the copy below it are both in view, the button ending
-      // BOTTOM_GAP above the bottom.
-      const copy = pinEl.querySelector<HTMLElement>("[data-copy]");
-      const copyBottom = copy
-        ? copy.getBoundingClientRect().bottom -
-          pinEl.getBoundingClientRect().top
-        : 0;
-      const top = Math.min(
-        belowHeader,
-        window.innerHeight - BOTTOM_GAP - copyBottom,
-      );
+      // (always, even when the copy under it then runs past the bottom of a short screen).
+      const top = (header?.offsetHeight ?? 0) + PHOTO_GAP - photoOffset;
       pinEl.style.top = `${top}px`;
       const travel = trackEl.offsetHeight - pinEl.offsetHeight;
       const scrolled = top - trackEl.getBoundingClientRect().top;
