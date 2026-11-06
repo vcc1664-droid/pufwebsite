@@ -33,7 +33,8 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
       { label: "All Panels", href: "/products" },
       { label: "Applications", href: "/applications" },
       { label: "Case Studies", href: "/projects" },
-      { label: "Technical Blog", href: "/blog" },
+      // No link until the blog page exists
+      { label: "Technical Blog" },
     ],
   },
 ];
