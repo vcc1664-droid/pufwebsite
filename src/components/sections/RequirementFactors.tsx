@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { useState, type PointerEvent, type ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -78,6 +78,38 @@ const FACTORS: Factor[] = [
   },
 ];
 
+/** Largest tilt, in degrees, when the cursor is at a card's edge: left/right (rotateY) and up/down (rotateX). */
+const MAX_TILT_Y = 35;
+const MAX_TILT_X = 25;
+/** Lower is a stronger 3D depth. */
+const PERSPECTIVE = "700px";
+// The tilt is set inline, so the card's own colour fade (Tailwind's transition-colors) is restated here.
+const COLOR_FADE = "color 300ms cubic-bezier(0.4,0,0.2,1), background-color 300ms cubic-bezier(0.4,0,0.2,1)";
+
+/**
+ * Tilts the card towards the cursor in 3D. Mouse only, so touch devices keep the plain card.
+ * Listens on the card's list item, which never rotates, so a strong tilt can't pull the card's
+ * edge out from under the cursor and make it flicker.
+ */
+function tilt(event: PointerEvent<HTMLElement>) {
+  if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const card = event.currentTarget.querySelector("article");
+  if (!card) return;
+  const rect = event.currentTarget.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width - 0.5;
+  const y = (event.clientY - rect.top) / rect.height - 0.5;
+  card.style.transition = `transform 100ms ease-out, ${COLOR_FADE}`;
+  card.style.transform = `perspective(${PERSPECTIVE}) rotateX(${-y * 2 * MAX_TILT_X}deg) rotateY(${x * 2 * MAX_TILT_Y}deg)`;
+}
+
+/** Eases the card back flat when the cursor leaves. */
+function untilt(event: PointerEvent<HTMLElement>) {
+  const card = event.currentTarget.querySelector("article");
+  if (!card?.style.transform) return;
+  card.style.transition = `transform 600ms cubic-bezier(0.22,1,0.36,1), ${COLOR_FADE}`;
+  card.style.transform = `perspective(${PERSPECTIVE}) rotateX(0deg) rotateY(0deg)`;
+}
+
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function RequirementFactors() {
   // The highlighted card follows hover/focus; the first one is highlighted by default.
@@ -90,7 +122,13 @@ export function RequirementFactors() {
           const isActive = active === i;
 
           return (
-            <li key={factor.title} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)}>
+            <li
+              key={factor.title}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              onPointerMove={tilt}
+              onPointerLeave={untilt}
+            >
               <Reveal delay={i * 100} className="h-full">
                 <article
                   className={cn(
