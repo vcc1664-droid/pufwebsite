@@ -4,7 +4,7 @@ import { PageIntro } from "@/components/sections/PageIntro";
 import { ManufacturingStrengths } from "@/components/sections/products/ManufacturingStrengths";
 import { PanelJoints } from "@/components/sections/products/PanelJoints";
 import { PanelRange } from "@/components/sections/products/PanelRange";
-import { PIR_PANELS, PUF_PANELS, ROCKWOOL_PANELS } from "@/components/sections/products/panels";
+import { PIR_PANELS, PUF_PANELS } from "@/components/sections/products/panels";
 import { ProductShowcase } from "@/components/sections/products/ProductShowcase";
 
 export const metadata: Metadata = {
@@ -28,7 +28,6 @@ export default function Products() {
       <ProductShowcase />
       <PanelRange tone="dark" roundedTop {...PUF_PANELS} />
       <PanelRange {...PIR_PANELS} />
-      <PanelRange tone="dark" {...ROCKWOOL_PANELS} />
       <PanelJoints />
       <ManufacturingStrengths />
       <LetsTalk

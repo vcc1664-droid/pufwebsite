@@ -7,7 +7,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import coldRoomImage from "../../../public/Home/FACILITYTYPES/Chilled Freezer Warehouse Aisle.png";
-import roofingImage from "../../../public/Home/Different/708b0198-7a84-44e9-8780-aa4d6be11c9d-80kb.jpeg";
 import modularImage from "../../../public/Home/modular_environment_hero.webp";
 import dataCentreImage from "../../../public/Home/Different/Data Center-100kb.jpeg";
 import pharmaImage from "../../../public/Home/Different/Pharma-100kb.jpeg";
@@ -24,12 +23,6 @@ const SPACES: {
     body: "For cold rooms, freezer areas and temperature-sensitive facilities.",
     image: coldRoomImage,
     alt: "Cold storage warehouse aisle lined with insulated PUF panels",
-  },
-  {
-    title: "Industrial Roofing & Cladding",
-    body: "For factories, warehouses and industrial buildings.",
-    image: roofingImage,
-    alt: "Industrial building roofed and clad with insulated panels",
   },
   {
     title: "Controlled & Modular Environments",
@@ -59,6 +52,10 @@ const SPACES: {
 
 /** Space between the header and the photo while the section is pinned. */
 const PHOTO_GAP = 12;
+/** Space kept under the button at the bottom of the screen while pinned. */
+const BOTTOM_GAP = 16;
+/** The photo never shrinks below this height to make room for the copy. */
+const MIN_PHOTO_HEIGHT = 200;
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Applications() {
@@ -79,6 +76,19 @@ export function Applications() {
       frame = 0;
       // Pin so the photo's top edge sits PHOTO_GAP below the header
       const photo = pinEl.querySelector<HTMLElement>("[data-photo]");
+      const copy = pinEl.querySelector<HTMLElement>("[data-copy]");
+      // On short screens the photo keeps its full width but gets shorter (the image is cropped to
+      // fit), so the title, copy and button under it still fit above the bottom edge while pinned.
+      if (photo && copy) {
+        const photoRect = photo.getBoundingClientRect();
+        const below = copy.getBoundingClientRect().bottom - photoRect.bottom;
+        const room =
+          window.innerHeight - BOTTOM_GAP - below - (header?.offsetHeight ?? 0) - PHOTO_GAP;
+        const natural = (photoRect.width * 277) / 537;
+        const height = Math.max(MIN_PHOTO_HEIGHT, Math.min(natural, room));
+        photo.style.aspectRatio = "auto";
+        photo.style.height = `${height}px`;
+      }
       const photoOffset = photo
         ? photo.getBoundingClientRect().top - pinEl.getBoundingClientRect().top
         : 0;

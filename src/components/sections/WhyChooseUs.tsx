@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import truckImage from "../../../public/Home/e9e3d87b-f844-43f4-9a2d-5898277b404b-80kb.jpeg";
-import factoryImage from "../../../public/Home/WHYCHOOSE/C0049T01.webp";
+import factoryImage from "../../../public/Home/WHYCHOOSE/fd3ce45c-e3d8-43b8-abab-692b6f22bdd5 1-100kb.jpeg";
 import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
 import installImage from "../../../public/about/Webbb-100kb.jpeg";
 
@@ -21,7 +21,7 @@ const REASONS: { title: string; body: string; image: StaticImageData; alt: strin
     title: "Made at our own facility",
     body: "Insulated panels are manufactured at our Nalagarh facility, so production stays in our hands.",
     image: factoryImage,
-    alt: "PUF panels on the production line at the Synergy PUF facility",
+    alt: "Stacks of finished insulated panels in the Synergy PUF facility yard",
   },
   {
     title: "One team, factory to site",
