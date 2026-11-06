@@ -14,7 +14,7 @@ import hospitalityImage from "../../../../public/Applications/Servicestailored/H
 import industrialImage from "../../../../public/Applications/Servicestailored/industrial-manufacturing.jpg";
 import infrastructureImage from "../../../../public/Applications/Servicestailored/infrastructure-utilities.jpg";
 import logisticsImage from "../../../../public/Applications/Servicestailored/logistics-warehousing.jpg";
-import retailImage from "../../../../public/Applications/Servicestailored/Shopping Centers.jpg";
+import retailImage from "../../../../public/Applications/Servicestailored/Mall-100kb.jpeg";
 
 type Sector = { name: string; body: string; image: StaticImageData; alt: string };
 

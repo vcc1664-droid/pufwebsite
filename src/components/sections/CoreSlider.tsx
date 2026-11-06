@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import rockwoolImage from "../../../public/Home/PIR/45adfe6c-aa00-48be-9cd7-9f48b74b0e10.jpg";
 import pirImage from "../../../public/Home/PIR/54ab58aa-4217-405d-b85b-c7a7b9bdd6f0.jpg";
 import jointImage from "../../../public/Home/PIR/WhatsApp Image 2026-11-04 at 13.29.39.jpeg";
 
@@ -33,15 +32,6 @@ const CORES: Core[] = [
     body: "Improved fire performance with high thermal efficiency for demanding facilities.",
     href: "/products",
     image: { src: pirImage, alt: "PIR insulated panels" },
-  },
-  {
-    name: "Rockwool",
-    body: "Non-combustible insulation with strong fire and acoustic performance.",
-    href: "/products",
-    image: {
-      src: rockwoolImage,
-      alt: "Rockwool insulated panels",
-    },
   },
 ];
 
@@ -77,7 +67,8 @@ function ArrowButton({ direction, onClick }: { direction: "prev" | "next"; onCli
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function CoreSlider() {
   const [index, setIndex] = useState(0);
-  const core = CORES[index];
+  // Clamped so a stale index (e.g. kept by hot reload after a core is removed) can't crash the page.
+  const core = CORES[Math.min(index, CORES.length - 1)];
   const track = useRef<HTMLDivElement>(null);
   const pinned = useRef<HTMLDivElement>(null);
 

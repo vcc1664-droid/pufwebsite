@@ -29,6 +29,12 @@ const specs = (area: string) => [
   { label: "Area", value: area },
 ];
 
+// Photos that replace the drone photo for a project below.
+const PHOTO_OVERRIDES: Partial<Record<string, ProjectImage[]>> = {
+  "Modern Cold Store": [{ src: "/Project/Projectt-100kb.jpeg", alt: "Modern Cold Store built with Synergy PUF panels" }],
+  "BK Cold Store": [{ src: "/Project/Puf website-100kb.jpeg", alt: "BK Cold Store built with Synergy PUF panels" }],
+};
+
 // "[Village]" is a placeholder from the design until exact locations are confirmed.
 const PROJECTS: Project[] = [
   {
@@ -69,7 +75,7 @@ const PROJECTS: Project[] = [
     name,
     body: `Synergy PUF supplied and installed insulated wall and ceiling panels for ${name}.`,
     // Uppercase .JPG has no static-import typings, so these photos are referenced by path.
-    images: [{ src: `/Project/${file}`, alt: `Aerial view of ${name}` }],
+    images: PHOTO_OVERRIDES[name] ?? [{ src: `/Project/${file}`, alt: `Aerial view of ${name}` }],
     specs: specs(area),
   })),
 ];
