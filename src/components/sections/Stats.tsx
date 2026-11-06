@@ -64,13 +64,13 @@ export function Stats() {
             <h2 className={cn(label, "lg:col-span-2")}>Launched Projects</h2>
 
             <div className="border-t border-[#7c797c] pt-8 max-lg:mt-6 lg:mt-[1.85cqw] lg:grid lg:grid-cols-[47%_1fr] lg:pt-[2.6cqw] max-lg:flex max-lg:flex-col max-lg:gap-4">
-              <Stat value={150} mark="+">
+              <Stat value={2000} mark="+">
                 Projects launched successfully since 2012.
               </Stat>
             </div>
 
             <div className="border-t border-[#7c797c] pt-8 max-lg:mt-6 lg:mt-[1.85cqw] lg:flex lg:justify-between lg:pt-[2.6cqw] max-lg:flex max-lg:flex-col max-lg:gap-4">
-              <Stat value={98} mark="%">
+              <Stat value={100} mark="%">
                 Percentage of our fully satisfied clients.
               </Stat>
             </div>
@@ -85,7 +85,7 @@ export function Stats() {
               The year the founders launched the first project.
             </p>
             <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">
-              <CountUp from={2001} value={2012} />
+              <CountUp from={2001} value={2012} finishAt={0.8} />
             </p>
           </div>
 

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import truckImage from "../../../public/Home/Truck-100kb.jpeg";
+import truckImage from "../../../public/Home/e9e3d87b-f844-43f4-9a2d-5898277b404b-80kb.jpeg";
 import factoryImage from "../../../public/Home/WHYCHOOSE/C0049T01.webp";
 import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
 import installImage from "../../../public/about/Webbb-100kb.jpeg";
@@ -33,7 +33,7 @@ const REASONS: { title: string; body: string; image: StaticImageData; alt: strin
     title: "Delivery you can plan around",
     body: "Production and dispatch are planned together. Share your site timeline and we’ll confirm dates.",
     image: truckImage,
-    alt: "Synergy PUF delivery truck loaded with panels",
+    alt: "Synergy PUF delivery truck outside the panel warehouse",
   },
 ];
 

@@ -14,9 +14,9 @@ export default function Projects() {
   return (
     // data-header switches the header to its dark style while this page is shown
     <main data-header="dark" className="flex-1">
-      {/* Dark opening band; pulled up under the transparent header (72px tall, 114px from lg) so
+      {/* Dark opening band; pulled up under the transparent header (96px tall, 127px from lg) so
           the header sits on black */}
-      <div className="-mt-[72px] bg-black pt-[72px] lg:-mt-[114px] lg:pt-[114px]">
+      <div className="-mt-[96px] bg-black pt-[96px] lg:-mt-[127px] lg:pt-[127px]">
         <PageIntro
           tone="dark"
           title={

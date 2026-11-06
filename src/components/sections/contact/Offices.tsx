@@ -2,17 +2,15 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 
-// Addresses as given in the design; they differ from the footer and need confirming.
+// Same addresses as the footer.
 const OFFICES = [
   {
     kind: "Head Office",
-    name: "New Delhi Office",
-    address: "Plot No. 45, Okhla Industrial Estate, Phase III, New Delhi - 110020, India",
+    address: "C-148, Phase 7, Industrial Area Sector 73, SAS Nagar Punjab 160055",
   },
   {
     kind: "Factory & Works",
-    name: "Gurugram Manufacturing Plant",
-    address: "Sector 8, IMT Manesar, Gurugram, Haryana - 122050, India",
+    address: "VPO Manjholi, Tehsil Nalagarh District Solan HP 174010, India",
   },
 ];
 
@@ -34,7 +32,6 @@ export function Offices() {
                 {office.kind}
               </h2>
               <address className="mt-4 font-ui text-[max(14px,1.35cqw)] leading-[1.55] not-italic lg:mt-[1.5cqw]">
-                <span className="block">{office.name}</span>
                 <span className="block text-[#7a7a7a]">{office.address}</span>
               </address>
             </Reveal>

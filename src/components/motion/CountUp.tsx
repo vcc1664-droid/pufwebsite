@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Viewport position (from the top, as a share of its height) where the count reaches its final value. */
+/** Default viewport position (from the top, as a share of its height) where the count reaches its final value. */
 const FINISH_AT = 0.4;
 
 /**
@@ -12,7 +12,16 @@ const FINISH_AT = 0.4;
  * The final number reserves the space, so surrounding text never shifts; screen readers and the
  * first render get the real value.
  */
-export function CountUp({ value, from = 0 }: { value: number; from?: number }) {
+export function CountUp({
+  value,
+  from = 0,
+  finishAt = FINISH_AT,
+}: {
+  value: number;
+  from?: number;
+  /** Higher finishes sooner: 0.8 reaches the final value just after it enters the screen. */
+  finishAt?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const [current, setCurrent] = useState(value);
 
@@ -30,7 +39,7 @@ export function CountUp({ value, from = 0 }: { value: number; from?: number }) {
       }
       const viewport = window.innerHeight;
       const top = el.getBoundingClientRect().top;
-      const progress = Math.min(1, Math.max(0, (viewport - top) / (viewport * (1 - FINISH_AT))));
+      const progress = Math.min(1, Math.max(0, (viewport - top) / (viewport * (1 - finishAt))));
       setCurrent(Math.round(from + (value - from) * progress));
     };
     const onScroll = () => {
@@ -47,7 +56,7 @@ export function CountUp({ value, from = 0 }: { value: number; from?: number }) {
       window.removeEventListener("resize", onScroll);
       reducedMotion.removeEventListener("change", update);
     };
-  }, [value, from]);
+  }, [value, from, finishAt]);
 
   return (
     <span ref={ref} className="relative inline-block">
