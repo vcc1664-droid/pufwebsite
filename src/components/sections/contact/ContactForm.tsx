@@ -1,6 +1,6 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, RULE_GAP, SECTION_BOTTOM, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -47,13 +47,71 @@ const label = "block font-ui text-[max(13px,1.1cqw)] text-[#1e1e1e]";
 const control =
   "mt-2 w-full rounded-[3px] border border-[#cfcfcf] bg-white px-[max(12px,1.3cqw)] font-ui text-[max(14px,1.1cqw)] text-black placeholder:text-[#a3a3a3] transition-colors duration-200 outline-none focus:border-brand lg:mt-[1cqw]";
 
+type Status = { state: "idle" | "sending" } | { state: "sent" | "error"; message: string };
+
+const newSubmissionId = () =>
+  typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function ContactForm() {
-  // No form backend yet: hand the enquiry to the visitor's mail app, pre-filled.
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<Status>({ state: "idle" });
+  // One ID per enquiry, so a repeated send of the same enquiry is not saved twice.
+  const submissionId = useRef<string | null>(null);
+
+  // Saves the enquiry to the team's Notion database through /api/enquiry.
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    if (status.state === "sending") return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const value = (key: string) => String(data.get(key) ?? "").trim();
+    submissionId.current ??= newSubmissionId();
+    setStatus({ state: "sending" });
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: value("name"),
+          email: value("email"),
+          phone: value("phone"),
+          company: value("company"),
+          subject: value("subject"),
+          message: value("message"),
+          submissionId: submissionId.current,
+        }),
+        signal: AbortSignal.timeout(30000),
+      });
+      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+
+      if (response.ok && result.ok) {
+        form.reset();
+        submissionId.current = null;
+        setStatus({ state: "sent", message: "Thank you. Your enquiry has been sent and we’ll be in touch soon." });
+        return;
+      }
+      // A problem with what was entered: let the visitor fix it.
+      if (response.status === 422 || response.status === 413) {
+        setStatus({ state: "error", message: result.error ?? "Please check your details and try again." });
+        return;
+      }
+      throw new Error("save failed");
+    } catch {
+      // Saving failed: don't lose the enquiry, fall back to the visitor's mail app (the form's
+      // original behaviour).
+      setStatus({
+        state: "error",
+        message: `We couldn’t send your enquiry online, so we’ve opened your email app with it filled in. You can also email us at ${CONTACT_EMAIL}.`,
+      });
+      openMailApp(value);
+    }
+  };
+
+  // Hands the enquiry to the visitor's mail app, pre-filled.
+  const openMailApp = (value: (key: string) => string) => {
     const body = [
       `Name: ${value("name")}`,
       `Email: ${value("email")}`,
@@ -137,13 +195,23 @@ export function ContactForm() {
 
               <button
                 type="submit"
+                disabled={status.state === "sending"}
                 className={cn(
                   STACK_GAP,
-                  "h-[max(44px,4.5cqw)] w-full rounded-[max(4px,0.5cqw)] bg-brand font-ui text-[max(14px,1.35cqw)] text-white transition-colors duration-200 hover:bg-black",
+                  "h-[max(44px,4.5cqw)] w-full rounded-[max(4px,0.5cqw)] bg-brand font-ui text-[max(14px,1.35cqw)] text-white transition-colors duration-200 hover:bg-black disabled:cursor-wait disabled:opacity-70",
                 )}
               >
-                Submit
+                {status.state === "sending" ? "Sending…" : "Submit"}
               </button>
+              <p
+                role="status"
+                className={cn(
+                  "mt-3 font-ui text-[max(13px,1.1cqw)] empty:hidden",
+                  status.state === "error" ? "text-[#b42318]" : "text-brand",
+                )}
+              >
+                {"message" in status ? status.message : ""}
+              </p>
             </form>
           </Reveal>
         </div>
