@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import coldImage from "../../../../public/Applications/Chilled Freezer Warehouse Aisle.png";
-import fireImage from "../../../../public/Applications/Industrial Warehouse Partition Wall.png";
-import airtightImage from "../../../../public/Applications/Interlocking Insulated Panel Joint.png";
-import weatherImage from "../../../../public/Applications/Rainy Industrial Warehouse at Dusk.png";
-import hygieneImage from "../../../../public/Applications/Sterile Stainless Steel Food Production Line.png";
-import heatImage from "../../../../public/Applications/Sunlit Desert Warehouse Rooftop.png";
+import coldImage from "../../../../public/Applications/Chilled Freezer Warehouse Aisle.jpg";
+import fireImage from "../../../../public/Applications/Industrial Warehouse Partition Wall.jpg";
+import airtightImage from "../../../../public/Applications/Interlocking Insulated Panel Joint.jpg";
+import weatherImage from "../../../../public/Applications/Rainy Industrial Warehouse at Dusk.jpg";
+import hygieneImage from "../../../../public/Applications/Sterile Stainless Steel Food Production Line.jpg";
+import heatImage from "../../../../public/Applications/Sunlit Desert Warehouse Rooftop.jpg";
 
 const iconProps = {
   "aria-hidden": true,
