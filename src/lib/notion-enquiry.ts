@@ -99,6 +99,25 @@ const richText = (value: string) => ({
     : [],
 });
 
+/** The current date and time in India, as Notion's date `start` (local time, no offset). */
+function submittedAtIndia() {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hourCycle: "h23",
+    })
+      .formatToParts(new Date())
+      .map((part) => [part.type, part.value]),
+  );
+  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}`;
+}
+
 /** Adds the enquiry as a new row in the existing Notion database. */
 export async function saveEnquiryToNotion(enquiry: Enquiry): Promise<void> {
   const { apiKey, databaseId } = config();
@@ -116,6 +135,8 @@ export async function saveEnquiryToNotion(enquiry: Enquiry): Promise<void> {
         "Company Name": richText(enquiry.company),
         Subject: richText(enquiry.subject),
         "Your Message": richText(enquiry.message),
+        // Submission date and time, shown in Indian time
+        Date: { date: { start: submittedAtIndia(), time_zone: "Asia/Kolkata" } },
       },
     }),
   });
