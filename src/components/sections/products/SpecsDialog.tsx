@@ -95,7 +95,7 @@ export const SpecsDialog = forwardRef<HTMLDialogElement, SpecsDialogProps>(funct
         </form>
 
         <div className="grid gap-8 px-5 pt-16 pb-8 lg:grid-cols-[1fr_40.8cqw] lg:gap-[3cqw] lg:pt-[1cqw] lg:pr-[5cqw] lg:pb-[4cqw] lg:pl-[2.7cqw]">
-          <div className="lg:pt-[8cqw]">
+          <div>
             <h2 className="text-[max(28px,3.45cqw)] leading-tight font-bold tracking-[-0.02em] lg:pl-[2.6cqw]">
               {name}
             </h2>
