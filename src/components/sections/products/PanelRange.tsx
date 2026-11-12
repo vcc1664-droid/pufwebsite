@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
+import { SpecsDialog } from "./SpecsDialog";
 
 export type PanelType = { tab: string; label: string; name: string; video: string };
 export type PerformanceRow = { label: string; value: string };
@@ -14,6 +15,8 @@ type PanelRangeProps = {
   types: PanelType[];
   /** Two columns of technical values. */
   performance: [PerformanceRow[], PerformanceRow[]];
+  /** Full spec sheet shown when "Technical Performance" is clicked; defaults to the values above. */
+  specs?: PerformanceRow[];
   tone?: "dark" | "light";
   /** Round the top corners, for a dark band that opens on white. */
   roundedTop?: boolean;
@@ -26,6 +29,7 @@ export function PanelRange({
   body,
   types,
   performance,
+  specs,
   tone = "light",
   roundedTop = false,
 }: PanelRangeProps) {
@@ -34,6 +38,7 @@ export function PanelRange({
   const type = types[active];
   const dark = tone === "dark";
   const video = useRef<HTMLVideoElement>(null);
+  const specsDialog = useRef<HTMLDialogElement>(null);
 
   // React leaves `muted` out of the server HTML, so the browser can block autoplay; and with three
   // panel videos on the page, loading them all at once can stall one. So each video is muted here
@@ -127,9 +132,6 @@ export function PanelRange({
             <p className="absolute top-[max(14px,3cqw)] left-[max(14px,3cqw)] bg-[#6b6b6b] px-[1.4em] py-[0.6em] font-ui text-[max(12px,1cqw)] leading-none text-white">
               {type.label}
             </p>
-            <p className="absolute bottom-[max(14px,3cqw)] left-[max(14px,3cqw)] font-ui text-[max(17px,1.75cqw)] text-black">
-              {type.name}
-            </p>
           </div>
 
           <Reveal
@@ -140,9 +142,17 @@ export function PanelRange({
             )}
           >
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <h3 className="flex items-center gap-[0.35em] font-ui text-[max(17px,1.5cqw)]">
-                <span aria-hidden className="size-[0.3em] rounded-[1px] bg-current" />
-                Technical Performance
+              <h3 className="font-ui text-[max(17px,1.5cqw)]">
+                {/* Opens the full spec sheet */}
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={() => specsDialog.current?.showModal()}
+                  className="flex cursor-pointer items-center gap-[0.35em] transition-opacity duration-200 hover:opacity-70"
+                >
+                  <span aria-hidden className="size-[0.3em] rounded-[1px] bg-current" />
+                  Technical Performance
+                </button>
               </h3>
               <p
                 className={cn(
@@ -184,6 +194,8 @@ export function PanelRange({
               ))}
             </div>
           </Reveal>
+
+          <SpecsDialog ref={specsDialog} name={type.name} rows={specs ?? performance.flat()} />
         </div>
       </div>
     </section>

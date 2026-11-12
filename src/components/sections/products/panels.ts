@@ -20,6 +20,8 @@ type PanelFamily = {
   body: string;
   types: PanelType[];
   performance: [PerformanceRow[], PerformanceRow[]];
+  /** Full spec sheet for the "Technical Performance" popup. */
+  specs?: PerformanceRow[];
 };
 
 // Performance figures are the typical industry values from the design.
@@ -38,6 +40,22 @@ export const PUF_PANELS: PanelFamily = {
       { label: "Water Absorption", value: "< 0.2%" },
       { label: "Fire Performance", value: "Self-extinguishing" },
     ],
+  ],
+  // From the PUF Wall Panel spec sheet in the design.
+  specs: [
+    { label: "Panel thickness available", value: "40 mm, 50 mm, 60 mm, 80 mm, 100 mm, 120 mm, 150 mm" },
+    { label: "Core density", value: "40 – 42 kg/m³" },
+    { label: "Thermal conductivity", value: "0.021 W/m·K" },
+    { label: "Temperature range", value: "-40 °C to +110 °C" },
+    { label: "Water vapour permeability", value: "0.11 gm/hr/m²" },
+    { label: "Water absorption", value: "< 0.2%" },
+    { label: "Compressive strength @ 10% deformation", value: "0.11 – 0.21 N/mm²" },
+    { label: "Tensile strength", value: "1.1 – 2.5 kg/cm²" },
+    { label: "Hot dimensional stability @ 85 ± 2 °C / 100 ± 2 °C for 24 hrs (max)", value: "± 2%" },
+    { label: "Cold dimensional stability @ -25 ± 2 °C for 24 hrs (max)", value: "± 2%" },
+    { label: "Fire performance", value: "Self-extinguishing" },
+    { label: "Type of foam", value: "Polyurethane" },
+    { label: "Free from CFC", value: "CFC, HFC & HCFC free" },
   ],
 };
 
