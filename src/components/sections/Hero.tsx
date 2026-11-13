@@ -32,6 +32,12 @@ export function Hero() {
               <path d="M1.5 8.5 8.5 1.5M3 1.5h5.5V7" />
             </svg>
           </Link>
+          <Link
+            href="/contact"
+            className="mt-[max(12px,1.09cqw)] ml-[max(8px,0.8cqw)] inline-flex h-[max(36px,3.3cqw)] items-center rounded-[max(6px,0.6cqw)] border border-black px-[max(14px,1.5cqw)] font-ui text-[max(12px,1.1cqw)] text-black transition-colors duration-200 hover:bg-black hover:text-white"
+          >
+            Request a sample
+          </Link>
         </div>
 
         <h1 className="mt-6 font-light text-heading md:mt-[0.17cqw]">

@@ -38,7 +38,10 @@ export function BuildingEnquiry() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = FIELDS.map((field) => `${field.label.split(":")[0]}: ${String(data.get(field.name) ?? "").trim()}`).join("\n");
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Panel recommendation request")}&body=${encodeURIComponent(body)}`;
+    // Which button was pressed decides the email subject
+    const submitter = (event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
+    const subject = submitter?.value === "sample" ? "Panel sample request" : "Panel recommendation request";
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -81,12 +84,22 @@ export function BuildingEnquiry() {
               ))}
             </div>
 
-            <button
-              type="submit"
-              className="mt-6 rounded-[max(8px,0.6cqw)] bg-brand px-[max(24px,3.5cqw)] py-[max(14px,1.6cqw)] font-ui text-[max(16px,1.75cqw)] leading-none font-bold text-white transition-colors duration-200 hover:bg-black lg:mt-[1.7cqw]"
-            >
-              Request a quote
-            </button>
+            <div className="mt-6 flex flex-wrap gap-3 lg:mt-[1.7cqw] lg:gap-[1.1cqw]">
+              <button
+                type="submit"
+                value="quote"
+                className="rounded-[max(8px,0.6cqw)] bg-brand px-[max(24px,3.5cqw)] py-[max(14px,1.6cqw)] font-ui text-[max(16px,1.75cqw)] leading-none font-bold text-white transition-colors duration-200 hover:bg-black"
+              >
+                Request a quote
+              </button>
+              <button
+                type="submit"
+                value="sample"
+                className="rounded-[max(8px,0.6cqw)] border-2 border-brand px-[max(24px,3.5cqw)] py-[max(14px,1.6cqw)] font-ui text-[max(16px,1.75cqw)] leading-none font-bold text-brand transition-colors duration-200 hover:bg-brand hover:text-white"
+              >
+                Request a sample
+              </button>
+            </div>
           </form>
         </Reveal>
       </div>

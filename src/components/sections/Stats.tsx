@@ -64,7 +64,7 @@ export function Stats() {
             <h2 className={cn(label, "lg:col-span-2")}>Launched Projects</h2>
 
             <div className="border-t border-[#7c797c] pt-8 max-lg:mt-6 lg:mt-[1.85cqw] lg:grid lg:grid-cols-[47%_1fr] lg:pt-[2.6cqw] max-lg:flex max-lg:flex-col max-lg:gap-4">
-              <Stat value={2000} mark="+">
+              <Stat value={5000} mark="+">
                 Projects launched successfully since 2012.
               </Stat>
             </div>
