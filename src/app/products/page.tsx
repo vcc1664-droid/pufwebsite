@@ -4,6 +4,7 @@ import { PageIntro } from "@/components/sections/PageIntro";
 import { BuildingEnquiry } from "@/components/sections/products/BuildingEnquiry";
 import { ChoosePanel } from "@/components/sections/products/ChoosePanel";
 import { ManufacturingStrengths } from "@/components/sections/products/ManufacturingStrengths";
+import { PanelBenefits } from "@/components/sections/products/PanelBenefits";
 import { PanelJoints } from "@/components/sections/products/PanelJoints";
 import { PanelRange } from "@/components/sections/products/PanelRange";
 import { PIR_PANELS, PUF_PANELS } from "@/components/sections/products/panels";
@@ -34,6 +35,7 @@ export default function Products() {
       <PanelRange {...PIR_PANELS} />
       <PanelJoints />
       <ManufacturingStrengths />
+      <PanelBenefits />
       <SpaceTiles />
       <BuildingEnquiry />
       <LetsTalk

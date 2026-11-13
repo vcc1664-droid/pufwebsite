@@ -1,12 +1,20 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import { SpecsDialog } from "./SpecsDialog";
 
-export type PanelType = { tab: string; label: string; name: string; video: string };
+export type PanelType = {
+  tab: string;
+  label: string;
+  name: string;
+  video: string;
+  /** Render shown in the "Technical Performance" popup. */
+  specsImage?: StaticImageData;
+};
 export type PerformanceRow = { label: string; value: string };
 
 type PanelRangeProps = {
@@ -211,7 +219,7 @@ export function PanelRange({
             </div>
           </Reveal>
 
-          <SpecsDialog ref={specsDialog} name={type.name} rows={specs ?? performance.flat()} />
+          <SpecsDialog ref={specsDialog} name={type.name} rows={specs ?? performance.flat()} image={type.specsImage} />
         </div>
       </div>
     </section>

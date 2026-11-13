@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";import { ScrollGrow } from "
 import { ScrollRise } from "@/components/motion/ScrollRise";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelImage from "../../../public/Home/puf-3d-panel-exploded.png";
+import panelImage from "../../../public/Home/21937329-9225-4a24-a7ce-e400225ff293.png";
 
 const LayersIcon = (
   <path d="M12 3.5 3.5 8 12 12.5 20.5 8 12 3.5ZM3.5 12 12 16.5 20.5 12M3.5 16 12 20.5 20.5 16" />

@@ -2,11 +2,11 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import zomato from "../../../public/Home/CompnayLogo/548122b6-676c-475f-a432-96e4c6d93d6e.jpg";
-import amul from "../../../public/Home/CompnayLogo/69095cf9-0d05-48bf-9edf-5e71f6bcd91c.jpg";
-import blinkit from "../../../public/Home/CompnayLogo/824d2ef9-1d0d-498c-9bfa-0e555c82a0ad.jpg";
-import verka from "../../../public/Home/CompnayLogo/984fbac7-02a4-4962-b680-73761f6035b5.jpg";
-import nestle from "../../../public/Home/CompnayLogo/d0134dc4-4f43-4f45-8b09-342aa84a5b47.jpg";
+import blinkit from "../../../public/Home/CompnayLogo/Group 2085662839.png";
+import amul from "../../../public/Home/CompnayLogo/Group 2085662840.png";
+import zomato from "../../../public/Home/CompnayLogo/Group 2085662841.png";
+import nestle from "../../../public/Home/CompnayLogo/Group 2085662842.png";
+import verka from "../../../public/Home/CompnayLogo/Group 2085662843.png";
 
 const LOGOS = [
   { src: zomato, name: "Zomato" },
@@ -44,7 +44,7 @@ export function ClientLogos() {
                         src={logo.src}
                         alt={copy === 1 ? "" : logo.name}
                         sizes="(min-width: 1024px) 14vw, 30vw"
-                        className="h-[max(56px,5.5cqw)] w-auto rounded-[max(8px,0.6cqw)] border border-[#ececec]"
+                        className="h-[max(72px,7.5cqw)] w-auto rounded-[max(8px,0.6cqw)] border border-[#ececec]"
                       />
                     </Reveal>
                   </li>
