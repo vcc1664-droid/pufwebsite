@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import truckImage from "../../../public/Home/e9e3d87b-f844-43f4-9a2d-5898277b404b-80kb.jpeg";
 import factoryImage from "../../../public/Home/WHYCHOOSE/fd3ce45c-e3d8-43b8-abab-692b6f22bdd5 1-100kb.jpeg";
 import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
-import installImage from "../../../public/about/Webbb-100kb.jpeg";
+import installImage from "../../../public/Home/ISOcertified/Steel Frame Panel Installation-80kb.jpeg";
 
 const REASONS: { title: string; body: string; image: StaticImageData; alt: string }[] = [
   {

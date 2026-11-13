@@ -1,20 +1,63 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
+import coilImage from "../../../public/Home/Whereyour/WhatsApp Image 2026-11-13 at 12.22.19-60kb.jpeg";
+import formingImage from "../../../public/Home/Whereyour/Industrial Roll Forming Line-60kb.jpeg";
+import foamImage from "../../../public/Home/Whereyour/Precision Adhesive Dispensing Machine-60kb.jpeg";
+import cuttingImage from "../../../public/Home/Whereyour/Industrial Band Saw in a Bright Workshop-60kb.jpeg";
+import labImage from "../../../public/Home/Whereyour/lab-50kb.jpeg";
+import dispatchImage from "../../../public/Home/Whereyour/Forklift Moving Insulated Panels-50kb.jpeg";
 
-type Stage = { name: string; title: string; body: string };
+type Stage = { name: string; title: string; body: string; image?: StaticImageData; alt?: string };
 
-// Stages along the Nalagarh line, in order. Add each stage's photo in place of the empty box.
+// Stages along the Nalagarh line, in order. Stages without a photo yet show an empty box.
 const STAGES: Stage[] = [
-  { name: "Coil", title: "Steel coil.", body: "The coil is loaded on the uncoiler at the start of the line." },
-  { name: "Forming", title: "Forming.", body: "Rollers shape the flat steel sheet into the panel profile." },
-  { name: "Foam", title: "Foam.", body: "Foam is dispensed onto the steel sheet and becomes the insulation core." },
-  { name: "Cutting", title: "Cutting.", body: "The finished panel is cut to length on a band saw." },
-  { name: "Lab", title: "Lab.", body: "Test equipment at the plant." },
-  { name: "Dispatch", title: "Dispatch.", body: "Panels are stacked at the loading point, ready for the truck." },
+  {
+    name: "Coil",
+    title: "Steel coil.",
+    body: "The coil is loaded on the uncoiler at the start of the line.",
+    image: coilImage,
+    alt: "Steel coil loaded on the uncoiler at the start of the panel line",
+  },
+  {
+    name: "Forming",
+    title: "Forming.",
+    body: "Rollers shape the flat steel sheet into the panel profile.",
+    image: formingImage,
+    alt: "Industrial roll forming line shaping steel sheet into the panel profile",
+  },
+  {
+    name: "Foam",
+    title: "Foam.",
+    body: "Foam is dispensed onto the steel sheet and becomes the insulation core.",
+    image: foamImage,
+    alt: "Dispensing machine applying foam onto the steel sheet",
+  },
+  {
+    name: "Cutting",
+    title: "Cutting.",
+    body: "The finished panel is cut to length on a band saw.",
+    image: cuttingImage,
+    alt: "Industrial band saw used to cut finished panels to length",
+  },
+  {
+    name: "Lab",
+    title: "Lab.",
+    body: "Test equipment at the plant.",
+    image: labImage,
+    alt: "Test equipment in the lab at the plant",
+  },
+  {
+    name: "Dispatch",
+    title: "Dispatch.",
+    body: "Panels are stacked at the loading point, ready for the truck.",
+    image: dispatchImage,
+    alt: "Forklift moving insulated panels to the loading point",
+  },
 ];
 
 /* Sizes (lg+) are cqw of the content width, measured from the design. */
@@ -107,11 +150,22 @@ export function WherePanelsAreMade() {
                         <span className="inline-block rounded-full bg-[#14213d] px-[0.8em] py-[0.3em] font-ui text-[max(13px,0.95cqw)] leading-none font-bold text-white">
                           {i + 1} {stage.name}
                         </span>
-                        {/* Stage photo goes here once supplied */}
+                        {/* Stage photo, or an empty box until one is supplied */}
                         <div
-                          aria-hidden
-                          className="mt-3 aspect-[591/277] rounded-[max(8px,0.5cqw)] border border-[#e6e3dc] bg-[#f1efea] lg:mt-[0.8cqw]"
-                        />
+                          aria-hidden={!stage.image}
+                          className="relative mt-3 aspect-[591/277] overflow-hidden rounded-[max(8px,0.5cqw)] border border-[#e6e3dc] bg-[#f1efea] lg:mt-[0.8cqw]"
+                        >
+                          {stage.image && (
+                            <Image
+                              src={stage.image}
+                              alt={stage.alt ?? ""}
+                              fill
+                              placeholder="blur"
+                              sizes="(min-width: 1024px) 40vw, (min-width: 640px) 60vw, 82vw"
+                              className="object-cover"
+                            />
+                          )}
+                        </div>
                         <p className="mt-3 font-ui text-[max(15px,1.15cqw)] leading-[1.6] text-[#3e3e3e] lg:mt-[0.8cqw]">
                           <strong className="font-bold text-black">{stage.title}</strong> {stage.body}
                         </p>

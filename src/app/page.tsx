@@ -26,7 +26,6 @@ export default function Home() {
       </PinBehind>
       <div className="relative z-10 bg-white">
         <HeroImage />
-        <ClientLogos />
         <PanelLayers />
         <WhyChooseUs />
         <WherePanelsAreMade />
@@ -40,6 +39,7 @@ export default function Home() {
         <ProductionToInstallation />
         <SelectedProjects />
         <Testimonials />
+        <ClientLogos />
         <BuyerQuestions />
       </div>
     </main>

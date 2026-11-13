@@ -1,6 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER, SECTION_Y } from "@/constants/layout";
+import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import agricultureImage from "../../../../public/Applications/Servicestailored/Agriculture.jpg";
 import coldChainImage from "../../../../public/Applications/Servicestailored/cold-chain-food-processing.jpg";
@@ -32,8 +32,14 @@ export function SpaceTiles() {
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
+        <Reveal>
+          <h2 className="text-[max(28px,3.3cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+            Where each panel is used
+          </h2>
+        </Reveal>
+
         {/* Tiles scroll endlessly from right to left; hovering pauses them */}
-        <Reveal className="group overflow-hidden">
+        <Reveal delay={100} className={cn(BLOCK_GAP, "group overflow-hidden")}>
           <ul className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:overflow-x-auto">
             {/* Two copies so the loop has no gap; the second is hidden from screen readers */}
             {[0, 1].map((copy) =>

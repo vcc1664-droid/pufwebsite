@@ -47,7 +47,7 @@ export function PanelLayers() {
       <div className="@container">
         <Reveal className="text-center">
           <h2 className="text-[max(26px,4cqw)] leading-none tracking-[-0.02em] text-ink uppercase">
-            What&apos;s Inside Matters
+            Look inside the panel
           </h2>
           <p className="mx-auto mt-[max(14px,1.73cqw)] max-w-[66cqw] font-ui text-[max(14px,1.3cqw)] leading-[1.5] text-muted max-lg:max-w-xl">
             A PUF panel is more than two metal faces. At its core is a high-performance insulation layer,

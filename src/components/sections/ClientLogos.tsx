@@ -22,23 +22,37 @@ export function ClientLogos() {
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
-        <ul
-          aria-label="Our clients"
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:justify-between lg:gap-0"
-        >
-          {LOGOS.map((logo, i) => (
-            <li key={logo.name}>
-              <Reveal delay={i * 80}>
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  sizes="(min-width: 1024px) 14vw, 30vw"
-                  className="h-[max(56px,5.5cqw)] w-auto rounded-[max(8px,0.6cqw)] border border-[#ececec]"
-                />
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+        {/* The same row, moving endlessly from right to left. Two copies sit side by side so the
+            loop has no gap; the second is hidden from screen readers. Hovering pauses it. */}
+        <div className="group overflow-hidden">
+          <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:w-full">
+            {[0, 1].map((copy) => (
+              <ul
+                key={copy}
+                aria-label={copy === 0 ? "Our clients" : undefined}
+                aria-hidden={copy === 1 || undefined}
+                className={cn(
+                  // Each copy is one content-width row, logos evenly spread as before
+                  "flex min-w-[100cqw] shrink-0 items-center justify-around gap-4 px-2 sm:gap-6 sm:px-3 lg:gap-0 lg:px-0",
+                  copy === 1 && "motion-reduce:hidden",
+                )}
+              >
+                {LOGOS.map((logo, i) => (
+                  <li key={logo.name}>
+                    <Reveal delay={i * 80}>
+                      <Image
+                        src={logo.src}
+                        alt={copy === 1 ? "" : logo.name}
+                        sizes="(min-width: 1024px) 14vw, 30vw"
+                        className="h-[max(56px,5.5cqw)] w-auto rounded-[max(8px,0.6cqw)] border border-[#ececec]"
+                      />
+                    </Reveal>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
