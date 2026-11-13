@@ -16,14 +16,18 @@ export function CountUp({
   value,
   from = 0,
   finishAt = FINISH_AT,
+  locale,
 }: {
   value: number;
   from?: number;
   /** Higher finishes sooner: 0.8 reaches the final value just after it enters the screen. */
   finishAt?: number;
+  /** Adds digit grouping in this locale's style, e.g. "en-IN" shows 5,00,000. Plain digits without it. */
+  locale?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [current, setCurrent] = useState(value);
+  const show = (n: number) => (locale ? n.toLocaleString(locale) : String(n));
 
   useEffect(() => {
     const el = ref.current;
@@ -61,13 +65,13 @@ export function CountUp({
   return (
     <span ref={ref} className="relative inline-block">
       <span aria-hidden className="invisible">
-        {value}
+        {show(value)}
       </span>
       {/* Anchored right: an in-between number wider than the final one grows left, never past the edge */}
       <span aria-hidden className="absolute top-0 right-0 whitespace-nowrap">
-        {current}
+        {show(current)}
       </span>
-      <span className="sr-only">{value}</span>
+      <span className="sr-only">{show(value)}</span>
     </span>
   );
 }

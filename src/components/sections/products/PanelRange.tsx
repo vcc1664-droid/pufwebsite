@@ -1,12 +1,20 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import { SpecsDialog } from "./SpecsDialog";
 
-export type PanelType = { tab: string; label: string; name: string; video: string };
+export type PanelType = {
+  tab: string;
+  label: string;
+  name: string;
+  video: string;
+  /** Render shown in the "Technical Performance" popup. */
+  specsImage?: StaticImageData;
+};
 export type PerformanceRow = { label: string; value: string };
 
 type PanelRangeProps = {
@@ -141,17 +149,33 @@ export function PanelRange({
               dark ? "bg-[#0b0b0b]" : "bg-[#f7f7f7]",
             )}
           >
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <h3 className="font-ui text-[max(17px,1.5cqw)]">
                 {/* Opens the full spec sheet */}
                 <button
                   type="button"
                   aria-haspopup="dialog"
                   onClick={() => specsDialog.current?.showModal()}
-                  className="flex cursor-pointer items-center gap-[0.35em] transition-opacity duration-200 hover:opacity-70"
+                  className={cn(
+                    "group inline-flex cursor-pointer items-center gap-2 rounded-[max(6px,0.5cqw)] border px-[1.2em] py-[0.65em] font-ui text-[max(13px,1.05cqw)] font-medium leading-none transition-all duration-200 shadow-sm",
+                    dark
+                      ? "border-white/80 bg-white/10 text-white hover:border-white hover:bg-white hover:text-black"
+                      : "border-black/80 bg-black/5 text-black hover:border-black hover:bg-black hover:text-white",
+                  )}
                 >
-                  <span aria-hidden className="size-[0.3em] rounded-[1px] bg-current" />
-                  Technical Performance
+                  <span className="font-semibold tracking-[-0.01em]">Technical Performance</span>
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="size-[1em] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
                 </button>
               </h3>
               <p
@@ -195,7 +219,7 @@ export function PanelRange({
             </div>
           </Reveal>
 
-          <SpecsDialog ref={specsDialog} name={type.name} rows={specs ?? performance.flat()} />
+          <SpecsDialog ref={specsDialog} name={type.name} rows={specs ?? performance.flat()} image={type.specsImage} />
         </div>
       </div>
     </section>

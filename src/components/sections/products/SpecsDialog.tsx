@@ -1,5 +1,6 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import type { PerformanceRow } from "./PanelRange";
 
@@ -7,6 +8,8 @@ type SpecsDialogProps = {
   /** Panel name shown as the heading. */
   name: string;
   rows: PerformanceRow[];
+  /** Panel render under the heading; the box stays empty without one. */
+  image?: StaticImageData;
 };
 
 /**
@@ -16,7 +19,7 @@ type SpecsDialogProps = {
  */
 /* Sizes (lg+) are cqw of the dialog width, measured from the design. */
 export const SpecsDialog = forwardRef<HTMLDialogElement, SpecsDialogProps>(function SpecsDialog(
-  { name, rows },
+  { name, rows, image },
   ref,
 ) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -95,15 +98,25 @@ export const SpecsDialog = forwardRef<HTMLDialogElement, SpecsDialogProps>(funct
         </form>
 
         <div className="grid gap-8 px-5 pt-16 pb-8 lg:grid-cols-[1fr_40.8cqw] lg:gap-[3cqw] lg:pt-[1cqw] lg:pr-[5cqw] lg:pb-[4cqw] lg:pl-[2.7cqw]">
-          <div className="lg:pt-[8cqw]">
+          <div>
             <h2 className="text-[max(28px,3.45cqw)] leading-tight font-bold tracking-[-0.02em] lg:pl-[2.6cqw]">
               {name}
             </h2>
-            {/* Panel render goes here once supplied */}
+            {/* Panel render, or an empty box until one is supplied */}
             <div
-              aria-hidden
-              className="mt-8 aspect-[1190/650] rounded-[max(10px,1cqw)] border border-[#e4e0ea] bg-[#f4f1f7] lg:mt-[6cqw]"
-            />
+              aria-hidden={!image}
+              className="relative mt-8 aspect-[1190/650] overflow-hidden rounded-[max(10px,1cqw)] border border-[#e4e0ea] bg-[#f4f1f7] lg:mt-[6cqw]"
+            >
+              {image && (
+                <Image
+                  src={image}
+                  alt={`${name} render`}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 94vw"
+                  className="object-contain"
+                />
+              )}
+            </div>
           </div>
 
           <table className="w-full border-collapse self-start border border-[#d9d4e0] font-ui text-[max(14px,1.1cqw)] leading-[1.45] lg:text-[max(11px,1.1cqw)]">

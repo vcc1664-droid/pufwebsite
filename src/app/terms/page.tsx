@@ -37,13 +37,20 @@ const SECTIONS: LegalSection[] = [
     ),
   },
   {
-    title: "Quotations and orders",
+    title: "Quotations, samples and orders",
     body: (
-      <p>
-        Asking for a quote through this website, by email, phone or WhatsApp does not create an
-        order. Prices, delivery dates and other terms are set out in the written quotation or
-        agreement we give you, and those documents apply to your order.
-      </p>
+      <>
+        <p>
+          Asking for a quote through this website, by email, phone or WhatsApp does not create an
+          order. Prices, delivery dates and other terms are set out in the written quotation or
+          agreement we give you, and those documents apply to your order.
+        </p>
+        <p>
+          Requesting a panel sample does not create an order either. Samples are provided at our
+          discretion and subject to availability, and we will confirm any cost or delivery details
+          with you first.
+        </p>
+      </>
     ),
   },
   {
@@ -85,7 +92,8 @@ const SECTIONS: LegalSection[] = [
         We work to keep this website accurate and available, but we cannot promise it will always be
         error-free or uninterrupted. To the extent the law allows, we are not liable for any loss
         that comes from relying on the general information on this website. This does not limit
-        anything agreed in your written quotation or contract with us.
+        anything agreed in your written quotation or contract with us. See our{" "}
+        <Link href="/disclaimer">Disclaimer</Link> for more on how to use the information here.
       </p>
     ),
   },
@@ -132,7 +140,7 @@ const SECTIONS: LegalSection[] = [
 export default function Terms() {
   return (
     <main className="flex-1">
-      <PageIntro title="Terms of Service" aside="Last updated" body="6 November 2026" />
+      <PageIntro title="Terms of Service" aside="Last updated" body="13 November 2026" />
       <LegalSections sections={SECTIONS} />
     </main>
   );

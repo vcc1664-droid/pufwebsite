@@ -1,3 +1,4 @@
+import { saveEnquiryToAdmin } from "@/lib/admin-enquiry";
 import { type Enquiry, saveEnquiryToNotion } from "@/lib/notion-enquiry";
 
 /** Field limits; the message allows a long project brief. */
@@ -83,13 +84,20 @@ export async function POST(request: Request) {
     }
   }
 
+  // Also copy it to the admin panel. Runs alongside Notion; a failure here is only logged and
+  // never changes the visitor's result (Notion still decides that, as before).
+  const adminSave = saveEnquiryToAdmin(enquiry).catch((err) => {
+    console.error("[enquiry] Admin panel save failed:", err instanceof Error ? err.message : "unknown error");
+  });
+
   const pending = saveEnquiryToNotion(enquiry);
   recent.set(submissionId, { at: now, pending });
   try {
-    await pending;
+    await Promise.all([pending, adminSave]);
     recent.set(submissionId, { at: now });
     return json(200, { ok: true });
   } catch (err) {
+    await adminSave;
     recent.delete(submissionId);
     // Logs only the failure reason: no API key and no visitor details.
     console.error("[enquiry] Notion save failed:", err instanceof Error ? err.message : "unknown error");

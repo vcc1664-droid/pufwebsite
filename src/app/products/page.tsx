@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { LetsTalk } from "@/components/sections/LetsTalk";
 import { PageIntro } from "@/components/sections/PageIntro";
+import { BuildingEnquiry } from "@/components/sections/products/BuildingEnquiry";
+import { ChoosePanel } from "@/components/sections/products/ChoosePanel";
 import { ManufacturingStrengths } from "@/components/sections/products/ManufacturingStrengths";
+import { PanelBenefits } from "@/components/sections/products/PanelBenefits";
 import { PanelJoints } from "@/components/sections/products/PanelJoints";
 import { PanelRange } from "@/components/sections/products/PanelRange";
 import { PIR_PANELS, PUF_PANELS } from "@/components/sections/products/panels";
+import { SpaceTiles } from "@/components/sections/products/SpaceTiles";
 import { ProductShowcase } from "@/components/sections/products/ProductShowcase";
 
 export const metadata: Metadata = {
@@ -26,10 +30,14 @@ export default function Products() {
         body="Roof, wall, cold storage and cleanroom panel systems."
       />
       <ProductShowcase />
+      <ChoosePanel />
       <PanelRange tone="dark" roundedTop {...PUF_PANELS} />
       <PanelRange {...PIR_PANELS} />
       <PanelJoints />
       <ManufacturingStrengths />
+      <PanelBenefits />
+      <SpaceTiles />
+      <BuildingEnquiry />
       <LetsTalk
         title="Discuss Your Project?"
         titleClassName="font-normal"

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import truckImage from "../../../public/Home/e9e3d87b-f844-43f4-9a2d-5898277b404b-80kb.jpeg";
 import factoryImage from "../../../public/Home/WHYCHOOSE/fd3ce45c-e3d8-43b8-abab-692b6f22bdd5 1-100kb.jpeg";
 import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
-import installImage from "../../../public/about/Webbb-100kb.jpeg";
+import installImage from "../../../public/Home/ISOcertified/Steel Frame Panel Installation-80kb.jpeg";
 
 const REASONS: { title: string; body: string; image: StaticImageData; alt: string }[] = [
   {
@@ -87,7 +87,7 @@ export function WhyChooseUs() {
           <div className="@container flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
             <div className="lg:w-[39.2%]">
               <Reveal>
-                <h2 className="text-[max(26px,3.5cqw)] leading-none tracking-[-0.02em] text-black uppercase">
+                <h2 className="text-[max(26px,4.2cqw)] leading-none font-medium tracking-[-0.02em] text-black ">
                   Why Choose Us?
                 </h2>
               </Reveal>

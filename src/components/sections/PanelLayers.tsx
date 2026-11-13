@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";import { ScrollGrow } from "
 import { ScrollRise } from "@/components/motion/ScrollRise";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelImage from "../../../public/Home/puf-3d-panel-exploded.png";
+import panelImage from "../../../public/Home/21937329-9225-4a24-a7ce-e400225ff293.png";
 
 const LayersIcon = (
   <path d="M12 3.5 3.5 8 12 12.5 20.5 8 12 3.5ZM3.5 12 12 16.5 20.5 12M3.5 16 12 20.5 20.5 16" />
@@ -46,8 +46,8 @@ export function PanelLayers() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="text-center">
-          <h2 className="text-[max(26px,4cqw)] leading-none tracking-[-0.02em] text-ink uppercase">
-            What&apos;s Inside Matters
+          <h2 className="text-[26px] leading-none font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+            Look inside the panel
           </h2>
           <p className="mx-auto mt-[max(14px,1.73cqw)] max-w-[66cqw] font-ui text-[max(14px,1.3cqw)] leading-[1.5] text-muted max-lg:max-w-xl">
             A PUF panel is more than two metal faces. At its core is a high-performance insulation layer,

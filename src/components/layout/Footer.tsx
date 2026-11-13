@@ -39,6 +39,16 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
   },
 ];
 
+// Only /privacy and /terms exist so far; the other pages still need to be created.
+const LEGAL_LINKS: { label: string; href: string }[] = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Blog", href: "/blog" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Cookie Settings", href: "/cookie-policy#settings" },
+];
+
 const iconProps = {
   "aria-hidden": true,
   viewBox: "0 0 24 24",
@@ -242,15 +252,20 @@ export function Footer() {
 
           <div className="mt-5 flex flex-col gap-3 border-t border-[#b9b9bc] pt-4 sm:flex-row sm:items-center sm:justify-between lg:mt-[1.6cqw] lg:pt-[1.8cqw]">
             <p className={fine}>© 2026 Synergy PUF. All Rights Reserved.</p>
-            <p className={cn(fine, "flex items-center gap-2")}>
-              <Link href="/terms" className="transition-colors hover:text-brand">
-                Terms of Service
-              </Link>
-              <span aria-hidden>|</span>
-              <Link href="/privacy" className="transition-colors hover:text-brand">
-                Privacy Policy
-              </Link>
-            </p>
+            <nav aria-label="Legal">
+              <ul className="flex flex-wrap gap-x-[max(16px,1.6cqw)] gap-y-2">
+                {LEGAL_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="font-ui text-[max(11px,0.95cqw)] tracking-[0.15em] text-[#6b6b6b] uppercase transition-colors hover:text-brand"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

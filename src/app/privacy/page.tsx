@@ -8,8 +8,9 @@ export const metadata: Metadata = {
   description: "How Synergy PUF handles the personal information you share with us.",
 };
 
-// Written to match how the site works today: no accounts, cookies or analytics, and the contact
-// form only opens the visitor's own email app. Update it if any of that changes.
+// Written to match how the site works today: no accounts, cookies or analytics; the Contact form
+// saves enquiries to Notion and the admin panel (via /api/enquiry), and the Products page form opens
+// the visitor's own email app. Update it if any of that changes.
 const SECTIONS: LegalSection[] = [
   {
     title: "Who we are",
@@ -40,13 +41,26 @@ const SECTIONS: LegalSection[] = [
     ),
   },
   {
-    title: "How the contact form works",
+    title: "How our enquiry forms work",
     body: (
-      <p>
-        The form on our <Link href="/contact">Contact</Link> page does not send or store anything on
-        this website. When you press send, it opens your own email app with your details filled in,
-        and nothing reaches us until you send that email yourself.
-      </p>
+      <>
+        <p>
+          When you submit the form on our <Link href="/contact">Contact</Link> page, your name, email
+          address, phone number, company name, subject and message are sent securely to our team,
+          together with the date and time of your enquiry. We record them in our enquiry management
+          tools so that we can reply and follow up.
+        </p>
+        <p>
+          If the form cannot be sent online, it opens your own email app with your details filled in
+          instead. In that case nothing reaches us until you send that email yourself.
+        </p>
+        <p>
+          The &ldquo;Tell us about your building&rdquo; form on our{" "}
+          <Link href="/products">Products</Link> page, including its &ldquo;Request a quote&rdquo; and
+          &ldquo;Request a sample&rdquo; buttons, does not send anything through this website. It
+          opens your own email app with your details filled in, for you to send.
+        </p>
+      </>
     ),
   },
   {
@@ -77,11 +91,19 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Third-party services",
     body: (
-      <p>
-        Our website links to services run by other companies, including WhatsApp, Instagram, YouTube,
-        LinkedIn, Facebook and our Synergy Group company websites. When you use those links, the
-        service&rsquo;s own privacy policy applies to what you share there.
-      </p>
+      <>
+        <p>
+          Enquiries sent through our Contact form are stored in Notion, an online workspace run by
+          Notion Labs, Inc., which we use to manage enquiries. Notion may store this information on
+          servers outside India. We use it only to handle your enquiry, under Notion&rsquo;s own
+          security and privacy terms.
+        </p>
+        <p>
+          Our website also links to services run by other companies, including WhatsApp, Instagram,
+          YouTube, LinkedIn, Facebook and our Synergy Group company websites. When you use those
+          links, the service&rsquo;s own privacy policy applies to what you share there.
+        </p>
+      </>
     ),
   },
   {
@@ -138,7 +160,7 @@ const SECTIONS: LegalSection[] = [
 export default function Privacy() {
   return (
     <main className="flex-1">
-      <PageIntro title="Privacy Policy" aside="Last updated" body="6 November 2026" />
+      <PageIntro title="Privacy Policy" aside="Last updated" body="13 November 2026" />
       <LegalSections sections={SECTIONS} />
     </main>
   );

@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+import pufWallImage from "../../../../public/Products/Technical Performance/8c628ca0-e188-48f8-bb38-f6391e1f642c.jpg";
 import type { PanelType, PerformanceRow } from "./PanelRange";
 
 const VIDEOS = {
@@ -8,8 +10,8 @@ const VIDEOS = {
 };
 
 // Only each family's Wall Type 1 name comes from the design; the others are placeholders to confirm.
-const types = (core: string, wall1Name: string): PanelType[] => [
-  { tab: "Wall Type 1", label: "Wall Type -1", name: wall1Name, video: VIDEOS.wall1 },
+const types = (core: string, wall1Name: string, wall1Image?: StaticImageData): PanelType[] => [
+  { tab: "Wall Type 1", label: "Wall Type -1", name: wall1Name, video: VIDEOS.wall1, specsImage: wall1Image },
   { tab: "Wall Type 2", label: "Wall Type -2", name: `${core} Wall Panel`, video: VIDEOS.wall2 },
   { tab: "Wall Type 3", label: "Wall Type -3", name: `${core} Wall Panel`, video: VIDEOS.wall3 },
   { tab: "Roof Panel", label: "Roof Panel", name: `${core} Roof Panel`, video: VIDEOS.roof },
@@ -28,7 +30,7 @@ type PanelFamily = {
 export const PUF_PANELS: PanelFamily = {
   title: "PUF Panels",
   body: "Lightweight sandwich panels offering superior thermal insulation for industrial and temperature-controlled spaces.",
-  types: types("PUF", "PUF Single Skin Wall Panel"),
+  types: types("PUF", "PUF Single Skin Wall Panel", pufWallImage),
   performance: [
     [
       { label: "Core Density", value: "40–42 kg/m³" },
@@ -62,7 +64,7 @@ export const PUF_PANELS: PanelFamily = {
 export const PIR_PANELS: PanelFamily = {
   title: "PIR Panels",
   body: "High-performance panels offering superior fire resistance and thermal efficiency.",
-  types: types("PIR", "PIR Fire-Rated Wall Panel"),
+  types: types("PIR", "PIR Fire-Rated Wall Panel", pufWallImage),
   performance: [
     [
       { label: "Core Density", value: "40–45 kg/m³" },
