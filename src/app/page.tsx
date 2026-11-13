@@ -33,7 +33,7 @@ export default function Home() {
         <WherePanelsAreMade />
         <Applications />
         <RightRequirement />
-        <RequirementFactors />
+        {/* <RequirementFactors /> */}
         <PanelSystems />
         <InsulationCores />
         <CoreSlider />

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
+import requirementImage from "../../../public/Home/checking-100kb.jpeg";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function RightRequirement() {
@@ -10,9 +11,10 @@ export function RightRequirement() {
       <div className="@container flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
         <Reveal className="relative aspect-[820/293] overflow-hidden rounded-[max(12px,1.1cqw)] max-lg:aspect-video lg:w-[50.5%]">
           <Image
-            src="/Home/checking-100kb.jpeg"
-            alt="PUF panels on the production line in the Synergy PUF manufacturing facility"
+            src={requirementImage}
+            alt="Stacks of insulated PUF panels inside the Synergy PUF facility"
             fill
+            placeholder="blur"
             sizes="(min-width: 1024px) 51vw, 100vw"
             className="object-cover"
           />

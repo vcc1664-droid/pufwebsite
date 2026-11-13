@@ -87,7 +87,7 @@ export function WhyChooseUs() {
           <div className="@container flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
             <div className="lg:w-[39.2%]">
               <Reveal>
-                <h2 className="text-[max(26px,3.5cqw)] leading-none tracking-[-0.02em] text-black uppercase">
+                <h2 className="text-[max(26px,4.2cqw)] leading-none font-medium tracking-[-0.02em] text-black ">
                   Why Choose Us?
                 </h2>
               </Reveal>

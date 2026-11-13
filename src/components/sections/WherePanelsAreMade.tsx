@@ -124,7 +124,7 @@ export function WherePanelsAreMade() {
               <Reveal>
                 <h2
                   id="where-panels-made"
-                  className="text-[max(28px,3.45cqw)] leading-[1.27] font-medium tracking-[-0.02em] text-black"
+                  className="font-sans text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] text-black"
                 >
                   Where your panels are made
                 </h2>
