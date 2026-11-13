@@ -28,9 +28,9 @@ export default function Home() {
       <div className="relative z-10 bg-white">
         <HeroImage />
         <PanelLayers />
+        <Stats />
         <WhyChooseUs />
         <WherePanelsAreMade />
-        <Stats />
         <Applications />
         <RightRequirement />
         <RequirementFactors />
