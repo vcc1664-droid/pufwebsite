@@ -14,6 +14,7 @@ import { RightRequirement } from "@/components/sections/RightRequirement";
 import { SelectedProjects } from "@/components/sections/SelectedProjects";
 import { Stats } from "@/components/sections/Stats";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { Certificates } from "@/components/sections/Certificates";
 import { WherePanelsAreMade } from "@/components/sections/WherePanelsAreMade";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 
@@ -39,6 +40,7 @@ export default function Home() {
         <ProductionToInstallation />
         <SelectedProjects />
         <Testimonials />
+        <Certificates />
         <ClientLogos />
         <BuyerQuestions />
       </div>
