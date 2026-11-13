@@ -45,7 +45,7 @@ export function BuyerQuestions() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(26px,2.4cqw)] leading-tight font-bold tracking-[-0.01em] text-[#14213d]">
+          <h2 className="font-sans text-[26px] leading-[1.3] font-medium tracking-[-1.0752px] text-[#000000] lg:text-[41.8179px] lg:leading-[54.3633px]">
             Questions buyers ask
           </h2>
         </Reveal>
@@ -58,7 +58,7 @@ export function BuyerQuestions() {
               className="group rounded-[max(8px,0.55cqw)] border border-[#e1dfd7] bg-[#faf9f6]"
             >
               {/* Arrow (0.6em) + gap (0.75em) = 1.35em of this text; the answer is indented by the same */}
-              <summary className="flex cursor-pointer list-none items-center gap-[0.75em] px-5 py-4 font-ui text-[max(17px,1.25cqw)] leading-snug font-semibold text-[#14213d] transition-colors duration-200 hover:text-brand lg:px-[1.4cqw] lg:py-[1.05cqw] [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center gap-[0.75em] px-5 py-4 font-sans text-[17px] leading-[1.25] font-medium tracking-[-0.29952px] text-[#171717] lg:text-[23.2985px] lg:leading-[29.1232px] transition-colors duration-200 hover:text-brand lg:px-[1.4cqw] lg:py-[1.05cqw] [&::-webkit-details-marker]:hidden">
                 <svg
                   aria-hidden
                   viewBox="0 0 10 10"
@@ -68,7 +68,7 @@ export function BuyerQuestions() {
                 </svg>
                 {item.question}
               </summary>
-              <p className="px-5 pb-5 pl-[calc(1.25rem+1.35*max(17px,1.25cqw))] font-ui text-[max(15px,1.1cqw)] leading-[1.65] text-[#575657] lg:px-[1.4cqw] lg:pb-[1.3cqw] lg:pl-[calc(1.4cqw+1.35*max(17px,1.25cqw))] [&_a]:text-brand [&_a]:underline [&_a]:underline-offset-2">
+              <p className="px-5 pb-5 pl-[calc(1.25rem+1.35*17px)] font-ui text-[max(15px,1.1cqw)] leading-[1.65] text-[#575657] lg:px-[1.4cqw] lg:pb-[1.3cqw] lg:pl-[calc(1.4cqw+1.35*23.2985px)] [&_a]:text-brand [&_a]:underline [&_a]:underline-offset-2">
                 {item.answer}
               </p>
             </details>
