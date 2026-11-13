@@ -124,10 +124,12 @@ export function Mission() {
             </p>
           </Reveal>
 
-          <Reveal delay={150} className={BLOCK_GAP}>
+          {/* Desktop: smaller photo on the left, the active step's copy beside it on the right */}
+          <div className={cn(BLOCK_GAP, "flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-[4cqw]")}>
+          <Reveal delay={150} className="lg:w-[58%] lg:shrink-0">
             <div
               ref={photoRef}
-              className="relative aspect-[4/3] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/860]">
+              className="relative aspect-[3/2] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/690] lg:aspect-[16/10]">
               {/* All photos stay stacked; the active one slides in diagonally from the bottom-right while
                   the previous one slides out towards the top-left */}
               {STEPS.map((s, i) => (
@@ -137,7 +139,7 @@ export function Mission() {
                   alt={s.image.alt}
                   fill
                   placeholder="blur"
-                  sizes="(min-width: 1920px) 1594px, 100vw"
+                  sizes="(min-width: 1920px) 925px, (min-width: 1024px) 58vw, 100vw"
                   aria-hidden={i !== index}
                   // Always moves diagonally, bottom-right to top-left, whichever photo comes next: the photo
                   // just left slides out past the top-left corner, every other one waits beyond the
@@ -175,9 +177,9 @@ export function Mission() {
           <div
             key={index}
             aria-live="polite"
-            className={cn(BLOCK_GAP, "flex animate-rise flex-col gap-6 lg:flex-row lg:items-center lg:gap-0")}
+            className="flex animate-rise flex-col gap-6 lg:flex-1 lg:gap-[2.4cqw]"
           >
-            <div className="flex items-center gap-[max(14px,2cqw)] lg:w-[44.9%] lg:border-r lg:border-white/60 lg:py-[0.6cqw]">
+            <div className="flex items-center gap-[max(14px,2cqw)] lg:border-b lg:border-white/60 lg:pb-[2.4cqw]">
               <p className="text-[max(64px,8.4cqw)] leading-[0.8] font-light tracking-[-0.04em]">
                 {String(index + 1).padStart(2, "0")}
               </p>
@@ -188,9 +190,10 @@ export function Mission() {
                 </span>
               </h3>
             </div>
-            <p className="font-ui text-[max(16px,1.72cqw)] leading-[1.55] lg:flex-1 lg:pl-[4.6cqw]">
+            <p className="font-ui text-[max(16px,1.72cqw)] leading-[1.55]">
               {step.body}
             </p>
+          </div>
           </div>
         </div>
       </div>

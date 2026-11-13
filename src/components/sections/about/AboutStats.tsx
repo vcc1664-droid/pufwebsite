@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CountUp } from "@/components/motion/CountUp";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -10,9 +11,9 @@ const iconProps = {
   className: "size-[55%]",
 } as const;
 
-const STATS: { value: string; label: string; icon: ReactNode }[] = [
+const STATS: { value: number; label: string; icon: ReactNode }[] = [
   {
-    value: "500+",
+    value: 5000,
     label: "Projects Completed",
     icon: (
       <svg {...iconProps}>
@@ -21,7 +22,7 @@ const STATS: { value: string; label: string; icon: ReactNode }[] = [
     ),
   },
   {
-    value: "350+",
+    value: 350,
     label: "Workforce",
     icon: (
       <svg {...iconProps}>
@@ -30,7 +31,7 @@ const STATS: { value: string; label: string; icon: ReactNode }[] = [
     ),
   },
   {
-    value: "5,00,000+",
+    value: 500000,
     label: "Lakh Sq Ft Production Capacity / Month",
     icon: (
       <svg {...iconProps}>
@@ -39,7 +40,7 @@ const STATS: { value: string; label: string; icon: ReactNode }[] = [
     ),
   },
   {
-    value: "12+",
+    value: 12,
     label: "Years of Trust & Experience",
     icon: (
       <svg {...iconProps}>
@@ -70,7 +71,8 @@ export function AboutStats() {
                 </span>
                 <div className="flex h-full flex-col items-center justify-center rounded-[max(8px,0.7cqw)] bg-white px-4 pt-12 pb-8 text-center lg:aspect-[214/112] lg:px-[1cqw] lg:pt-[3cqw] lg:pb-[2cqw]">
                   <p className="text-[max(30px,2.75cqw)] leading-none font-semibold tracking-[-0.02em] text-black">
-                    {stat.value}
+                    {/* Counts up from 0 as the card scrolls into view */}
+                    <CountUp value={stat.value} locale="en-IN" />+
                   </p>
                   <p className="mt-2 font-ui text-[max(13px,1.05cqw)] leading-snug text-[#444] lg:mt-[0.6cqw]">
                     {stat.label}

@@ -124,7 +124,7 @@ export function WherePanelsAreMade() {
               <Reveal>
                 <h2
                   id="where-panels-made"
-                  className="text-[max(26px,2.4cqw)] leading-tight font-bold tracking-[-0.01em] text-[#14213d]"
+                  className="text-[max(28px,3.45cqw)] leading-[1.27] font-medium tracking-[-0.02em] text-black"
                 >
                   Where your panels are made
                 </h2>
@@ -147,7 +147,7 @@ export function WherePanelsAreMade() {
                         key={stage.name}
                         className="w-[82%] shrink-0 rounded-[max(12px,0.8cqw)] border border-[#dad8cf] bg-[#faf9f6] p-3 sm:w-[60%] lg:w-[40%] lg:p-[0.8cqw]"
                       >
-                        <span className="inline-block rounded-full bg-[#14213d] px-[0.8em] py-[0.3em] font-ui text-[max(13px,0.95cqw)] leading-none font-bold text-white">
+                        <span className="inline-block rounded-[5px] bg-[#561A61] px-[0.8em] py-[0.3em] font-ui text-[max(13px,0.95cqw)] leading-none font-semibold text-white">
                           {i + 1} {stage.name}
                         </span>
                         {/* Stage photo, or an empty box until one is supplied */}
