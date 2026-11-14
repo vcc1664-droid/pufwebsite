@@ -15,7 +15,7 @@ export function InsulationCores() {
           {/* Starts faded and darkens word by word as it scrolls into place */}
           <ScrollRevealText
             className="mt-4 font-ui text-[max(22px,2.95cqw)] leading-[1.6] font-medium tracking-[-0.01em] text-[#9a9a9a] lg:mt-[1.5cqw]"
-            text="Synergy manufactures insulated panels with PUF, PIR and Rockwool, allowing each system to be selected around thermal performance, fire requirements, acoustics and application needs."
+            text="Synergy manufactures insulated panels with PUF and PIR, allowing each system to be selected around thermal performance, fire requirements, acoustics and application needs."
           />
         </Reveal>
       </div>

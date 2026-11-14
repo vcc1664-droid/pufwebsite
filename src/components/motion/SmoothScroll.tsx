@@ -13,13 +13,24 @@ function subscribeReducedMotion(onChange: () => void) {
   return () => query.removeEventListener("change", onChange);
 }
 
-/** Jumps back to the top on every route change, so Lenis doesn't animate from the old position. */
+/**
+ * Jumps back to the top on every route change, so Lenis doesn't animate from the old position.
+ * A link with a #hash (e.g. /applications#sectors) lands on that section instead, just under the header.
+ */
 function ResetOnNavigate() {
   const pathname = usePathname();
   const lenis = useLenis();
 
   useEffect(() => {
-    lenis?.scrollTo(0, { immediate: true });
+    if (!lenis) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const target = id ? document.getElementById(id) : null;
+    if (target) {
+      const headerHeight = document.querySelector("header")?.offsetHeight ?? 0;
+      lenis.scrollTo(target, { immediate: true, offset: -headerHeight });
+    } else {
+      lenis.scrollTo(0, { immediate: true });
+    }
   }, [pathname, lenis]);
 
   return null;

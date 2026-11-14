@@ -141,7 +141,7 @@ export function SectorServices() {
   };
 
   return (
-    <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
+    <section id="sectors" className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
       <div ref={track}>
         <div ref={pinned} className="sticky">
           {/* Black band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}

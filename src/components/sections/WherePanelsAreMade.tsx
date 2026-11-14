@@ -126,11 +126,10 @@ export function WherePanelsAreMade() {
                   id="where-panels-made"
                   className="font-sans text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] text-black"
                 >
-                  Where your panels are made
+                  PUF Panel Manufacturing Plant
                 </h2>
                 <p className="mt-3 font-ui text-[15.5324px] lg:whitespace-nowrap leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1cqw]">
-                  Every panel is made at our own plant in Nalagarh, Himachal Pradesh. Follow the line,
-                  one stage at a time.
+                  Nalagarh, Himachal Pradesh
                 </p>
               </Reveal>
 
