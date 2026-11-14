@@ -33,7 +33,7 @@ export function SpaceTiles() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(28px,3.3cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Where each panel is used
           </h2>
         </Reveal>

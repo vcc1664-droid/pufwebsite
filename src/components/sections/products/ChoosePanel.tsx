@@ -15,7 +15,7 @@ export function ChoosePanel() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(26px,2.4cqw)] leading-tight font-bold tracking-[-0.01em] text-[#14213d]">
+          <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Choose your panel
           </h2>
         </Reveal>
@@ -30,7 +30,7 @@ export function ChoosePanel() {
                 <h3 className="font-ui text-[max(20px,1.6cqw)] leading-tight font-semibold text-[#3e3e3e]">
                   {panel.title}
                 </h3>
-                <p className="mt-2 font-ui text-[max(16px,1.35cqw)] leading-[1.55] text-[#5c5c5c] lg:mt-[0.6cqw]">
+                <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#5c5c5c] lg:mt-[0.6cqw]">
                   {panel.body}
                 </p>
               </Reveal>

@@ -148,7 +148,7 @@ export function SectorServices() {
           <div className={CONTAINER}>
             <div className={cn("@container", SECTION_Y)}>
               <Reveal>
-                <h2 className="max-w-[11em] text-[max(28px,3.4cqw)] leading-[1.33] font-medium tracking-[-0.01em]">
+                <h2 className="max-w-[11em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]">
                   Services tailored to <br />
                   every sector
                 </h2>
@@ -157,7 +157,7 @@ export function SectorServices() {
               <hr className={cn(RULE_GAP, "border-[#3a3a3a]")} />
 
               <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[49.5%]")}>
-                <p className="max-w-[31em] font-ui text-[max(15px,1.63cqw)] leading-[1.6] text-white">
+                <p className="max-w-[31em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-white">
                   Select an industry below to discover how our PUF panels are engineered to meet its specific
                   requirements.
                 </p>
@@ -168,7 +168,7 @@ export function SectorServices() {
                   data-photo
                   aria-roledescription="carousel"
                   aria-label="Application sectors"
-                  className="relative aspect-[3/4] overflow-hidden rounded-[max(16px,3.7cqw)] sm:aspect-[534/270]"
+                  className="relative aspect-[3/4] overflow-hidden rounded-[max(16px,3.7cqw)] sm:aspect-[534/215]"
                 >
                   {/* All photos stay mounted so each is already loaded when its sector comes up */}
                   {SECTORS.map((s, i) => (
@@ -209,7 +209,7 @@ export function SectorServices() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                       <p
                         key={index}
-                        className="max-w-[27em] animate-rise font-ui text-[max(14px,1.75cqw)] leading-[1.5]"
+                        className="max-w-[27em] animate-rise font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal"
                       >
                         {sector.body}
                       </p>

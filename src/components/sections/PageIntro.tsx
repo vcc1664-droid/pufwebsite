@@ -16,6 +16,8 @@ type PageIntroProps = {
   bodyOffsetClassName?: string;
   /** Desktop width of the aside column, which sets where the body copy starts. */
   asideClassName?: string;
+  /** Replaces the H1's default size and weight classes (colour still follows `tone`). */
+  titleClassName?: string;
 };
 
 /** Opening block shared by inner pages: H1 + quote button, divider, then copy offset to the right. */
@@ -27,6 +29,7 @@ export function PageIntro({
   tone = "light",
   bodyOffsetClassName = "lg:ml-[46.4%]",
   asideClassName = "lg:w-[46.4%]",
+  titleClassName = "text-[max(30px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em]",
 }: PageIntroProps) {
   const dark = tone === "dark";
 
@@ -36,7 +39,8 @@ export function PageIntro({
         <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <h1
             className={cn(
-              "max-w-[12em] text-[max(30px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em]",
+              "max-w-[12em]",
+              titleClassName,
               dark ? "text-white" : "text-black",
             )}
           >
@@ -85,7 +89,7 @@ export function PageIntro({
             )}
             <p
               className={cn(
-                "font-ui text-[max(15px,1.75cqw)] leading-[1.6] lg:flex-1",
+                "font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal lg:flex-1",
                 !aside && bodyOffsetClassName,
                 dark ? "text-[#8a8a8a]" : "text-[#7a7a7a]",
               )}

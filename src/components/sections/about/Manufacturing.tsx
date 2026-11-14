@@ -19,7 +19,7 @@ export function Manufacturing() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
         <Reveal className="lg:w-[47.2%] lg:pt-[1.6cqw]">
-          <h2 className="text-[max(24px,2.3cqw)] leading-tight font-medium tracking-[-0.01em] text-black">
+          <h2 className="font-sans text-[24px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Manufacturing &amp; capability
           </h2>
 

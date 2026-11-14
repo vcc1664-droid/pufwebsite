@@ -21,10 +21,10 @@ export function RightRequirement() {
         </Reveal>
 
         <Reveal delay={100} className="lg:w-[44.5%]">
-          <h2 className="text-[max(28px,3.45cqw)] leading-[1.27] font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             The right panel starts with the right requirement.
           </h2>
-          <p className="mt-5 font-ui text-[max(15px,1.05cqw)] leading-[1.7] text-[#909090] lg:mt-[1.6cqw]">
+          <p className="mt-5 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.6cqw]">
             A cold room, industrial roof and controlled environment may all use insulated panels, but they do
             not need the same specification. The right solution depends on how the space is expected to
             perform.

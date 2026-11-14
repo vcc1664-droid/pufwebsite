@@ -29,7 +29,7 @@ function Stat({ value, mark, children }: { value: number; mark: string; children
         <CountUp value={value} />
         <span className="ml-[0.06em] text-[0.36em] leading-none font-semibold">{mark}</span>
       </p>
-      <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">
+      <p className="max-w-[12.6em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969]">
         {children}
       </p>
     </>
@@ -81,7 +81,7 @@ export function Stats() {
             Year of Establishment
           </h2>
           <div className="mt-8 flex flex-col-reverse gap-4 lg:mt-[2.6cqw] lg:flex-row lg:items-start lg:justify-between">
-            <p className="max-w-[12.6em] font-ui text-[max(15px,1.45cqw)] leading-[1.55] text-[#6c6262]">
+            <p className="max-w-[12.6em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969]">
               The year the founders launched the first project.
             </p>
             <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">

@@ -119,7 +119,7 @@ export const SpecsDialog = forwardRef<HTMLDialogElement, SpecsDialogProps>(funct
             </div>
           </div>
 
-          <table className="w-full border-collapse self-start border border-[#d9d4e0] font-ui text-[max(14px,1.1cqw)] leading-[1.45] lg:text-[max(11px,1.1cqw)]">
+          <table className="w-full border-separate border-spacing-0 self-start overflow-hidden rounded-[max(10px,1cqw)] border border-[#d9d4e0] font-ui text-[max(14px,1.1cqw)] leading-[1.45] lg:text-[max(11px,1.1cqw)]">
             <thead>
               <tr className="bg-brand text-center text-white">
                 <th scope="col" className="w-[52%] px-4 py-4 font-bold tracking-[0.02em] uppercase lg:px-[1.25cqw] lg:py-[1.7cqw]">

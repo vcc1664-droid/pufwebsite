@@ -199,7 +199,7 @@ export function Applications() {
                               ))
                             : s.title}
                         </h3>
-                        <p className="mt-3 font-ui text-[max(14px,1.36cqw)] leading-snug text-[#555050] lg:mt-[1.6cqw]">
+                        <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.6cqw]">
                           {s.body}
                         </p>
                       </div>

@@ -74,7 +74,7 @@ export function AboutStats() {
                     {/* Counts up from 0 as the card scrolls into view */}
                     <CountUp value={stat.value} locale="en-IN" />+
                   </p>
-                  <p className="mt-2 font-ui text-[max(13px,1.05cqw)] leading-snug text-[#444] lg:mt-[0.6cqw]">
+                  <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#444] lg:mt-[0.6cqw]">
                     {stat.label}
                   </p>
                 </div>

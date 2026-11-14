@@ -128,7 +128,7 @@ export function ContactForm() {
     <section className={cn(CONTAINER, "pt-12 lg:pt-16", SECTION_BOTTOM)}>
       <div className="@container">
         <Reveal>
-          <h1 className="text-[max(30px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
+          <h1 className="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Let’s explore your vision
           </h1>
         </Reveal>
@@ -157,7 +157,7 @@ export function ContactForm() {
           </Reveal>
 
           <Reveal delay={100} className="lg:w-[54.8%]">
-            <p className="font-ui text-[max(16px,1.9cqw)] text-[#8a8a8a]">
+            <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#8a8a8a]">
               Provide your project details below and we’ll be in touch.
             </p>
 

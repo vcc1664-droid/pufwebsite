@@ -19,10 +19,10 @@ export function Milestones() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="text-center">
-          <h2 className="text-[max(26px,2.95cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             The milestones behind our growth
           </h2>
-          <p className="mt-2 font-ui text-[max(14px,1.4cqw)] text-[#909090] lg:mt-[0.8cqw]">
+          <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#909090] lg:mt-[0.8cqw]">
             Timeline structure. Years and events to confirm.
           </p>
         </Reveal>

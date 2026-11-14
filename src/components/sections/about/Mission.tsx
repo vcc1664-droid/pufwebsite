@@ -9,7 +9,7 @@ import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import teamImage from "../../../../public/about/Insulation/PUF FACTORYY-100kb.jpeg";
 import factoryImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
-import deliveryImage from "../../../../public/about/Insulation/fatoryyyyyyyyy-100kb.jpeg";
+import deliveryImage from "../../../../public/about/Insulation/WhatsApp Image 2026-11-13 at 22.26.00-60kb.jpeg";
 import installImage from "../../../../public/about/5d7e15a6-9861-40ff-8d30-934fb34b2b97.jpg";
 
 type Step = {
@@ -37,7 +37,7 @@ const STEPS: Step[] = [
     stage: "Delivery",
     title: "Logistics to site",
     body: "Panels are packed and scheduled to reach the site in the order the installation needs them.",
-    image: { src: deliveryImage, alt: "Synergy PUF delivery truck on a highway" },
+    image: { src: deliveryImage, alt: "Synergy PUF truck being loaded with insulated panels at the loading point" },
   },
   {
     stage: "Installation",
@@ -109,7 +109,7 @@ export function Mission() {
             </Reveal>
 
             <Reveal delay={100} className="lg:w-[42.3%] lg:pb-[1.6cqw]">
-              <h2 className="max-w-[11em] text-[max(32px,3.55cqw)] leading-[1.27] font-medium tracking-[-0.02em]">
+              <h2 className="max-w-[11em] font-sans text-[32px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]">
                 Insulation shaped by your space.
               </h2>
             </Reveal>
@@ -118,7 +118,7 @@ export function Mission() {
           <hr className={cn(RULE_GAP, "border-[#5c5c5c]")} />
 
           <Reveal delay={100} className={RULE_GAP}>
-            <p className="max-w-[32em] font-ui text-[max(17px,1.72cqw)] leading-[1.55]">
+            <p className="max-w-[32em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal">
               Our mission is to manufacture and install insulated panel systems suited to the spaces they
               serve - from panel selection to the finished enclosure.
             </p>
@@ -190,7 +190,7 @@ export function Mission() {
                 </span>
               </h3>
             </div>
-            <p className="font-ui text-[max(16px,1.72cqw)] leading-[1.55]">
+            <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal">
               {step.body}
             </p>
           </div>

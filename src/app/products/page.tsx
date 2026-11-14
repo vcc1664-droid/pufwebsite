@@ -25,6 +25,7 @@ export default function Products() {
             The right panel. <br />A stronger build.
           </>
         }
+        titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]"
         aside="Our Products"
         asideClassName="lg:w-[67.2%]"
         body="Roof, wall, cold storage and cleanroom panel systems."
@@ -40,7 +41,6 @@ export default function Products() {
       <BuildingEnquiry />
       <LetsTalk
         title="Discuss Your Project?"
-        titleClassName="font-normal"
         body="Share your project requirements with our team, discuss your ideas and let’s bring your vision to life with innovative solutions tailored to your needs."
         bodyClassName="max-w-[39.5em]"
       />

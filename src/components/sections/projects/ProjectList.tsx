@@ -143,7 +143,7 @@ export function ProjectList() {
                 className={cn(i > 0 && BLOCK_GAP, i > 0 && "border-t border-[#8c8c8c] pt-12 lg:pt-[6cqw]")}
               >
                 <Reveal>
-                  <h2 className="text-center text-[max(34px,6.7cqw)] leading-[1.1] font-medium tracking-[-0.02em] text-[#1e1e1e]">
+                  <h2 className="text-center font-sans text-[34px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px] text-[#1e1e1e]">
                     {project.name}
                   </h2>
                 </Reveal>

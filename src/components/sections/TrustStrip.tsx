@@ -101,7 +101,7 @@ export function TrustStrip({ title, items = SERVICE_ITEMS, iconTone = "brand" }:
         <div className={cn("@container", SECTION_Y)}>
           {title && (
             <Reveal>
-              <h2 className="text-center text-[max(28px,3.75cqw)] leading-tight font-medium tracking-[-0.01em]">
+              <h2 className="text-center font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]">
                 {title}
               </h2>
             </Reveal>
@@ -134,8 +134,8 @@ export function TrustStrip({ title, items = SERVICE_ITEMS, iconTone = "brand" }:
                     </span>
                     <span
                       className={cn(
-                        "mt-0.5 block font-ui text-[max(13px,1.38cqw)] text-[#8a8a8a]",
-                        title && "mt-2 max-w-[15.5em] leading-[1.45] lg:mt-[0.9cqw]",
+                        "mt-0.5 block font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#8a8a8a]",
+                        title && "mt-2 max-w-[15.5em] lg:mt-[0.9cqw]",
                       )}
                     >
                       {item.body}

@@ -33,7 +33,7 @@ export function LetsTalk({
       <div className={CONTAINER}>
         <div className={cn("@container", SECTION_Y)}>
           <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className={cn("text-[max(44px,5cqw)] leading-none tracking-[-0.02em]", titleClassName)}>
+            <h2 className={cn("font-sans text-[32px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]", titleClassName)}>
               {title}
             </h2>
             <div className="flex flex-wrap gap-3 lg:gap-[1.4cqw]">
@@ -52,7 +52,7 @@ export function LetsTalk({
           <hr className={cn(RULE_GAP, "border-white/70")} />
 
           <Reveal delay={100} className={RULE_GAP}>
-            <p className={cn("font-ui text-[max(17px,1.4cqw)] leading-normal", bodyClassName)}>{body}</p>
+            <p className={cn("font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal", bodyClassName)}>{body}</p>
           </Reveal>
         </div>
       </div>

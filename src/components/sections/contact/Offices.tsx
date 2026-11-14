@@ -31,7 +31,7 @@ export function Offices() {
                 <span aria-hidden className="size-[0.35em] rounded-[1px] bg-current" />
                 {office.kind}
               </h2>
-              <address className="mt-4 font-ui text-[max(14px,1.35cqw)] leading-[1.55] not-italic lg:mt-[1.5cqw]">
+              <address className="mt-4 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal not-italic lg:mt-[1.5cqw]">
                 <span className="block text-[#7a7a7a]">{office.address}</span>
               </address>
             </Reveal>

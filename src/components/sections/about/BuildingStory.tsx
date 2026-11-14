@@ -18,7 +18,7 @@ export function BuildingStory() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(28px,3.3cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Part of a bigger building story.
           </h2>
         </Reveal>

@@ -19,6 +19,7 @@ export default function Projects() {
       <div className="-mt-[96px] bg-black pt-[96px] lg:-mt-[127px] lg:pt-[127px]">
         <PageIntro
           tone="dark"
+          titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]"
           title={
             <>
               Where our Panels <br />

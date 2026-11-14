@@ -26,7 +26,7 @@ const FIELDS: Field[] = [
 ];
 
 const control =
-  "w-full rounded-[max(8px,0.6cqw)] border border-[#d6d4cc] bg-[#faf9f6] px-[max(16px,1.65cqw)] py-[max(12px,1cqw)] font-ui text-[max(16px,1.5cqw)] leading-snug text-black placeholder:text-[#7a7a7a] transition-colors duration-200 outline-none focus:border-[#14213d]";
+  "w-full rounded-[max(8px,0.6cqw)] border border-[#d6d4cc] bg-[#faf9f6] px-[max(16px,1.65cqw)] py-[max(12px,1cqw)] font-ui text-[max(16px,1.5cqw)] leading-snug text-black placeholder:font-ui placeholder:text-[15.5324px] placeholder:leading-[23.2985px] placeholder:font-normal placeholder:tracking-normal placeholder:text-[#8A8A8A] transition-colors duration-200 outline-none focus:border-[#14213d]";
 
 /**
  * Short project brief for a panel recommendation. The site's /api/enquiry needs an email address,
@@ -48,10 +48,10 @@ export function BuildingEnquiry() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(26px,2.4cqw)] leading-tight font-bold tracking-[-0.01em] text-[#14213d]">
+          <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Tell us about your building
           </h2>
-          <p className="mt-4 font-ui text-[max(16px,1.5cqw)] leading-[1.5] text-[#3e3e3e] lg:mt-[2cqw]">
+          <p className="mt-4 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[2cqw]">
             Share the basics and our team will come back with a panel recommendation.
           </p>
         </Reveal>
@@ -88,14 +88,14 @@ export function BuildingEnquiry() {
               <button
                 type="submit"
                 value="quote"
-                className="rounded-[max(8px,0.6cqw)] bg-brand px-[max(24px,3.5cqw)] py-[max(14px,1.6cqw)] font-ui text-[max(16px,1.75cqw)] leading-none font-bold text-white transition-colors duration-200 hover:bg-black"
+                className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-brand px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-white transition-colors duration-200 hover:bg-black"
               >
                 Request a quote
               </button>
               <button
                 type="submit"
                 value="sample"
-                className="rounded-[max(8px,0.6cqw)] border-2 border-brand px-[max(24px,3.5cqw)] py-[max(14px,1.6cqw)] font-ui text-[max(16px,1.75cqw)] leading-none font-bold text-brand transition-colors duration-200 hover:bg-brand hover:text-white"
+                className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] border border-brand px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-brand transition-colors duration-200 hover:bg-brand hover:text-white"
               >
                 Request a sample
               </button>

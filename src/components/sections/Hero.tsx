@@ -12,7 +12,7 @@ export function Hero() {
     <section className={cn(CONTAINER, "pt-6 pb-12 lg:pt-4")}>
       <div className="@container">
         <div className="animate-rise md:ml-[65.83%]">
-          <p className="max-w-md font-ui text-[max(13px,1.2cqw)] leading-[1.5] text-muted md:max-w-none">
+          <p className="max-w-md font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] md:max-w-none">
             Roofing, wall and cold storage panels engineered for India&apos;s industrial and commercial
             infrastructure.
           </p>
@@ -41,7 +41,7 @@ export function Hero() {
         </div>
 
         <h1 className="mt-6 font-light text-heading md:mt-[0.17cqw]">
-          <span className="animate-rise block -ml-[0.075em] text-[max(22px,4.5cqw)] leading-none [animation-delay:80ms]">
+          <span className="animate-rise block -ml-[0.075em] font-sans text-[22px] leading-none font-medium tracking-[-1.29024px] text-[#000000] [animation-delay:80ms] lg:text-[50.1815px] lg:leading-[50.1815px]">
             High Density
           </span>
           <span className="sr-only"> PUF </span>
@@ -55,7 +55,7 @@ export function Hero() {
               PUF
             </text>
           </svg>
-          <span className="animate-rise block -mr-[0.03em] text-right text-[max(22px,4.5cqw)] leading-none [animation-delay:240ms]">
+          <span className="animate-rise block -mr-[0.03em] text-right font-sans text-[22px] leading-none font-medium tracking-[-1.29024px] text-[#000000] [animation-delay:240ms] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Insulated Panels
           </span>
         </h1>

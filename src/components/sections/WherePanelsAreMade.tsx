@@ -128,7 +128,7 @@ export function WherePanelsAreMade() {
                 >
                   Where your panels are made
                 </h2>
-                <p className="mt-3 max-w-[46em] font-ui text-[max(16px,1.3cqw)] leading-[1.6] text-[#575657] lg:mt-[1cqw]">
+                <p className="mt-3 font-ui text-[15.5324px] lg:whitespace-nowrap leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1cqw]">
                   Every panel is made at our own plant in Nalagarh, Himachal Pradesh. Follow the line,
                   one stage at a time.
                 </p>
@@ -166,8 +166,8 @@ export function WherePanelsAreMade() {
                             />
                           )}
                         </div>
-                        <p className="mt-3 font-ui text-[max(15px,1.15cqw)] leading-[1.6] text-[#3e3e3e] lg:mt-[0.8cqw]">
-                          <strong className="font-bold text-black">{stage.title}</strong> {stage.body}
+                        <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[0.8cqw]">
+                          <strong className="font-bold">{stage.title}</strong> {stage.body}
                         </p>
                       </li>
                     ))}

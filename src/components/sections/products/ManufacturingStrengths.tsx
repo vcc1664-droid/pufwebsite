@@ -79,11 +79,11 @@ export function ManufacturingStrengths() {
       <div className={CONTAINER}>
         <div className={cn("@container", SECTION_Y)}>
           <Reveal className="text-center">
-            <h2 className="text-[max(28px,3.8cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+            <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
               Manufacturing that delivers
             </h2>
             {/* Copy as given in the design; it reads like a placeholder carried over from the About page. */}
-            <p className="mt-2 font-ui text-[max(14px,1.8cqw)] text-[#7a7a7a] lg:mt-[0.6cqw]">
+            <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#7a7a7a] lg:mt-[0.6cqw]">
               Timeline structure. Years and events to confirm.
             </p>
           </Reveal>
@@ -101,7 +101,7 @@ export function ManufacturingStrengths() {
                   <h3 className="mt-5 text-[max(17px,1.6cqw)] leading-tight font-medium text-black lg:mt-[2cqw]">
                     {item.title}
                   </h3>
-                  <p className="mt-2 font-ui text-[max(14px,1.35cqw)] leading-[1.55] text-[#6b6b6b] lg:mt-[0.8cqw]">
+                  <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#6b6b6b] lg:mt-[0.8cqw]">
                     {item.body}
                   </p>
                 </Reveal>

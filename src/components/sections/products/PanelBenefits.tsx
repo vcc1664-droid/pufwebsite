@@ -6,15 +6,16 @@ import { cn } from "@/lib/utils";
 import panelImage from "../../../../public/Home/21937329-9225-4a24-a7ce-e400225ff293.png";
 
 const NAVY = "#14213d";
-const ACCENT = "#f28c28";
+const ACCENT = "#561A61";
+const THERMO_ACCENT = "#561A61";
 
 /* Line icons: navy outline with an orange accent, as in the design. */
 const ThermometerIcon = (
   <>
     <path d="M14 30V9a4 4 0 0 1 8 0v21a7 7 0 1 1-8 0Z" stroke={NAVY} />
-    <path d="M18 18v15" stroke={ACCENT} strokeWidth="3" />
-    <circle cx="18" cy="35" r="3.5" fill={ACCENT} stroke="none" />
-    <path d="M27 12h7M27 17h5M27 22h7" stroke={ACCENT} />
+    <path d="M18 18v15" stroke={THERMO_ACCENT} strokeWidth="3" />
+    <circle cx="18" cy="35" r="3.5" fill={THERMO_ACCENT} stroke="none" />
+    <path d="M27 12h7M27 17h5M27 22h7" stroke={THERMO_ACCENT} />
   </>
 );
 
@@ -115,12 +116,12 @@ export function PanelBenefits() {
                   </svg>
                   <div className="self-stretch border-l border-[#e3e5ea]" aria-hidden />
                   <div>
-                    <h3 className="text-[max(18px,1.45cqw)] leading-[1.15] font-bold tracking-[-0.01em] text-[#14213d]">
+                    <h3 className="text-[max(18px,1.45cqw)] leading-[1.15] font-bold tracking-[-0.01em] text-black">
                       {benefit.title[0]}
                       <br />
                       {benefit.title[1]}
                     </h3>
-                    <p className="mt-2 font-ui text-[max(14px,1cqw)] leading-[1.55] text-[#3e3e3e] lg:mt-[0.8cqw]">
+                    <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[0.8cqw]">
                       {benefit.body}
                     </p>
                   </div>

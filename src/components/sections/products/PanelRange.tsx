@@ -74,7 +74,13 @@ export function PanelRange({
       <div className={CONTAINER}>
         <div className={cn("@container", SECTION_Y)}>
           <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-0">
-            <h2 className="text-[max(32px,3.55cqw)] leading-tight font-normal tracking-[-0.02em] lg:w-[59.2%]">
+            <h2
+              className={cn(
+                "font-sans text-[32px] leading-[1] font-medium tracking-[-1.29024px] lg:w-[59.2%] lg:text-[50.1815px] lg:leading-[50.1815px]",
+                // Black on the light band; the dark band keeps white so the title stays visible
+                dark ? "text-white" : "text-[#000000]",
+              )}
+            >
               {title}
             </h2>
             <div
@@ -112,7 +118,7 @@ export function PanelRange({
           <hr className={cn(RULE_GAP, dark ? "border-[#4a4a4a]" : "border-[#8c8c8c]")} />
 
           <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[59.2%]")}>
-            <p className={cn("font-ui text-[max(16px,1.75cqw)] leading-[1.5]", !dark && "text-[#1e1e1e]")}>
+            <p className={cn("font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal", !dark && "text-[#1e1e1e]")}>
               {body}
             </p>
           </Reveal>

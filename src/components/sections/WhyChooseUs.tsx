@@ -106,7 +106,7 @@ export function WhyChooseUs() {
                       <h3 className="font-ui text-[max(17px,1.5cqw)] leading-tight font-medium text-black">
                         {reason.title}
                       </h3>
-                      <p className="mt-3 font-ui text-[max(14px,1.16cqw)] leading-[1.58] text-[#909090] lg:mt-[1.4cqw]">
+                      <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.4cqw]">
                         {reason.body}
                       </p>
                       {/* Below lg there is no side column, so each reason carries its own photo */}

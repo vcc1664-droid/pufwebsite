@@ -94,7 +94,7 @@ export function StartingPoint() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <h2 className="text-[max(28px,3.3cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Find the <br />
             right starting point.
           </h2>
@@ -151,7 +151,7 @@ export function StartingPoint() {
                 <h3 className="font-ui text-[max(20px,2cqw)] leading-tight font-semibold tracking-[-0.01em] text-black">
                   {panel.title}
                 </h3>
-                <p className="mt-3 max-w-[30em] font-ui text-[max(15px,1.75cqw)] leading-[1.5] text-[#8a8a8a] lg:mt-[1.1cqw]">
+                <p className="mt-3 max-w-[30em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#8a8a8a] lg:mt-[1.1cqw]">
                   {panel.body}
                 </p>
 

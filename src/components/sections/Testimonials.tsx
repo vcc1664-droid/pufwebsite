@@ -90,10 +90,10 @@ export function Testimonials() {
           </Reveal>
 
           <Reveal delay={100} className="lg:w-[48.5%]">
-            <h2 className="max-w-[13em] text-[max(28px,3.5cqw)] leading-[1.3] font-medium tracking-[-0.02em] text-black">
+            <h2 className="max-w-[13em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
               Trusted by Leaders Across the Industry
             </h2>
-            <p className="mt-4 max-w-[34em] font-ui text-[max(14px,1.25cqw)] leading-normal text-[#909090] lg:mt-[1.6cqw]">
+            <p className="mt-4 max-w-[34em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.6cqw]">
               See how our high-performance PUF panel systems and operational software transform facility
               performance.
             </p>
@@ -111,7 +111,7 @@ export function Testimonials() {
               <blockquote
                 className={cn(
                   STACK_GAP,
-                  "max-w-[30em] font-ui text-[max(14px,1.2cqw)] leading-[1.6] text-[#1e1e1e]",
+                  "max-w-[30em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969]",
                 )}
               >
                 &ldquo;{testimonial.quote}&rdquo;

@@ -91,7 +91,7 @@ export function SpaceDemands() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="lg:ml-[60.6%]">
-          <h2 className="max-w-[11em] text-[max(28px,3.8cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
+          <h2 className="max-w-[11em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             What does the space demand?
           </h2>
         </Reveal>
@@ -99,7 +99,7 @@ export function SpaceDemands() {
         <hr className={cn(RULE_GAP, "border-[#d9d9d9]")} />
 
         <Reveal delay={100} className={RULE_GAP}>
-          <p className="max-w-[26em] font-ui text-[max(14px,1.75cqw)] leading-normal text-[#7a7a7a]">
+          <p className="max-w-[26em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#7a7a7a]">
             Every application starts with the conditions the panel has to handle.
           </p>
         </Reveal>

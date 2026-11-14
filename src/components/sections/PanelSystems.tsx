@@ -60,13 +60,13 @@ export function PanelSystems() {
         <div className={cn("@container", SECTION_Y)}>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <Reveal className="lg:w-[47.3%]">
-              <h2 className="max-w-[12em] text-[max(28px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em] text-black">
+              <h2 className="max-w-[12em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
                 Panel systems for different requirements.
               </h2>
             </Reveal>
 
             <Reveal delay={100} className="lg:w-[48.6%] lg:pb-[0.4cqw]">
-              <p className="max-w-[36em] font-ui text-[max(14px,1.15cqw)] leading-[1.6] text-[#909090]">
+              <p className="max-w-[36em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969]">
                 Roof, wall and cold-room panel systems manufactured for industrial, commercial and specialised
                 environments.
               </p>
@@ -108,7 +108,7 @@ export function PanelSystems() {
                     <h3 className="text-[max(22px,2.3cqw)] leading-tight font-medium tracking-[-0.01em] text-black">
                       {system.title}
                     </h3>
-                    <p className="mt-3 font-ui text-[max(14px,1.2cqw)] leading-normal text-[#555] lg:mt-[1.2cqw]">
+                    <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.2cqw]">
                       {system.body}
                     </p>
 

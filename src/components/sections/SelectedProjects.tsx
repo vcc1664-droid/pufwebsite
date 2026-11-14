@@ -97,7 +97,7 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
         </h3>
         <div
           className={cn(
-            "mt-2 font-ui text-[max(12px,1.2cqw)] leading-snug lg:mt-[0.9cqw]",
+            "mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal lg:mt-[0.9cqw]",
             featured
               ? "flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-6"
               : "space-y-1",
@@ -122,7 +122,7 @@ export function SelectedProjects() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="lg:ml-[50%]">
-          <h2 className="text-[max(28px,3.4cqw)] leading-[1.25] font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Selected <br />
             Synergy PUF projects.
           </h2>
@@ -131,7 +131,7 @@ export function SelectedProjects() {
         <hr className={cn(RULE_GAP, "border-[#d9d9d9]")} />
 
         <Reveal delay={100} className={cn(RULE_GAP, "lg:w-[55%]")}>
-          <p className="font-ui text-[max(15px,1.7cqw)] leading-[1.6] text-black">
+          <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969]">
             A look at insulated panel systems delivered across cold storage and temperature-controlled
             facilities.
           </p>

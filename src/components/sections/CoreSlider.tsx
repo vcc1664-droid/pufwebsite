@@ -155,7 +155,7 @@ export function CoreSlider() {
                       <h2 className="text-[max(36px,4.2cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
                         {core.name}
                       </h2>
-                      <p className="mt-3 max-w-[24em] font-ui text-[max(15px,1.5cqw)] leading-normal text-[#909090] lg:mt-[0.8cqw]">
+                      <p className="mt-3 max-w-[24em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[0.8cqw]">
                         {core.body}
                       </p>
                     </div>
@@ -232,10 +232,10 @@ export function CoreSlider() {
                 <p
                   className={cn(
                     STACK_GAP,
-                    "text-center font-ui text-[max(14px,1.6cqw)] leading-snug text-[#1e1e1e] lg:ml-auto lg:w-[56.8%]",
+                    "text-center font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:ml-auto lg:w-[56.8%]",
                   )}
                 >
-                  <span className="inline-block max-w-[16em]">Insulation selected around performance.</span>
+                  <span className="inline-block sm:whitespace-nowrap">Insulation selected around performance.</span>
                 </p>
               </Reveal>
             </div>

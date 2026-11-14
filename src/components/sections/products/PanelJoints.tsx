@@ -63,7 +63,7 @@ export function PanelJoints() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(28px,3.3cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Available panel joints.
           </h2>
         </Reveal>
@@ -71,7 +71,7 @@ export function PanelJoints() {
         <hr className={cn(RULE_GAP, "border-[#bdbdbd]")} />
 
         <Reveal delay={100} className={cn(RULE_GAP, "lg:ml-[54.6%]")}>
-          <p className="font-ui text-[max(15px,1.65cqw)] leading-[1.6] text-[#8a8a8a]">
+          <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#8a8a8a]">
             Innovative joinery for seamless connections, structural integrity and ease of installation.
           </p>
         </Reveal>
