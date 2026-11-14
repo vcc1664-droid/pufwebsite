@@ -80,7 +80,7 @@ export function ManufacturingStrengths() {
         <div className={cn("@container", SECTION_Y)}>
           <Reveal className="text-center">
             <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-              Manufacturing that delivers
+              Manufacturing That Delivers
             </h2>
             {/* Copy as given in the design; it reads like a placeholder carried over from the About page. */}
             <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#7a7a7a] lg:mt-[0.6cqw]">

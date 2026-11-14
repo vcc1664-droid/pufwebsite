@@ -46,7 +46,7 @@ export function BuyerQuestions() {
       <div className="@container">
         <Reveal>
           <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Questions buyers ask
+            Questions Buyers Ask
           </h2>
         </Reveal>
 

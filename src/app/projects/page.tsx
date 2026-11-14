@@ -22,8 +22,8 @@ export default function Projects() {
           titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]"
           title={
             <>
-              Where our Panels <br />
-              go to Work.
+              Where Our Panels <br />
+              Go To Work.
             </>
           }
           aside="Delivered Across India"

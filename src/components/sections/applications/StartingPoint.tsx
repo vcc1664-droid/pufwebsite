@@ -95,8 +95,8 @@ export function StartingPoint() {
       <div className="@container">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Find the <br />
-            right starting point.
+            Find The <br />
+            Right Starting Point.
           </h2>
 
           <div role="tablist" aria-label="Application type" className="flex flex-wrap gap-2 lg:gap-[1.6cqw]">

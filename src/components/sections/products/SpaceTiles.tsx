@@ -34,7 +34,7 @@ export function SpaceTiles() {
       <div className="@container">
         <Reveal>
           <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Where each panel is used
+            Where Each Panel Is Used
           </h2>
         </Reveal>
 

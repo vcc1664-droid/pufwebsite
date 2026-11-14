@@ -43,12 +43,12 @@ export default function Applications() {
       <StartingPoint />
       <SectorServices />
       <TrustStrip
-        title="Start with your project conditions."
+        title="Start With Your Project Conditions."
         items={PROJECT_CONDITION_ITEMS}
         iconTone="light"
       />
       <LetsTalk
-        title="Need panel help?"
+        title="Need Panel Help?"
         body="Share your temperature, sector and area. Our engineers can recommend a system and prepare a quote."
         bodyClassName="max-w-[37em]"
       />

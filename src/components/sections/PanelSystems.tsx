@@ -61,7 +61,7 @@ export function PanelSystems() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <Reveal className="lg:w-[47.3%]">
               <h2 className="max-w-[12em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-                Panel systems for different requirements.
+                Panel Systems for Different Requirements.
               </h2>
             </Reveal>
 

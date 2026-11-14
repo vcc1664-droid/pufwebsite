@@ -11,7 +11,7 @@ export function ProductionToInstallation() {
       <div className="@container">
         <Reveal>
           <h2 className="max-w-[11em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            From panel production to site installation.
+            From Panel Production to Site Installation.
           </h2>
         </Reveal>
 

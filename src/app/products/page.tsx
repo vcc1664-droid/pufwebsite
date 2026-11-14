@@ -22,7 +22,7 @@ export default function Products() {
       <PageIntro
         title={
           <>
-            The right panel. <br />A stronger build.
+            The Right Panel. <br />A Stronger Build.
           </>
         }
         titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]"

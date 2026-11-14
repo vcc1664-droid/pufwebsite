@@ -149,8 +149,8 @@ export function SectorServices() {
             <div className={cn("@container", SECTION_Y)}>
               <Reveal>
                 <h2 className="max-w-[11em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]">
-                  Services tailored to <br />
-                  every sector
+                  Services Tailored To <br />
+                  Every Sector
                 </h2>
               </Reveal>
 

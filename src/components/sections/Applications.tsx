@@ -131,10 +131,10 @@ export function Applications() {
                 {/* Two lines on desktop: one sentence per line */}
                 <h2 className="max-w-[10em] text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] lg:max-w-none">
                   <span className="lg:block lg:whitespace-nowrap">
-                    Different spaces.
+                    Different Spaces.
                   </span>{" "}
                   <span className="lg:block lg:whitespace-nowrap">
-                    Different insulation demands.
+                    Different Insulation Demands.
                   </span>
                 </h2>
               </Reveal>

@@ -17,7 +17,7 @@ export default function About() {
   return (
     <main className="flex-1">
       <PageIntro
-        title="The people and process behind the panels."
+        title="The People and Process Behind the Panels."
         titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]"
         body="Industrial insulation expertise. A company built around your project. Delivering reliable solutions with precision, performance, and quality you can trust."
       />

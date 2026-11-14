@@ -49,7 +49,7 @@ export function BuildingEnquiry() {
       <div className="@container">
         <Reveal>
           <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Tell us about your building
+            Tell Us About Your Building
           </h2>
           <p className="mt-4 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[2cqw]">
             Share the basics and our team will come back with a panel recommendation.

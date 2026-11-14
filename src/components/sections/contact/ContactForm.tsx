@@ -129,7 +129,7 @@ export function ContactForm() {
       <div className="@container">
         <Reveal>
           <h1 className="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Let’s explore your vision
+            Let’s Explore Your Vision
           </h1>
         </Reveal>
 

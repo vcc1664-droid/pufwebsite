@@ -19,7 +19,7 @@ export function BuildingStory() {
       <div className="@container">
         <Reveal>
           <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Part of a bigger building story.
+            Part of a Bigger Building Story.
           </h2>
         </Reveal>
 

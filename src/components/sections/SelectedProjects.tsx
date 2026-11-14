@@ -16,24 +16,25 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    title: "Mega Cold Storage Distributions Hub",
+    title: "Dayal Cold Store",
+
     scope: "PUF wall and ceiling panels, deep blast freezer enclosure",
-    location: "Noida, Uttar Pradesh",
-    client: "Apex Cold Chain Logistics",
+    location: "",
+    client: "",
     video: "/Home/homePageVideo/IMG_8938.MP4",
   },
   {
-    title: "Multi-Temperature Cold Store",
+    title: "Dholan Cold Store",
     scope: "Insulated wall and ceiling panels, airtight industrial cold doors",
-    location: "Bengaluru, Karnataka",
-    client: "Fresh Fields Food Logistics",
+    location: "",
+    client: "",
     video: "/Home/homePageVideo/IMG_8936.MP4",
   },
   {
-    title: "Temperature-Controlled",
+    title: "RS Cold Store",
     scope: "PUF cold-room enclosure, sterile modular panels & insulated roofing",
-    location: "Hyderabad, Telangana",
-    client: "BioMed Pharma Logistics",
+    location: "",
+    client: "",
     video: "/Home/homePageVideo/IMG_8940.MP4",
   },
 ];
@@ -124,7 +125,7 @@ export function SelectedProjects() {
         <Reveal className="lg:ml-[50%]">
           <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
             Selected <br />
-            Synergy PUF projects.
+            Synergy PUF Projects.
           </h2>
         </Reveal>
 

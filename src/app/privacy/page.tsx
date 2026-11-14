@@ -55,7 +55,7 @@ const SECTIONS: LegalSection[] = [
           instead. In that case nothing reaches us until you send that email yourself.
         </p>
         <p>
-          The &ldquo;Tell us about your building&rdquo; form on our{" "}
+          The &ldquo;Tell Us About Your Building&rdquo; form on our{" "}
           <Link href="/products">Products</Link> page, including its &ldquo;Request a quote&rdquo; and
           &ldquo;Request a sample&rdquo; buttons, does not send anything through this website. It
           opens your own email app with your details filled in, for you to send.

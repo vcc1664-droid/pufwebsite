@@ -20,7 +20,7 @@ export function Milestones() {
       <div className="@container">
         <Reveal className="text-center">
           <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            The milestones behind our growth
+            The Milestones Behind our Growth
           </h2>
           <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#909090] lg:mt-[0.8cqw]">
             Timeline structure. Years and events to confirm.
