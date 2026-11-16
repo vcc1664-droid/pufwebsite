@@ -6,11 +6,11 @@ type Milestone = { year: string; title: string };
 
 // Years are still to be confirmed.
 const MILESTONES: Milestone[] = [
-  { year: "Year of confirm", title: "Capacity expanded" },
-  { year: "Year of confirm", title: "Project Milestone" },
-  { year: "Year of confirm", title: "Group founded" },
-  { year: "Year of confirm", title: "First certification" },
-  { year: "Year of confirm", title: "PUF plant commissioned" },
+  { year: "2022", title: "Capacity expanded" },
+  { year: "2025", title: "Project Milestone" },
+  { year: "1987", title: "Group founded" },
+  { year: "2024", title: "First certification" },
+  { year: "2018", title: "PUF plant commissioned" },
 ];
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */

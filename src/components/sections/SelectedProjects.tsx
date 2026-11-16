@@ -124,8 +124,7 @@ export function SelectedProjects() {
       <div className="@container">
         <Reveal className="lg:ml-[50%]">
           <h2 className="font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
-            Selected <br />
-            Synergy PUF Projects.
+            Projects built with Synergy PUF panels
           </h2>
         </Reveal>
 
