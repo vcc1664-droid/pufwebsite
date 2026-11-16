@@ -41,7 +41,7 @@ export function Hero() {
         </div>
 
         <h1 className="mt-6 font-light text-heading md:mt-[0.17cqw]">
-          <span className="animate-rise block -ml-[0.075em] font-sans text-[22px] leading-none font-medium tracking-[-1.29024px] text-[#000000] [animation-delay:80ms] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <span className="animate-rise block -ml-[0.075em] font-sans text-[22px] leading-[1.3] font-normal tracking-normal text-[#171717] [animation-delay:80ms] lg:text-[50.1815px] lg:leading-[65.2359px]">
             High Density
           </span>
           <span className="sr-only"> PUF </span>
@@ -55,7 +55,7 @@ export function Hero() {
               PUF
             </text>
           </svg>
-          <span className="animate-rise block -mr-[0.03em] text-right font-sans text-[22px] leading-none font-medium tracking-[-1.29024px] text-[#000000] [animation-delay:240ms] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <span className="animate-rise block -mr-[0.03em] text-right font-sans text-[22px] leading-[1.3] font-normal tracking-normal text-[#171717] [animation-delay:240ms] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Insulated Panels
           </span>
         </h1>

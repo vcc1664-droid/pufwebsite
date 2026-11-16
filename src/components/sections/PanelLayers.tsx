@@ -46,7 +46,7 @@ export function PanelLayers() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="text-center">
-          <h2 className="text-[26px] leading-none font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Look Inside the Panel
           </h2>
           <p className="mx-auto mt-[max(14px,1.73cqw)] max-w-[66cqw] font-ui text-[max(14px,1.3cqw)] leading-[1.5] text-muted max-lg:max-w-xl">
@@ -95,7 +95,7 @@ export function PanelLayers() {
                       {layer.icon}
                     </svg>
                   </span>
-                  <h4 className="mt-[max(10px,1.04cqw)] text-[max(15px,1.6cqw)] leading-none font-medium tracking-[-0.02em] text-[#312d2d] uppercase">
+                  <h4 className="mt-[max(10px,1.04cqw)] text-[max(15px,1.6cqw)] leading-none font-normal tracking-[-0.02em] text-[#312d2d] uppercase">
                     {layer.title}
                   </h4>
                   <p className="mt-[max(8px,1cqw)] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969]">

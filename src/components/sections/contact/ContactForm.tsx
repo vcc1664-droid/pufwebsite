@@ -128,7 +128,7 @@ export function ContactForm() {
     <section className={cn(CONTAINER, "pt-12 lg:pt-16", SECTION_BOTTOM)}>
       <div className="@container">
         <Reveal>
-          <h1 className="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h1 className="font-sans text-[30px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Let’s Explore Your Vision
           </h1>
         </Reveal>

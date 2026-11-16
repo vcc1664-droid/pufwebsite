@@ -33,7 +33,7 @@ export function LetsTalk({
       <div className={CONTAINER}>
         <div className={cn("@container", SECTION_Y)}>
           <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className={cn("font-sans text-[32px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]", titleClassName)}>
+            <h2 className={cn("font-sans text-[32px] leading-[1] font-normal tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]", titleClassName)}>
               {title}
             </h2>
             <div className="flex flex-wrap gap-3 lg:gap-[1.4cqw]">

@@ -79,8 +79,8 @@ export function ManufacturingStrengths() {
       <div className={CONTAINER}>
         <div className={cn("@container", SECTION_Y)}>
           <Reveal className="text-center">
-            <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-              Manufacturing That Delivers
+            <h2 className="font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
+              Manufacturing that Delivers
             </h2>
             {/* Copy as given in the design; it reads like a placeholder carried over from the About page. */}
             <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#7a7a7a] lg:mt-[0.6cqw]">
@@ -98,7 +98,7 @@ export function ManufacturingStrengths() {
                   <span className="grid size-[max(30px,3cqw)] place-items-center rounded-[max(5px,0.6cqw)] border-[1.5px] border-black text-black">
                     {item.icon}
                   </span>
-                  <h3 className="mt-5 text-[max(17px,1.6cqw)] leading-tight font-medium text-black lg:mt-[2cqw]">
+                  <h3 className="mt-5 text-[max(17px,1.6cqw)] leading-tight font-normal text-black lg:mt-[2cqw]">
                     {item.title}
                   </h3>
                   <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#6b6b6b] lg:mt-[0.8cqw]">

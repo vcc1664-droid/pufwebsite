@@ -93,7 +93,7 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
       />
 
       <div className="absolute inset-x-0 bottom-0 p-5 lg:p-[2.3cqw]">
-        <h3 className="text-[max(18px,1.95cqw)] leading-tight font-medium tracking-[-0.01em]">
+        <h3 className="text-[max(18px,1.95cqw)] leading-tight font-normal tracking-[-0.01em]">
           {project.title}
         </h3>
         <div
@@ -123,7 +123,7 @@ export function SelectedProjects() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="lg:ml-[50%]">
-          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h2 className="font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Selected <br />
             Synergy PUF Projects.
           </h2>

@@ -122,7 +122,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   },
 ];
 
-const heading = "text-[max(15px,1.45cqw)] font-medium text-black";
+const heading = "text-[max(15px,1.45cqw)] font-normal text-black";
 const body = "text-[max(14px,1.3cqw)] text-[#1e1e1e]";
 const fine = "text-[max(12px,1.05cqw)] leading-[1.6] text-[#1e1e1e]";
 
@@ -134,7 +134,7 @@ export function Footer() {
         <div className="@container pt-10 pb-6 lg:pt-[4.5cqw] lg:pb-[2cqw]">
           <p
             aria-hidden
-            className="text-center text-[max(48px,10.5cqw)] leading-none font-medium tracking-[-0.02em] whitespace-nowrap text-brand"
+            className="text-center text-[max(48px,10.5cqw)] leading-none font-normal tracking-[-0.02em] whitespace-nowrap text-brand"
           >
             Synergy PUF
           </p>

@@ -16,7 +16,7 @@ export function LegalSections({ sections }: { sections: LegalSection[] }) {
             key={section.title}
             className="flex flex-col gap-4 border-b border-[#dcdcdc] py-8 first:pt-0 lg:flex-row lg:gap-0 lg:py-[2.6cqw] lg:first:pt-0"
           >
-            <h2 className="flex gap-[0.6em] text-[max(19px,1.75cqw)] leading-[1.3] font-medium tracking-[-0.01em] text-black lg:w-[46.4%] lg:pr-[4cqw]">
+            <h2 className="flex gap-[0.6em] text-[max(19px,1.75cqw)] leading-[1.3] font-normal tracking-[-0.01em] text-black lg:w-[46.4%] lg:pr-[4cqw]">
               <span className="text-[#9a9a9a]">{String(i + 1).padStart(2, "0")}</span>
               {section.title}
             </h2>

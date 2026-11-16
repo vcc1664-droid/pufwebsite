@@ -19,7 +19,7 @@ export default function Projects() {
       <div className="-mt-[96px] bg-black pt-[96px] lg:-mt-[127px] lg:pt-[127px]">
         <PageIntro
           tone="dark"
-          titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]"
+          titleClassName="font-sans text-[30px] leading-[1.3] font-normal tracking-normal lg:text-[50.1815px] lg:leading-[65.2359px]"
           title={
             <>
               Where Our Panels <br />
@@ -52,6 +52,7 @@ export default function Projects() {
       <ProjectList />
       <LetsTalk
         title="Planning a build?"
+        titleClassName="font-normal! tracking-normal! leading-[1.3]! lg:leading-[65.2359px]!"
         body="Send us the temperature range, area and timeline. Our engineering team will spec the panels and quote it"
         bodyClassName="max-w-[32.5em]"
       />

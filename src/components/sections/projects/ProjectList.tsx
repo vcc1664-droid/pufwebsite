@@ -143,7 +143,7 @@ export function ProjectList() {
                 className={cn(i > 0 && BLOCK_GAP, i > 0 && "border-t border-[#8c8c8c] pt-12 lg:pt-[6cqw]")}
               >
                 <Reveal>
-                  <h2 className="text-center font-sans text-[34px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px] text-[#1e1e1e]">
+                  <h2 className="text-center font-sans text-[34px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
                     {project.name}
                   </h2>
                 </Reveal>
@@ -166,7 +166,7 @@ export function ProjectList() {
                         className="rounded-[max(6px,0.8cqw)] bg-[#f5f5f5] p-4 lg:p-[2.2cqw]"
                       >
                         <dt className="font-ui text-[max(12px,1.1cqw)] text-[#7a7a7a]">{spec.label}</dt>
-                        <dd className="mt-1 font-ui text-[max(13px,1.2cqw)] font-medium text-black lg:mt-[0.5cqw]">
+                        <dd className="mt-1 font-ui text-[max(13px,1.2cqw)] font-normal text-black lg:mt-[0.5cqw]">
                           {spec.value}
                         </dd>
                       </div>

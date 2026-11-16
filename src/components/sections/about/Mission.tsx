@@ -109,7 +109,7 @@ export function Mission() {
             </Reveal>
 
             <Reveal delay={100} className="lg:w-[42.3%] lg:pb-[1.6cqw]">
-              <h2 className="max-w-[11em] font-sans text-[32px] leading-[1] font-medium tracking-[-1.29024px] lg:text-[50.1815px] lg:leading-[50.1815px]">
+              <h2 className="max-w-[11em] font-sans text-[32px] leading-[1.3] font-normal tracking-normal lg:text-[50.1815px] lg:leading-[65.2359px]">
                 Insulation Shaped by your Space.
               </h2>
             </Reveal>

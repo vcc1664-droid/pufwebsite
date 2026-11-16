@@ -21,7 +21,7 @@ export function RightRequirement() {
         </Reveal>
 
         <Reveal delay={100} className="lg:w-[44.5%]">
-          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h2 className="font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             The Right Panel Starts With the Right Requirement.
           </h2>
           <p className="mt-5 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.6cqw]">

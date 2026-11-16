@@ -66,7 +66,7 @@ const CATEGORIES: { name: string; panel?: Panel }[] = [
 ];
 
 const link =
-  "group inline-flex items-center gap-[0.25em] text-[max(14px,1.07cqw)] font-medium text-brand transition-opacity duration-200 hover:opacity-70";
+  "group inline-flex items-center gap-[0.25em] text-[max(14px,1.07cqw)] font-normal text-brand transition-opacity duration-200 hover:opacity-70";
 
 function Arrow() {
   return (
@@ -94,7 +94,7 @@ export function StartingPoint() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <h2 className="font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h2 className="font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Find The <br />
             Right Starting Point.
           </h2>
@@ -164,7 +164,7 @@ export function StartingPoint() {
                         i === 0 ? "sm:pl-0" : "sm:border-l sm:border-[#bdbdbd]",
                       )}
                     >
-                      <dt className="font-ui text-[max(13px,1cqw)] font-medium text-black">{spec.label}</dt>
+                      <dt className="font-ui text-[max(13px,1cqw)] font-normal text-black">{spec.label}</dt>
                       <dd className="mt-1 font-ui text-[max(12px,0.95cqw)] text-[#8a8a8a]">{spec.value}</dd>
                     </div>
                   ))}

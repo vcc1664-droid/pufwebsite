@@ -90,7 +90,7 @@ export function Testimonials() {
           </Reveal>
 
           <Reveal delay={100} className="lg:w-[48.5%]">
-            <h2 className="max-w-[13em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+            <h2 className="max-w-[13em] font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
               Trusted by Leaders Across the Industry
             </h2>
             <p className="mt-4 max-w-[34em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.6cqw]">
@@ -101,7 +101,7 @@ export function Testimonials() {
             {/* Re-keyed so the quote rises in again on every change */}
             <figure key={index} aria-live="polite" className={cn(RULE_GAP, "animate-rise")}>
               <figcaption>
-                <p className="text-[max(17px,1.6cqw)] leading-tight font-medium text-black">
+                <p className="text-[max(17px,1.6cqw)] leading-tight font-normal text-black">
                   {testimonial.name}
                 </p>
                 <p className="mt-1 font-ui text-[max(12px,1.05cqw)] text-[#1e1e1e] lg:mt-[0.3cqw]">

@@ -87,7 +87,7 @@ export function WhyChooseUs() {
           <div className="@container flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
             <div className="lg:w-[39.2%]">
               <Reveal>
-                <h2 className="text-[max(26px,4.2cqw)] leading-none font-medium tracking-[-0.02em] text-black ">
+                <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
                   Why Choose Us?
                 </h2>
               </Reveal>
@@ -103,7 +103,7 @@ export function WhyChooseUs() {
                     )}
                   >
                     <Reveal delay={100 + i * 100}>
-                      <h3 className="font-ui text-[max(17px,1.5cqw)] leading-tight font-medium text-black">
+                      <h3 className="font-ui text-[max(17px,1.5cqw)] leading-tight font-normal text-black">
                         {reason.title}
                       </h3>
                       <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.4cqw]">

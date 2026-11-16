@@ -22,10 +22,10 @@ export default function Products() {
       <PageIntro
         title={
           <>
-            The Right Panel. <br />A Stronger Build.
+            The Right Panel. <br />a Stronger Build.
           </>
         }
-        titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]"
+        titleClassName="font-sans text-[30px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]"
         aside="Our Products"
         asideClassName="lg:w-[67.2%]"
         body="Roof, wall, cold storage and cleanroom panel systems."
@@ -41,6 +41,7 @@ export default function Products() {
       <BuildingEnquiry />
       <LetsTalk
         title="Discuss Your Project?"
+        titleClassName="font-normal! tracking-normal! leading-[1.3]! lg:leading-[65.2359px]!"
         body="Share your project requirements with our team, discuss your ideas and let’s bring your vision to life with innovative solutions tailored to your needs."
         bodyClassName="max-w-[39.5em]"
       />

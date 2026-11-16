@@ -19,8 +19,8 @@ export function Manufacturing() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
         <Reveal className="lg:w-[47.2%] lg:pt-[1.6cqw]">
-          <h2 className="font-sans text-[24px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
-            Manufacturing &amp; capability
+          <h2 className="font-sans text-[24px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
+            Manufacturing &amp; Capability
           </h2>
 
           <p className="mt-6 flex items-center gap-1.5 font-ui text-[max(14px,1.35cqw)] text-[#1e1e1e] lg:mt-[3cqw]">

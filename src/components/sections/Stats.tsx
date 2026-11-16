@@ -53,7 +53,8 @@ export function Stats() {
           >
             <span className="flex w-[max(18px,1.75cqw)] flex-col gap-[max(4px,0.4cqw)]">
               {[0, 1, 2].map((i) => (
-                <span key={i} className="h-[max(4px,0.4cqw)] bg-brand" />
+                // Middle bar grey, like the logo mark
+                <span key={i} className={cn("h-[max(4px,0.4cqw)]", i === 1 ? "bg-[#888A8C]" : "bg-brand")} />
               ))}
             </span>
           </div>

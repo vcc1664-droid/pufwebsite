@@ -35,6 +35,7 @@ const DOCUMENTS: Document[] = [
   },
 ];
 
+
 /** Certificates and lab reports, each with a space for the issuer's logos and a link to the PDF. */
 /* Sizes (lg+) are cqw of the content width. */
 export function Certificates() {
@@ -42,7 +43,7 @@ export function Certificates() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Certificates and test Reports
           </h2>
           <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1cqw]">
@@ -81,7 +82,7 @@ export function Certificates() {
                 <div aria-hidden className="hidden w-0.5 self-stretch bg-[#14213d] sm:mx-[max(16px,1.6cqw)] sm:my-[max(8px,0.6cqw)] sm:block" />
 
                 <div className="sm:flex-1">
-                  <h3 className="flex items-center gap-[0.5em] font-ui text-[max(18px,1.45cqw)] leading-tight font-bold text-black">
+                  <h3 className="flex items-center gap-[0.5em] font-ui text-[max(18px,1.45cqw)] leading-tight font-normal text-black">
                     <svg aria-hidden viewBox="0 0 24 24" className="size-[1.05em] shrink-0">
                       <circle cx="12" cy="12" r="11" fill="#561A61" />
                       <path d="m7 12.5 3.2 3.2L17 9" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />

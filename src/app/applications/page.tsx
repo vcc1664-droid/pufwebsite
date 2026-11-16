@@ -23,7 +23,7 @@ export default function Applications() {
             PUF Insulated Panels
           </>
         }
-        titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]"
+        titleClassName="font-sans text-[30px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]"
         body="Roofing, wall and cold storage panels engineered for India's industrial and commercial infrastructure."
         bodyOffsetClassName="lg:ml-[38%] lg:max-w-[30em]"
       />
@@ -49,6 +49,7 @@ export default function Applications() {
       />
       <LetsTalk
         title="Need Panel Help?"
+        titleClassName="font-normal! tracking-normal! leading-[1.3]! lg:leading-[65.2359px]!"
         body="Share your temperature, sector and area. Our engineers can recommend a system and prepare a quote."
         bodyClassName="max-w-[37em]"
       />

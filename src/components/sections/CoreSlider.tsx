@@ -152,7 +152,7 @@ export function CoreSlider() {
                   <div className="lg:mt-[2cqw] lg:w-[34%]">
                     {/* Re-keyed so the copy rises in again on every change */}
                     <div key={core.name} aria-live="polite" className="animate-rise">
-                      <h2 className="text-[max(36px,4.2cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+                      <h2 className="font-sans text-[36px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
                         {core.name}
                       </h2>
                       <p className="mt-3 max-w-[24em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[0.8cqw]">

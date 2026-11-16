@@ -129,7 +129,7 @@ export function Applications() {
             <div className={cn("@container", SECTION_Y)}>
               <Reveal>
                 {/* Two lines on desktop: one sentence per line */}
-                <h2 className="max-w-[10em] text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] lg:max-w-none">
+                <h2 className="max-w-[10em] font-sans text-[26px] leading-[1.3] font-normal tracking-normal lg:max-w-none lg:text-[50.1815px] lg:leading-[65.2359px]">
                   <span className="lg:block lg:whitespace-nowrap">
                     Different Spaces.
                   </span>{" "}
@@ -167,7 +167,7 @@ export function Applications() {
                   key={active}
                   aria-hidden
                   data-space-number
-                  className="absolute -right-2 -bottom-[0.18em] animate-rise text-[max(56px,13cqw)] leading-none font-medium tracking-[-0.04em] lg:-right-[6.8cqw] lg:-bottom-[0.45em]"
+                  className="absolute -right-2 -bottom-[0.18em] animate-rise text-[max(56px,13cqw)] leading-none font-normal tracking-[-0.04em] lg:-right-[6.8cqw] lg:-bottom-[0.45em]"
                 >
                   {String(active + 1).padStart(2, "0")}
                 </span>
@@ -187,7 +187,7 @@ export function Applications() {
                         )}
                       >
                         {/* Every title stays on one line on desktop */}
-                        <h3 className="max-w-[9em] text-[max(22px,3.4cqw)] leading-[1.3] font-medium tracking-[-0.01em] lg:max-w-none lg:whitespace-nowrap">
+                        <h3 className="max-w-[9em] text-[max(22px,3.4cqw)] leading-[1.3] font-normal tracking-[-0.01em] lg:max-w-none lg:whitespace-nowrap">
                           {s.title.includes("\n")
                             ? s.title.split("\n").map((line) => (
                                 <span

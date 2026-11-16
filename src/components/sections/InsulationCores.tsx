@@ -9,12 +9,12 @@ export function InsulationCores() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="text-[max(18px,1.95cqw)] leading-tight font-medium tracking-[-0.02em] text-black">
+          <h2 className="text-[max(18px,1.95cqw)] leading-tight font-normal tracking-[-0.02em] text-black">
             Insulation selected around performance.
           </h2>
           {/* Starts faded and darkens word by word as it scrolls into place */}
           <ScrollRevealText
-            className="mt-4 font-ui text-[max(22px,2.95cqw)] leading-[1.6] font-medium tracking-[-0.01em] text-[#9a9a9a] lg:mt-[1.5cqw]"
+            className="mt-4 font-ui text-[max(22px,2.95cqw)] leading-[1.6] font-normal tracking-[-0.01em] text-[#9a9a9a] lg:mt-[1.5cqw]"
             text="Synergy manufactures insulated panels with PUF and PIR, allowing each system to be selected around thermal performance, fire requirements, acoustics and application needs."
           />
         </Reveal>

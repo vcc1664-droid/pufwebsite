@@ -124,7 +124,7 @@ export function WherePanelsAreMade() {
               <Reveal>
                 <h2
                   id="where-panels-made"
-                  className="font-sans text-[max(26px,4.2cqw)] leading-[1.3] font-medium tracking-[-0.01em] text-black"
+                  className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]"
                 >
                   PUF Panel Manufacturing Plant
                 </h2>

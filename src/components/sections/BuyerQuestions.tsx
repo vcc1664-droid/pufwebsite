@@ -45,7 +45,7 @@ export function BuyerQuestions() {
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal>
-          <h2 className="font-sans text-[26px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+          <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Questions Buyers Ask
           </h2>
         </Reveal>
@@ -58,7 +58,7 @@ export function BuyerQuestions() {
               className="group rounded-[max(8px,0.55cqw)] border border-[#e1dfd7] bg-[#faf9f6]"
             >
               {/* Arrow (0.6em) + gap (0.75em) = 1.35em of this text; the answer is indented by the same */}
-              <summary className="flex cursor-pointer list-none items-center gap-[0.75em] px-5 py-4 font-sans text-[18px] leading-[1.25] font-medium tracking-[-0.29952px] text-[#171717] transition-colors duration-200 hover:text-brand lg:px-[1.4cqw] lg:py-[1.05cqw] [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center gap-[0.75em] px-5 py-4 font-sans text-[18px] leading-[1.25] font-normal tracking-[-0.29952px] text-[#171717] transition-colors duration-200 hover:text-brand lg:px-[1.4cqw] lg:py-[1.05cqw] [&::-webkit-details-marker]:hidden">
                 <svg
                   aria-hidden
                   viewBox="0 0 10 10"

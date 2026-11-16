@@ -29,7 +29,7 @@ export function PageIntro({
   tone = "light",
   bodyOffsetClassName = "lg:ml-[46.4%]",
   asideClassName = "lg:w-[46.4%]",
-  titleClassName = "text-[max(30px,3.6cqw)] leading-[1.2] font-medium tracking-[-0.02em]",
+  titleClassName = "text-[max(30px,3.6cqw)] leading-[1.2] font-normal tracking-[-0.02em]",
 }: PageIntroProps) {
   const dark = tone === "dark";
 

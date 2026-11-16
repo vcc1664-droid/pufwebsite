@@ -76,9 +76,9 @@ export function PanelRange({
           <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-0">
             <h2
               className={cn(
-                "font-sans text-[32px] leading-[1] font-medium tracking-[-1.29024px] lg:w-[59.2%] lg:text-[50.1815px] lg:leading-[50.1815px]",
+                "font-sans text-[32px] leading-[1.3] font-normal tracking-normal lg:w-[59.2%] lg:text-[50.1815px] lg:leading-[65.2359px]",
                 // Black on the light band; the dark band keeps white so the title stays visible
-                dark ? "text-white" : "text-[#000000]",
+                dark ? "text-white" : "text-[#171717]",
               )}
             >
               {title}
@@ -163,7 +163,7 @@ export function PanelRange({
                   aria-haspopup="dialog"
                   onClick={() => specsDialog.current?.showModal()}
                   className={cn(
-                    "group inline-flex cursor-pointer items-center gap-2 rounded-[max(6px,0.5cqw)] border px-[1.2em] py-[0.65em] font-ui text-[max(13px,1.05cqw)] font-medium leading-none transition-all duration-200 shadow-sm",
+                    "group inline-flex cursor-pointer items-center gap-2 rounded-[max(6px,0.5cqw)] border px-[1.2em] py-[0.65em] font-ui text-[max(13px,1.05cqw)] font-normal leading-none transition-all duration-200 shadow-sm",
                     dark
                       ? "border-white/80 bg-white/10 text-white hover:border-white hover:bg-white hover:text-black"
                       : "border-black/80 bg-black/5 text-black hover:border-black hover:bg-black hover:text-white",

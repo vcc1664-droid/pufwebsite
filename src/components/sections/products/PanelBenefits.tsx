@@ -116,7 +116,7 @@ export function PanelBenefits() {
                   </svg>
                   <div className="self-stretch border-l border-[#e3e5ea]" aria-hidden />
                   <div>
-                    <h3 className="text-[max(18px,1.45cqw)] leading-[1.15] font-bold tracking-[-0.01em] text-black">
+                    <h3 className="text-[max(18px,1.45cqw)] leading-[1.15] font-normal tracking-[-0.01em] text-black">
                       {benefit.title[0]}
                       <br />
                       {benefit.title[1]}

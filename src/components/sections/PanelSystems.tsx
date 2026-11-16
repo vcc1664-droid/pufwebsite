@@ -60,7 +60,7 @@ export function PanelSystems() {
         <div className={cn("@container", SECTION_Y)}>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <Reveal className="lg:w-[47.3%]">
-              <h2 className="max-w-[12em] font-sans text-[28px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]">
+              <h2 className="max-w-[12em] font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
                 Panel Systems for Different Requirements.
               </h2>
             </Reveal>
@@ -105,7 +105,7 @@ export function PanelSystems() {
                   )}
                 >
                   <Reveal className="lg:w-[47.2%]">
-                    <h3 className="text-[max(22px,2.3cqw)] leading-tight font-medium tracking-[-0.01em] text-black">
+                    <h3 className="text-[max(22px,2.3cqw)] leading-tight font-normal tracking-[-0.01em] text-black">
                       {system.title}
                     </h3>
                     <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1.2cqw]">

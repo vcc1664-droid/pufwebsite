@@ -18,7 +18,7 @@ export default function About() {
     <main className="flex-1">
       <PageIntro
         title="The People and Process Behind the Panels."
-        titleClassName="font-sans text-[30px] leading-[1] font-medium tracking-[-1.29024px] text-[#000000] lg:text-[50.1815px] lg:leading-[50.1815px]"
+        titleClassName="font-sans text-[30px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]"
         body="Industrial insulation expertise. A company built around your project. Delivering reliable solutions with precision, performance, and quality you can trust."
       />
       <AboutImage />
@@ -27,7 +27,8 @@ export default function About() {
       <Manufacturing />
       <AboutStats />
       <Mission />
-      <LetsTalk />
+      {/* Same heading style as the rest of this page; white on the purple band. The ! overrides LetsTalk's own leading and tracking. */}
+      <LetsTalk titleClassName="font-normal! tracking-normal! leading-[1.3]! lg:leading-[65.2359px]!" />
     </main>
   );
 }
