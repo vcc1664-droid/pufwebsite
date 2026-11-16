@@ -180,10 +180,10 @@ export function Mission() {
             className="flex animate-rise flex-col gap-6 lg:flex-1 lg:gap-[2.4cqw]"
           >
             <div className="flex items-center gap-[max(14px,2cqw)] lg:border-b lg:border-white/60 lg:pb-[2.4cqw]">
-              <p className="text-[max(64px,8.4cqw)] leading-[0.8] font-light tracking-[-0.04em]">
+              <p className="text-[max(64px,8.4cqw)] leading-[0.8] font-normal tracking-[-0.04em]">
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <h3 className="font-light">
+              <h3 className="font-normal">
                 <span className="block text-[max(20px,2.25cqw)] leading-tight">{step.stage}</span>
                 <span className="block text-[max(24px,2.65cqw)] leading-tight font-normal tracking-[-0.01em]">
                   {step.title}

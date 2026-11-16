@@ -72,7 +72,7 @@ export function AboutStats() {
                 <div className="flex h-full flex-col items-center justify-center rounded-[max(8px,0.7cqw)] bg-white px-4 pt-12 pb-8 text-center lg:aspect-[214/112] lg:px-[1cqw] lg:pt-[3cqw] lg:pb-[2cqw]">
                   <p className="text-[max(30px,2.75cqw)] leading-none font-semibold tracking-[-0.02em] text-black">
                     {/* Counts up from 0 as the card scrolls into view */}
-                    <CountUp value={stat.value} locale="en-IN" />+
+                    <CountUp value={stat.value} locale="en-IN" finishAt={0.8} />+
                   </p>
                   <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#444] lg:mt-[0.6cqw]">
                     {stat.label}
