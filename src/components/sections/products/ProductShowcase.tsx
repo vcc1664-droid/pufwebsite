@@ -1,21 +1,23 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { CONTAINER, SECTION_BOTTOM } from "@/constants/layout";
+import { CONTAINER } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelsImage from "../../../../public/Products/67de9fa1-a114-4aa1-8d3d-653416d79cba.png";
+import panelsImage from "../../../../public/Products/6f776d2c7e449e77a767ae2adb326a8a17f8157c-100kb.jpeg";
 
-/* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
+/* Sizes (lg+) are cqw of the content width, measured from the design (559 × 508 on a 1920 frame). */
 export function ProductShowcase() {
   return (
-    <section className={cn(CONTAINER, SECTION_BOTTOM)}>
+    <section className={cn(CONTAINER, "pb-6 lg:pb-[1.5cqw]")}>
       <div className="@container">
-        <Reveal className="mx-auto w-full sm:w-[75%] lg:w-[55%]">
+        {/* Multiply blends the photo's off-white JPEG background into the white page. It sits on
+            the Reveal wrapper because the wrapper's transform would otherwise isolate the blend. */}
+        <Reveal className="mx-auto w-[70%] mix-blend-multiply sm:w-[45%] lg:w-[35%]">
           <Image
             src={panelsImage}
-            alt="Stack of PUF insulated roof panels showing the foam core and interlocking edges"
+            alt="Stack of PUF insulated wall panels showing the foam core and interlocking edges"
             placeholder="blur"
             priority
-            sizes="(min-width: 1024px) 55vw, (min-width: 640px) 75vw, 100vw"
+            sizes="(min-width: 1024px) 35vw, (min-width: 640px) 45vw, 70vw"
             className="h-auto w-full"
           />
         </Reveal>

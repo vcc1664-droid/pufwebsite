@@ -68,67 +68,72 @@ const BENEFITS: { title: [string, string]; body: string; icon: ReactNode }[] = [
   },
 ];
 
-/** What the panels do: a panel render on the left and four benefits in a 2 × 2 grid. */
-/* Sizes (lg+) are cqw of the content width, measured from the design. */
-export function PanelBenefits() {
+/** One benefit: icon tile above a two-line title and a short description. */
+function Benefit({ benefit, align, delay }: { benefit: (typeof BENEFITS)[number]; align: "start" | "end"; delay: number }) {
+  const end = align === "end";
   return (
-    <section className={cn(CONTAINER, SECTION_Y)}>
-      <div className="@container">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-0">
-          {/* Panel render over a soft circle */}
-          <Reveal className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-[33%] lg:max-w-none">
-            <div
-              aria-hidden
-              className="absolute top-1/2 left-[12%] aspect-square w-[76%] -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_40%_35%,#ffffff,#eef0f4_70%)]"
-            />
-            <Image
-              src={panelImage}
-              alt="PUF insulated panel: two steel faces with an insulating core between them"
-              sizes="(min-width: 1024px) 30vw, 448px"
-              className="relative h-auto w-full"
-            />
-          </Reveal>
+    <li>
+      <Reveal delay={delay} className={cn("flex flex-col items-start", end && "lg:items-end lg:text-right")}>
+        <span className="grid size-[max(36px,2.4cqw)] place-items-center rounded-[max(6px,0.4cqw)] bg-white">
+          <svg
+            aria-hidden
+            viewBox="0 0 40 40"
+            fill="none"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-[78%]"
+          >
+            {benefit.icon}
+          </svg>
+        </span>
+        <h3 className="mt-3 text-[max(18px,1.45cqw)] leading-[1.15] font-normal tracking-[-0.01em] text-black lg:mt-[0.9cqw]">
+          {benefit.title[0]}
+          <br />
+          {benefit.title[1]}
+        </h3>
+        <p className="mt-2 max-w-[22em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[0.6cqw]">
+          {benefit.body}
+        </p>
+      </Reveal>
+    </li>
+  );
+}
 
-          {/* Divider between the image and the benefits */}
-          <div aria-hidden className="hidden self-stretch border-l border-[#e3e5ea] lg:mx-[2.4cqw] lg:block" />
+/** What the panels do: the panel render in the middle, two benefits on each side. */
+/* Sizes (lg+) are cqw of the content width, measured from the design. Text sizes are unchanged. */
+export function PanelBenefits() {
+  // Left column: 1st and 3rd benefit (text aligned towards the panel); right column: 2nd and 4th
+  const left = [BENEFITS[0], BENEFITS[2]];
+  const right = [BENEFITS[1], BENEFITS[3]];
 
-          <ul className="grid flex-1 gap-y-8 sm:grid-cols-2 sm:gap-x-8 lg:gap-x-[2.4cqw] lg:gap-y-0">
-            {BENEFITS.map((benefit, i) => (
-              <li
-                key={benefit.title.join(" ")}
-                className={cn(
-                  // Rule under the top row, as in the design
-                  i < 2 && "lg:border-b lg:border-[#e3e5ea] lg:pb-[2.4cqw]",
-                  i >= 2 && "lg:pt-[2.4cqw]",
-                )}
-              >
-                <Reveal delay={100 + i * 100} className="flex items-start gap-4 lg:gap-[1.4cqw]">
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-[max(44px,3.6cqw)] shrink-0"
-                  >
-                    {benefit.icon}
-                  </svg>
-                  <div className="self-stretch border-l border-[#e3e5ea]" aria-hidden />
-                  <div>
-                    <h3 className="text-[max(18px,1.45cqw)] leading-[1.15] font-normal tracking-[-0.01em] text-black">
-                      {benefit.title[0]}
-                      <br />
-                      {benefit.title[1]}
-                    </h3>
-                    <p className="mt-2 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[0.8cqw]">
-                      {benefit.body}
-                    </p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+  return (
+    // Light grey band, full-bleed
+    <section className="bg-[#f2f2f2]">
+      <div className={cn(CONTAINER, SECTION_Y)}>
+        <div className="@container">
+          <div className="grid gap-10 lg:grid-cols-[1fr_32%_1fr] lg:items-center lg:gap-[3cqw]">
+            <ul className="order-2 grid gap-8 sm:grid-cols-2 lg:order-none lg:grid-cols-1 lg:gap-[4.5cqw]">
+              {left.map((benefit, i) => (
+                <Benefit key={benefit.title.join(" ")} benefit={benefit} align="end" delay={100 + i * 200} />
+              ))}
+            </ul>
+
+            <Reveal className="order-1 mx-auto w-full max-w-md lg:order-none lg:max-w-none">
+              <Image
+                src={panelImage}
+                alt="PUF insulated panel: two steel faces with an insulating core between them"
+                sizes="(min-width: 1024px) 30vw, 448px"
+                className="h-auto w-full"
+              />
+            </Reveal>
+
+            <ul className="order-3 grid gap-8 sm:grid-cols-2 lg:order-none lg:grid-cols-1 lg:gap-[4.5cqw]">
+              {right.map((benefit, i) => (
+                <Benefit key={benefit.title.join(" ")} benefit={benefit} align="start" delay={200 + i * 200} />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

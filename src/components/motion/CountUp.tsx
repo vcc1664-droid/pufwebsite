@@ -2,26 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Default viewport position (from the top, as a share of its height) where the count reaches its final value. */
-const FINISH_AT = 0.4;
+/** How long the count takes from start to final value. */
+const DURATION_MS = 1600;
+/** Share of the number that must be on screen before it can start. */
+const VISIBLE_SHARE = 0.6;
+
+const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
 
 /**
- * Counts from `from` (0 by default) up to `value` in step with the page scroll: `from` as it enters
- * at the bottom of the screen, the full value once it has risen to FINISH_AT, and back down when
- * scrolling up. 
+ * Counts from `from` (0 by default) up to `value` once: as soon as the number is on screen (while
+ * scrolling or not), it rises smoothly to `value` and then stays there. It never counts down.
+ * With `replay`, it resets once it has fully left the screen and counts up again on the next visit.
  * The final number reserves the space, so surrounding text never shifts; screen readers and the
  * first render get the real value.
  */
 export function CountUp({
   value,
   from = 0,
-  finishAt = FINISH_AT,
   locale,
+  replay = false,
 }: {
   value: number;
   from?: number;
-  /** Higher finishes sooner: 0.8 reaches the final value just after it enters the screen. */
-  finishAt?: number;
+  /** Count up again each time the number comes back into view. */
+  replay?: boolean;
   /** Adds digit grouping in this locale's style, e.g. "en-IN" shows 5,00,000. Plain digits without it. */
   locale?: string;
 }) {
@@ -32,35 +36,59 @@ export function CountUp({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
+    // Reduced motion: the real value from the first render simply stays
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const update = () => {
-      frame = 0;
-      if (reducedMotion.matches) {
-        setCurrent(value);
-        return;
-      }
-      const viewport = window.innerHeight;
-      const top = el.getBoundingClientRect().top;
-      const progress = Math.min(1, Math.max(0, (viewport - top) / (viewport * (1 - finishAt))));
-      setCurrent(Math.round(from + (value - from) * progress));
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+    let inView = false;
+    let started = false;
+    // Show the starting number until the count begins
+    let frame = requestAnimationFrame(() => {
+      if (!started) setCurrent(from);
+    });
+
+    const run = () => {
+      started = true;
+      // Counting once: nothing more to watch. Replaying keeps watching for the next visit.
+      if (!replay) cleanup();
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / DURATION_MS);
+        setCurrent(Math.round(from + (value - from) * easeOutCubic(t)));
+        if (t < 1) frame = requestAnimationFrame(step);
+      };
+      frame = requestAnimationFrame(step);
     };
 
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    reducedMotion.addEventListener("change", update);
+    // Starts as soon as enough of the number is on screen
+    const maybeStart = () => {
+      if (inView && !started) run();
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.intersectionRatio >= VISIBLE_SHARE;
+        if (replay && !entry.isIntersecting) {
+          // Fully off screen: stop and reset, so the next visit counts up from the start again
+          cancelAnimationFrame(frame);
+          started = false;
+          setCurrent(from);
+          return;
+        }
+        maybeStart();
+      },
+      { threshold: [0, VISIBLE_SHARE] },
+    );
+    observer.observe(el);
+
+    function cleanup() {
+      observer.disconnect();
+    }
+
     return () => {
+      cleanup();
       cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      reducedMotion.removeEventListener("change", update);
     };
-  }, [value, from, finishAt]);
+  }, [value, from, replay]);
 
   return (
     <span ref={ref} className="relative inline-block">

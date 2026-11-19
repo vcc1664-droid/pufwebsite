@@ -80,9 +80,6 @@ const PROJECTS: Project[] = [
   })),
 ];
 
-// Projects shown before "View All Projects"; the button appears once the list is longer.
-const INITIAL_COUNT = 3;
-
 function ProjectGallery({ project }: { project: Project }) {
   const [index, setIndex] = useState(0);
   const image = project.images[index];
@@ -128,16 +125,14 @@ function ProjectGallery({ project }: { project: Project }) {
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function ProjectList() {
-  const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? PROJECTS : PROJECTS.slice(0, INITIAL_COUNT);
-
   return (
     // Black behind the white panel's rounded top corners, continuing the dark band above
     <section className="bg-black">
       <div className="rounded-t-[max(28px,5.5vw)] bg-white">
         <div className={CONTAINER}>
           <div className={cn("@container", SECTION_Y)}>
-            {visible.map((project, i) => (
+            {/* Every project is shown; there is no "View All Projects" button */}
+            {PROJECTS.map((project, i) => (
               <article
                 key={`${i}-${project.name}`}
                 className={cn(i > 0 && BLOCK_GAP, i > 0 && "border-t border-[#8c8c8c] pt-12 lg:pt-[6cqw]")}
@@ -196,32 +191,6 @@ export function ProjectList() {
                 </Reveal>
               </article>
             ))}
-
-            {!showAll && PROJECTS.length > INITIAL_COUNT && (
-              <div className={cn(BLOCK_GAP, "flex justify-center")}>
-                <button
-                  type="button"
-                  onClick={() => setShowAll(true)}
-                  className="group flex flex-col items-center gap-3 font-ui text-[max(14px,1.35cqw)] text-black lg:gap-[1.2cqw]"
-                >
-                  <span className="grid size-[max(40px,4cqw)] place-items-center rounded-full bg-black text-white transition-transform duration-200 group-hover:translate-y-0.5">
-                    <svg
-                      aria-hidden
-                      viewBox="0 0 24 24"
-                      className="size-[45%]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </span>
-                  View All Projects
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>

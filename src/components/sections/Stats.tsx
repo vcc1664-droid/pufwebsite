@@ -86,7 +86,7 @@ export function Stats() {
               The year the founders launched the first project.
             </p>
             <p className="text-[max(52px,5.5cqw)] leading-none font-bold tracking-[-0.04em] text-black">
-              <CountUp from={2001} value={2012} finishAt={0.8} />
+              <CountUp from={2001} value={2012} />
             </p>
           </div>
 

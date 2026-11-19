@@ -1,5 +1,7 @@
+"use client";
+
 import Image, { type StaticImageData } from "next/image";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -85,8 +87,48 @@ const DEMANDS: { label: string; image: StaticImageData; alt: string; icon: React
   },
 ];
 
+/** Scale and sideways shift (in card widths) for a card 0, 1 or 2 places from the centre. */
+const STACK = [
+  { scale: 1, shift: 0, z: 30 },
+  { scale: 0.86, shift: 0.85, z: 20 },
+  { scale: 0.8, shift: 1.62, z: 10 },
+];
+
+function Arrow({ direction, onClick }: { direction: "prev" | "next"; onClick: () => void }) {
+  const next = direction === "next";
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={next ? "Next condition" : "Previous condition"}
+      className={cn(
+        "grid size-[max(40px,2.6cqw)] place-items-center rounded-[max(6px,0.4cqw)] transition-colors duration-200",
+        next ? "bg-brand text-white hover:bg-black" : "bg-brand/10 text-black hover:bg-brand/20",
+      )}
+    >
+      <svg
+        aria-hidden
+        viewBox="0 0 24 24"
+        className={cn("size-[45%]", !next && "rotate-180")}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M4 12h16M14 6l6 6-6 6" />
+      </svg>
+    </button>
+  );
+}
+
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function SpaceDemands() {
+  // Card in the middle of the stack; the arrows (or a click on a side card) move it
+  const [active, setActive] = useState(0);
+  const count = DEMANDS.length;
+  const go = (delta: number) => setActive((i) => (i + delta + count) % count);
+
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
@@ -104,29 +146,62 @@ export function SpaceDemands() {
           </p>
         </Reveal>
 
-        <ul className={cn(BLOCK_GAP, "grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-[2.9cqw]")}>
-          {DEMANDS.map((demand, i) => (
-            <li key={demand.label}>
-              <Reveal delay={(i % 3) * 100}>
-                <div className="relative aspect-[107/124] overflow-hidden rounded-[max(10px,1.8cqw)]">
-                  <Image
-                    src={demand.image}
-                    alt={demand.alt}
-                    fill
-                    placeholder="blur"
-                    sizes="(min-width: 1024px) 31vw, 50vw"
-                    className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-                  />
-                  <span className="absolute bottom-[max(8px,1.6cqw)] left-[max(8px,1.6cqw)] flex items-center gap-[0.5em] rounded-[max(3px,0.4cqw)] bg-white px-[0.7em] py-[0.4em] font-ui text-[max(11px,1.2cqw)] leading-none text-black">
-                    {demand.label}
-                    <span aria-hidden className="h-[0.9em] w-px bg-[#bdbdbd]" />
-                    {demand.icon}
-                  </span>
-                </div>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+        {/* Cover-flow: the active card in front, two smaller ones on each side running off the edges */}
+        <Reveal delay={150} className={BLOCK_GAP}>
+          <div aria-roledescription="carousel" aria-label="Space conditions">
+            {/* Full screen width: breaks out of the content gutter so the stack runs to both edges */}
+            <ul className="relative mx-[calc(50%-50vw)] aspect-[100/66] w-screen overflow-x-clip lg:aspect-[100/32]">
+              {DEMANDS.map((demand, i) => {
+                // Shortest way round the loop from the active card: -2 … 2 are shown
+                let offset = (i - active + count) % count;
+                if (offset > count / 2) offset -= count;
+                const depth = Math.abs(offset);
+                const place = STACK[Math.min(depth, 2)];
+                const shown = depth <= 2;
+                return (
+                  <li
+                    key={demand.label}
+                    aria-hidden={depth !== 0}
+                    onClick={() => depth !== 0 && setActive(i)}
+                    className={cn(
+                      "absolute top-1/2 left-1/2 aspect-[235/275] w-[54%] transition-[transform,opacity] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] lg:w-[25%]",
+                      depth !== 0 && "cursor-pointer",
+                      !shown && "pointer-events-none opacity-0",
+                    )}
+                    style={{
+                      transform: `translate(-50%, -50%) translateX(${Math.sign(offset) * (shown ? place.shift : 2) * 100}%) scale(${shown ? place.scale : 0.7})`,
+                      zIndex: shown ? place.z : 0,
+                    }}
+                  >
+                    <div className="relative size-full overflow-hidden rounded-[max(10px,1.2cqw)]">
+                      <Image
+                        src={demand.image}
+                        alt={demand.alt}
+                        fill
+                        placeholder="blur"
+                        sizes="(min-width: 1024px) 25vw, 54vw"
+                        className="object-cover"
+                      />
+                      <span className="absolute bottom-[max(8px,1.6cqw)] left-[max(8px,1.6cqw)] flex items-center gap-[0.5em] rounded-[max(3px,0.4cqw)] bg-white px-[0.7em] py-[0.4em] font-ui text-[max(11px,1.2cqw)] leading-none text-black">
+                        {demand.label}
+                        <span aria-hidden className="h-[0.9em] w-px bg-[#bdbdbd]" />
+                        {demand.icon}
+                      </span>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-6 flex justify-center gap-3 lg:mt-[2.4cqw] lg:gap-[1.2cqw]">
+              <Arrow direction="prev" onClick={() => go(-1)} />
+              <Arrow direction="next" onClick={() => go(1)} />
+            </div>
+            <p aria-live="polite" className="sr-only">
+              {DEMANDS[active].label}
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

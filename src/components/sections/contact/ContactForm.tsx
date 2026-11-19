@@ -24,7 +24,7 @@ type Field = {
 };
 
 const FIELDS: Field[] = [
-  { name: "name", label: "Full Name", placeholder: "John Doe", autoComplete: "name", required: true },
+  { name: "name", label: "Full Name", placeholder: "Enter your name ", autoComplete: "name", required: true },
   {
     name: "email",
     label: "Email Address",
@@ -43,9 +43,10 @@ const FIELDS: Field[] = [
   { name: "subject", label: "Subject", placeholder: "Cold room panels for a new facility", wide: true },
 ];
 
-const label = "block font-ui text-[max(13px,1.1cqw)] text-[#1e1e1e]";
+// Light text and see-through fields on the purple form card
+const label = "block font-ui text-[max(13px,1.1cqw)] text-white/85";
 const control =
-  "mt-2 w-full rounded-[3px] border border-[#cfcfcf] bg-white px-[max(12px,1.3cqw)] font-ui text-[max(14px,1.1cqw)] text-black placeholder:text-[#a3a3a3] transition-colors duration-200 outline-none focus:border-brand lg:mt-[1cqw]";
+  "mt-2 w-full rounded-[3px] border border-white/40 bg-transparent px-[max(12px,1.3cqw)] font-ui text-[max(14px,1.1cqw)] text-white placeholder:text-white/45 transition-colors duration-200 outline-none focus:border-white lg:mt-[0.6cqw]";
 
 type Status = { state: "idle" | "sending" } | { state: "sent" | "error"; message: string };
 
@@ -135,17 +136,18 @@ export function ContactForm() {
 
         <hr className={cn(RULE_GAP, "border-[#8c8c8c]")} />
 
-        <div className={cn(RULE_GAP, "flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-0")}>
-          <Reveal className="lg:w-[32.2%]">
-            <p className="flex items-center gap-[0.4em] font-ui text-[max(14px,1.35cqw)] text-black">
+        {/* Black contact card on the left; the purple form card overlaps it, edged in white */}
+        <div className={cn(RULE_GAP, "flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0")}>
+          <Reveal className="relative overflow-hidden rounded-[max(16px,1.6cqw)] bg-[#0b0b0b] px-6 py-8 text-white lg:w-[44%] lg:p-[3cqw]">
+            <p className="flex items-center gap-[0.4em] font-ui text-[max(14px,1.35cqw)] text-white/70">
               <span aria-hidden className="size-[0.35em] rounded-[1px] bg-current" />
               Speak with our team
             </p>
-            <ul className="mt-8 font-ui text-[max(14px,1.35cqw)] text-black lg:mt-[6.8cqw]">
+            <ul className="relative z-10 mt-4 font-ui text-[max(14px,1.35cqw)] lg:mt-[1.4cqw] lg:w-[72%]">
               {CONTACT_LINES.map((line) => (
-                <li key={line.label} className="border-b border-[#8c8c8c] py-3 lg:py-[2.1cqw]">
+                <li key={line.label} className="border-b border-white/35 py-3 lg:py-[1.6cqw]">
                   {line.href ? (
-                    <a href={line.href} className="transition-colors duration-200 hover:text-brand">
+                    <a href={line.href} className="transition-colors duration-200 hover:text-white/70">
                       {line.label}
                     </a>
                   ) : (
@@ -156,13 +158,16 @@ export function ContactForm() {
             </ul>
           </Reveal>
 
-          <Reveal delay={100} className="lg:w-[54.8%]">
-            <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#8a8a8a]">
+          <Reveal
+            delay={100}
+            className="relative z-10 rounded-[max(16px,1.6cqw)] bg-brand p-6 text-white ring-[6px] ring-white lg:-ml-[1.6cqw] lg:flex-1 lg:p-[2cqw]"
+          >
+            <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-white">
               Provide your project details below and we’ll be in touch.
             </p>
 
             <form onSubmit={handleSubmit} className={STACK_GAP}>
-              <div className="grid gap-x-[3.5%] gap-y-5 sm:grid-cols-2 lg:gap-y-[2.8cqw]">
+              <div className="grid gap-x-[3.5%] gap-y-4 sm:grid-cols-2 lg:gap-y-[1.5cqw]">
                 {FIELDS.map((field) => (
                   <div key={field.name} className={cn(field.wide && "sm:col-span-2")}>
                     <label htmlFor={`contact-${field.name}`} className={label}>
@@ -175,7 +180,7 @@ export function ContactForm() {
                       autoComplete={field.autoComplete}
                       required={field.required}
                       placeholder={field.placeholder}
-                      className={cn(control, "h-[max(44px,4.9cqw)]")}
+                      className={cn(control, "h-[max(40px,3.3cqw)]")}
                     />
                   </div>
                 ))}
@@ -188,7 +193,7 @@ export function ContactForm() {
                     name="message"
                     required
                     placeholder="Please describe your project requirements, quantities, and panel specs..."
-                    className={cn(control, "h-[max(140px,19.8cqw)] resize-y py-[max(12px,1.3cqw)]")}
+                    className={cn(control, "h-[max(110px,9cqw)] resize-y py-[max(10px,1cqw)]")}
                   />
                 </div>
               </div>
@@ -198,7 +203,7 @@ export function ContactForm() {
                 disabled={status.state === "sending"}
                 className={cn(
                   STACK_GAP,
-                  "h-[max(44px,4.5cqw)] w-full rounded-[max(4px,0.5cqw)] bg-brand font-ui text-[max(14px,1.35cqw)] text-white transition-colors duration-200 hover:bg-black disabled:cursor-wait disabled:opacity-70",
+                  "h-[max(42px,3.3cqw)] w-full rounded-[max(4px,0.5cqw)] bg-white font-ui text-[max(14px,1.35cqw)] text-black transition-colors duration-200 hover:bg-[#e6e6e6] disabled:cursor-wait disabled:opacity-70",
                 )}
               >
                 {status.state === "sending" ? "Sending…" : "Submit"}
@@ -207,7 +212,7 @@ export function ContactForm() {
                 role="status"
                 className={cn(
                   "mt-3 font-ui text-[max(13px,1.1cqw)] empty:hidden",
-                  status.state === "error" ? "text-[#b42318]" : "text-brand",
+                  status.state === "error" ? "text-[#ffc9c4]" : "text-white",
                 )}
               >
                 {"message" in status ? status.message : ""}

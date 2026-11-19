@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     agentFeedback: true,
+    agentUpgrade: "security",
   },
   devIndicators: false,
   cacheComponents: true,
