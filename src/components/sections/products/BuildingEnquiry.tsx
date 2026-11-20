@@ -1,6 +1,6 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTACT_EMAIL } from "@/components/sections/contact/ContactForm";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
@@ -30,20 +30,72 @@ const label = "block font-ui text-[max(13px,1.1cqw)] text-white/85";
 const control =
   "mt-2 w-full rounded-[max(4px,0.4cqw)] border border-white/40 bg-transparent px-[max(14px,1.2cqw)] py-[max(10px,0.8cqw)] font-ui text-[max(16px,1.5cqw)] leading-snug text-white placeholder:font-ui placeholder:text-[15.5324px] placeholder:leading-[23.2985px] placeholder:font-normal placeholder:tracking-normal placeholder:text-white/45 transition-colors duration-200 outline-none focus:border-white lg:mt-[0.6cqw]";
 
+type Status = { state: "idle" | "sending" } | { state: "sent" | "error"; message: string };
+
+const newSubmissionId = () =>
+  typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+
 /**
- * Short project brief for a panel recommendation. The site's /api/enquiry needs an email address,
- * which this form (per the design) doesn't ask for, so it opens the visitor's mail app pre-filled.
+ * Short project brief for a panel recommendation. Saves submissions to the team's Notion database.
  */
 /* Sizes (lg+) are cqw of the content width, measured from the design. */
 export function BuildingEnquiry() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<Status>({ state: "idle" });
+  const [action, setAction] = useState<"quote" | "sample">("quote");
+  const submissionId = useRef<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = FIELDS.map((field) => `${field.label.split(":")[0]}: ${String(data.get(field.name) ?? "").trim()}`).join("\n");
-    // Which button was pressed decides the email subject
-    const submitter = (event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
-    const subject = submitter?.value === "sample" ? "Panel sample request" : "Panel recommendation request";
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (status.state === "sending") return;
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    const value = (key: string) => String(data.get(key) ?? "").trim();
+    submissionId.current ??= newSubmissionId();
+    setStatus({ state: "sending" });
+
+    try {
+      const response = await fetch("/api/building-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: value("name"),
+          phone: value("phone"),
+          location: value("location"),
+          use: value("use"),
+          area: value("area"),
+          temperature: value("temperature"),
+          action,
+          submissionId: submissionId.current,
+        }),
+        signal: AbortSignal.timeout(15000),
+      });
+
+      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+
+      if (response.ok && result.ok) {
+        form.reset();
+        submissionId.current = null;
+        setStatus({
+          state: "sent",
+          message: "Thank you! Your building details have been received and saved. Our team will reach out with a recommendation soon.",
+        });
+        return;
+      }
+
+      setStatus({
+        state: "error",
+        message: result.error ?? "Could not save details right now. Please check your connection and try again.",
+      });
+    } catch {
+      setStatus({
+        state: "error",
+        message: "Failed to send details. Please check your connection and try again.",
+      });
+    }
   };
 
   return (
@@ -84,22 +136,38 @@ export function BuildingEnquiry() {
                 ))}
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-3 lg:mt-[1.7cqw] lg:gap-[1.1cqw]">
+              <div className="mt-6 flex flex-wrap items-center gap-3 lg:mt-[1.7cqw] lg:gap-[1.1cqw]">
                 <button
                   type="submit"
                   value="quote"
-                  className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-black px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-white transition-colors duration-200 hover:bg-[#2a2a2a]"
+                  onClick={() => setAction("quote")}
+                  disabled={status.state === "sending"}
+                  className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-black px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-white transition-colors duration-200 hover:bg-[#2a2a2a] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Request a quote
+                  {status.state === "sending" && action === "quote" ? "Sending..." : "Request a quote"}
                 </button>
                 <button
                   type="submit"
                   value="sample"
-                  className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-white px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-black transition-colors duration-200 hover:bg-[#e6e6e6]"
+                  onClick={() => setAction("sample")}
+                  disabled={status.state === "sending"}
+                  className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-white px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-black transition-colors duration-200 hover:bg-[#e6e6e6] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Request a sample
+                  {status.state === "sending" && action === "sample" ? "Sending..." : "Request a sample"}
                 </button>
               </div>
+
+              {(status.state === "sent" || status.state === "error") && (
+                <p
+                  role="status"
+                  className={cn(
+                    "mt-4 font-ui text-[max(13px,1.1cqw)] leading-normal",
+                    status.state === "sent" ? "text-white" : "text-amber-200",
+                  )}
+                >
+                  {status.message}
+                </p>
+              )}
             </form>
           </Reveal>
         </div>

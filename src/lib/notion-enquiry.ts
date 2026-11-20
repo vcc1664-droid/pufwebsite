@@ -24,7 +24,11 @@ export class NotionEnquiryError extends Error {}
 function config() {
   const apiKey = process.env.NOTION_API_KEY?.trim();
   const databaseId = process.env.NOTION_DATABASE_ID?.trim();
-  if (!apiKey || !databaseId) throw new NotionEnquiryError("Notion is not configured");
+  if (!apiKey || !databaseId) {
+    throw new NotionEnquiryError(
+      "Missing Notion configuration: NOTION_API_KEY and NOTION_DATABASE_ID must be configured in environment variables.",
+    );
+  }
   return { apiKey, databaseId };
 }
 

@@ -25,7 +25,7 @@ export function ClientLogos() {
         {/* The same row, moving endlessly from right to left. Two copies sit side by side so the
             loop has no gap; the second is hidden from screen readers. Hovering pauses it. */}
         <div className="group overflow-hidden">
-          <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:w-full">
+          <div className="flex w-max animate-marquee [animation-duration:24s] group-hover:[animation-play-state:paused] motion-reduce:w-full">
             {[0, 1].map((copy) => (
               <ul
                 key={copy}

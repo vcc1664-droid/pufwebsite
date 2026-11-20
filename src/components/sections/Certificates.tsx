@@ -10,7 +10,6 @@ type Document = {
   /** Issuer's name written as text, in two coloured bands like its letterhead (used without a logo). */
   issuerName?: [string, string];
   title: string;
-  body: string;
   /** Link text for the PDF. */
   linkLabel: string;
   /**
@@ -24,13 +23,11 @@ const DOCUMENTS: Document[] = [
   {
     logo: { src: isoLogo, alt: "ISO logo" },
     title: "ISO 9001:2015 Certified",
-    body: "Quality management of our Nalagarh plant, certified by TCCPL. It covers design, manufacture, supply and installation, including cold store panels.",
     linkLabel: "View certificate (PDF)",
   },
   {
     issuerName: ["National Soil Testing &", "Research Lab. Panchkula (Regd.)"],
     title: "Tested at an Independent Lab",
-    body: "A PUF panel sample tested at National Soil Testing & Research Lab in November 2024, including density and thermal conductivity. Results apply to that sample.",
     linkLabel: "View test report (PDF)",
   },
 ];
@@ -89,9 +86,6 @@ export function Certificates() {
                     </svg>
                     {doc.title}
                   </h3>
-                  <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[0.8cqw]">
-                    {doc.body}
-                  </p>
                   {doc.pdf && (
                     <a
                       href={encodeURI(doc.pdf)}
