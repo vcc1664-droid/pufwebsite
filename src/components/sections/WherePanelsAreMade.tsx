@@ -152,7 +152,7 @@ export function WherePanelsAreMade() {
                         {/* Stage photo, or an empty box until one is supplied */}
                         <div
                           aria-hidden={!stage.image}
-                          className="relative mt-3 aspect-[591/277] overflow-hidden rounded-[max(8px,0.5cqw)] border border-[#e6e3dc] bg-[#f1efea] lg:mt-[0.8cqw]"
+                          className="relative mt-3 aspect-[591/370] overflow-hidden rounded-[max(8px,0.5cqw)] border border-[#e6e3dc] bg-[#f1efea] lg:mt-[0.8cqw]"
                         >
                           {stage.image && (
                             <Image
