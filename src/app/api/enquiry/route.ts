@@ -1,5 +1,5 @@
 import { saveEnquiryToAdmin } from "@/lib/admin-enquiry";
-import { type Enquiry, saveEnquiryToNotion } from "@/lib/notion-enquiry";
+import { attachFileToNotionPage, type Enquiry, saveEnquiryToNotion } from "@/lib/notion-enquiry";
 
 /** Field limits; the message allows a long project brief. */
 const LIMITS: Record<keyof Enquiry, number> = {
@@ -11,6 +11,9 @@ const LIMITS: Record<keyof Enquiry, number> = {
   message: 5000,
 };
 const MAX_BODY_BYTES = 20_000;
+/** Optional drawing upload: size cap and accepted file types. */
+const MAX_FILE_BYTES = 10 * 1024 * 1024;
+const FILE_TYPES = /\.(pdf|jpe?g|png|dwg)$/i;
 /** How long a submission ID is remembered to drop repeated submissions of the same enquiry. */
 const DEDUPE_MS = 10 * 60 * 1000;
 
@@ -48,22 +51,56 @@ function validate(body: Record<string, unknown>): { enquiry?: Enquiry; error?: s
 
 const json = (status: number, body: Record<string, unknown>) => Response.json(body, { status });
 
+/** Reads the request: JSON, or multipart form data when a drawing is attached. */
+async function readBody(
+  request: Request,
+): Promise<{ body?: Record<string, unknown>; file?: File; error?: Response }> {
+  const type = request.headers.get("content-type") ?? "";
+
+  if (type.includes("multipart/form-data")) {
+    const length = Number(request.headers.get("content-length") ?? 0);
+    if (length > MAX_FILE_BYTES + MAX_BODY_BYTES) {
+      return { error: json(413, { ok: false, error: "The file is too large. Please keep it under 10 MB." }) };
+    }
+    let form: FormData;
+    try {
+      form = await request.formData();
+    } catch {
+      return { error: json(400, { ok: false, error: "Invalid request." }) };
+    }
+    const body: Record<string, unknown> = {};
+    let file: File | undefined;
+    for (const [key, value] of form) {
+      if (typeof value === "string") body[key] = value;
+      else if (key === "drawing" && value.size > 0) file = value;
+    }
+    if (file) {
+      if (file.size > MAX_FILE_BYTES) {
+        return { error: json(413, { ok: false, error: "The file is too large. Please keep it under 10 MB." }) };
+      }
+      if (!FILE_TYPES.test(file.name)) {
+        return { error: json(422, { ok: false, error: "Please upload a PDF, JPG, PNG or DWG file." }) };
+      }
+    }
+    return { body, file };
+  }
+
+  if (!type.includes("application/json")) return { error: json(415, { ok: false, error: "Unsupported request." }) };
+  const raw = await request.text();
+  if (raw.length > MAX_BODY_BYTES) return { error: json(413, { ok: false, error: "Your message is too long." }) };
+  try {
+    const body = JSON.parse(raw);
+    if (!body || typeof body !== "object") throw new Error();
+    return { body };
+  } catch {
+    return { error: json(400, { ok: false, error: "Invalid request." }) };
+  }
+}
+
 /** Saves a contact-form enquiry to the Notion enquiries database. */
 export async function POST(request: Request) {
-  if (!request.headers.get("content-type")?.includes("application/json")) {
-    return json(415, { ok: false, error: "Unsupported request." });
-  }
-
-  const raw = await request.text();
-  if (raw.length > MAX_BODY_BYTES) return json(413, { ok: false, error: "Your message is too long." });
-
-  let body: Record<string, unknown>;
-  try {
-    body = JSON.parse(raw);
-  } catch {
-    return json(400, { ok: false, error: "Invalid request." });
-  }
-  if (!body || typeof body !== "object") return json(400, { ok: false, error: "Invalid request." });
+  const { body, file, error: readError } = await readBody(request);
+  if (!body) return readError ?? json(400, { ok: false, error: "Invalid request." });
 
   const { enquiry, error } = validate(body);
   if (!enquiry) return json(422, { ok: false, error });
@@ -90,7 +127,14 @@ export async function POST(request: Request) {
     console.error("[enquiry] Admin panel save failed:", err instanceof Error ? err.message : "unknown error");
   });
 
-  const pending = saveEnquiryToNotion(enquiry);
+  // The drawing, if any, is attached to the new Notion page. A failed upload never loses the
+  // enquiry: it is logged, and the message already names the file so the team can ask for it.
+  const pending = saveEnquiryToNotion(enquiry).then(async (pageId) => {
+    if (!file) return;
+    await attachFileToNotionPage(pageId, file).catch((err) => {
+      console.error("[enquiry] Drawing upload failed:", err instanceof Error ? err.message : "unknown error");
+    });
+  });
   recent.set(submissionId, { at: now, pending });
   try {
     await Promise.all([pending, adminSave]);

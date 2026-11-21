@@ -41,7 +41,7 @@ export function Certificates() {
       <div className="@container">
         <Reveal>
           <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
-            Certificates and test Reports
+            Certificates and Test Reports
           </h2>
           <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1cqw]">
             Read the documents behind our quality, not just our word for it.

@@ -122,7 +122,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   },
 ];
 
-const heading = "text-[max(15px,1.45cqw)] font-normal text-black";
+const heading = "text-[max(15px,1.45cqw)] font-normal text-[#561A61]";
 const body = "text-[max(14px,1.3cqw)] text-[#1e1e1e]";
 const fine = "text-[max(12px,1.05cqw)] leading-[1.6] text-[#1e1e1e]";
 
@@ -211,7 +211,7 @@ export function Footer() {
               sales@synergypuf.com
             </a>
             <div>
-              <p className={cn(body, "flex items-center gap-2")}>
+              <p className={cn(body, "flex items-center gap-2 text-[#561A61]")}>
                 <span className="text-brand">
                   <PinIcon />
                 </span>
@@ -222,7 +222,7 @@ export function Footer() {
               </p>
             </div>
             <div>
-              <p className={cn(body, "flex items-center gap-2")}>
+              <p className={cn(body, "flex items-center gap-2 text-[#561A61]")}>
                 <span className="text-brand">
                   <PinIcon />
                 </span>

@@ -47,8 +47,8 @@ const STEPS: Step[] = [
   },
 ];
 
-/** Time each photo stays before the next slides up. */
-const AUTOPLAY_MS = 4000;
+/** Space kept between the header and the pinned photo/step block. */
+const PIN_GAP = 16;
 
 const button =
   "inline-flex items-center justify-center rounded-[max(6px,0.42cqw)] px-[max(20px,2.1cqw)] py-[max(12px,1cqw)] font-ui text-[max(14px,0.95cqw)] leading-none transition-colors duration-200";
@@ -59,36 +59,72 @@ export function Mission() {
   // The photo that was showing before `index`; it slides out through the top.
   const [previous, setPrevious] = useState<number | null>(null);
   const step = STEPS[index];
-  // Autoplay runs only while the photo is on screen: it waits on step 01 until scrolled to,
-  // and pauses whenever it is scrolled away, carrying on when it comes back.
-  const photoRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+  // The photo/step block pins while the page scrolls through `track`; how far it has scrolled
+  // decides the step, so scrolling down moves 01 → 04 and scrolling up moves back.
+  const track = useRef<HTMLDivElement>(null);
+  const pinned = useRef<HTMLDivElement>(null);
+  const current = useRef(0);
 
-  useEffect(() => {
-    const node = photoRef.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
-      threshold: 0.5,
-    });
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  const goTo = (next: number) => {
-    if (next === index) return;
-    setPrevious(index);
-    setIndex(next);
+  // Where the block sticks: centred below the header when it fits, else bottom-aligned
+  const pinTop = (pinEl: HTMLElement) => {
+    const header = document.querySelector("header")?.offsetHeight ?? 0;
+    const room = window.innerHeight - header - PIN_GAP * 2;
+    const height = pinEl.offsetHeight;
+    return height <= room
+      ? Math.max(header + PIN_GAP, (window.innerHeight - height) / 2)
+      : window.innerHeight - height - PIN_GAP;
   };
 
-  // Steps advance on their own; the timer restarts whenever the step changes (dot clicks too).
   useEffect(() => {
-    if (!inView) return;
-    const timer = setTimeout(() => {
-      setPrevious(index);
-      setIndex((index + 1) % STEPS.length);
-    }, AUTOPLAY_MS);
-    return () => clearTimeout(timer);
-  }, [index, inView]);
+    const trackEl = track.current;
+    const pinEl = pinned.current;
+    if (!trackEl || !pinEl) return;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const top = pinTop(pinEl);
+      pinEl.style.top = `${top}px`;
+      const travel = trackEl.offsetHeight - pinEl.offsetHeight;
+      const progress =
+        travel > 0 ? Math.min(1, Math.max(0, (top - trackEl.getBoundingClientRect().top) / travel)) : 0;
+      const next = Math.min(STEPS.length - 1, Math.floor(progress * STEPS.length));
+      if (next !== current.current) {
+        setPrevious(current.current);
+        setIndex(next);
+        current.current = next;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    const observer = new ResizeObserver(onScroll);
+    observer.observe(pinEl);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  // Dots scroll the page to that step's stretch, so clicking and scrolling always agree
+  const goTo = (i: number) => {
+    const trackEl = track.current;
+    const pinEl = pinned.current;
+    if (!trackEl || !pinEl) return;
+    const travel = trackEl.offsetHeight - pinEl.offsetHeight;
+    const trackTop = trackEl.getBoundingClientRect().top + window.scrollY;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({
+      top: trackTop - pinTop(pinEl) + (travel * (i + 0.5)) / STEPS.length,
+      behavior: reduced ? "auto" : "smooth",
+    });
+  };
 
   return (
     <section className="rounded-t-[max(28px,5.5vw)] bg-black text-white">
@@ -124,14 +160,15 @@ export function Mission() {
             </p>
           </Reveal>
 
+          {/* Pins while scrolling: one stretch of scroll per step (spacer below) */}
+          <div ref={track} className={BLOCK_GAP}>
           {/* Desktop: smaller photo on the left, the active step's copy beside it on the right */}
-          <div className={cn(BLOCK_GAP, "flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-[4cqw]")}>
+          <div ref={pinned} className="sticky flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-[4cqw]">
           <Reveal delay={150} className="lg:w-[58%] lg:shrink-0">
             <div
-              ref={photoRef}
               className="relative aspect-[3/2] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/690] lg:aspect-[16/10]">
-              {/* All photos stay stacked; the active one slides in diagonally from the bottom-right while
-                  the previous one slides out towards the top-left */}
+              {/* All photos stay stacked; the active one slides in from the bottom while
+                  the previous one slides out towards the top */}
               {STEPS.map((s, i) => (
                 <Image
                   key={s.title}
@@ -141,16 +178,15 @@ export function Mission() {
                   placeholder="blur"
                   sizes="(min-width: 1920px) 925px, (min-width: 1024px) 58vw, 100vw"
                   aria-hidden={i !== index}
-                  // Always moves diagonally, bottom-right to top-left, whichever photo comes next: the photo
-                  // just left slides out past the top-left corner, every other one waits beyond the
-                  // bottom-right, and only those two animate (the rest jump back unseen).
+                  // Moves vertically from bottom to top: the active photo slides in from the bottom,
+                  // the previous photo slides out towards the top, and waiting photos stay below.
                   className={cn(
                     "object-cover motion-reduce:transition-none",
                     i === index
-                      ? "translate-0 transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                      ? "translate-y-0 transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
                       : i === previous
-                        ? "-translate-x-full -translate-y-full transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                        : "translate-x-full translate-y-full",
+                        ? "-translate-y-full transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        : "translate-y-full",
                   )}
                 />
               ))}
@@ -194,6 +230,9 @@ export function Mission() {
               {step.body}
             </p>
           </div>
+          </div>
+          {/* Scroll room while pinned: one stretch per extra step */}
+          <div aria-hidden className="h-[300svh]" />
           </div>
         </div>
       </div>

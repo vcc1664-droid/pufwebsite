@@ -33,7 +33,7 @@ export function BuildingStory() {
           )}
         >
           <p>
-            Founded in 2012, Synergy PUF is part of Synergy Group, with a focus on insulated panel
+            Founded in 2002, Synergy PUF is part of Synergy Group, with a focus on insulated panel
             manufacturing and installation.
           </p>
           <p>

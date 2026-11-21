@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CONTAINER } from "@/constants/layout";
 import { cn } from "@/lib/utils";
+import { HeroWord } from "./HeroWord";
 
 /*
  * Sizes are in cqw (% of the content width) so the layout keeps the Figma
@@ -44,17 +45,8 @@ export function Hero() {
           <span className="animate-rise block -ml-[0.075em] font-sans text-[22px] leading-[1.3] font-normal tracking-normal text-[#171717] [animation-delay:80ms] lg:text-[50.1815px] lg:leading-[65.2359px]">
             High Density
           </span>
-          <span className="sr-only"> PUF </span>
-          {/* viewBox is the cap-height ink box of "PUF" (Plus Jakarta Sans 600, 1000 units) */}
-          <svg
-            aria-hidden
-            viewBox="77 -745 1843 757"
-            className="animate-rise mt-[max(10px,2.49cqw)] block w-full [animation-delay:160ms]"
-          >
-            <text x="0" y="0" fontSize="1000" fontWeight="600" className="fill-brand font-sans">
-              PUF
-            </text>
-          </svg>
+          {/* "PUF" at the top of the page, "PIR" once scrolled */}
+          <HeroWord className="animate-rise mt-[max(10px,2.49cqw)] [animation-delay:160ms]" />
           <span className="animate-rise block -mr-[0.03em] text-right font-sans text-[22px] leading-[1.3] font-normal tracking-normal text-[#171717] [animation-delay:240ms] lg:text-[50.1815px] lg:leading-[65.2359px]">
             Insulated Panels
           </span>

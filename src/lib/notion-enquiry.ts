@@ -122,13 +122,13 @@ function submittedAtIndia() {
   return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}`;
 }
 
-/** Adds the enquiry as a new row in the existing Notion database. */
-export async function saveEnquiryToNotion(enquiry: Enquiry): Promise<void> {
+/** Adds the enquiry as a new row in the existing Notion database; returns the new page's ID. */
+export async function saveEnquiryToNotion(enquiry: Enquiry): Promise<string> {
   const { apiKey, databaseId } = config();
   const parentId = await getDataSourceId(apiKey, databaseId);
 
   // Property names match the existing database schema exactly.
-  await notionFetch("/pages", apiKey, {
+  const page = await notionFetch("/pages", apiKey, {
     method: "POST",
     body: JSON.stringify({
       parent: { type: "data_source_id", data_source_id: parentId },
@@ -142,6 +142,47 @@ export async function saveEnquiryToNotion(enquiry: Enquiry): Promise<void> {
         // Submission date and time, shown in Indian time
         Date: { date: { start: submittedAtIndia(), time_zone: "Asia/Kolkata" } },
       },
+    }),
+  });
+  return (page as { id: string }).id;
+}
+
+/** Upload time limit for a drawing (larger files take longer than a normal Notion call). */
+const UPLOAD_TIMEOUT_MS = 30000;
+
+/**
+ * Attaches the visitor's drawing to the enquiry's Notion page as a file block, using Notion's
+ * file upload API: create the upload, send the bytes, then add a block that points to it.
+ * Not retried: a failure is reported to the caller, which keeps the enquiry and logs it.
+ */
+export async function attachFileToNotionPage(pageId: string, file: File): Promise<void> {
+  const { apiKey } = config();
+  const headers = { Authorization: `Bearer ${apiKey}`, "Notion-Version": NOTION_VERSION };
+
+  const created = (await notionFetch("/file_uploads", apiKey, {
+    method: "POST",
+    body: JSON.stringify({ mode: "single_part", filename: file.name, content_type: file.type || undefined }),
+  })) as { id: string };
+
+  // The bytes go up as multipart form data, so this call sets its own headers
+  const form = new FormData();
+  form.append("file", file, file.name);
+  const sent = await fetch(`${NOTION_API}/file_uploads/${created.id}/send`, {
+    method: "POST",
+    headers,
+    body: form,
+    signal: AbortSignal.timeout(UPLOAD_TIMEOUT_MS),
+    cache: "no-store",
+  }).catch(() => null);
+  if (!sent?.ok) {
+    const body = (await sent?.json().catch(() => ({}))) as { code?: string } | undefined;
+    throw new NotionEnquiryError(`Notion file upload failed ${sent?.status ?? ""} ${body?.code ?? ""}`.trim());
+  }
+
+  await notionFetch(`/blocks/${pageId}/children`, apiKey, {
+    method: "PATCH",
+    body: JSON.stringify({
+      children: [{ type: "file", file: { type: "file_upload", file_upload: { id: created.id }, name: file.name } }],
     }),
   });
 }

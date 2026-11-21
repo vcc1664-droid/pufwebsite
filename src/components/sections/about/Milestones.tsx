@@ -36,13 +36,13 @@ export function Milestones() {
                 <li
                   key={`${copy}-${milestone.title}`}
                   aria-hidden={copy === 1 || undefined}
-                  // Grey tile: title top-right, year bottom-left (font sizes unchanged)
-                  className="mr-[max(16px,1.6cqw)] flex aspect-[9/10] w-[max(150px,13cqw)] shrink-0 flex-col justify-between rounded-[max(10px,1cqw)] bg-[#e8e8e8] p-[max(14px,1.4cqw)]"
+                  // White tile with a light border: title top-right, year bottom-left (Inter Bold, sized to the tile)
+                  className="mr-[max(16px,1.6cqw)] flex aspect-[158/190] w-[max(150px,13cqw)] shrink-0 flex-col justify-between rounded-[max(10px,0.8cqw)] border border-[#d4d4d4] bg-white p-[max(14px,1.3cqw)]"
                 >
                   <p className="text-right font-ui text-[max(14px,1.3cqw)] leading-snug text-brand">
                     {milestone.title}
                   </p>
-                  <p className="font-ui text-[max(11px,0.8cqw)] text-black">{milestone.year}</p>
+                  <p className="font-ui text-[26px] leading-none font-bold tracking-normal text-black lg:text-[2.2cqw]">{milestone.year}</p>
                 </li>
               )),
             )}

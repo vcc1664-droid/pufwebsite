@@ -15,6 +15,11 @@ import industrialImage from "../../../../public/Applications/Servicestailored/in
 import infrastructureImage from "../../../../public/Applications/Servicestailored/infrastructure-utilities.jpg";
 import logisticsImage from "../../../../public/Applications/Servicestailored/logistics-warehousing.jpg";
 import retailImage from "../../../../public/Applications/Servicestailored/Mall-100kb.jpeg";
+import warehouseImage from "../../../../public/Applications/Servicestailored/warehouses.jpg";
+import dataCentersImage from "../../../../public/Applications/Servicestailored/DataCenters.jpg";
+import industrialBuildingImage from "../../../../public/Applications/Servicestailored/industrial-building.jpg";
+import factoriesImage from "../../../../public/Applications/Servicestailored/factories.jpg";
+import logisticsParksImage from "../../../../public/Applications/Servicestailored/logistics-parks.jpg";
 
 type Sector = { name: string; body: string; image: StaticImageData; alt: string };
 
@@ -73,6 +78,36 @@ const SECTORS: Sector[] = [
     body: "Insulated envelopes and cold rooms for malls and retail spaces, keeping large public areas comfortable and efficient.",
     image: retailImage,
     alt: "Shopping centre interior",
+  },
+  {
+    name: "Warehouses",
+    body: "Large-span, column-free storage solutions optimized for capacity and flow.",
+    image: warehouseImage,
+    alt: "Large-span warehouse storage facility",
+  },
+  {
+    name: "Data Centres",
+    body: "Mission-critical infrastructure engineered for high-performance digital operations.",
+    image: dataCentersImage,
+    alt: "Data centres facility",
+  },
+  {
+    name: "Industrial Buildings",
+    body: "Turnkey factories and production facilities engineered for heavy-duty operations.",
+    image: industrialBuildingImage,
+    alt: "Industrial buildings and turnkey factories",
+  },
+  {
+    name: "Factories",
+    body: "Process-driven manufacturing sheds built for scale, safety and efficiency.",
+    image: factoriesImage,
+    alt: "Manufacturing factories and production sheds",
+  },
+  {
+    name: "Logistics Parks",
+    body: "High-clearance distribution hubs designed for modern supply chains.",
+    image: logisticsParksImage,
+    alt: "High-clearance logistics parks and distribution hubs",
   },
 ];
 

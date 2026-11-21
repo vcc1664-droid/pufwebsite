@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/sections/contact/ContactForm";
+import { ContactHero } from "@/components/sections/contact/ContactHero";
 import { Offices } from "@/components/sections/contact/Offices";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <main className="flex-1">
+      <ContactHero />
       <ContactForm />
       <Offices />
     </main>

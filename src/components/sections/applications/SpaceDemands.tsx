@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -94,6 +94,9 @@ const STACK = [
   { scale: 0.8, shift: 1.62, z: 10 },
 ];
 
+/** Time each condition card stays in the centre before automatically advancing. */
+const AUTOPLAY_MS = 2000;
+
 function Arrow({ direction, onClick }: { direction: "prev" | "next"; onClick: () => void }) {
   const next = direction === "next";
   return (
@@ -126,11 +129,37 @@ function Arrow({ direction, onClick }: { direction: "prev" | "next"; onClick: ()
 export function SpaceDemands() {
   // Card in the middle of the stack; the arrows (or a click on a side card) move it
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(true);
   const count = DEMANDS.length;
   const go = (delta: number) => setActive((i) => (i + delta + count) % count);
 
+  // Autoplay runs only while the section is on screen
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      threshold: 0.15,
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Advances automatically every AUTOPLAY_MS, pausing on user hover or interaction
+  useEffect(() => {
+    if (!inView || paused) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % count);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(timer);
+  }, [count, active, inView, paused]);
+
   return (
-    <section className={cn(CONTAINER, SECTION_Y)}>
+    <section ref={sectionRef} className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
         <Reveal className="lg:ml-[60.6%]">
           <h2 className="max-w-[11em] font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
@@ -148,7 +177,14 @@ export function SpaceDemands() {
 
         {/* Cover-flow: the active card in front, two smaller ones on each side running off the edges */}
         <Reveal delay={150} className={BLOCK_GAP}>
-          <div aria-roledescription="carousel" aria-label="Space conditions">
+          <div
+            aria-roledescription="carousel"
+            aria-label="Space conditions"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onTouchStart={() => setPaused(true)}
+            onTouchEnd={() => setPaused(false)}
+          >
             {/* Full screen width: breaks out of the content gutter so the stack runs to both edges */}
             <ul className="relative mx-[calc(50%-50vw)] aspect-[100/66] w-screen overflow-x-clip lg:aspect-[100/32]">
               {DEMANDS.map((demand, i) => {
