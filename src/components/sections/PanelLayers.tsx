@@ -1,10 +1,11 @@
-import Image from "next/image";
-import type { ReactNode } from "react";
-import { Reveal } from "@/components/motion/Reveal";import { ScrollGrow } from "@/components/motion/ScrollGrow";
+"use client";
+
+import { useEffect, useRef, type ReactNode } from "react";
+import { Reveal } from "@/components/motion/Reveal";
+import { ScrollGrow } from "@/components/motion/ScrollGrow";
 import { ScrollRise } from "@/components/motion/ScrollRise";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelImage from "../../../public/Home/21937329-9225-4a24-a7ce-e400225ff293.png";
 
 const LayersIcon = (
   <path d="M12 3.5 3.5 8 12 12.5 20.5 8 12 3.5ZM3.5 12 12 16.5 20.5 12M3.5 16 12 20.5 20.5 16" />
@@ -42,6 +43,15 @@ const LAYERS: { title: string; body: string; icon: ReactNode; position: string }
 ];
 
 export function PanelLayers() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = true;
+    el.play().catch(() => {});
+  }, []);
+
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
       <div className="@container">
@@ -56,8 +66,8 @@ export function PanelLayers() {
         </Reveal>
 
         <div className="mt-10 lg:relative lg:mt-[4.5cqw] lg:h-[43.2cqw]">
-          {/* Starts hidden behind the panel image and slides up into place on scroll */}
-          <ScrollRise from="15cqw" className="relative z-0 text-center lg:absolute lg:inset-x-0 lg:top-0">
+          {/* Slides up into place on scroll, positioned above the video container */}
+          <ScrollRise from="15cqw" className="relative z-20 text-center lg:absolute lg:inset-x-0 lg:top-0">
             <h3 className="inline-block text-[max(12px,1.45cqw)] leading-none font-semibold tracking-[-0.01em] text-brand uppercase underline decoration-[max(1px,0.15cqw)] underline-offset-[0.35em]">
               Three Layers. One Engineered Panel
             </h3>
@@ -65,22 +75,27 @@ export function PanelLayers() {
 
           <Reveal
             delay={100}
-            className="relative z-10 mx-auto mt-4 max-w-xl lg:absolute lg:top-[1.35cqw] lg:left-[19.46%] lg:mt-0 lg:w-[58.1%] lg:max-w-none"
+            className="pointer-events-none relative z-10 mx-auto mt-4 max-w-xl lg:absolute lg:top-[1.35cqw] lg:left-[19.46%] lg:mt-0 lg:w-[58.1%] lg:max-w-none"
           >
             {/* Starts small and grows to its normal size as it scrolls into view */}
             <ScrollGrow>
-              <Image
-                src={panelImage}
-                alt="Exploded view of a PUF panel: two steel faces with an insulating PUF core between them"
-                sizes="(min-width: 1024px) 58vw, (min-width: 640px) 576px, 100vw"
-                className="h-auto w-full"
+              <video
+                ref={videoRef}
+                src="/Home/homePageVideo/Synergy_PUF_Panel_Layers.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-label="Exploded view animation of a PUF panel: two steel faces with an insulating PUF core between them"
+                className="h-auto w-full mix-blend-multiply"
               />
             </ScrollGrow>
           </Reveal>
 
-          <ul className="mt-10 grid gap-8 sm:grid-cols-3 lg:contents">
+          <ul className="relative z-30 mt-10 grid gap-8 sm:grid-cols-3 lg:contents">
             {LAYERS.map((layer, i) => (
-              <li key={layer.body} className={cn("lg:absolute", layer.position)}>
+              <li key={layer.body} className={cn("relative z-30 lg:absolute", layer.position)}>
                 <Reveal delay={150 + i * 100}>
                   <span className="flex size-[max(32px,3.1cqw)] items-center justify-center rounded-[max(6px,0.7cqw)] bg-[#ededed]">
                     <svg

@@ -53,30 +53,30 @@ export function Certificates() {
             <li key={doc.title}>
               <Reveal
                 delay={100 + i * 100}
-                className="flex h-full flex-col gap-6 rounded-[max(12px,0.8cqw)] border border-[#dad8cf] bg-[#F6F6F6] p-5 sm:flex-row sm:items-center sm:gap-0 lg:p-[1.6cqw]"
+                className="flex h-full flex-col gap-4 rounded-[max(12px,0.8cqw)] border border-[#dad8cf] bg-white p-3.5 sm:flex-row sm:items-center sm:gap-0 sm:py-3 sm:px-4 lg:py-[0.8cqw] lg:px-[1.2cqw]"
               >
                 {/* Issuer's logo or name, or an empty space until one is added */}
                 <div
                   aria-hidden={!doc.logo && !doc.issuerName}
-                  className="flex h-28 items-center justify-center sm:h-auto sm:min-h-[max(120px,9cqw)] sm:w-[36%] sm:shrink-0 sm:self-stretch"
+                  className="flex h-16 items-center justify-center sm:h-auto sm:min-h-[max(64px,4.5cqw)] sm:w-[32%] sm:shrink-0 sm:self-stretch"
                 >
                   {doc.logo && (
                     <Image
                       src={doc.logo.src}
                       alt={doc.logo.alt}
                       sizes="(min-width: 640px) 20vw, 60vw"
-                      className="h-full max-h-28 w-auto max-w-full object-contain sm:max-h-[max(110px,8cqw)]"
+                      className="h-full max-h-14 w-auto max-w-full object-contain sm:max-h-[max(56px,4cqw)]"
                     />
                   )}
                   {!doc.logo && doc.issuerName && (
-                    <p className="flex flex-col text-center font-ui text-[max(13px,1cqw)] leading-tight font-semibold text-white">
+                    <p className="flex flex-col text-center font-ui text-[max(12px,0.9cqw)] leading-tight font-semibold text-white">
                       <span className="bg-[#e01e1e] px-[0.6em] py-[0.3em]">{doc.issuerName[0]}</span>
                       <span className="bg-[#1e7a1e] px-[0.6em] py-[0.3em]">{doc.issuerName[1]}</span>
                     </p>
                   )}
                 </div>
 
-                <div aria-hidden className="hidden w-0.5 self-stretch bg-[#14213d] sm:mx-[max(16px,1.6cqw)] sm:my-[max(8px,0.6cqw)] sm:block" />
+                <div aria-hidden className="hidden w-0.5 self-stretch bg-[#14213d] sm:mx-[max(14px,1.2cqw)] sm:my-[max(4px,0.3cqw)] sm:block" />
 
                 <div className="sm:flex-1">
                   <h3 className="flex items-center gap-[0.5em] font-ui text-[max(18px,1.45cqw)] leading-tight font-normal text-black">
