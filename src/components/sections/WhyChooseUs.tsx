@@ -7,7 +7,7 @@ import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import truckImage from "../../../public/Home/e9e3d87b-f844-43f4-9a2d-5898277b404b-80kb.jpeg";
 import factoryImage from "../../../public/Home/ISOcertified/PUF production-100kb.jpeg";
-import isoImage from "../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
+import isoImage from "../../../public/Home/ISOcertified/6457c373-9aed-4798-98b4-6f4cd3ff8143-100kb.jpeg";
 import installImage from "../../../public/Home/ISOcertified/Steel Frame Panel Installation-80kb.jpeg";
 
 const REASONS: { title: string; body: string; image: StaticImageData; alt: string }[] = [
