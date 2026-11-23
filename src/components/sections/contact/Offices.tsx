@@ -9,7 +9,7 @@ const OFFICES = [
     address: "C-148, Phase 7, Industrial Area Sector 73, SAS Nagar Punjab 160055",
   },
   {
-    kind: "Factory & Works",
+    kind: "Manufacturing Unit",
     address: "VPO Manjholi, Tehsil Nalagarh District Solan HP 174010, India",
   },
 ];

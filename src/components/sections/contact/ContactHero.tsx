@@ -22,7 +22,7 @@ export function ContactHero() {
       <div className="@container">
         <Reveal>
           <h1 className="font-sans text-[30px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
-            Tell us what you&apos;re building
+            Tell us What You&apos;re Building
           </h1>
         </Reveal>
 
