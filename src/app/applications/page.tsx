@@ -43,7 +43,7 @@ export default function Applications() {
       <StartingPoint />
       <SectorServices />
       <TrustStrip
-        title="Start With Your Project Conditions."
+        title="Start with Your Project Conditions."
         items={PROJECT_CONDITION_ITEMS}
         iconTone="light"
       />

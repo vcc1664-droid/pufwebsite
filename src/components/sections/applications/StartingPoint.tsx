@@ -95,7 +95,7 @@ export function StartingPoint() {
       <div className="@container">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <h2 className="font-sans text-[28px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
-            Find The <br />
+            Find the <br />
             Right Starting Point.
           </h2>
 

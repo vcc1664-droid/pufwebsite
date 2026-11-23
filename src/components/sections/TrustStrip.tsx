@@ -45,7 +45,7 @@ const SERVICE_ITEMS: TrustItem[] = [
 /** The project details a quote starts from. */
 export const PROJECT_CONDITION_ITEMS: TrustItem[] = [
   {
-    title: "Temperature range",
+    title: "Temperature Rnge",
     body: "Operating conditions and target temperatures",
     icon: (
       <svg {...iconProps}>
@@ -54,7 +54,7 @@ export const PROJECT_CONDITION_ITEMS: TrustItem[] = [
     ),
   },
   {
-    title: "Industry & use",
+    title: "Industry & Use",
     body: "Your process and compliance requirements",
     icon: (
       <svg
@@ -74,7 +74,7 @@ export const PROJECT_CONDITION_ITEMS: TrustItem[] = [
     ),
   },
   {
-    title: "Area & layout",
+    title: "Area & Layout",
     body: "Dimensions, openings and project scale.",
     icon: (
       <svg {...iconProps}>

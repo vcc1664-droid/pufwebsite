@@ -15,7 +15,7 @@ export function Header() {
     <header className="sticky top-0 z-50">
       <div className={cn(CONTAINER, "py-4 lg:py-6")}>
         {/* One light bar spanning the gutter: logo left, links centred, CTA right */}
-        <div className="flex h-16 items-center justify-between rounded-xl bg-surface px-4 lg:grid lg:h-[79px] lg:grid-cols-[1fr_auto_1fr] lg:px-[38px]">
+        <div className="flex h-14 items-center justify-between rounded-xl bg-surface px-4 lg:grid lg:h-[64px] lg:grid-cols-[1fr_auto_1fr] lg:px-[38px]">
           <div className="justify-self-start">
             <Logo />
           </div>

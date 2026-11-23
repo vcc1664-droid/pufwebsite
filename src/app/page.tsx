@@ -39,8 +39,8 @@ export default function Home() {
         <CoreSlider />
         <ProductionToInstallation />
         <SelectedProjects />
-        <Testimonials />
         <Certificates />
+        <Testimonials />
         <ClientLogos />
         <BuyerQuestions />
       </div>

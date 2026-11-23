@@ -20,7 +20,7 @@ type Core = {
 const CORES: Core[] = [
   {
     name: "PUF",
-    body: "Reliable thermal insulation for cold storage and enclosed spaces.",
+    body: "PUF (rigid polyurethane foam, also called PUR) panels are used for cold rooms, chillers and freezers, food processing enclosures, insulated warehouse walls and roofs modular cabins, and utility shelters.",
     href: "/products",
     image: {
       src: jointImage,
@@ -29,7 +29,7 @@ const CORES: Core[] = [
   },
   {
     name: "PIR",
-    body: "Improved fire performance with high thermal efficiency for demanding facilities.",
+    body: "PIR (rigid polyisocyanurate foam) panels are used in industrial roof and wall systems PIR (rigid polyisocyanurate foam) panels are used in industrial roof and wall systems pharmaceutical controlled environments, coldchain warehouses and freezer envelopes where the specification calls for a tested PIR panel configuration.",
     href: "/products",
     image: { src: pirImage, alt: "PIR insulated panels" },
   },
