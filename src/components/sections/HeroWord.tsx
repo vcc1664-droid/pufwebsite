@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-/** Scroll distance after which "PUF" gives way to "PIR". */
-const SWITCH_AT = 40;
+/** Scroll distance after which "PUF" gives way to "PIR".
+ * Set high enough so "High Density PUF" remains properly visible during initial scrolling.
+ */
+const DEFAULT_SWITCH_AT = 240;
 
 const word = "fill-brand font-sans";
 const slide = "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none";
@@ -20,18 +22,23 @@ export function HeroWord({ className }: { className?: string }) {
 
   useEffect(() => {
     let frame = 0;
+    const getSwitchThreshold = () =>
+      Math.max(180, Math.round((window.innerHeight || 800) * 0.28));
+
     const update = () => {
       frame = 0;
-      setScrolled(window.scrollY > SWITCH_AT);
+      setScrolled(window.scrollY > getSwitchThreshold());
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", update);
     };
   }, []);
 
