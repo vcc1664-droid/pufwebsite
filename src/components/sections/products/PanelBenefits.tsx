@@ -72,54 +72,48 @@ const BENEFITS: { title: [string, string]; body: string; icon: ReactNode }[] = [
 function Benefit({ benefit, align, delay }: { benefit: (typeof BENEFITS)[number]; align: "start" | "end"; delay: number }) {
   const end = align === "end";
   return (
-    <li>
-      <Reveal delay={delay} className={cn("flex flex-col items-start", end && "lg:items-end lg:text-right")}>
-        <span className="grid size-[max(36px,2.4cqw)] place-items-center rounded-[max(6px,0.4cqw)] bg-white">
-          <svg
-            aria-hidden
-            viewBox="0 0 40 40"
-            fill="none"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-[78%]"
-          >
-            {benefit.icon}
-          </svg>
-        </span>
-        <h3 className="mt-3 text-[max(18px,1.45cqw)] leading-[1.15] font-normal tracking-[-0.01em] text-black lg:mt-[0.9cqw]">
-          {benefit.title[0]}
-          <br />
-          {benefit.title[1]}
-        </h3>
-        <p className="mt-2 max-w-[22em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[0.6cqw]">
-          {benefit.body}
-        </p>
-      </Reveal>
-    </li>
+    <Reveal delay={delay} className={cn("flex flex-col items-start", end && "lg:items-end lg:text-right")}>
+      <span className="grid size-[max(36px,2.4cqw)] place-items-center rounded-[max(6px,0.4cqw)] bg-white">
+        <svg
+          aria-hidden
+          viewBox="0 0 40 40"
+          fill="none"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-[78%]"
+        >
+          {benefit.icon}
+        </svg>
+      </span>
+      <h3 className="mt-3 text-[max(18px,1.45cqw)] leading-[1.15] font-normal tracking-[-0.01em] text-black lg:mt-[0.9cqw]">
+        {benefit.title[0]}
+        <br />
+        {benefit.title[1]}
+      </h3>
+      <p className="mt-2 max-w-[22em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#3e3e3e] lg:mt-[0.6cqw]">
+        {benefit.body}
+      </p>
+    </Reveal>
   );
 }
 
 /** What the panels do: the panel render in the middle, two benefits on each side. */
 /* Sizes (lg+) are cqw of the content width, measured from the design. Text sizes are unchanged. */
 export function PanelBenefits() {
-  // Left column: 1st and 3rd benefit (text aligned towards the panel); right column: 2nd and 4th
-  const left = [BENEFITS[0], BENEFITS[2]];
-  const right = [BENEFITS[1], BENEFITS[3]];
+  const leftTop = BENEFITS[0];
+  const rightTop = BENEFITS[1];
+  const leftBottom = BENEFITS[2];
+  const rightBottom = BENEFITS[3];
 
   return (
     // Light grey band, full-bleed
     <section className="bg-[#f2f2f2]">
       <div className={cn(CONTAINER, SECTION_Y)}>
         <div className="@container">
-          <div className="grid gap-10 lg:grid-cols-[1fr_32%_1fr] lg:items-center lg:gap-[3cqw]">
-            <ul className="order-2 grid gap-8 sm:grid-cols-2 lg:order-none lg:grid-cols-1 lg:gap-[4.5cqw]">
-              {left.map((benefit, i) => (
-                <Benefit key={benefit.title.join(" ")} benefit={benefit} align="end" delay={100 + i * 200} />
-              ))}
-            </ul>
-
-            <Reveal className="order-1 mx-auto w-full max-w-md lg:order-none lg:max-w-none">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_32%_1fr] lg:items-start lg:gap-x-[3cqw] lg:gap-y-[4.5cqw]">
+            {/* Center image */}
+            <Reveal className="order-1 mx-auto w-full max-w-md sm:col-span-2 lg:order-none lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:max-w-none lg:self-center">
               <Image
                 src={panelImage}
                 alt="PUF insulated panel: two steel faces with an insulating core between them"
@@ -128,11 +122,25 @@ export function PanelBenefits() {
               />
             </Reveal>
 
-            <ul className="order-3 grid gap-8 sm:grid-cols-2 lg:order-none lg:grid-cols-1 lg:gap-[4.5cqw]">
-              {right.map((benefit, i) => (
-                <Benefit key={benefit.title.join(" ")} benefit={benefit} align="start" delay={200 + i * 200} />
-              ))}
-            </ul>
+            {/* Left top benefit */}
+            <div className="order-2 lg:order-none lg:col-start-1 lg:row-start-1">
+              <Benefit benefit={leftTop} align="end" delay={100} />
+            </div>
+
+            {/* Right top benefit */}
+            <div className="order-4 lg:order-none lg:col-start-3 lg:row-start-1">
+              <Benefit benefit={rightTop} align="start" delay={200} />
+            </div>
+
+            {/* Left bottom benefit */}
+            <div className="order-3 lg:order-none lg:col-start-1 lg:row-start-2">
+              <Benefit benefit={leftBottom} align="end" delay={300} />
+            </div>
+
+            {/* Right bottom benefit */}
+            <div className="order-5 lg:order-none lg:col-start-3 lg:row-start-2">
+              <Benefit benefit={rightBottom} align="start" delay={400} />
+            </div>
           </div>
         </div>
       </div>

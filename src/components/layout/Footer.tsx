@@ -123,7 +123,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
 ];
 
 const heading = "text-[max(15px,1.45cqw)] font-normal text-[#561A61]";
-const body = "text-[max(14px,1.3cqw)] text-[#1e1e1e]";
+const body = "text-[14px] leading-[22.75px] font-normal tracking-normal text-[#1e1e1e]";
 const fine = "text-[max(12px,1.05cqw)] leading-[1.6] text-[#1e1e1e]";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
@@ -145,7 +145,7 @@ export function Footer() {
                 <h2 className={heading}>{column.title}</h2>
                 <ul className="mt-4 space-y-1.5 lg:mt-[1.7cqw] lg:space-y-[0.5cqw]">
                   {column.links.map((link) => (
-                    <li key={link.label} className="text-[max(13px,1.2cqw)] text-[#1e1e1e]">
+                    <li key={link.label} className="text-[14px] leading-[22.75px] font-normal tracking-normal text-[#1e1e1e]">
                       {link.href?.startsWith("http") ? (
                         // Sister-company sites open in a new tab
                         <a
@@ -170,7 +170,7 @@ export function Footer() {
             ))}
 
             <div>
-              <h2 className={heading}>A venture by</h2>
+              <h2 className={heading}>A Venture by</h2>
               <a
                 href="https://www.thesynergygroup.co.in/"
                 target="_blank"
