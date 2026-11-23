@@ -16,7 +16,7 @@ const iconProps = {
 
 const PANELS: { title: string; body: string; icon: ReactNode }[] = [
   {
-    title: "Roof panels",
+    title: "Roof Panels",
     body: "Standing seam. Cores: PUF or PIR.",
     // Ridged roof sheet
     icon: (
@@ -27,7 +27,7 @@ const PANELS: { title: string; body: string; icon: ReactNode }[] = [
     ),
   },
   {
-    title: "Wall panels",
+    title: "Wall Panels",
     body: "Single skin, micro-rib and concealed fix.",
     // Upright ribbed wall panel
     icon: (
@@ -38,7 +38,7 @@ const PANELS: { title: string; body: string; icon: ReactNode }[] = [
     ),
   },
   {
-    title: "PIR panels",
+    title: "PIR Panels",
     body: "Foam core, chosen where fire behaviour matters more.",
     // Panel with its core showing
     icon: (

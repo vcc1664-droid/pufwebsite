@@ -45,7 +45,7 @@ const SERVICE_ITEMS: TrustItem[] = [
 /** The project details a quote starts from. */
 export const PROJECT_CONDITION_ITEMS: TrustItem[] = [
   {
-    title: "Temperature Rnge",
+    title: "Temperature Range",
     body: "Operating conditions and target temperatures",
     icon: (
       <svg {...iconProps}>

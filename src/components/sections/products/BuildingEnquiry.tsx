@@ -105,7 +105,7 @@ export function BuildingEnquiry() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0">
           <Reveal className="relative flex flex-col overflow-hidden rounded-[max(16px,1.6cqw)] bg-[#0b0b0b] px-6 py-8 text-white lg:w-[42%] lg:p-[3cqw]">
             <h2 className="relative z-10 max-w-[6em] font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-white lg:text-[50.1815px] lg:leading-[65.2359px]">
-              Tell us about your Building
+              Tell Us About Your Building
             </h2>
             <p className="relative z-10 mt-4 max-w-[26em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-white/60 lg:mt-[1.2cqw]">
               Share the basics and our team will come back with a panel recommendation.
