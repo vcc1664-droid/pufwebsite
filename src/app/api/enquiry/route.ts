@@ -133,13 +133,19 @@ export async function POST(request: Request) {
       const buffer = Buffer.from(await file.arrayBuffer());
       drawingBase64 = buffer.toString("base64");
 
-      // Also save locally in public/uploads if accessible
-      const fs = await import("node:fs/promises");
-      const path = await import("node:path");
-      const uploadsDir = path.resolve(process.cwd(), "public/uploads");
-      await fs.mkdir(uploadsDir, { recursive: true });
-      const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
-      await fs.writeFile(path.join(uploadsDir, safeName), buffer);
+      // Also save locally in public/uploads if accessible (non-serverless)
+      if (!process.env.VERCEL) {
+        try {
+          const fs = await import("node:fs/promises");
+          const path = await import("node:path");
+          const uploadsDir = path.resolve(process.cwd(), "public/uploads");
+          await fs.mkdir(uploadsDir, { recursive: true });
+          const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+          await fs.writeFile(path.join(uploadsDir, safeName), buffer);
+        } catch {
+          // Ignored on serverless
+        }
+      }
     } catch (fileErr) {
       console.warn("[enquiry] Local file write warning:", fileErr);
     }
