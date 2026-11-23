@@ -23,25 +23,25 @@ type Step = {
 const STEPS: Step[] = [
   {
     stage: "Design",
-    title: "Specification support",
+    title: "Specification Support",
     body: "Our engineering and sales team helps you choose the right panel for the space before anything is made.",
     image: { src: teamImage, alt: "Engineers reviewing building plans on a construction site" },
   },
   {
     stage: "Manufacture",
-    title: "Panel production",
+    title: "Panel Production",
     body: "Panels are produced at our Nalagarh plant with quality checks from raw material to dispatch.",
     image: { src: factoryImage, alt: "PUF panels being produced at the Synergy PUF plant" },
   },
   {
     stage: "Delivery",
-    title: "Logistics to site",
+    title: "Logistics to Site",
     body: "Panels are packed and scheduled to reach the site in the order the installation needs them.",
     image: { src: deliveryImage, alt: "Synergy PUF truck being loaded with insulated panels at the loading point" },
   },
   {
     stage: "Installation",
-    title: "On-site installation",
+    title: "On-site Installation",
     body: "Our installation team builds the finished enclosure, sealing joints and interfaces as specified.",
     image: { src: installImage, alt: "Installers fixing insulated wall panels on site" },
   },
@@ -162,77 +162,77 @@ export function Mission() {
 
           {/* Pins while scrolling: one stretch of scroll per step (spacer below) */}
           <div ref={track} className={BLOCK_GAP}>
-          {/* Desktop: smaller photo on the left, the active step's copy beside it on the right */}
-          <div ref={pinned} className="sticky flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-[4cqw]">
-          <Reveal delay={150} className="lg:w-[58%] lg:shrink-0">
-            <div
-              className="relative aspect-[3/2] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/690] lg:aspect-[16/10]">
-              {/* All photos stay stacked; the active one slides in from the bottom while
+            {/* Desktop: smaller photo on the left, the active step's copy beside it on the right */}
+            <div ref={pinned} className="sticky flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-[4cqw]">
+              <Reveal delay={150} className="lg:w-[58%] lg:shrink-0">
+                <div
+                  className="relative aspect-[3/2] overflow-hidden rounded-[max(16px,3.2cqw)] sm:aspect-[1595/690] lg:aspect-[16/10]">
+                  {/* All photos stay stacked; the active one slides in from the bottom while
                   the previous one slides out towards the top */}
-              {STEPS.map((s, i) => (
-                <Image
-                  key={s.title}
-                  src={s.image.src}
-                  alt={s.image.alt}
-                  fill
-                  placeholder="blur"
-                  sizes="(min-width: 1920px) 925px, (min-width: 1024px) 58vw, 100vw"
-                  aria-hidden={i !== index}
-                  // Moves vertically from bottom to top: the active photo slides in from the bottom,
-                  // the previous photo slides out towards the top, and waiting photos stay below.
-                  className={cn(
-                    "object-cover motion-reduce:transition-none",
-                    i === index
-                      ? "translate-y-0 transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                      : i === previous
-                        ? "-translate-y-full transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                        : "translate-y-full",
-                  )}
-                />
-              ))}
+                  {STEPS.map((s, i) => (
+                    <Image
+                      key={s.title}
+                      src={s.image.src}
+                      alt={s.image.alt}
+                      fill
+                      placeholder="blur"
+                      sizes="(min-width: 1920px) 925px, (min-width: 1024px) 58vw, 100vw"
+                      aria-hidden={i !== index}
+                      // Moves vertically from bottom to top: the active photo slides in from the bottom,
+                      // the previous photo slides out towards the top, and waiting photos stay below.
+                      className={cn(
+                        "object-cover motion-reduce:transition-none",
+                        i === index
+                          ? "translate-y-0 transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                          : i === previous
+                            ? "-translate-y-full transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                            : "translate-y-full",
+                      )}
+                    />
+                  ))}
 
-              <div className="absolute inset-x-0 bottom-[max(14px,1.8cqw)] flex justify-center gap-[max(6px,0.45cqw)]">
-                {STEPS.map((s, i) => (
-                  <button
-                    key={s.title}
-                    type="button"
-                    onClick={() => goTo(i)}
-                    aria-label={`Show step ${i + 1}: ${s.title}`}
-                    aria-current={i === index}
-                    className={cn(
-                      "size-[max(8px,0.75cqw)] rounded-full transition-colors duration-200",
-                      i === index ? "bg-white" : "bg-white/45 hover:bg-white/70",
-                    )}
-                  />
-                ))}
+                  <div className="absolute inset-x-0 bottom-[max(14px,1.8cqw)] flex justify-center gap-[max(6px,0.45cqw)]">
+                    {STEPS.map((s, i) => (
+                      <button
+                        key={s.title}
+                        type="button"
+                        onClick={() => goTo(i)}
+                        aria-label={`Show step ${i + 1}: ${s.title}`}
+                        aria-current={i === index}
+                        className={cn(
+                          "size-[max(8px,0.75cqw)] rounded-full transition-colors duration-200",
+                          i === index ? "bg-white" : "bg-white/45 hover:bg-white/70",
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* Re-keyed so the step copy rises in again on every change */}
+              <div
+                key={index}
+                aria-live="polite"
+                className="flex animate-rise flex-col gap-6 lg:flex-1 lg:gap-[2.4cqw]"
+              >
+                <div className="flex items-center gap-[max(14px,2cqw)] lg:border-b lg:border-white/60 lg:pb-[2.4cqw]">
+                  <p className="text-[max(64px,8.4cqw)] leading-[0.8] font-normal tracking-[-0.04em]">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="font-normal">
+                    <span className="block text-[max(20px,2.25cqw)] leading-tight">{step.stage}</span>
+                    <span className="block text-[max(24px,2.65cqw)] leading-tight font-normal tracking-[-0.01em]">
+                      {step.title}
+                    </span>
+                  </h3>
+                </div>
+                <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal">
+                  {step.body}
+                </p>
               </div>
             </div>
-          </Reveal>
-
-          {/* Re-keyed so the step copy rises in again on every change */}
-          <div
-            key={index}
-            aria-live="polite"
-            className="flex animate-rise flex-col gap-6 lg:flex-1 lg:gap-[2.4cqw]"
-          >
-            <div className="flex items-center gap-[max(14px,2cqw)] lg:border-b lg:border-white/60 lg:pb-[2.4cqw]">
-              <p className="text-[max(64px,8.4cqw)] leading-[0.8] font-normal tracking-[-0.04em]">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <h3 className="font-normal">
-                <span className="block text-[max(20px,2.25cqw)] leading-tight">{step.stage}</span>
-                <span className="block text-[max(24px,2.65cqw)] leading-tight font-normal tracking-[-0.01em]">
-                  {step.title}
-                </span>
-              </h3>
-            </div>
-            <p className="font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal">
-              {step.body}
-            </p>
-          </div>
-          </div>
-          {/* Scroll room while pinned: one stretch per extra step */}
-          <div aria-hidden className="h-[300svh]" />
+            {/* Scroll room while pinned: one stretch per extra step */}
+            <div aria-hidden className="h-[300svh]" />
           </div>
         </div>
       </div>

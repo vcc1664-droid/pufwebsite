@@ -20,7 +20,7 @@ const FIELDS: Field[] = [
   { name: "name", label: "Name", placeholder: "Enter your name ", autoComplete: "name", required: true },
   { name: "phone", label: "Phone Number", placeholder: "+91 98765 43210", type: "tel", autoComplete: "tel", required: true },
   { name: "location", label: "Project Location", placeholder: "Chandigarh" },
-  { name: "use", label: "Use: cold store, pharma, data center, other", placeholder: "Cold store" },
+  { name: "use", label: "Use: Cold Store, Pharma, Data Center, Other", placeholder: "Cold Store" },
   { name: "area", label: "Approximate area", placeholder: "10,000 sq ft" },
   { name: "temperature", label: "Operating Temperature", placeholder: "-20°C" },
 ];

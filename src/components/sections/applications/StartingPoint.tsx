@@ -24,7 +24,7 @@ const CATEGORIES: { name: string; panel?: Panel }[] = [
   {
     name: "Temperature-Controlled Spaces",
     panel: {
-      title: "Cold storage & cold-room enclosures",
+      title: "Cold storage & cold-room Enclosures",
       body: "Insulated walls and ceilings form the enclosure. Specify them alongside refrigeration, doors and the operating conditions.",
       image: { src: coldRoomImage, alt: "Cold storage enclosure with racking either side of the aisle" },
       specs: [
@@ -38,7 +38,7 @@ const CATEGORIES: { name: string; panel?: Panel }[] = [
   {
     name: "Industrial Roofing & Cladding",
     panel: {
-      title: "Industrial roofing & wall cladding",
+      title: "Industrial roofing & wall Cladding",
       body: "Heavy-duty insulated panel systems engineered for large-span warehouses, manufacturing units, and commercial facilities with all-weather thermal sealing.",
       image: { src: roofingImage, alt: "Industrial building roofed and clad with insulated panels" },
       specs: [
@@ -52,7 +52,7 @@ const CATEGORIES: { name: string; panel?: Panel }[] = [
   {
     name: "Controlled & Modular Environments",
     panel: {
-      title: "Cleanrooms & modular environments",
+      title: "Cleanrooms & modular Environments",
       body: "Flush-surface modular insulated enclosures built for pharmaceutical manufacturing, precision laboratories, and sterile contamination-controlled spaces.",
       image: { src: modularImage, alt: "Modular enclosure built from insulated panel systems" },
       specs: [
