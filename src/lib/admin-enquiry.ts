@@ -21,7 +21,8 @@ export class AdminEnquiryError extends Error {}
 
 /** Adds the enquiry to the admin panel's quotes list. */
 export async function saveEnquiryToAdmin(enquiry: AdminEnquiry): Promise<any> {
-  const baseUrl = process.env.PUF_BACKEND_URL?.trim().replace(/\/+$/, "") || "http://localhost:4003";
+  const rawUrl = (process.env.PUF_BACKEND_URL || "http://localhost:4003").trim().replace(/\/+$/, "");
+  const baseUrl = rawUrl.startsWith("http://") || rawUrl.startsWith("https://") ? rawUrl : `https://${rawUrl}`;
 
   let response: Response;
   try {

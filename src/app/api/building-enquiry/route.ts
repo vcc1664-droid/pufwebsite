@@ -41,8 +41,9 @@ function validate(body: Record<string, unknown>): { enquiry?: BuildingEnquiry; e
 const json = (status: number, body: Record<string, unknown>) => Response.json(body, { status });
 
 async function saveToAdmin(enquiry: BuildingEnquiry): Promise<void> {
-  const baseUrl = process.env.PUF_BACKEND_URL?.trim().replace(/\/+$/, "");
-  if (!baseUrl) return;
+  const rawUrl = process.env.PUF_BACKEND_URL?.trim().replace(/\/+$/, "");
+  if (!rawUrl) return;
+  const baseUrl = rawUrl.startsWith("http://") || rawUrl.startsWith("https://") ? rawUrl : `https://${rawUrl}`;
 
   const details = [
     `Project Location: ${enquiry.location || "-"}`,
