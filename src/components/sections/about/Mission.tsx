@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import teamImage from "../../../../public/about/Insulation/PUF FACTORYY-100kb.jpeg";
 import factoryImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
 import deliveryImage from "../../../../public/about/Insulation/WhatsApp Image 2026-11-13 at 22.26.00-60kb.jpeg";
-import installImage from "../../../../public/about/Insulation/5af39614-3f60-474b-af2a-39d4b60c93bf.png";
+import installImage from "../../../../public/about/Insulation/5af39614-3f60-474b-af2a-39d4b60c93bf-100kb.jpeg";
 
 type Step = {
   stage: string;
