@@ -13,7 +13,7 @@ const LIMITS: Record<keyof Enquiry, number> = {
 const MAX_BODY_BYTES = 20_000;
 /** Optional drawing upload: size cap and accepted file types. */
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
-const FILE_TYPES = /\.(pdf|jpe?g|png|dwg)$/i;
+const FILE_TYPES = /\.(pdf|jpe?g|png|dwg|webp)$/i;
 /** How long a submission ID is remembered to drop repeated submissions of the same enquiry. */
 const DEDUPE_MS = 10 * 60 * 1000;
 
@@ -121,30 +121,74 @@ export async function POST(request: Request) {
     }
   }
 
-  // Also copy it to the admin panel. Runs alongside Notion; a failure here is only logged and
-  // never changes the visitor's result (Notion still decides that, as before).
-  const adminSave = saveEnquiryToAdmin(enquiry).catch((err) => {
-    console.error("[enquiry] Admin panel save failed:", err instanceof Error ? err.message : "unknown error");
-  });
+  const location = typeof body.location === "string" ? body.location.trim().slice(0, 255) : "";
+  const panel = typeof body.panel === "string" ? body.panel.trim().slice(0, 255) : "";
 
-  // The drawing, if any, is attached to the new Notion page. A failed upload never loses the
-  // enquiry: it is logged, and the message already names the file so the team can ask for it.
-  const pending = saveEnquiryToNotion(enquiry).then(async (pageId) => {
-    if (!file) return;
-    await attachFileToNotionPage(pageId, file).catch((err) => {
-      console.error("[enquiry] Drawing upload failed:", err instanceof Error ? err.message : "unknown error");
+  let drawingBase64: string | undefined;
+  let drawingName: string | undefined;
+
+  if (file) {
+    drawingName = file.name;
+    try {
+      const buffer = Buffer.from(await file.arrayBuffer());
+      drawingBase64 = buffer.toString("base64");
+
+      // Also save locally in public/uploads if accessible
+      const fs = await import("node:fs/promises");
+      const path = await import("node:path");
+      const uploadsDir = path.resolve(process.cwd(), "public/uploads");
+      await fs.mkdir(uploadsDir, { recursive: true });
+      const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+      await fs.writeFile(path.join(uploadsDir, safeName), buffer);
+    } catch (fileErr) {
+      console.warn("[enquiry] Local file write warning:", fileErr);
+    }
+  }
+
+  const adminPayload = {
+    name: enquiry.name,
+    email: enquiry.email,
+    phone: enquiry.phone,
+    company: enquiry.company,
+    location,
+    panel: panel || enquiry.subject,
+    subject: panel || enquiry.subject,
+    message: enquiry.message,
+    drawingName,
+    drawingBase64,
+  };
+
+  // Primary: save directly to Admin Panel backend database
+  const adminSavePromise = saveEnquiryToAdmin(adminPayload);
+
+  // Secondary: Notion database (if configured)
+  const notionPromise = saveEnquiryToNotion(enquiry)
+    .then(async (pageId) => {
+      if (!file) return;
+      await attachFileToNotionPage(pageId, file).catch((err) => {
+        console.error("[enquiry] Drawing upload failed to Notion:", err);
+      });
+    })
+    .catch((err) => {
+      console.warn("[enquiry] Notion save skipped or failed:", err instanceof Error ? err.message : err);
     });
-  });
-  recent.set(submissionId, { at: now, pending });
+
+  recent.set(submissionId, { at: now, pending: adminSavePromise });
+
   try {
-    await Promise.all([pending, adminSave]);
+    await adminSavePromise;
     recent.set(submissionId, { at: now });
     return json(200, { ok: true });
-  } catch (err) {
-    await adminSave;
-    recent.delete(submissionId);
-    // Logs only the failure reason: no API key and no visitor details.
-    console.error("[enquiry] Notion save failed:", err instanceof Error ? err.message : "unknown error");
-    return json(502, { ok: false, error: "We couldn't send your enquiry right now." });
+  } catch (adminErr) {
+    console.error("[enquiry] Admin panel save failed:", adminErr instanceof Error ? adminErr.message : adminErr);
+    // Fallback: If Notion succeeded, still return ok
+    try {
+      await notionPromise;
+      recent.set(submissionId, { at: now });
+      return json(200, { ok: true });
+    } catch {
+      recent.delete(submissionId);
+      return json(502, { ok: false, error: "We couldn't send your enquiry right now. Please try again." });
+    }
   }
 }

@@ -60,7 +60,7 @@ const BENEFITS = [
 ];
 
 /** Accepted drawing files (checked again on the server, with a 10 MB cap). */
-const FILE_ACCEPT = ".pdf,.jpg,.jpeg,.png,.dwg";
+const FILE_ACCEPT = ".pdf,.jpg,.jpeg,.png,.dwg,.webp";
 
 // Light text and see-through fields on the purple form card
 const label = "block font-ui text-[max(13px,1.1cqw)] text-white/85";
@@ -100,13 +100,14 @@ export function ContactForm() {
     setStatus({ state: "sending" });
 
     try {
-      // Sent as form data so the optional drawing goes along with it. Notion keeps the panel
-      // requirement as the Subject and the location, requirement and file name as the message.
+      // Sent as form data so the optional drawing goes along with it.
       const body = new FormData();
       body.append("name", value("name"));
       body.append("email", value("email"));
       body.append("phone", value("phone"));
       body.append("company", value("company"));
+      body.append("location", value("location"));
+      body.append("panel", value("panel"));
       body.append("subject", value("panel") || "Website enquiry");
       body.append("message", composeMessage(value, file));
       body.append("submissionId", submissionId.current);
