@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import pirImage from "../../../public/Home/PIR/6b17e3ef-f9fe-4bfd-a8b0-8dbaa2afb93f.jpg";
-import jointImage from "../../../public/Home/PIR/86595c6a-e1d5-4bc1-9bf5-09fa549826a3.jpg";
+import pirImage from "../../../public/Home/PIR/6bf79ea3-2e27-4b80-b7de-a6db2901dcc7-100kb.jpg";
+import pufImage from "../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 11.57.30-100kb.jpeg";
 
 type Core = {
   name: string;
@@ -16,22 +16,21 @@ type Core = {
   image: { src: StaticImageData | string; alt: string };
 };
 
-// PUF uses the joint photo until its own photo is available.
 const CORES: Core[] = [
   {
     name: "PUF",
     body: "PUF (rigid polyurethane foam, also called PUR) panels are used for cold rooms, chillers and freezers, food processing enclosures, insulated warehouse walls and roofs modular cabins, and utility shelters.",
     href: "/products",
     image: {
-      src: jointImage,
-      alt: "Interlocking joint between two PUF sandwich panels",
+      src: pufImage,
+      alt: "Stack of PUF insulated panels on the factory floor",
     },
   },
   {
     name: "PIR",
     body: "PIR (rigid polyisocyanurate foam) panels are used in industrial roof and wall systems PIR (rigid polyisocyanurate foam) panels are used in industrial roof and wall systems pharmaceutical controlled environments, coldchain warehouses and freezer envelopes where the specification calls for a tested PIR panel configuration.",
     href: "/products",
-    image: { src: pirImage, alt: "PIR insulated panels" },
+    image: { src: pirImage, alt: "Stacks of PIR insulated roof panels beside a steel-framed building" },
   },
 ];
 
