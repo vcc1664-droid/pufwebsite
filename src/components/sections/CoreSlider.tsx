@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import pirImage from "../../../public/Home/PIR/6bf79ea3-2e27-4b80-b7de-a6db2901dcc7-100kb.jpg";
-import pufImage from "../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 11.57.30-100kb.jpeg";
+import pirImage from "../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 17.24.51-100kb.jpeg";
+import pufImage from "../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 17.25.01-100kb.jpeg";
 
 type Core = {
   name: string;

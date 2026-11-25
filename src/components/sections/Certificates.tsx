@@ -54,39 +54,34 @@ export function Certificates() {
           </p>
         </Reveal>
 
-        {/* Three small certificate cards on a soft lavender band: logo, tick, name */}
-        <div className="mt-6 rounded-[max(16px,1.6cqw)] bg-[radial-gradient(ellipse_at_center,#f1ebf3_0%,#f8f5f9_55%,#ffffff_100%)] px-4 py-8 lg:mt-[2cqw] lg:py-[3cqw]">
+        {/* Three small certificate cards on a light grey band: logo and name */}
+        <div className="mt-6 rounded-[max(16px,1.6cqw)] bg-[#F6F6F6] px-4 py-10 lg:mt-[2cqw] lg:py-[5cqw]">
           <ul className="flex flex-wrap justify-center gap-4 lg:gap-[2.2cqw]">
             {DOCUMENTS.map((doc, i) => (
               <li key={doc.title}>
                 <Reveal
                   delay={100 + i * 100}
-                  className="flex h-full w-[max(140px,10.5cqw)] flex-col items-center rounded-[max(10px,0.8cqw)] bg-white px-3 pt-4 pb-3 text-center shadow-[0_4px_18px_rgba(86,26,97,0.08)] lg:px-[0.9cqw] lg:pt-[1.2cqw] lg:pb-[1cqw]"
+                  className="flex h-full w-[max(190px,16cqw)] flex-col items-center rounded-[max(10px,0.8cqw)] bg-white px-5 pt-7 pb-6 text-center shadow-[0_4px_18px_rgba(86,26,97,0.08)] lg:px-[1.4cqw] lg:pt-[2.2cqw] lg:pb-[2cqw]"
                 >
                   {/* Issuer's logo or name */}
-                  <div className="flex h-[max(56px,4.4cqw)] w-full items-center justify-center">
+                  <div className="flex h-[max(76px,6.6cqw)] w-full items-center justify-center">
                     {doc.logo && (
                       <Image
                         src={doc.logo.src}
                         alt={doc.logo.alt}
-                        sizes="(min-width: 1024px) 10vw, 140px"
+                        sizes="(min-width: 1024px) 15vw, 190px"
                         className="h-full w-auto max-w-full object-contain"
                       />
                     )}
                     {!doc.logo && doc.issuerName && (
-                      <p className="flex flex-col text-center font-ui text-[max(8px,0.6cqw)] leading-tight font-semibold text-white">
+                      <p className="flex flex-col text-center font-ui text-[max(9px,0.72cqw)] leading-tight font-semibold text-white">
                         <span className="bg-[#e01e1e] px-[0.5em] py-[0.25em]">{doc.issuerName[0]}</span>
                         <span className="bg-[#1e7a1e] px-[0.5em] py-[0.25em]">{doc.issuerName[1]}</span>
                       </p>
                     )}
                   </div>
 
-                  <svg aria-hidden viewBox="0 0 24 24" className="mt-3 size-[max(20px,1.5cqw)] shrink-0 lg:mt-[0.8cqw]">
-                    <circle cx="12" cy="12" r="11" fill="#561A61" />
-                    <path d="m7 12.5 3.2 3.2L17 9" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-
-                  <h3 className="mt-2 font-ui text-[13px] leading-snug font-normal text-black lg:mt-[0.6cqw] lg:text-[max(12px,0.95cqw)]">
+                  <h3 className="mt-2 font-ui text-[14px] leading-snug font-normal text-black lg:mt-[0.8cqw] lg:text-[max(13px,1.1cqw)]">
                     {doc.title}
                   </h3>
                   {doc.pdf && (
