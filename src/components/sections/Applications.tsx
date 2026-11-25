@@ -25,7 +25,7 @@ const SPACES: {
     alt: "Cold storage warehouse aisle lined with insulated PUF panels",
   },
   {
-    title: "Controlled & Modular Environments",
+    title: "Controlled & Modular\nEnvironments",
     body: "For specialised enclosed spaces built with insulated panel systems.",
     image: modularImage,
     alt: "Modular enclosure built from insulated panel systems",
@@ -50,7 +50,7 @@ const SPACES: {
   },
 ];
 
-/** Space between the header and the photo while the section is pinned. */
+/** Space between the header and the heading while the section is pinned. */
 const PHOTO_GAP = 12;
 /** Space kept under the button at the bottom of the screen while pinned. */
 const BOTTOM_GAP = 16;
@@ -74,26 +74,28 @@ export function Applications() {
 
     const update = () => {
       frame = 0;
-      // Pin so the photo's top edge sits PHOTO_GAP below the header
+      // Pin so the heading sits PHOTO_GAP below the header, keeping the heading, copy and photo
+      // all in view while the spaces change.
       const photo = pinEl.querySelector<HTMLElement>("[data-photo]");
       const copy = pinEl.querySelector<HTMLElement>("[data-copy]");
+      const heading = pinEl.querySelector<HTMLElement>("h2");
+      const headerHeight = header?.offsetHeight ?? 0;
+      const pinTop = pinEl.getBoundingClientRect().top;
+      const headingOffset = heading ? heading.getBoundingClientRect().top - pinTop : 0;
       // On short screens the photo keeps its full width but gets shorter (the image is cropped to
-      // fit), so the title, copy and button under it still fit above the bottom edge while pinned.
+      // fit), so everything still fits above the bottom edge while pinned.
       if (photo && copy) {
         const photoRect = photo.getBoundingClientRect();
-        const below = copy.getBoundingClientRect().bottom - photoRect.bottom;
-        const room =
-          window.innerHeight - BOTTOM_GAP - below - (header?.offsetHeight ?? 0) - PHOTO_GAP;
-        const natural = (photoRect.width * 277) / 537;
+        const below = Math.max(0, copy.getBoundingClientRect().bottom - photoRect.bottom);
+        const photoTopWhenPinned = headerHeight + PHOTO_GAP + (photoRect.top - pinTop - headingOffset);
+        const room = window.innerHeight - BOTTOM_GAP - below - photoTopWhenPinned;
+        const natural = (photoRect.width * 222) / 356;
         const height = Math.max(MIN_PHOTO_HEIGHT, Math.min(natural, room));
         photo.style.aspectRatio = "auto";
         photo.style.height = `${height}px`;
       }
-      const photoOffset = photo
-        ? photo.getBoundingClientRect().top - pinEl.getBoundingClientRect().top
-        : 0;
-      // (always, even when the copy under it then runs past the bottom of a short screen).
-      const top = (header?.offsetHeight ?? 0) + PHOTO_GAP - photoOffset;
+      // (always, even when content then runs past the bottom of a short screen).
+      const top = headerHeight + PHOTO_GAP - headingOffset;
       pinEl.style.top = `${top}px`;
       const travel = trackEl.offsetHeight - pinEl.offsetHeight;
       const scrolled = top - trackEl.getBoundingClientRect().top;
@@ -127,9 +129,9 @@ export function Applications() {
           {/* Black band is full-bleed; content sits in the shared gutter (logo → Start Your Quote). */}
           <div className={CONTAINER}>
             <div className={cn("@container", SECTION_Y)}>
-              <Reveal>
+              <Reveal className="text-center">
                 {/* Two lines on desktop: one sentence per line */}
-                <h2 className="max-w-[10em] font-sans text-[26px] leading-[1.3] font-normal tracking-normal lg:max-w-none lg:text-[50.1815px] lg:leading-[65.2359px]">
+                <h2 className="mx-auto max-w-[10em] font-sans text-[26px] leading-[1.3] font-normal tracking-normal lg:max-w-none lg:text-[50.1815px] lg:leading-[65.2359px]">
                   <span className="lg:block lg:whitespace-nowrap">
                     Different Spaces.
                   </span>{" "}
@@ -139,13 +141,16 @@ export function Applications() {
                 </h2>
               </Reveal>
 
+              {/* Desktop: copy on the left, photo on the right with the number over its bottom-left
+                  corner. Mobile keeps the photo first and the copy under it. */}
+              <div className="mt-10 flex flex-col lg:mt-[3cqw] lg:flex-row lg:items-center lg:justify-between">
               <Reveal
                 delay={100}
-                className="relative mt-10 lg:mt-[5.9cqw] lg:ml-[15.9cqw] lg:w-[77.3cqw]"
+                className="relative lg:order-2 lg:w-[56%]"
               >
                 <div
                   data-photo
-                  className="relative aspect-[537/277] overflow-hidden rounded-[max(12px,2cqw)]"
+                  className="relative aspect-[356/222] overflow-hidden rounded-[max(12px,2cqw)]"
                 >
                   {SPACES.map((s, i) => (
                     <Image
@@ -167,13 +172,13 @@ export function Applications() {
                   key={active}
                   aria-hidden
                   data-space-number
-                  className="absolute -right-2 -bottom-[0.18em] animate-rise text-[max(56px,13cqw)] leading-none font-normal tracking-[-0.04em] lg:-right-[6.8cqw] lg:-bottom-[0.45em]"
+                  className="absolute -right-2 -bottom-[0.18em] animate-rise text-[max(56px,13cqw)] leading-none font-normal tracking-[-0.04em] lg:right-auto lg:-bottom-[0.12em] lg:-left-[3.5cqw] lg:text-[11cqw]"
                 >
                   {String(active + 1).padStart(2, "0")}
                 </span>
               </Reveal>
 
-              <Reveal delay={150} className="mt-12 lg:mt-[3.4cqw]">
+              <Reveal delay={150} className="mt-12 lg:order-1 lg:mt-0 lg:w-[30%]">
                 <div data-copy>
                   {/* All three sit in one cell so the block keeps the tallest height and never jumps */}
                   <div aria-live="polite" className="grid">
@@ -186,8 +191,8 @@ export function Applications() {
                           active === i ? "animate-rise" : "invisible",
                         )}
                       >
-                        {/* Every title stays on one line on desktop */}
-                        <h3 className="max-w-[9em] text-[max(22px,3.4cqw)] leading-[1.3] font-normal tracking-[-0.01em] lg:max-w-none lg:whitespace-nowrap">
+                        {/* Titles may wrap to two lines in the narrow desktop column, as in the design */}
+                        <h3 className="max-w-[9em] font-sans text-[26.8829px] leading-[33.6037px] font-normal tracking-normal lg:max-w-none lg:text-[40.6231px] lg:leading-[52.81px] lg:tracking-[-0.52224px]">
                           {s.title.includes("\n")
                             ? s.title.split("\n").map((line) => (
                                 <span
@@ -225,6 +230,7 @@ export function Applications() {
                   </Link>
                 </div>
               </Reveal>
+              </div>
             </div>
           </div>
         </div>
