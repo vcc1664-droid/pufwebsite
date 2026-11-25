@@ -111,9 +111,9 @@ export function PanelBenefits() {
     <section className="bg-[#f2f2f2]">
       <div className={cn(CONTAINER, SECTION_Y)}>
         <div className="@container">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_32%_1fr] lg:items-start lg:gap-x-[3cqw] lg:gap-y-[4.5cqw]">
-            {/* Center image */}
-            <Reveal className="order-1 mx-auto w-full max-w-md sm:col-span-2 lg:order-none lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:max-w-none lg:self-center">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[32%_1fr_1fr] lg:items-start lg:gap-x-[3cqw] lg:gap-y-[4.5cqw]">
+            {/* Image on the left; the four benefits sit in a 2 × 2 grid on the right */}
+            <Reveal className="order-1 mx-auto w-full max-w-md sm:col-span-2 lg:order-none lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:max-w-none lg:self-center">
               <Image
                 src={panelImage}
                 alt="PUF insulated panel: two steel faces with an insulating core between them"
@@ -123,8 +123,8 @@ export function PanelBenefits() {
             </Reveal>
 
             {/* Left top benefit */}
-            <div className="order-2 lg:order-none lg:col-start-1 lg:row-start-1">
-              <Benefit benefit={leftTop} align="end" delay={100} />
+            <div className="order-2 lg:order-none lg:col-start-2 lg:row-start-1">
+              <Benefit benefit={leftTop} align="start" delay={100} />
             </div>
 
             {/* Right top benefit */}
@@ -133,8 +133,8 @@ export function PanelBenefits() {
             </div>
 
             {/* Left bottom benefit */}
-            <div className="order-3 lg:order-none lg:col-start-1 lg:row-start-2">
-              <Benefit benefit={leftBottom} align="end" delay={300} />
+            <div className="order-3 lg:order-none lg:col-start-2 lg:row-start-2">
+              <Benefit benefit={leftBottom} align="start" delay={300} />
             </div>
 
             {/* Right bottom benefit */}
