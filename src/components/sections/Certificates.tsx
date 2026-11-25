@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import isoLogo from "../../../public/Home/ISOcertified/ISO.png";
+import grihaLogo from "../../../public/Home/ISOcertified/e0bfcbda0ecba02413ece654bed198d0a39e58a9.png";
 
 type Document = {
   /** Issuer's logo on the left; the space stays empty without one. */
@@ -21,6 +22,11 @@ type Document = {
 
 const DOCUMENTS: Document[] = [
   {
+    logo: { src: grihaLogo, alt: "GRIHA logo" },
+    title: "GRIHA Certified",
+    linkLabel: "View certificate (PDF)",
+  },
+  {
     logo: { src: isoLogo, alt: "ISO logo" },
     title: "ISO 9001:2015 Certified",
     linkLabel: "View certificate (PDF)",
@@ -33,7 +39,7 @@ const DOCUMENTS: Document[] = [
 ];
 
 
-/** Certificates and lab reports, each with a space for the issuer's logos and a link to the PDF. */
+/** Certificates and lab reports as small cards: issuer logo, tick and name (plus a PDF link once added). */
 /* Sizes (lg+) are cqw of the content width. */
 export function Certificates() {
   return (
@@ -48,42 +54,39 @@ export function Certificates() {
           </p>
         </Reveal>
 
-        <ul className="mt-6 grid gap-4 lg:mt-[2cqw] lg:grid-cols-2 lg:gap-[1.2cqw]">
-          {DOCUMENTS.map((doc, i) => (
-            <li key={doc.title}>
-              <Reveal
-                delay={100 + i * 100}
-                className="flex h-full flex-col gap-4 rounded-[max(12px,0.8cqw)] border border-[#dad8cf] bg-white p-3.5 sm:flex-row sm:items-center sm:gap-0 sm:py-3 sm:px-4 lg:py-[0.8cqw] lg:px-[1.2cqw]"
-              >
-                {/* Issuer's logo or name, or an empty space until one is added */}
-                <div
-                  aria-hidden={!doc.logo && !doc.issuerName}
-                  className="flex h-16 items-center justify-center sm:h-auto sm:min-h-[max(64px,4.5cqw)] sm:w-[32%] sm:shrink-0 sm:self-stretch"
+        {/* Three small certificate cards on a soft lavender band: logo, tick, name */}
+        <div className="mt-6 rounded-[max(16px,1.6cqw)] bg-[radial-gradient(ellipse_at_center,#f1ebf3_0%,#f8f5f9_55%,#ffffff_100%)] px-4 py-8 lg:mt-[2cqw] lg:py-[3cqw]">
+          <ul className="flex flex-wrap justify-center gap-4 lg:gap-[2.2cqw]">
+            {DOCUMENTS.map((doc, i) => (
+              <li key={doc.title}>
+                <Reveal
+                  delay={100 + i * 100}
+                  className="flex h-full w-[max(140px,10.5cqw)] flex-col items-center rounded-[max(10px,0.8cqw)] bg-white px-3 pt-4 pb-3 text-center shadow-[0_4px_18px_rgba(86,26,97,0.08)] lg:px-[0.9cqw] lg:pt-[1.2cqw] lg:pb-[1cqw]"
                 >
-                  {doc.logo && (
-                    <Image
-                      src={doc.logo.src}
-                      alt={doc.logo.alt}
-                      sizes="(min-width: 640px) 20vw, 60vw"
-                      className="h-full max-h-14 w-auto max-w-full object-contain sm:max-h-[max(56px,4cqw)]"
-                    />
-                  )}
-                  {!doc.logo && doc.issuerName && (
-                    <p className="flex flex-col text-center font-ui text-[max(12px,0.9cqw)] leading-tight font-semibold text-white">
-                      <span className="bg-[#e01e1e] px-[0.6em] py-[0.3em]">{doc.issuerName[0]}</span>
-                      <span className="bg-[#1e7a1e] px-[0.6em] py-[0.3em]">{doc.issuerName[1]}</span>
-                    </p>
-                  )}
-                </div>
+                  {/* Issuer's logo or name */}
+                  <div className="flex h-[max(56px,4.4cqw)] w-full items-center justify-center">
+                    {doc.logo && (
+                      <Image
+                        src={doc.logo.src}
+                        alt={doc.logo.alt}
+                        sizes="(min-width: 1024px) 10vw, 140px"
+                        className="h-full w-auto max-w-full object-contain"
+                      />
+                    )}
+                    {!doc.logo && doc.issuerName && (
+                      <p className="flex flex-col text-center font-ui text-[max(8px,0.6cqw)] leading-tight font-semibold text-white">
+                        <span className="bg-[#e01e1e] px-[0.5em] py-[0.25em]">{doc.issuerName[0]}</span>
+                        <span className="bg-[#1e7a1e] px-[0.5em] py-[0.25em]">{doc.issuerName[1]}</span>
+                      </p>
+                    )}
+                  </div>
 
-                <div aria-hidden className="hidden w-0.5 self-stretch bg-[#14213d] sm:mx-[max(14px,1.2cqw)] sm:my-[max(4px,0.3cqw)] sm:block" />
+                  <svg aria-hidden viewBox="0 0 24 24" className="mt-3 size-[max(20px,1.5cqw)] shrink-0 lg:mt-[0.8cqw]">
+                    <circle cx="12" cy="12" r="11" fill="#561A61" />
+                    <path d="m7 12.5 3.2 3.2L17 9" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
 
-                <div className="sm:flex-1">
-                  <h3 className="flex items-center gap-[0.5em] font-ui text-[max(18px,1.45cqw)] leading-tight font-normal text-black">
-                    <svg aria-hidden viewBox="0 0 24 24" className="size-[1.05em] shrink-0">
-                      <circle cx="12" cy="12" r="11" fill="#561A61" />
-                      <path d="m7 12.5 3.2 3.2L17 9" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                  <h3 className="mt-2 font-ui text-[13px] leading-snug font-normal text-black lg:mt-[0.6cqw] lg:text-[max(12px,0.95cqw)]">
                     {doc.title}
                   </h3>
                   {doc.pdf && (
@@ -91,16 +94,16 @@ export function Certificates() {
                       href={encodeURI(doc.pdf)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-block font-ui text-[max(15px,1.15cqw)] font-semibold text-[#14213d] underline underline-offset-[0.2em] transition-opacity duration-200 hover:opacity-70 lg:mt-[0.8cqw]"
+                      className="mt-1 inline-block font-ui text-[12px] font-semibold text-[#561A61] underline underline-offset-[0.2em] transition-opacity duration-200 hover:opacity-70"
                     >
                       {doc.linkLabel} →
                     </a>
                   )}
-                </div>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
