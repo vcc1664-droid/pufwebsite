@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import groupImage from "../../../../public/about/Insulation/PUF FACTORYY-100kb.jpeg";
+import groupImage from "../../../../public/about/Milestones/1d40dd4a-cd6d-4c2c-91af-aee8f0336ad5-80kb.jpeg";
 import plantImage from "../../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 11.57.30-100kb.jpeg";
 import capacityImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
 import certificationImage from "../../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
@@ -20,7 +20,7 @@ const MILESTONES: Milestone[] = [
     title: "Group founded",
     body: "Details for this milestone to be confirmed.",
     image: groupImage,
-    alt: "Synergy PUF manufacturing facility",
+    alt: "Early steel-sheet rolling machines in an old factory hall",
   },
   {
     year: "2018",
