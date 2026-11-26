@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelsImage from "../../../../public/Products/6f776d2c7e449e77a767ae2adb326a8a17f8157c-100kb.jpeg";
+import panelsImage from "../../../../public/Products/aa596593-3347-4503-91cc-7a5ae0400136.png";
 
 /* Sizes (lg+) are cqw of the content width, measured from the design (559 × 508 on a 1920 frame). */
 export function ProductShowcase() {
@@ -14,7 +14,7 @@ export function ProductShowcase() {
         <Reveal className="mx-auto w-[70%] mix-blend-multiply sm:w-[45%] lg:w-[35%]">
           <Image
             src={panelsImage}
-            alt="Stack of PUF insulated wall panels showing the foam core and interlocking edges"
+            alt="PUF insulated wall panel showing the foam core and interlocking edges"
             placeholder="blur"
             priority
             sizes="(min-width: 1024px) 35vw, (min-width: 640px) 45vw, 70vw"

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelImage from "../../../../public/Home/21937329-9225-4a24-a7ce-e400225ff293.png";
+import panelImage from "../../../../public/Products/84c3f6f6-4b23-48a2-a411-c5e833531248.png";
 
 const NAVY = "#14213d";
 const ACCENT = "#561A61";
@@ -40,8 +40,17 @@ const EnergyIcon = (
   <>
     <path d="M20 30V18" stroke={ACCENT} />
     <path d="M20 20c-5 0-8-3-8-8 5 0 8 3 8 8ZM20 18c0-6 4-9 9-9 0 6-4 9-9 9Z" stroke={ACCENT} />
-    <path d="M4 18v8l6 6v4M10 36h5v-5l-4-5M8 24l4 4" stroke={NAVY} />
-    <path d="M36 18v8l-6 6v4M30 36h-5v-5l4-5M32 24l-4 4" stroke={NAVY} />
+    {/* Hands close in towards the leaf and open again, pivoting at the wrist */}
+    <path
+      d="M4 18v8l6 6v4M10 36h5v-5l-4-5M8 24l4 4"
+      stroke={NAVY}
+      className="origin-bottom animate-hand-left [transform-box:fill-box]"
+    />
+    <path
+      d="M36 18v8l-6 6v4M30 36h-5v-5l4-5M32 24l-4 4"
+      stroke={NAVY}
+      className="origin-bottom animate-hand-right [transform-box:fill-box]"
+    />
   </>
 );
 
@@ -72,8 +81,12 @@ const BENEFITS: { title: [string, string]; body: string; icon: ReactNode }[] = [
 function Benefit({ benefit, align, delay }: { benefit: (typeof BENEFITS)[number]; align: "start" | "end"; delay: number }) {
   const end = align === "end";
   return (
-    <Reveal delay={delay} className={cn("flex flex-col items-start", end && "lg:items-end lg:text-right")}>
-      <span className="grid size-[max(36px,2.4cqw)] place-items-center rounded-[max(6px,0.4cqw)] bg-white">
+    <Reveal delay={delay} className={cn("group flex flex-col items-start", end && "lg:items-end lg:text-right")}>
+      {/* Icon floats gently (each one offset in time) and grows a little when the benefit is hovered */}
+      <span
+        className="grid size-[max(36px,2.4cqw)] animate-float place-items-center rounded-[max(6px,0.4cqw)] bg-white"
+        style={{ animationDelay: `${delay * 4}ms` }}
+      >
         <svg
           aria-hidden
           viewBox="0 0 40 40"
@@ -81,7 +94,7 @@ function Benefit({ benefit, align, delay }: { benefit: (typeof BENEFITS)[number]
           strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-[78%]"
+          className="size-[78%] transition-transform duration-300 group-hover:scale-110"
         >
           {benefit.icon}
         </svg>
@@ -116,7 +129,7 @@ export function PanelBenefits() {
             <Reveal className="order-1 mx-auto w-full max-w-md sm:col-span-2 lg:order-none lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:max-w-none lg:self-center">
               <Image
                 src={panelImage}
-                alt="PUF insulated panel: two steel faces with an insulating core between them"
+                alt="PUF insulated roof panel with trapezoidal ribs and foam core"
                 sizes="(min-width: 1024px) 30vw, 448px"
                 className="h-auto w-full"
               />

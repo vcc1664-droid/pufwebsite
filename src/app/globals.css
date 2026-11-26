@@ -45,6 +45,43 @@
   /* Endless right-to-left scroll: the track holds two copies, so moving by half loops seamlessly */
   --animate-marquee: marquee 40s linear infinite;
 
+  /* Gentle up-and-down float for small icons */
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Hands of the Energy Efficiency icon close in towards the leaf and open again */
+  --animate-hand-left: hand-left 2.4s ease-in-out infinite;
+  --animate-hand-right: hand-right 2.4s ease-in-out infinite;
+
+  @keyframes hand-left {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(14deg);
+    }
+  }
+
+  @keyframes hand-right {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-14deg);
+    }
+  }
+
   @keyframes marquee {
     to {
       transform: translateX(-50%);
@@ -84,7 +121,10 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-rise,
-  .animate-marquee {
+  .animate-marquee,
+  .animate-float,
+  .animate-hand-left,
+  .animate-hand-right {
     animation: none;
   }
 

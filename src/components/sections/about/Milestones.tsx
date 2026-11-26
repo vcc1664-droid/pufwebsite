@@ -33,21 +33,21 @@ const MILESTONES: Milestone[] = [
   {
     year: "2018",
     title: "PUF Plant Commissioned",
-    body: "Details for this milestone to be confirmed.",
+    body: "Established PUF manufacturing operations.",
     image: plantImage,
     alt: "Synergy PUF operator running the steel coil line at the panel plant",
   },
   {
     year: "2022",
     title: "Capacity Expanded",
-    body: "Details for this milestone to be confirmed.",
+    body: "Expanded production capacity to meet growing demand.",
     image: capacityImage,
     alt: "Aerial view of the expanded Synergy manufacturing campus",
   },
   {
     year: "2024",
     title: "First Certification",
-    body: "Details for this milestone to be confirmed.",
+    body: "Achieved the first industry certification.",
     image: certificationImage,
     alt: "ISO logo",
     fit: "contain",
@@ -55,7 +55,7 @@ const MILESTONES: Milestone[] = [
   {
     year: "2025",
     title: "Project Milestone",
-    body: "Details for this milestone to be confirmed.",
+    body: "Reached a significant project milestone.",
     image: projectImage,
     alt: "Aerial view of an insulated panel warehouse among farmland",
   },
