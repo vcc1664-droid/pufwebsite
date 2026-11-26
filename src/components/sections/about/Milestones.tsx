@@ -26,7 +26,7 @@ const MILESTONES: Milestone[] = [
   {
     year: "1987",
     title: "Group founded",
-    body: "Details for this milestone to be confirmed.",
+    body: "Started our journey in industrial manufacturing.",
     image: groupImage,
     alt: "Early steel-sheet rolling machines in an old factory hall",
   },
