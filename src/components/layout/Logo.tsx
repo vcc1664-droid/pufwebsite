@@ -9,7 +9,8 @@ export function Logo() {
         src={logo}
         alt="Synergy PUF"
         priority
-        className="h-[26px] w-auto max-w-none lg:h-[28.18px] lg:w-[157.16px] on-dark:brightness-0 on-dark:invert"
+        // Width follows the logo's own proportions (it includes the tagline), sized to sit inside the navbar bar
+        className="h-[38px] w-auto max-w-none lg:h-[46px] on-dark:brightness-0 on-dark:invert"
       />
     </Link>
   );

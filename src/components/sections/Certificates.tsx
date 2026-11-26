@@ -78,12 +78,15 @@ export function Certificates() {
       <div className={cn(CONTAINER, SECTION_Y)}>
         <div className="@container">
           <Reveal className="text-center">
-            <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
-              Certificates and Test Reports
-            </h2>
-            <p className="mt-3 font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1cqw]">
-              Read the documents behind our quality, not just our word for it.
-            </p>
+            {/* The box is as wide as the heading; the paragraph wraps within that width */}
+            <div className="mx-auto w-fit">
+              <h2 className="font-sans text-[26px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
+                Certified Quality. Industry Recognition.
+              </h2>
+              <p className="mt-3 w-0 min-w-full font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#696969] lg:mt-[1cqw]">
+                Our certifications and independent testing reflect our commitment to maintaining recognised quality standards across our manufacturing processes and insulated panel solutions.
+              </p>
+            </div>
           </Reveal>
 
           <ul className="mx-auto mt-8 grid max-w-[max(320px,78cqw)] gap-4 sm:grid-cols-3 lg:mt-[3.4cqw] lg:gap-[3.6cqw]">
