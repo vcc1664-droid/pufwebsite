@@ -8,10 +8,18 @@ import { cn } from "@/lib/utils";
 import groupImage from "../../../../public/about/Milestones/1d40dd4a-cd6d-4c2c-91af-aee8f0336ad5-80kb.jpeg";
 import plantImage from "../../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 11.57.30-100kb.jpeg";
 import capacityImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
-import certificationImage from "../../../../public/Home/ISOcertified/Group 2085662833-100kb.jpeg";
+import certificationImage from "../../../../public/Home/ISOcertified/ISO.png";
 import projectImage from "../../../../public/about/Insulation/WhatsApp Image 2026-11-13 at 22.26.00-60kb.jpeg";
 
-type Milestone = { year: string; title: string; body: string; image: StaticImageData; alt: string };
+type Milestone = {
+  year: string;
+  title: string;
+  body: string;
+  image: StaticImageData;
+  alt: string;
+  /** "contain" shows the whole image (for logos); photos fill the frame by default. */
+  fit?: "contain";
+};
 
 // Descriptions and photos are placeholders until each milestone's details are confirmed.
 const MILESTONES: Milestone[] = [
@@ -41,7 +49,8 @@ const MILESTONES: Milestone[] = [
     title: "First Certification",
     body: "Details for this milestone to be confirmed.",
     image: certificationImage,
-    alt: "Synergy PUF insulated panel manufacturing facility",
+    alt: "ISO logo",
+    fit: "contain",
   },
   {
     year: "2025",
@@ -152,7 +161,7 @@ export function Milestones() {
                           fill
                           placeholder="blur"
                           sizes="(min-width: 1024px) 25vw, 220px"
-                          className="object-cover"
+                          className={milestone.fit === "contain" ? "object-contain" : "object-cover"}
                         />
                       </div>
                     </div>
