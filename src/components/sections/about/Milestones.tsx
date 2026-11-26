@@ -6,10 +6,10 @@ import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import groupImage from "../../../../public/about/Milestones/1d40dd4a-cd6d-4c2c-91af-aee8f0336ad5-80kb.jpeg";
-import plantImage from "../../../../public/Home/PIR/WhatsApp Image 2026-11-25 at 11.57.30-100kb.jpeg";
-import capacityImage from "../../../../public/about/Insulation/Factoryyy-100kb.jpeg";
+import plantImage from "../../../../public/about/Milestones/PUF plant commision-100kb.jpeg";
+import capacityImage from "../../../../public/about/Milestones/Capacity expanded-100kb.jpeg";
 import certificationImage from "../../../../public/Home/ISOcertified/ISO.png";
-import projectImage from "../../../../public/about/Insulation/WhatsApp Image 2026-11-13 at 22.26.00-60kb.jpeg";
+import projectImage from "../../../../public/about/Milestones/Project milestone-100kb.jpeg";
 
 type Milestone = {
   year: string;
@@ -35,14 +35,14 @@ const MILESTONES: Milestone[] = [
     title: "PUF Plant Commissioned",
     body: "Details for this milestone to be confirmed.",
     image: plantImage,
-    alt: "PUF insulated panels on the factory floor",
+    alt: "Synergy PUF operator running the steel coil line at the panel plant",
   },
   {
     year: "2022",
     title: "Capacity Expanded",
     body: "Details for this milestone to be confirmed.",
     image: capacityImage,
-    alt: "PUF panels in production at the Synergy PUF plant",
+    alt: "Aerial view of the expanded Synergy manufacturing campus",
   },
   {
     year: "2024",
@@ -57,7 +57,7 @@ const MILESTONES: Milestone[] = [
     title: "Project Milestone",
     body: "Details for this milestone to be confirmed.",
     image: projectImage,
-    alt: "Synergy PUF truck being loaded with insulated panels",
+    alt: "Aerial view of an insulated panel warehouse among farmland",
   },
 ];
 
