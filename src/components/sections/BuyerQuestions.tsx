@@ -55,7 +55,7 @@ export function BuyerQuestions() {
             // Native <details>: opens with click, Enter or Space, no JavaScript needed
             <details
               key={item.question}
-              className="group rounded-[max(8px,0.55cqw)] border border-[#e1dfd7] bg-[#faf9f6]"
+              className="group rounded-[max(8px,0.55cqw)] border border-[#e1dfd7] bg-[#F6F6F6]"
             >
               {/* Arrow (0.6em) + gap (0.75em) = 1.35em of this text; the answer is indented by the same */}
               <summary className="flex cursor-pointer list-none items-center gap-[0.75em] px-5 py-4 font-sans text-[18px] leading-[1.25] font-normal tracking-[-0.29952px] text-[#171717] transition-colors duration-200 hover:text-brand lg:px-[1.4cqw] lg:py-[1.05cqw] [&::-webkit-details-marker]:hidden">

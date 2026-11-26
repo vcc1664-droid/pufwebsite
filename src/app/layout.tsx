@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -42,6 +43,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       {/* Browser extensions (e.g. ColorZilla's cz-shortcut-listen) add attributes to <body> before hydration */}
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {/*
+          Google Tag Manager (GTM-WJ2VZT2L). `beforeInteractive` scripts are always placed in <head>.
+          The `gtm.js` event is GTM's standard page-load signal; "All Pages" triggers need it.
+        */}
+        <Script id="gtm-init" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });`}
+        </Script>
+        <Script
+          id="gtm"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WJ2VZT2L"
+          strategy="beforeInteractive"
+          async
+        />
         <SmoothScroll>
           <Header />
           {children}

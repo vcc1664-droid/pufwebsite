@@ -144,7 +144,7 @@ export function WherePanelsAreMade() {
                     {STAGES.map((stage, i) => (
                       <li
                         key={stage.name}
-                        className="w-[82%] shrink-0 rounded-[max(12px,0.8cqw)] border border-[#dad8cf] bg-[#faf9f6] p-3 sm:w-[60%] lg:w-[40%] lg:p-[0.8cqw]"
+                        className="w-[82%] shrink-0 rounded-[max(12px,0.8cqw)] border border-[#dad8cf] bg-[#F6F6F6] p-3 sm:w-[60%] lg:w-[40%] lg:p-[0.8cqw]"
                       >
                         <span className="inline-block rounded-[5px] bg-[#561A61] px-[0.8em] py-[0.3em] font-ui text-[max(13px,0.95cqw)] leading-none font-semibold text-white">
                           {i + 1} {stage.name}

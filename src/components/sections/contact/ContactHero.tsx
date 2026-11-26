@@ -28,8 +28,9 @@ export function ContactHero() {
 
         <hr className={cn(RULE_GAP, "border-[#bdbdbd]")} />
 
-        <div className={cn(RULE_GAP, "grid gap-10 lg:grid-cols-[1fr_47.2%] lg:gap-[4cqw]")}>
-          <Reveal delay={100}>
+        {/* Copy and buttons on the right half, then the photo full width below, as in the design */}
+        <div className={cn(RULE_GAP, "flex flex-col gap-10 lg:gap-[2.6cqw]")}>
+          <Reveal delay={100} className="lg:ml-[45.4%]">
             <p className="max-w-[36em] font-ui text-[15.5324px] leading-[23.2985px] font-normal tracking-normal text-[#7a7a7a]">
               <span className="text-brand">Planning a cold store, warehouse or industrial facility?</span>{" "}
               Share your location and panel requirements. If you have drawings, send them through and our
@@ -70,15 +71,14 @@ export function ContactHero() {
             </div>
           </Reveal>
 
-          {/* Photo sits lower than the copy, its top level with the buttons, as in the design */}
-          <Reveal delay={150} className="lg:mt-[7.6cqw]">
-            <div className="relative aspect-[548/344] overflow-hidden rounded-[max(14px,1.6cqw)]">
+          <Reveal delay={150}>
+            <div className="relative aspect-[3/2] overflow-hidden rounded-[max(14px,1.6cqw)] sm:aspect-[465/226]">
               <Image
                 src={facilityImage}
                 alt="Aerial view of the Synergy PUF manufacturing facility"
                 fill
                 placeholder="blur"
-                sizes="(min-width: 1024px) 47vw, 100vw"
+                sizes="(min-width: 1920px) 1594px, 100vw"
                 className="object-cover"
               />
             </div>
