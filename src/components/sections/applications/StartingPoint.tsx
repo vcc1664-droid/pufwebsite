@@ -137,14 +137,22 @@ export function StartingPoint() {
               className="flex animate-rise flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-0"
             >
               <div className="relative aspect-[624/281] overflow-hidden rounded-[max(12px,2.1cqw)] lg:w-[39.1%]">
-                <Image
-                  src={panel.image.src}
-                  alt={panel.image.alt}
-                  fill
-                  placeholder="blur"
-                  sizes="(min-width: 1024px) 39vw, 100vw"
-                  className="object-cover"
-                />
+                {/* All three photos stay stacked here so they load with the page; switching tabs only
+                    changes which one shows, instead of fetching a new image on each click */}
+                {CATEGORIES.map((category, i) =>
+                  category.panel ? (
+                    <Image
+                      key={category.name}
+                      src={category.panel.image.src}
+                      alt={category.panel.image.alt}
+                      aria-hidden={active !== i}
+                      fill
+                      placeholder="blur"
+                      sizes="(min-width: 1024px) 39vw, 100vw"
+                      className={cn("object-cover", active === i ? "opacity-100" : "opacity-0")}
+                    />
+                  ) : null,
+                )}
               </div>
 
               <div className="lg:w-[55.6%]">

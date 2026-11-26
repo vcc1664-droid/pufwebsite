@@ -50,8 +50,8 @@ const SPACES: {
   },
 ];
 
-/** Space between the header and the heading while the section is pinned. */
-const PHOTO_GAP = 12;
+/** Gap from the header element to the heading while pinned. The header has ~24px of clear padding under its bar, so -12 leaves ~12px below the visible bar. */
+const PHOTO_GAP = -12;
 /** Space kept under the button at the bottom of the screen while pinned. */
 const BOTTOM_GAP = 16;
 /** The photo never shrinks below this height to make room for the copy. */
