@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 // Contact details as given in the design; they differ from the footer and need confirming.
 export const CONTACT_EMAIL = "info@synergypuf.com";
 const CONTACT_LINES = [
-  { label: "+91 98765 43210 / +91 98765 43211", href: "tel:+919876543210" },
+  { label: "+91 9988118888", href: "tel:+919988118888" },
   { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
   { label: "Mon - Sat: 9:00 AM - 6:30 PM" },
 ];
