@@ -2,14 +2,17 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, RULE_GAP, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import panelsImage from "../../../../public/about/Puf Jointss-100kb.jpeg";
-import roofingImage from "../../../../public/about/6614040e-614d-4601-b963-0018c7a6dd2e-100kb.jpeg";
-import factoryImage from "../../../../public/about/28ee0356-79d0-4ad4-9e42-b6f0fb6bd15e-100kb.jpg";
+import panelsImage from "../../../../public/about/BiggerBuilding/Modern Industrial Cold Storage Interior-100kb.jpeg";
+import roofingImage from "../../../../public/about/BiggerBuilding/43a9a6dd-c5cf-4f76-866d-be31ad9698cb-100kb.jpeg";
+import factoryImage from "../../../../public/about/BiggerBuilding/Golden Hour Industrial Warehouse 1-100kb.jpeg";
+import buildingImage from "../../../../public/about/BiggerBuilding/ChatGPT Image Nov 26 2026 04_52_40 PM-100kb.jpeg";
 
+// Two rows as in the design: wide + narrow, then narrow + wide (see the grid below).
 const IMAGES = [
-  { src: roofingImage, alt: "Synergy PUF insulated panel building" },
-  { src: factoryImage, alt: "Synergy PUF insulated panel project" },
-  { src: panelsImage, alt: "Installers fixing insulated wall panels on site" },
+  { src: roofingImage, alt: "Close-up of interlocking PUF sandwich panels showing the foam core" },
+  { src: buildingImage, alt: "Insulated wall and roof panels fixed to a steel frame, seen from inside" },
+  { src: factoryImage, alt: "Industrial warehouse clad with insulated panels at golden hour" },
+  { src: panelsImage, alt: "Cold storage room lined with insulated wall and ceiling panels" },
 ];
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
@@ -47,24 +50,39 @@ export function BuildingStory() {
           </p>
         </Reveal>
 
-        <ul className={cn(BLOCK_GAP, "grid gap-4 sm:grid-cols-3 lg:gap-[2.85cqw]")}>
-          {IMAGES.map((image, i) => (
-            <li key={image.alt}>
-              <Reveal delay={i * 100}>
-                <div className="relative aspect-[501/688] overflow-hidden rounded-[max(12px,1.6cqw)]">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    placeholder="blur"
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              </Reveal>
-            </li>
+        {/* Two rows: wide + narrow, then narrow + wide. Hovering a photo widens it to the wide
+            size and narrows the other one in its row; both ease back when the pointer leaves. */}
+        <div className={cn(BLOCK_GAP, "space-y-4 lg:space-y-[1.6cqw]")}>
+          {[IMAGES.slice(0, 2), IMAGES.slice(2, 4)].map((row, r) => (
+            <ul key={r} className="group/row flex flex-col gap-4 lg:flex-row lg:gap-[1.6cqw]">
+              {row.map((image, j) => {
+                const wide = r === 0 ? j === 0 : j === 1;
+                return (
+                  <li
+                    key={image.alt}
+                    className={cn(
+                      "transition-[flex-grow] duration-500 ease-out lg:basis-0 lg:hover:grow-[59] lg:group-has-[li:hover]/row:[&:not(:hover)]:grow-[41]",
+                      wide ? "lg:grow-[59]" : "lg:grow-[41]",
+                    )}
+                  >
+                    <Reveal delay={(r * 2 + j) * 100}>
+                      <div className="relative aspect-video overflow-hidden rounded-[max(12px,1.6cqw)] lg:aspect-auto lg:h-[max(200px,24cqw)]">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          placeholder="blur"
+                          sizes="(min-width: 1024px) 59vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    </Reveal>
+                  </li>
+                );
+              })}
+            </ul>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
