@@ -46,6 +46,11 @@ export function HeroWord({ className }: { className?: string }) {
     };
   }, []);
 
+  // The outgoing word fades out almost at once and the incoming one fades in just after, so the
+  // two never show together (no ghost of one behind the other) on any screen size.
+  const fade = (visible: boolean) =>
+    `transform 1000ms cubic-bezier(0.25, 1, 0.5, 1), opacity ${visible ? "600ms cubic-bezier(0.25, 1, 0.5, 1) 150ms" : "150ms linear"}`;
+
   return (
     <span ref={box} className={cn("relative block overflow-hidden", className)}>
       <span className="sr-only">{scrolled ? "PIR" : "PUF"}</span>
@@ -55,8 +60,7 @@ export function HeroWord({ className }: { className?: string }) {
         viewBox="77 -745 1843 757"
         className="block w-full motion-reduce:transition-none"
         style={{
-          transition:
-            "transform 1000ms cubic-bezier(0.25, 1, 0.5, 1), opacity 1000ms cubic-bezier(0.25, 1, 0.5, 1)",
+          transition: fade(!scrolled),
           willChange: "transform, opacity",
           transform: scrolled ? "translateY(-40%)" : "translateY(0)",
           opacity: scrolled ? 0 : 1,
@@ -75,8 +79,7 @@ export function HeroWord({ className }: { className?: string }) {
         viewBox="77 -745 1843 757"
         className="absolute inset-0 block size-full motion-reduce:transition-none"
         style={{
-          transition:
-            "transform 1000ms cubic-bezier(0.25, 1, 0.5, 1), opacity 1000ms cubic-bezier(0.25, 1, 0.5, 1)",
+          transition: fade(scrolled),
           willChange: "transform, opacity",
           transform: scrolled ? "translateY(0)" : "translateY(40%)",
           opacity: scrolled ? 1 : 0,
