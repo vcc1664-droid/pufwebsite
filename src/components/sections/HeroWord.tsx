@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const word = "fill-brand font-sans";
@@ -13,11 +13,21 @@ const word = "fill-brand font-sans";
  */
 export function HeroWord({ className }: { className?: string }) {
   const [scrolled, setScrolled] = useState(false);
+  const box = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     let frame = 0;
-    const getSwitchThreshold = () =>
-      Math.max(180, Math.round((window.innerHeight || 800) * 0.28));
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const getSwitchThreshold = () => {
+      if (desktop.matches) return Math.max(180, Math.round((window.innerHeight || 800) * 0.28));
+      // Small screens: switch halfway to the point where the word would reach the header, so the
+      // change happens while the word is still in view (it scrolls normally there, nothing pins it).
+      const el = box.current;
+      const headerHeight = document.querySelector("header")?.offsetHeight ?? 0;
+      if (!el) return 120;
+      const wordTop = el.getBoundingClientRect().top + window.scrollY;
+      return Math.max(40, Math.round((wordTop - headerHeight) * 0.5));
+    };
 
     const update = () => {
       frame = 0;
@@ -37,7 +47,7 @@ export function HeroWord({ className }: { className?: string }) {
   }, []);
 
   return (
-    <span className={cn("relative block overflow-hidden", className)}>
+    <span ref={box} className={cn("relative block overflow-hidden", className)}>
       <span className="sr-only">{scrolled ? "PIR" : "PUF"}</span>
       {/* "PUF" smoothly slides up and fades out */}
       <svg
