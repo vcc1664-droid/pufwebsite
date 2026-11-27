@@ -337,7 +337,7 @@ export function ContactForm() {
                 disabled={status.state === "sending"}
                 className={cn(
                   STACK_GAP,
-                  "h-[max(42px,3.3cqw)] w-full rounded-[max(4px,0.5cqw)] bg-white font-ui text-[max(14px,1.35cqw)] text-black transition-colors duration-200 hover:bg-[#e6e6e6] disabled:cursor-wait disabled:opacity-70",
+                  "relative isolate h-[max(42px,3.3cqw)] w-full overflow-hidden rounded-[max(4px,0.5cqw)] bg-white font-ui text-[max(14px,1.35cqw)] text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-300 before:ease-out before:content-[''] enabled:hover:text-white enabled:hover:before:scale-x-100 disabled:cursor-wait disabled:opacity-70",
                 )}
               >
                 {status.state === "sending" ? "Sending…" : "Submit Enquiry"}

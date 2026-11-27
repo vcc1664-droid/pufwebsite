@@ -98,15 +98,17 @@ export function PanelRange({
                   aria-controls={`${id}-panel`}
                   onClick={() => setActive(i)}
                   className={cn(
-                    "rounded-[max(6px,0.5cqw)] border px-[1.1em] py-[0.95em] font-ui text-[max(13px,1cqw)] leading-none transition-colors duration-200",
+                    "relative isolate overflow-hidden rounded-[max(6px,0.5cqw)] border px-[1.1em] py-[0.95em] font-ui text-[max(13px,1cqw)] leading-none transition-colors duration-300",
+                    // Hover fill sweeps in from the left (only shows on tabs that aren't selected)
+                    "before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100",
                     dark ? "border-white" : "border-black",
                     active === i
                       ? dark
                         ? "bg-white text-black"
                         : "bg-black text-white"
                       : dark
-                        ? "text-white hover:bg-white/10"
-                        : "text-black hover:bg-black/5",
+                        ? "text-white before:bg-white hover:text-black"
+                        : "text-black before:bg-black hover:text-white",
                   )}
                 >
                   {t.tab}

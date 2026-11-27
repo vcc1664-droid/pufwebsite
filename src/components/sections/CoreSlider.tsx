@@ -185,7 +185,7 @@ export function CoreSlider() {
                       href={core.href}
                       className={cn(
                         STACK_GAP,
-                        "group inline-flex items-center gap-[0.4em] rounded-[max(6px,0.6cqw)] bg-brand px-[1.1em] py-[0.8em] font-ui text-[max(13px,1.05cqw)] leading-none text-white transition-colors duration-200 hover:bg-black",
+                        "group relative isolate inline-flex items-center gap-[0.4em] overflow-hidden rounded-[max(6px,0.6cqw)] bg-brand px-[1.1em] py-[0.8em] font-ui text-[max(13px,1.05cqw)] leading-none text-white before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100",
                       )}
                     >
                       Learn more

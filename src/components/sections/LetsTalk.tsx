@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 const BROCHURE_HREF = "#";
 
 const button =
-  "inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none transition-colors duration-200";
+  "relative isolate inline-flex items-center justify-center overflow-hidden rounded-[max(6px,0.5cqw)] px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100";
 
 type LetsTalkProps = {
   title?: string;
@@ -37,12 +37,12 @@ export function LetsTalk({
               {title}
             </h2>
             <div className="flex flex-wrap gap-3 lg:gap-[1.4cqw]">
-              <Link href={QUOTE_CTA.href} className={cn(button, "bg-white text-black hover:bg-[#e6e6e6]")}>
+              <Link href={QUOTE_CTA.href} className={cn(button, "bg-white text-black before:bg-black hover:text-white")}>
                 Get a Quote
               </Link>
               <a
                 href={BROCHURE_HREF}
-                className={cn(button, "border border-white text-white hover:bg-white hover:text-brand")}
+                className={cn(button, "border border-white text-white before:bg-white hover:text-brand")}
               >
                 Download Brochure
               </a>

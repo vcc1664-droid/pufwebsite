@@ -49,10 +49,12 @@ export function PageIntro({
           <Link
             href={QUOTE_CTA.href}
             className={cn(
-              "group inline-flex shrink-0 items-center gap-[0.4em] self-start rounded-[max(5px,0.5cqw)] border px-[1.1em] py-[0.75em] font-ui text-[max(13px,1.05cqw)] leading-none transition-colors duration-200 sm:self-auto",
+              "group relative isolate inline-flex shrink-0 items-center gap-[0.4em] self-start overflow-hidden rounded-[max(5px,0.5cqw)] border px-[1.1em] py-[0.75em] font-ui text-[max(13px,1.05cqw)] leading-none transition-colors duration-300 sm:self-auto",
+              // Hover fill sweeps in from the left
+              "before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100",
               dark
-                ? "border-white text-white hover:bg-white hover:text-black"
-                : "border-black text-black hover:bg-black hover:text-white",
+                ? "border-white text-white before:bg-white hover:text-black"
+                : "border-black text-black before:bg-black hover:text-white",
             )}
           >
             Get a Quote

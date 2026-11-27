@@ -234,7 +234,7 @@ export function SectorServices() {
                         <h3 className="font-ui text-[max(17px,1.75cqw)] leading-tight">{sector.name}</h3>
                         <Link
                           href="/products"
-                          className="mt-3 inline-flex rounded-[max(5px,0.6cqw)] border border-white px-[1.5em] py-[0.8em] font-ui text-[max(12px,1cqw)] leading-none transition-colors duration-200 hover:bg-white hover:text-black lg:mt-[2cqw]"
+                          className="relative isolate mt-3 inline-flex overflow-hidden rounded-[max(5px,0.6cqw)] border border-white px-[1.5em] py-[0.8em] font-ui text-[max(12px,1cqw)] leading-none transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-white before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:text-black hover:before:scale-x-100 lg:mt-[2cqw]"
                         >
                           Explore Sector
                         </Link>

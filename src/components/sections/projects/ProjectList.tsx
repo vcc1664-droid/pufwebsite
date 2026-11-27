@@ -4,6 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
+import { ScrollRise } from "@/components/motion/ScrollRise";
 import { BLOCK_GAP, CONTAINER, SECTION_Y, STACK_GAP } from "@/constants/layout";
 import { QUOTE_CTA } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
@@ -137,13 +138,14 @@ export function ProjectList() {
                 key={`${i}-${project.name}`}
                 className={cn(i > 0 && BLOCK_GAP, i > 0 && "border-t border-[#8c8c8c] pt-12 lg:pt-[6cqw]")}
               >
-                <Reveal>
+                {/* Starts tucked behind the photos below and slides up into place as it scrolls into view */}
+                <ScrollRise from="max(90px,7cqw)" smooth className="relative z-0">
                   <h2 className="text-center font-sans text-[34px] leading-[1.3] font-normal tracking-normal text-[#171717] lg:text-[50.1815px] lg:leading-[65.2359px]">
                     {project.name}
                   </h2>
-                </Reveal>
+                </ScrollRise>
 
-                <Reveal delay={100} className={STACK_GAP}>
+                <Reveal delay={100} className={cn(STACK_GAP, "relative z-10")}>
                   <ProjectGallery project={project} />
                 </Reveal>
 
@@ -171,7 +173,7 @@ export function ProjectList() {
                   <div className={cn(STACK_GAP, "flex justify-center")}>
                     <Link
                       href={QUOTE_CTA.href}
-                      className="group inline-flex items-center gap-[0.5em] rounded-[max(5px,0.6cqw)] bg-brand px-[max(20px,4cqw)] py-[max(10px,0.9cqw)] font-ui text-[max(13px,1.35cqw)] leading-none text-white transition-colors duration-200 hover:bg-black"
+                      className="group relative isolate inline-flex items-center gap-[0.5em] overflow-hidden rounded-[max(5px,0.6cqw)] bg-brand px-[max(20px,4cqw)] py-[max(10px,0.9cqw)] font-ui text-[max(13px,1.35cqw)] leading-none text-white before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100"
                     >
                       Build Something Similar
                       <svg

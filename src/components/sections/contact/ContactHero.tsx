@@ -11,8 +11,11 @@ const MANUFACTURING_UNIT = "VPO Manjholi, Tehsil Nalagarh, District Solan, HP 17
 const DIRECTIONS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MANUFACTURING_UNIT)}`;
 
 const button =
-  "inline-flex h-[max(36px,2.6cqw)] min-w-[max(120px,9.2cqw)] items-center whitespace-nowrap justify-center gap-[0.5em] rounded-[max(6px,0.5cqw)] px-[max(16px,1.4cqw)] font-ui text-[max(12px,0.95cqw)] leading-none transition-colors duration-200";
-const outline = cn(button, "border border-black text-black hover:bg-black hover:text-white");
+  "relative isolate inline-flex h-[max(36px,2.6cqw)] min-w-[max(120px,9.2cqw)] items-center whitespace-nowrap justify-center gap-[0.5em] overflow-hidden rounded-[max(6px,0.5cqw)] px-[max(16px,1.4cqw)] font-ui text-[max(12px,0.95cqw)] leading-none transition-colors duration-300";
+/** Hover fill that sweeps in from the left; each button sets its colour with before:bg-*. */
+const sweep =
+  "before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100";
+const outline = cn(button, sweep, "border border-black text-black before:bg-black hover:text-white");
 
 /** Contact page opener: what to send us, ways to reach the team, and the facility photo. */
 /* Sizes (lg+) are cqw of the content width, measured from the design. */
@@ -39,7 +42,7 @@ export function ContactHero() {
 
             <div className="mt-6 grid max-w-[max(400px,40cqw)] grid-cols-2 gap-3 sm:grid-cols-3 lg:mt-[2cqw] lg:gap-[1.1cqw]">
               {/* Jumps to the enquiry form just below */}
-              <a href="#enquiry" className={cn(button, "bg-black text-white hover:bg-[#2a2a2a]")}>
+              <a href="#enquiry" className={cn(button, sweep, "bg-black text-white before:bg-[#561A61]")}>
                 Request a Quote
                 <svg
                   aria-hidden

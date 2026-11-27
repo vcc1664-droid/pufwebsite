@@ -212,7 +212,7 @@ export function Applications() {
                   </div>
                   <Link
                     href="/applications#sectors"
-                    className="group mt-6 inline-flex items-center gap-[0.5em] rounded-[max(5px,0.45cqw)] bg-white px-[1.2em] py-[0.7em] font-ui text-[max(12px,1.25cqw)] leading-none text-black transition-colors duration-200 hover:bg-[#e6e6e6] lg:mt-[2cqw]"
+                    className="group relative isolate mt-6 inline-flex items-center gap-[0.5em] overflow-hidden rounded-[max(5px,0.45cqw)] bg-white px-[1.2em] py-[0.7em] font-ui text-[max(12px,1.25cqw)] leading-none text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-[#561A61] before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:text-white hover:before:scale-x-100 lg:mt-[2cqw]"
                   >
                     Explore application
                     <svg
