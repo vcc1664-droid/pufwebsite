@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
+import { QualitySteps } from "./QualitySteps";
 import lineImage from "../../../../public/Home/about/Industrial Conveyor Line in Action.png";
 
 // Values marked "To confirm" are placeholders from the design.
@@ -52,24 +53,8 @@ export function Manufacturing() {
             ))}
           </dl>
 
-          <ol aria-label="Quality checkpoints" className="mt-10 flex lg:mt-[3.8cqw]">
-            {STEPS.map((step, i) => {
-              const isLast = i === STEPS.length - 1;
-
-              return (
-                <li key={step} className={cn(isLast ? "shrink-0" : "flex-1")}>
-                  {/* Dot, plus the line that runs on to the next checkpoint */}
-                  <div aria-hidden className="flex items-center">
-                    <span className="size-[max(7px,0.65cqw)] shrink-0 rounded-full bg-brand ring-[max(2px,0.2cqw)] ring-brand/15" />
-                    {!isLast && <span className="h-px flex-1 bg-[#d9d9d9]" />}
-                  </div>
-                  <p className="mt-2 max-w-[7em] pr-2 font-ui text-[max(12px,1.1cqw)] leading-snug text-[#1e1e1e] lg:mt-[1cqw]">
-                    {step}
-                  </p>
-                </li>
-              );
-            })}
-          </ol>
+          {/* Line runs from dot to dot in a loop; each dot glows as it is reached */}
+          <QualitySteps steps={STEPS} />
         </Reveal>
 
         <Reveal delay={100} className="lg:w-[46.8%]">

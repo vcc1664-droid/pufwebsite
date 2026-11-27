@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -25,7 +25,7 @@ type Milestone = {
 const MILESTONES: Milestone[] = [
   {
     year: "1987",
-    title: "Group founded",
+    title: "Group Founded",
     body: "Started our journey in industrial manufacturing.",
     image: groupImage,
     alt: "Early steel-sheet rolling machines in an old factory hall",
@@ -82,6 +82,89 @@ function Ticks({ active }: { active: boolean }) {
 export function Milestones() {
   // The highlighted milestone; hover, focus or click picks another. Starts on 2018, as in the design.
   const [active, setActive] = useState(1);
+  const viewport = useRef<HTMLDivElement>(null);
+  const track = useRef<HTMLOListElement>(null);
+
+  // The row drifts right to left on its own (one copy of the list every 40s, as before). Hovering or
+  // focusing pauses it; pressing and dragging sideways (mouse, touch or pen) moves it by hand.
+  // The list is doubled, so the offset wraps around half the track width for a seamless loop.
+  useEffect(() => {
+    const view = viewport.current;
+    const list = track.current;
+    if (!view || !list) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let offset = 0;
+    let last = performance.now();
+    let frame = 0;
+    let hovering = false;
+    let focused = false;
+    let drag: { id: number; startX: number; startOffset: number } | null = null;
+
+    const wrap = () => {
+      const half = list.scrollWidth / 2;
+      if (half <= 0) return;
+      offset = ((offset % half) - half) % half; // keep within (-half, 0]
+    };
+    const paint = () => {
+      list.style.transform = `translate3d(${offset}px, 0, 0)`;
+    };
+    const tick = (now: number) => {
+      const dt = Math.min(64, now - last);
+      last = now;
+      if (!drag && !hovering && !focused && !reducedMotion.matches) {
+        offset -= (list.scrollWidth / 2 / 40000) * dt;
+        wrap();
+        paint();
+      }
+      frame = requestAnimationFrame(tick);
+    };
+
+    const onDown = (e: PointerEvent) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      drag = { id: e.pointerId, startX: e.clientX, startOffset: offset };
+    };
+    const onMove = (e: PointerEvent) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.startX;
+      // Capture once it is clearly a sideways drag, so the pointer keeps moving the row off its edge
+      if (Math.abs(dx) > 4 && !view.hasPointerCapture(e.pointerId)) view.setPointerCapture(e.pointerId);
+      offset = drag.startOffset + dx;
+      wrap();
+      paint();
+    };
+    const onUp = (e: PointerEvent) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      drag = null;
+      last = performance.now();
+    };
+    const onEnter = () => (hovering = true);
+    const onLeave = () => (hovering = false);
+    const onFocusIn = () => (focused = true);
+    const onFocusOut = (e: FocusEvent) => {
+      if (!view.contains(e.relatedTarget as Node | null)) focused = false;
+    };
+
+    view.addEventListener("pointerdown", onDown);
+    view.addEventListener("pointermove", onMove);
+    view.addEventListener("pointerup", onUp);
+    view.addEventListener("pointercancel", onUp);
+    view.addEventListener("mouseenter", onEnter);
+    view.addEventListener("mouseleave", onLeave);
+    view.addEventListener("focusin", onFocusIn);
+    view.addEventListener("focusout", onFocusOut);
+    frame = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(frame);
+      view.removeEventListener("pointerdown", onDown);
+      view.removeEventListener("pointermove", onMove);
+      view.removeEventListener("pointerup", onUp);
+      view.removeEventListener("pointercancel", onUp);
+      view.removeEventListener("mouseenter", onEnter);
+      view.removeEventListener("mouseleave", onLeave);
+      view.removeEventListener("focusin", onFocusIn);
+      view.removeEventListener("focusout", onFocusOut);
+    };
+  }, []);
 
   return (
     <section className={cn(CONTAINER, SECTION_Y)}>
@@ -95,10 +178,12 @@ export function Milestones() {
           </p>
         </Reveal>
 
-        {/* Years move endlessly from right to left; hovering pauses the row so a year can be picked.
-            The list is doubled for a gapless loop; the copy is hidden from screen readers and Tab. */}
-        <Reveal delay={100} className={cn(BLOCK_GAP, "group overflow-hidden")}>
-          <ol className="flex w-max animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:w-full motion-reduce:overflow-x-auto">
+        {/* Years move endlessly from right to left; hovering pauses the row so a year can be picked,
+            and it can be dragged sideways. The list is doubled for a gapless loop; the copy is hidden
+            from screen readers and Tab. */}
+        <Reveal delay={100} className={cn(BLOCK_GAP, "overflow-hidden")}>
+          <div ref={viewport} className="cursor-grab touch-pan-y select-none active:cursor-grabbing">
+          <ol ref={track} className="flex w-max will-change-transform">
             {[...MILESTONES, ...MILESTONES].map((milestone, n) => {
               const i = n % MILESTONES.length;
               const copy = n >= MILESTONES.length;
@@ -159,6 +244,7 @@ export function Milestones() {
                           src={milestone.image}
                           alt={milestone.alt}
                           fill
+                          draggable={false}
                           placeholder="blur"
                           sizes="(min-width: 1024px) 25vw, 220px"
                           className={milestone.fit === "contain" ? "object-contain" : "object-cover"}
@@ -170,6 +256,7 @@ export function Milestones() {
               );
             })}
           </ol>
+          </div>
         </Reveal>
       </div>
     </section>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { BackToTop } from "@/components/layout/BackToTop";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
@@ -65,6 +66,7 @@ dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });`}
           <Footer />
           <WhatsAppButton />
           <BackToTop />
+          <CookieBanner />
         </SmoothScroll>
       </body>
     </html>

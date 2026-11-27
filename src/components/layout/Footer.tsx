@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { CookieSettings } from "./CookieSettings";
 import groupLogo from "../../../public/logo/Group-Logo.png";
 import { CONTAINER } from "@/constants/layout";
 import { cn } from "@/lib/utils";
@@ -48,6 +49,9 @@ const LEGAL_LINKS: { label: string; href: string }[] = [
   { label: "Cookie Policy", href: "/cookie-policy" },
   { label: "Cookie Settings", href: "/cookie-policy#settings" },
 ];
+
+const legalLink =
+  "font-ui text-[max(11px,0.95cqw)] tracking-[0.15em] text-[#6b6b6b] uppercase transition-colors hover:text-brand";
 
 const iconProps = {
   "aria-hidden": true,
@@ -256,12 +260,14 @@ export function Footer() {
               <ul className="flex flex-wrap gap-x-[max(16px,1.6cqw)] gap-y-2">
                 {LEGAL_LINKS.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="font-ui text-[max(11px,0.95cqw)] tracking-[0.15em] text-[#6b6b6b] uppercase transition-colors hover:text-brand"
-                    >
-                      {link.label}
-                    </Link>
+                    {/* "Cookie Settings" opens the cookie preferences dialog instead of going to a page */}
+                    {link.label === "Cookie Settings" ? (
+                      <CookieSettings label={link.label} className={legalLink} />
+                    ) : (
+                      <Link href={link.href} className={legalLink}>
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
