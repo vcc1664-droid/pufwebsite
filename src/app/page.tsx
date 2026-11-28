@@ -1,5 +1,5 @@
 import { PinBehind } from "@/components/motion/PinBehind";
-import { TextCursor } from "@/components/motion/TextCursor";
+// import { TextCursor } from "@/components/motion/TextCursor";
 import { Applications } from "@/components/sections/Applications";
 import { BuyerQuestions } from "@/components/sections/BuyerQuestions";
 import { Hero } from "@/components/sections/Hero";
@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <main className="flex-1">
       {/* Home page only: a circle follows the mouse and grows over text, inverting it for clarity */}
-      <TextCursor />
+      {/* <TextCursor /> */}
       {/* The hero stays put underneath; everything after it scrolls up over it. */}
       <PinBehind>
         <Hero />
