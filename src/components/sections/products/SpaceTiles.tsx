@@ -2,10 +2,10 @@ import Image, { type StaticImageData } from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
-import agricultureImage from "../../../../public/Applications/Servicestailored/Agriculture.jpg";
+import agricultureImage from "../../../../public/Applications/Servicestailored/7-500kb.jpeg";
 import coldChainImage from "../../../../public/Applications/Servicestailored/cold-chain-food-processing.jpeg";
 import dataImage from "../../../../public/Applications/Servicestailored/data-technology.jpg";
-import healthcareImage from "../../../../public/Applications/Servicestailored/healthcare-pharmaceuticals.jpg";
+import healthcareImage from "../../../../public/Applications/Servicestailored/healthcare-pharmaceuticals.jpeg";
 import hospitalityImage from "../../../../public/Applications/Servicestailored/Hospitality.jpg";
 import industrialImage from "../../../../public/Applications/Servicestailored/industrial-manufacturing.jpg";
 import infrastructureImage from "../../../../public/Applications/Servicestailored/infrastructure-utilities.jpg";
@@ -26,6 +26,7 @@ const TILES: Tile[] = [
   { label: "Hospitality", image: hospitalityImage, alt: "Hospitality building interior" },
   { label: "Shopping Centres", image: retailImage, alt: "Shopping centre interior" },
 ];
+
 
 /* Sizes (lg+) are cqw of the content width, measured from the design. */
 export function SpaceTiles() {
