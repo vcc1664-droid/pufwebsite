@@ -13,10 +13,13 @@ export function ScrollRise({
   children,
   className,
   from,
+  smooth = false,
 }: {
   children: ReactNode;
   className?: string;
   from: string;
+  /** Eases the movement (it trails the scroll slightly) instead of tracking it frame by frame. */
+  smooth?: boolean;
 }) {
   const outerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
@@ -62,7 +65,16 @@ export function ScrollRise({
 
   return (
     <div ref={outerRef} className={className}>
-      <div ref={innerRef} style={{ willChange: "transform, opacity" }}>
+      <div
+        ref={innerRef}
+        className={smooth ? "motion-reduce:transition-none" : undefined}
+        style={{
+          willChange: "transform, opacity",
+          transition: smooth
+            ? "transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 600ms cubic-bezier(0.22, 1, 0.36, 1)"
+            : undefined,
+        }}
+      >
         {children}
       </div>
     </div>

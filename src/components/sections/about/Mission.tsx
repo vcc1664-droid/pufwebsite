@@ -51,7 +51,7 @@ const STEPS: Step[] = [
 const PIN_GAP = 16;
 
 const button =
-  "inline-flex items-center justify-center rounded-[max(6px,0.42cqw)] px-[max(20px,2.1cqw)] py-[max(12px,1cqw)] font-ui text-[max(14px,0.95cqw)] leading-none transition-colors duration-200";
+  "relative isolate inline-flex items-center justify-center overflow-hidden rounded-[max(6px,0.42cqw)] px-[max(20px,2.1cqw)] py-[max(12px,1cqw)] font-ui text-[max(14px,0.95cqw)] leading-none transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100";
 
 /* Sizes (lg+) are cqw of the content width, measured from the Figma frame. */
 export function Mission() {
@@ -133,12 +133,12 @@ export function Mission() {
         <div className={cn("@container", SECTION_Y)}>
           <div className="flex flex-col-reverse gap-8 lg:flex-row lg:items-end lg:justify-between">
             <Reveal className="flex flex-wrap gap-3 lg:gap-[1.4cqw]">
-              <Link href={QUOTE_CTA.href} className={cn(button, "bg-white text-black hover:bg-[#e6e6e6]")}>
+              <Link href={QUOTE_CTA.href} className={cn(button, "bg-white text-black before:bg-[#561A61] hover:text-white")}>
                 Get a Quote
               </Link>
               <Link
                 href="/projects"
-                className={cn(button, "border border-white text-white hover:bg-white hover:text-black")}
+                className={cn(button, "border border-white text-white before:bg-white hover:text-black")}
               >
                 View Projects
               </Link>

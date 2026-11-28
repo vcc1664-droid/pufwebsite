@@ -110,10 +110,10 @@ export function StartingPoint() {
                 aria-controls="starting-point-panel"
                 onClick={() => setActive(i)}
                 className={cn(
-                  "rounded-[max(5px,0.5cqw)] border px-[1.3em] py-[0.8em] font-ui text-[max(12px,0.95cqw)] leading-none transition-colors duration-200",
+                  "relative isolate overflow-hidden rounded-[max(5px,0.5cqw)] border px-[1.3em] py-[0.8em] font-ui text-[max(12px,0.95cqw)] leading-none transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100",
                   active === i
                     ? "border-black bg-black text-white"
-                    : "border-[#8c8c8c] bg-white text-black hover:border-black",
+                    : "border-[#8c8c8c] bg-white text-black before:bg-black hover:border-black hover:text-white",
                 )}
               >
                 {category.name}

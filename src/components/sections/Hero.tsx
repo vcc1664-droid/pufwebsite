@@ -19,7 +19,7 @@ export function Hero() {
           </p>
           <Link
             href="/products"
-            className="mt-[max(12px,1.09cqw)] inline-flex h-[max(36px,3.3cqw)] items-center gap-[max(6px,0.8cqw)] rounded-[max(6px,0.6cqw)] bg-black px-[max(14px,1.5cqw)] font-ui text-[max(12px,1.1cqw)] text-white transition-opacity duration-200 hover:opacity-80"
+            className="mt-[max(12px,1.09cqw)] relative isolate inline-flex h-[max(36px,3.3cqw)] items-center gap-[max(6px,0.8cqw)] overflow-hidden rounded-[max(6px,0.6cqw)] bg-black px-[max(14px,1.5cqw)] font-ui text-[max(12px,1.1cqw)] text-white before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100 before:bg-[#561A61]"
           >
             Explore products
             <svg
@@ -35,7 +35,7 @@ export function Hero() {
           </Link>
           <Link
             href="/contact"
-            className="mt-[max(12px,1.09cqw)] ml-[max(8px,0.8cqw)] inline-flex h-[max(36px,3.3cqw)] items-center rounded-[max(6px,0.6cqw)] border border-black px-[max(14px,1.5cqw)] font-ui text-[max(12px,1.1cqw)] text-black transition-colors duration-200 hover:bg-black hover:text-white"
+            className="mt-[max(12px,1.09cqw)] ml-[max(8px,0.8cqw)] relative isolate inline-flex h-[max(36px,3.3cqw)] items-center overflow-hidden rounded-[max(6px,0.6cqw)] border border-black px-[max(14px,1.5cqw)] font-ui text-[max(12px,1.1cqw)] text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100 before:bg-black hover:text-white"
           >
             Request a sample
           </Link>

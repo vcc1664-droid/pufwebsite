@@ -142,7 +142,7 @@ export function BuildingEnquiry() {
                   value="quote"
                   onClick={() => setAction("quote")}
                   disabled={status.state === "sending"}
-                  className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-black px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-white transition-colors duration-200 hover:bg-[#2a2a2a] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="relative isolate overflow-hidden before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] enabled:hover:before:scale-x-100 inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-black px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-white transition-colors duration-300 before:bg-white enabled:hover:text-black disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status.state === "sending" && action === "quote" ? "Sending..." : "Request a quote"}
                 </button>
@@ -151,7 +151,7 @@ export function BuildingEnquiry() {
                   value="sample"
                   onClick={() => setAction("sample")}
                   disabled={status.state === "sending"}
-                  className="inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-white px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-black transition-colors duration-200 hover:bg-[#e6e6e6] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="relative isolate overflow-hidden before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] enabled:hover:before:scale-x-100 inline-flex items-center justify-center rounded-[max(6px,0.5cqw)] bg-white px-[max(20px,2.1cqw)] py-[max(12px,1.05cqw)] font-ui text-[max(14px,0.95cqw)] leading-none text-black transition-colors duration-300 before:bg-black enabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status.state === "sending" && action === "sample" ? "Sending..." : "Request a sample"}
                 </button>
