@@ -4,12 +4,12 @@ import { BLOCK_GAP, CONTAINER, SECTION_Y } from "@/constants/layout";
 import { cn } from "@/lib/utils";
 import agricultureImage from "../../../../public/Applications/Servicestailored/7-500kb.jpeg";
 import coldChainImage from "../../../../public/Applications/Servicestailored/cold-chain-food-processing.jpeg";
-import dataImage from "../../../../public/Applications/Servicestailored/data-technology.jpg";
+import dataImage from "../../../../public/Applications/Servicestailored/5-500kb.jpeg";
 import healthcareImage from "../../../../public/Applications/Servicestailored/healthcare-pharmaceuticals.jpeg";
 import hospitalityImage from "../../../../public/Applications/Servicestailored/Hospitality.jpg";
 import industrialImage from "../../../../public/Applications/Servicestailored/industrial-manufacturing.jpeg";
 import infrastructureImage from "../../../../public/Applications/Servicestailored/6-500kb.jpeg";
-import logisticsImage from "../../../../public/Applications/Servicestailored/logistics-warehousing.jpg";
+import logisticsImage from "../../../../public/Applications/Servicestailored/4-500kb.jpeg";
 import retailImage from "../../../../public/Applications/Servicestailored/Mall-100kb.jpeg";
 
 type Tile = { label: string; image: StaticImageData; alt: string };
